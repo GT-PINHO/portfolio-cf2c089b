@@ -8,7 +8,7 @@ export default function HeroSection() {
   return (
     <header
       id="top"
-      className="relative flex min-h-[100dvh] items-center overflow-hidden pt-28 pb-16 lg:pt-32"
+      className="relative flex min-h-[100vh] flex-col justify-center pt-20 pb-8"
     >
       <HeroBackground />
 
@@ -17,7 +17,7 @@ export default function HeroSection() {
           variants={containerStagger}
           initial="hidden"
           animate="visible"
-          className="max-w-[780px]"
+          className="w-full max-w-full"
         >
           <motion.div variants={fadeUp}>
             <span className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-muted">
@@ -29,15 +29,16 @@ export default function HeroSection() {
             </span>
           </motion.div>
 
-            <motion.h1
-              variants={fadeUp}
-              className="mt-7 font-display text-[clamp(3rem,8vw,6rem)] font-extrabold leading-[0.95] tracking-[-0.045em] text-ink"
-            >
-              Transformo verba
-              <br />
-              em{" "}
-              <span className="text-gradient">resultado</span>.
-            </motion.h1>
+          <motion.h1
+            variants={fadeUp}
+            className="mt-7 font-display font-extrabold leading-[1.05] tracking-[-0.02em] text-ink"
+            style={{ fontSize: "clamp(2rem, 5.5vw, 4.25rem)" }}
+          >
+            Transformo verba
+            <br />
+            em{" "}
+            <span className="text-gradient">resultado</span>.
+          </motion.h1>
 
           <motion.p
             variants={fadeUp}

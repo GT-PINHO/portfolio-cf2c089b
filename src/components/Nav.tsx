@@ -45,7 +45,7 @@ export default function Nav() {
             David Pinho
           </a>
 
-        <div className="hidden items-center gap-8 lg:flex">
+        <div className="hidden items-center gap-8 md:flex">
           {LINKS.map((l) => (
             <a
               key={l.href}
@@ -58,26 +58,15 @@ export default function Nav() {
           <a
             href={CV_URL}
             download={CV_FILENAME}
-            className="rounded-full border border-surface-line px-4 py-2 text-[13.5px] text-muted transition-colors hover:border-accent hover:text-ink"
+            className="rounded-full px-4 py-2 text-[13.5px] font-medium text-white transition-all hover:bg-white/10"
+            style={{ border: "1px solid rgba(255,255,255,0.3)" }}
           >
             Baixar CV
           </a>
           <a
             href="#contato"
-            className="rounded-full border px-5 py-2 text-[14px] font-semibold transition-colors hover:text-white"
-            style={{
-              borderColor: "#06b6d4",
-              color: "#06b6d4",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.background =
-                "linear-gradient(135deg,#06b6d4,#7c3aed)";
-              (e.currentTarget as HTMLAnchorElement).style.borderColor = "transparent";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.background = "";
-              (e.currentTarget as HTMLAnchorElement).style.borderColor = "#06b6d4";
-            }}
+            className="rounded-full px-5 py-2 text-[14px] font-semibold text-white transition-all hover:opacity-90 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)]"
+            style={{ background: "linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)", border: "none" }}
           >
             Conversar
           </a>
@@ -86,7 +75,7 @@ export default function Nav() {
         <button
           aria-label="Menu"
           onClick={() => setOpen((v) => !v)}
-          className="flex flex-col gap-1.5 p-1.5 lg:hidden"
+          className="flex flex-col gap-1.5 p-1.5 md:hidden"
         >
           <span
             className={`h-0.5 w-6 bg-ink transition-transform duration-300 ${
@@ -113,7 +102,7 @@ export default function Nav() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden border-t border-surface-line bg-surface/95 backdrop-blur-xl lg:hidden"
+            className="overflow-hidden border-t border-surface-line bg-surface/95 backdrop-blur-xl md:hidden"
           >
             <div className="flex flex-col gap-1 px-6 py-5">
               {LINKS.map((l) => (
@@ -137,7 +126,8 @@ export default function Nav() {
               <a
                 href="#contato"
                 onClick={close}
-                className="mt-2 rounded-full bg-accent px-5 py-3 text-center text-[15px] font-semibold text-white"
+                className="mt-2 rounded-full px-5 py-3 text-center text-[15px] font-semibold text-white"
+                style={{ background: "linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)" }}
               >
                 Conversar
               </a>

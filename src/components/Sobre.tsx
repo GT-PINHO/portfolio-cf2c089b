@@ -33,17 +33,16 @@ function Check() {
 
 function Portrait() {
   const reduced = useReducedMotion();
-  const mask = "radial-gradient(120% 100% at 60% 30%, #000 52%, transparent 88%)";
 
   return (
     <motion.div
-      className="relative mx-auto w-full max-w-[440px] lg:mx-0 lg:max-w-none"
+      className="relative w-full"
       variants={scaleIn}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
     >
-      {/* Glow suave cyan/violet atrás da foto */}
+      {/* Glow suave atrás da foto */}
       <motion.div
         aria-hidden
         className="absolute left-1/2 top-1/2 -z-10 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
@@ -52,19 +51,25 @@ function Portrait() {
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="relative aspect-[4/5] w-full">
+      {/* Foto: 350px em mobile, aspect 4/5 em desktop */}
+      <div
+        className="w-full overflow-hidden md:aspect-[4/5]"
+        style={{
+          height: undefined,
+          borderRadius: "12px",
+          boxShadow: "0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.07)",
+        }}
+      >
         <img
           src="/david.png"
           alt="David Pinho"
-          className="h-full w-full object-cover object-[center_15%] brightness-[0.93] contrast-[1.06]"
-          style={{ maskImage: mask, WebkitMaskImage: mask }}
+          className="h-full w-full object-cover brightness-[0.95] contrast-[1.04]"
+          style={{
+            objectPosition: "top center",
+            height: "inherit",
+          }}
           loading="lazy"
           decoding="async"
-        />
-        {/* Toque violet nas bordas — muito subtil */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_55%_40%,transparent_55%,rgba(124,58,237,.10))]"
         />
       </div>
     </motion.div>
@@ -78,10 +83,17 @@ export default function Sobre() {
       index="01"
       kicker="Quem sou eu"
       title="De origem simples a R$18 milhões em mídia."
+      className="pt-8 md:pt-12 pb-12 md:pb-20"
     >
-      {/* Layout: checklist/bio esquerda · foto direita */}
-      <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-        <div>
+      {/* Desktop: 2 colunas 50/50 | Mobile: foto em cima, texto em baixo */}
+      <div className="grid items-start gap-10 [grid-template-columns:1fr] [grid-template-rows:350px_auto] md:[grid-template-columns:1fr_1fr] md:[grid-template-rows:auto]">
+        {/* Mobile: foto aparece primeiro (order-1 no mobile, order-2 no desktop) */}
+        <div className="order-1 md:order-2 md:h-auto">
+          <Portrait />
+        </div>
+
+        {/* Texto: order-2 no mobile, order-1 no desktop */}
+        <div className="order-2 md:order-1">
           <RevealGroup className="mb-9 flex flex-col gap-3">
             {HIGHLIGHTS.map((h) => (
               <RevealItem key={h} className="flex items-start gap-3">
@@ -93,31 +105,30 @@ export default function Sobre() {
 
           <Reveal className="space-y-4 text-[1.02rem] leading-relaxed text-muted">
             <p>
-              Sou o <strong className="text-ink">David Pinho</strong>. Comecei{" "}
-              <strong className="text-ink">do zero em 2023</strong>: mudei para
-              Americana–SP atrás de uma oportunidade e construí, do começo, uma
-              carreira em gestão de tráfego pago.
+              Sou o <strong className="text-ink">David Pinho</strong>. Em 2023,
+              saí de <strong className="text-ink">Senador Camará — Rio de Janeiro</strong>{" "}
+              e fui para Americana, SP, atrás de uma oportunidade que eu ainda estava
+              construindo. Sem rede, sem histórico, do zero.
             </p>
             <p>
               Hoje conduzo campanhas nacionais de Meta Ads no{" "}
               <strong className="text-ink">Legacy Eco Group</strong>, com cases como{" "}
               <strong className="text-ink">R$100 mil faturados em um único dia</strong>{" "}
-              e mentalidade orientada a resultado antes de qualquer coisa.
+              e mais de <strong className="text-ink">R$18M gerenciados</strong>. Resultado
+              construído na prática, sem atalho.
             </p>
             <p>
-              O que me move é resolver de ponta a ponta. Quando a operação precisa
-              de uma ferramenta, eu{" "}
-              <strong className="text-ink">construo com IA</strong> — frontend,
-              backend, automações e hardcode. Não tenho diploma em programação; tenho{" "}
+              O que me diferencia é não parar no tráfego. Quando a operação precisa
+              de uma ferramenta, eu <strong className="text-ink">construo com IA</strong>{" "}
+              — interfaces, sistemas internos e automações do zero. Não tenho diploma
+              em programação; tenho{" "}
               <strong className="text-ink">problemas resolvidos em produção</strong>.
             </p>
           </Reveal>
         </div>
-
-        <Portrait />
       </div>
 
-      <div className="mt-16 border-t border-surface-line pt-12">
+      <div className="mt-10 border-t border-surface-line pt-10">
         <ToolsRow />
       </div>
     </Section>

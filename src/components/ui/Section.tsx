@@ -23,7 +23,7 @@ export default function Section({
   return (
     <section
       id={id}
-      className={`relative scroll-mt-24 py-[clamp(5rem,9vw,8rem)] ${className}`}
+      className={`relative scroll-mt-20 ${className || "py-12 md:py-20"}`}
     >
       <div className="mx-auto max-w-[1180px] px-6 sm:px-8">
         <Reveal className="mb-3 flex items-center gap-3">
@@ -48,7 +48,7 @@ export default function Section({
           </Reveal>
         )}
 
-        <div className="mt-12 lg:mt-16">{children}</div>
+        <div className="mt-10 lg:mt-12">{children}</div>
       </div>
     </section>
   );

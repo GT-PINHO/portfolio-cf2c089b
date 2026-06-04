@@ -62,28 +62,27 @@ export default function Skills() {
       title="Stack e habilidades."
       lead="Alinhado ao meu currículo — domínio em Meta Ads e mensuração, com Google Ads em nível básico e construção prática com IA."
     >
-      <RevealGroup className="grid gap-4 sm:grid-cols-2">
+      <RevealGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {BLOCKS.map((b) => (
-          <RevealItem
-            key={b.label}
-            className="rounded-2xl border border-surface-line bg-surface-raised/40 p-6"
-          >
-            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">
-              {b.label}
-            </p>
-            <div className="flex flex-wrap gap-2.5">
-              {b.chips.map((c) => (
-                <span
-                  key={c.name}
-                  className={`rounded-full border px-3.5 py-1.5 text-[13px] font-medium transition-colors ${
-                    c.core
-                      ? "border-accent/50 bg-accent/10 text-accent"
-                      : "border-surface-line text-muted hover:border-ink/30 hover:text-ink"
-                  }`}
-                >
-                  {c.name}
-                </span>
-              ))}
+          <RevealItem key={b.label}>
+            <div className="h-full rounded-xl border border-white/[0.08] bg-white/[0.03] p-5">
+              <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">
+                {b.label}
+              </p>
+              <div className="flex flex-wrap gap-2.5">
+                {b.chips.map((c) => (
+                  <span
+                    key={c.name}
+                    className={`rounded-full border px-3.5 py-1.5 text-[13px] font-medium transition-colors ${
+                      c.core
+                        ? "border-accent/50 bg-accent/10 text-accent"
+                        : "border-surface-line text-muted hover:border-ink/30 hover:text-ink"
+                    }`}
+                  >
+                    {c.name}
+                  </span>
+                ))}
+              </div>
             </div>
           </RevealItem>
         ))}

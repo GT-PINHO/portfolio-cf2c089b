@@ -5,7 +5,6 @@ import { fadeUp } from "../lib/motion";
 
 type Service = {
   iconSrc: string;
-  iconBg: string;
   title: string;
   description: string;
   points: string[];
@@ -15,7 +14,6 @@ type Service = {
 const SERVICES: Service[] = [
   {
     iconSrc: "/icons/meta.svg",
-    iconBg: "rgba(24,119,242,0.18)",
     title: "Gestão de Tráfego Pago",
     description:
       "Estratégia de funil em Meta Ads — estruturação, testes A/B, lookalikes, remarketing e escala orientada a CPL e ROAS em operações de alto volume.",
@@ -24,7 +22,6 @@ const SERVICES: Service[] = [
   },
   {
     iconSrc: "/icons/googletagmanager.svg",
-    iconBg: "rgba(66,193,110,0.18)",
     title: "Rastreamento & Mensuração",
     description:
       "GTM, Pixel, API de Conversão e Stape — tracking server-side com auditoria de sinal para o algoritmo otimizar com dados confiáveis.",
@@ -32,7 +29,6 @@ const SERVICES: Service[] = [
   },
   {
     iconSrc: "/icons/cursor.svg",
-    iconBg: "rgba(245,78,0,0.18)",
     title: "Sistemas & Automação com IA",
     description:
       "Soluções internas com IA no fluxo (Cursor, Claude): telas, integrações, backend e hardcode. EasyPanel, ManyChat e agentes próprios para dar autonomia à gestão.",
@@ -49,33 +45,37 @@ export default function Servicos() {
       title="Como eu transformo verba em crescimento."
       lead='Da estratégia de mídia à ferramenta que sustenta a operação — entrega real, sem promessa de "dev fullstack".'
     >
-      <RevealGroup className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <RevealGroup className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {SERVICES.map((s) => (
           <motion.article
             key={s.title}
             variants={fadeUp}
             whileHover={{ y: -6 }}
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
-            className={`group relative overflow-hidden rounded-2xl border border-surface-line bg-surface-raised/60 p-7 lg:p-8 ${
+            className={`group relative overflow-hidden rounded-2xl border border-surface-line bg-surface-raised/60 p-4 md:p-7 lg:p-8 ${
               s.featured ? "ring-1 ring-accent/20" : ""
             }`}
           >
             <div
               aria-hidden
               className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-              style={{ background: s.iconBg }}
+              style={{ background: "rgba(255,255,255,0.04)" }}
             />
 
             <div className="relative">
               <div
-                className="mb-7 flex h-16 w-16 items-center justify-center rounded-2xl"
-                style={{ background: s.iconBg }}
+                className="mb-7 flex h-14 w-14 items-center justify-center rounded-[10px] border"
+                style={{
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  padding: "12px",
+                }}
               >
                 <img
                   src={s.iconSrc}
                   alt=""
                   aria-hidden
-                  className="h-9 w-9 object-contain"
+                  className="h-8 w-8 object-contain"
                   loading="lazy"
                 />
               </div>

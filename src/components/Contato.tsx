@@ -21,7 +21,7 @@ export default function Contato() {
   )}`;
 
   return (
-    <section id="contato" className="scroll-mt-24 py-[clamp(5rem,9vw,8rem)]">
+    <section id="contato" className="scroll-mt-20 py-12 md:py-20">
       <div className="mx-auto max-w-[1180px] px-6 sm:px-8">
         <Reveal>
           <div className="relative overflow-hidden rounded-[1.75rem] border border-surface-line bg-surface-raised/60 p-7 sm:p-10 lg:p-14">
@@ -80,29 +80,37 @@ export default function Contato() {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center text-center">
-                <div className="rounded-2xl border border-surface-line bg-white p-3">
-                  <img
-                    src={qrSrc}
-                    alt="QR Code para WhatsApp de David Pinho"
-                    width={200}
-                    height={200}
-                    className="h-[180px] w-[180px] rounded-lg"
-                  />
-                </div>
-                <p className="mt-4 text-[13px] leading-snug text-muted">
-                  Aponte a câmera
-                  <br />
-                  para falar no WhatsApp
-                </p>
-                <a
-                  href={whatsappUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-2 text-[12px] text-accent hover:underline"
+              {/* QR Code — oculto em mobile, visível só em desktop */}
+              <div className="hidden lg:flex lg:flex-col lg:items-center lg:text-center">
+                <div
+                  className="flex flex-col items-center gap-4 rounded-2xl p-6"
+                  style={{
+                    background: "rgba(255,255,255,0.05)",
+                    borderRadius: "16px",
+                    padding: "24px",
+                  }}
                 >
-                  wa.me/{WHATSAPP_NUMBER}
-                </a>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-muted">
+                    Escanear para WhatsApp
+                  </p>
+                  <div className="rounded-xl bg-white p-2.5">
+                    <img
+                      src={qrSrc}
+                      alt="QR Code para WhatsApp de David Pinho"
+                      width={180}
+                      height={180}
+                      className="h-[160px] w-[160px] rounded-lg"
+                    />
+                  </div>
+                  <a
+                    href={whatsappUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[12px] text-accent hover:underline"
+                  >
+                    wa.me/{WHATSAPP_NUMBER}
+                  </a>
+                </div>
               </div>
             </div>
           </div>
