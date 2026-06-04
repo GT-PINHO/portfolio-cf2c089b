@@ -1,5 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"><title>Google Ads</title>
-<rect x="0"  y="15" width="6" height="8"  rx="1" fill="#4285F4"/>
-<rect x="9"  y="10" width="6" height="13" rx="1" fill="#FBBC04"/>
-<rect x="18" y="5"  width="6" height="18" rx="1" fill="#34A853"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"><title>Google Ads</title><path fill="#FBBC04" d="M7.875 1.589 1.61 12.434a3.46 3.46 0 0 0 1.265 4.72 3.453 3.453 0 0 0 4.718-1.262l6.262-10.846A3.45 3.45 0 0 0 12.59.328a3.456 3.456 0 0 0-4.717 1.261z"/><path fill="#4285F4" d="m9.952 9.224 4.024-6.97a3.45 3.45 0 0 1 4.717-1.265 3.46 3.46 0 0 1 1.265 4.72l-6.272 10.845c-.515.892-1.45 1.701-2.554 1.726H8.946a3.46 3.46 0 0 1-2.991-5.184z"/><circle fill="#34A853" cx="4.875" cy="19.116" r="3.46"/></svg>
