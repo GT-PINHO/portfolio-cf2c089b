@@ -13,8 +13,7 @@ Abre em `http://localhost:5173`.
 
 ## Trocar a foto
 
-A foto fica em `public/david.jpg`. Substitua o placeholder pela sua foto real
-(pode manter o nome `david.jpg` ou ajustar o `src` em `src/components/Hero.tsx`).
+A foto fica em `public/david.png` (card do Hero em `src/components/Hero.tsx`).
 
 ## Build de produção
 

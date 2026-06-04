@@ -1,65 +1,89 @@
+import Section from "./ui/Section";
+import { RevealGroup, RevealItem } from "./ui/Reveal";
+
+type Role = {
+  title: string;
+  org: string;
+  meta: string;
+  current?: boolean;
+  bullets: string[];
+};
+
+const ROLES: Role[] = [
+  {
+    title: "Gestor de Tráfego Pago",
+    org: "Grupo Legacy Eco Holding",
+    meta: "IAM Treinamentos · Liberty Mentoria · Legacy Coffee · dez/2024 — Atual",
+    current: true,
+    bullets: [
+      "Tráfego das campanhas nacionais do IAM, com budget semanal de R$68k a R$98k e +R$18M gerenciados.",
+      "+400 mil pessoas captadas para eventos em funis de inscrição ao longo da operação.",
+      "Rastreamento avançado com GTM, API de Conversão, Stape e server-side para qualidade de dados.",
+      "Construção de sistemas internos e automações com IA (painéis, fluxos e hardcode).",
+      "Estratégia de oferta, narrativa de landing pages e roteiros de criativos — impacto além da mídia.",
+    ],
+  },
+  {
+    title: "Assistente de Tráfego Digital",
+    org: "Intencional Negócios Digitais Ltda.",
+    meta: "Americana — SP · fev/2023 — dez/2024",
+    bullets: [
+      "Campanhas Meta Ads para o IAM Treinamentos, apoiando cerca de 40 eventos mensais no Brasil.",
+      "Campanhas por cidade e etapa de funil, com testes A/B contínuos e escala progressiva de verba.",
+      "Públicos segmentados, lookalikes e remarketing com base em intenção de compra.",
+      "Acompanhamento de rastreamento via GTM com auditoria de sinal.",
+    ],
+  },
+];
+
 export default function Experiencia() {
   return (
-    <section id="experiencia">
-      <div className="wrap">
-        <span className="sec-tag reveal">Experiência</span>
-        <h2 className="reveal">Trajetória</h2>
-        <div className="exp" style={{ marginTop: "42px" }}>
-          <div className="exp-item reveal">
-            <h3>Gestor de Tráfego Pago</h3>
-            <div className="org">
-              Grupo Legacy Eco Holding · IAM Treinamentos, Liberty Mentoria e Legacy
-              Coffee
+    <Section
+      id="experiencia"
+      index="03"
+      kicker="Experiência"
+      title="Trajetória profissional."
+    >
+      <RevealGroup className="relative ml-1 border-l border-surface-line pl-8 sm:pl-10">
+        {ROLES.map((r) => (
+          <RevealItem
+            key={r.title}
+            className="relative pb-12 last:pb-0"
+            as="div"
+          >
+            <span className="absolute -left-[41px] top-1.5 flex h-3.5 w-3.5 items-center justify-center sm:-left-[49px]">
+              <span className="h-3.5 w-3.5 rounded-full bg-accent ring-4 ring-surface" />
+              {r.current && (
+                <span className="absolute h-3.5 w-3.5 animate-ping rounded-full bg-accent/60" />
+              )}
+            </span>
+
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+              <h3 className="font-display text-xl font-bold tracking-tight text-ink">
+                {r.title}
+              </h3>
+              {r.current && (
+                <span className="rounded-full border border-accent/40 bg-accent/10 px-2.5 py-0.5 text-[10.5px] font-semibold uppercase tracking-wider text-accent">
+                  Atual
+                </span>
+              )}
             </div>
-            <div className="meta">Brasil · dez/2024 — Atual</div>
-            <ul>
-              <li>
-                Tráfego das campanhas nacionais do IAM, com budget semanal de R$68k
-                a R$98k e +R$18M gerenciados.
-              </li>
-              <li>
-                +400 mil pessoas captadas para eventos, conduzidas por funis de
-                inscrição ao longo da operação.
-              </li>
-              <li>
-                Rastreamento avançado com GTM, API de Conversão, Stape e Server-Side
-                Tracking para qualidade de dados e otimização precisa.
-              </li>
-              <li>
-                Atuação em estratégia de oferta, narrativa de landing pages e
-                roteiros de criativos, ampliando o impacto além da mídia.
-              </li>
-              <li>
-                Desenvolvimento de sistemas internos e automações com apoio de IA,
-                reduzindo trabalho manual dos times.
-              </li>
+            <p className="mt-1 font-medium text-accent">{r.org}</p>
+            <p className="mt-1 text-[13px] text-muted">{r.meta}</p>
+
+            <ul className="mt-5 space-y-2.5">
+              {r.bullets.map((b) => (
+                <li
+                  key={b}
+                  className="relative max-w-[68ch] pl-5 text-[14.5px] leading-relaxed text-muted before:absolute before:left-0 before:top-[0.6em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-accent/50"
+                >
+                  {b}
+                </li>
+              ))}
             </ul>
-          </div>
-          <div className="exp-item reveal">
-            <h3>Assistente de Tráfego Digital</h3>
-            <div className="org">Intencional Negócios Digitais Ltda.</div>
-            <div className="meta">Americana — SP · fev/2023 — dez/2024</div>
-            <ul>
-              <li>
-                Campanhas Meta Ads para o IAM Treinamentos, apoiando cerca de 40
-                eventos mensais em todo o Brasil.
-              </li>
-              <li>
-                Campanhas estruturadas por cidade e etapa de funil, com testes A/B
-                contínuos e escala progressiva de verba.
-              </li>
-              <li>
-                Públicos segmentados, lookalikes e remarketing com base em intenção
-                de compra.
-              </li>
-              <li>
-                Acompanhamento de rastreamento via GTM com auditoria de sinal para
-                otimização do algoritmo.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+          </RevealItem>
+        ))}
+      </RevealGroup>
+    </Section>
   );
 }

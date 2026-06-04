@@ -1,24 +1,46 @@
+import Section from "./ui/Section";
+import { RevealGroup, RevealItem } from "./ui/Reveal";
+
+const ITEMS = [
+  {
+    title: "Comunidade Sobral de Tráfego",
+    desc: "Base metodológica em performance e Meta Ads.",
+  },
+  {
+    title: "Rastracking 100 — Derickson Caleri",
+    desc: "Google Tag Manager Web & Server-Side.",
+  },
+  {
+    title: "Aprendizado contínuo",
+    desc: "Tráfego pago, funis, IA aplicada e escalabilidade.",
+  },
+];
+
 export default function Formacao() {
   return (
-    <section id="formacao">
-      <div className="wrap">
-        <span className="sec-tag reveal">Formação & Certificações</span>
-        <h2 className="reveal">Base e atualização contínua</h2>
-        <div className="edu-grid">
-          <div className="edu reveal">
-            <h3>Rastreamento 100 — GTM Web & Server-Side</h3>
-            <p>Derickson Caleri · Tracking avançado e mensuração server-side.</p>
-          </div>
-          <div className="edu reveal">
-            <h3>Comunidade Sobral de Tráfego</h3>
-            <p>Base metodológica em performance e Meta Ads.</p>
-          </div>
-          <div className="edu reveal">
-            <h3>Aprendizado contínuo</h3>
-            <p>Tráfego pago, funis, IA aplicada e escalabilidade.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <Section
+      id="trajetoria"
+      index="05"
+      kicker="Trajetória"
+      title="Especialização construída na prática."
+      lead="Formação contínua focada em performance: cursos aplicados, mentoria de mercado e atualização constante em tráfego, dados e IA."
+    >
+      <RevealGroup className="grid gap-4 md:grid-cols-3">
+        {ITEMS.map((it) => (
+          <RevealItem
+            key={it.title}
+            className="group rounded-2xl border border-surface-line bg-surface-raised/40 p-6 transition-colors hover:border-accent/30"
+          >
+            <div className="mb-4 h-px w-10 bg-accent/40 transition-all duration-500 group-hover:w-16" />
+            <h3 className="font-display text-[17px] font-bold leading-snug tracking-tight text-ink">
+              {it.title}
+            </h3>
+            <p className="mt-2 text-[13.5px] leading-relaxed text-muted">
+              {it.desc}
+            </p>
+          </RevealItem>
+        ))}
+      </RevealGroup>
+    </Section>
   );
 }

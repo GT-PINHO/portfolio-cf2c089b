@@ -1,136 +1,146 @@
+import type { ReactNode } from "react";
+import { motion } from "framer-motion";
+import Section from "./ui/Section";
+import { RevealGroup } from "./ui/Reveal";
+import { fadeUp } from "../lib/motion";
+import { IconExternal } from "./ui/icons";
+
+type Project = {
+  idx: string;
+  title: string;
+  description: ReactNode;
+  tags: string[];
+  href?: string;
+  status: string;
+};
+
+const PROJECTS: Project[] = [
+  {
+    idx: "01",
+    title: "Automação de Produtos — IAM",
+    description: (
+      <>
+        Automação (hardcode + EasyPanel) integrando os produtos do IAM ao ManyChat.
+        Aba de <strong className="text-ink">Gerenciamento de Automações e Reconciliação</strong>{" "}
+        para a gestão auditar sem depender do time de Dev — em uso diário.
+      </>
+    ),
+    tags: ["EasyPanel", "ManyChat", "Hardcode", "IA no fluxo"],
+    status: "Em produção",
+  },
+  {
+    idx: "02",
+    title: "Sistema de Gestão de Eventos — IAM",
+    description: (
+      <>
+        Substituí duas planilhas multi-departamento por um sistema web único — mais
+        controle, menos erro e visibilidade para todos os times.
+      </>
+    ),
+    tags: ["Sistema web", "Multi-departamento", "IA + hardcode"],
+    status: "Em produção",
+  },
+  {
+    idx: "03",
+    title: "Dashboard Masterclass — IAM",
+    description: (
+      <>
+        Painel de acompanhamento da operação de Masterclass, com indicadores para
+        tomada de decisão da gestão — ferramenta interna.
+      </>
+    ),
+    tags: ["Dashboard", "Vercel", "Dados"],
+    status: "Em produção",
+  },
+  {
+    idx: "04",
+    title: "Legacy Dashboard",
+    description: (
+      <>
+        Painel de gestão para o Grupo Legacy Eco, consolidando informações de
+        operação em uma visão única para liderança e times.
+      </>
+    ),
+    tags: ["Dashboard", "Legacy Eco"],
+    status: "Em produção",
+  },
+  {
+    idx: "05",
+    title: "pinho-skills — Agentes & Skills para o Claude",
+    description: (
+      <>
+        Plugin open source com <strong className="text-ink">12 skills em 3 clusters</strong>,
+        Quality Gate e eval runner — <strong className="text-ink">20/20 evals</strong> no
+        CI. Cluster <strong className="text-ink">growth-ops</strong>: leilão, unit
+        economics, tracking CAPI/dedup e CRO.
+      </>
+    ),
+    tags: ["Claude Code", "CI + Evals", "Growth-Ops", "Open source"],
+    href: "https://github.com/GT-PINHO/agent-skills",
+    status: "GitHub",
+  },
+];
+
 export default function Projetos() {
   return (
-    <section id="projetos">
-      <div className="wrap">
-        <span className="sec-tag reveal">Projetos</span>
-        <h2 className="reveal">O que eu já construí</h2>
-        <p className="sec-lead reveal">
-          Sistemas e dashboards reais, em produção, usados por times de operação e
-          gestão.
-        </p>
-        <div style={{ marginTop: "38px" }}>
-          <div className="proj reveal">
-            <div className="proj-idx">01</div>
-            <div>
-              <h3>Automação de Produtos — IAM</h3>
-              <p>
-                Automação (hardcode + EasyPanel) integrando os produtos do IAM ao
-                ManyChat. Inclui uma aba de{" "}
-                <strong>Gerenciamento de Automações e Reconciliação</strong> que dá
-                à equipe de Gestão autonomia para analisar tudo sem depender do time
-                de Dev.
-              </p>
-              <div className="tags">
-                <span>EasyPanel</span>
-                <span>ManyChat</span>
-                <span>Automação</span>
-                <span>Reconciliação</span>
-              </div>
-            </div>
-            <span className="proj-link muted">Interno</span>
-          </div>
-
-          <div className="proj reveal">
-            <div className="proj-idx">02</div>
-            <div>
-              <h3>Sistema de Gestão de Eventos — IAM</h3>
-              <p>
-                Centralizei o que antes eram duas planilhas preenchidas por vários
-                departamentos em um único sistema de gestão de eventos — mais
-                controle, menos erro e visibilidade para todos os times envolvidos.
-              </p>
-              <div className="tags">
-                <span>Sistema web</span>
-                <span>Multi-departamento</span>
-                <span>Processos</span>
-              </div>
-            </div>
-            <span className="proj-link muted">Interno</span>
-          </div>
-
-          <div className="proj reveal">
-            <div className="proj-idx">03</div>
-            <div>
-              <h3>Dashboard Masterclass — IAM</h3>
-              <p>
-                Painel de acompanhamento da operação de Masterclass, com os
-                indicadores que importam para a tomada de decisão da gestão.
-              </p>
-              <div className="tags">
-                <span>Dashboard</span>
-                <span>Vercel</span>
-                <span>Dados</span>
-              </div>
-            </div>
-            <a
-              href="https://dash-masterclass-iam.vercel.app/"
-              target="_blank"
-              rel="noopener"
-              className="proj-link"
+    <Section
+      id="projetos"
+      index="04"
+      kicker="Projetos"
+      title="O que eu já construí."
+      lead="Sistemas e dashboards que rodam na operação real. Parte é ferramenta de gestão interna — não há link para visitar, mas o impacto no processo é o que importa no case."
+    >
+      <RevealGroup className="grid gap-4">
+        {PROJECTS.map((p) => {
+          const Wrapper = p.href ? motion.a : motion.div;
+          return (
+            <Wrapper
+              key={p.idx}
+              {...(p.href
+                ? { href: p.href, target: "_blank", rel: "noopener noreferrer" }
+                : {})}
+              variants={fadeUp}
+              whileHover={{ x: 6 }}
+              transition={{ type: "spring", stiffness: 300, damping: 24 }}
+              className="group grid grid-cols-[auto_1fr] items-start gap-5 rounded-2xl border border-surface-line bg-surface-raised/40 p-6 sm:grid-cols-[auto_1fr_auto] sm:items-center sm:gap-7 sm:p-7"
             >
-              Ver ↗
-            </a>
-          </div>
+              <span className="font-display text-lg font-bold text-accent">
+                {p.idx}
+              </span>
 
-          <div className="proj reveal">
-            <div className="proj-idx">04</div>
-            <div>
-              <h3>Legacy Dashboard</h3>
-              <p>
-                Painel de gestão para o Grupo Legacy Eco, consolidando informações
-                de operação em uma visão única.
-              </p>
-              <div className="tags">
-                <span>Dashboard</span>
-                <span>Gestão</span>
+              <div>
+                <h3 className="font-display text-lg font-bold tracking-tight text-ink sm:text-xl">
+                  {p.title}
+                </h3>
+                <p className="mt-2 max-w-[62ch] text-[14px] leading-relaxed text-muted">
+                  {p.description}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {p.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full border border-surface-line px-2.5 py-1 text-[11px] text-muted"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-            <a
-              href="https://legacydashboard.lovable.app/"
-              target="_blank"
-              rel="noopener"
-              className="proj-link"
-            >
-              Ver ↗
-            </a>
-          </div>
 
-          <div className="proj reveal">
-            <div className="proj-idx">05</div>
-            <div>
-              <h3>pinho-skills — Agentes & Skills para o Claude</h3>
-              <p>
-                Plugin próprio com <strong>12 skills em 3 clusters</strong> para
-                Claude Code, baseadas em evidência (sem achismo, sem sycophancy).
-                Roda <strong>CI com Quality Gate e eval runner</strong> — 20/20
-                evals passando — e auto-seleciona o modelo por porte da tarefa. O
-                cluster de <strong>growth-ops</strong> é o diferencial: leitura de
-                leilão com regras de kill/scale, unit economics (LTV/CAC + payback),
-                auditoria de tracking com CAPI/dedup e CRO com foco em
-                message-match.
-              </p>
-              <div className="tags">
-                <span>Claude Code</span>
-                <span>12 skills</span>
-                <span>CI + Evals</span>
-                <span>Growth-Ops</span>
-                <span>Apache-2.0</span>
-              </div>
-            </div>
-            {/* CONFIRMAR a URL real do repo: o zip veio como "agent-skills-main"
-                (repo = agent-skills), mas o README usa "pinho-agent-skills".
-                Verifique no seu GitHub qual abre e ajuste o href abaixo. */}
-            <a
-              href="https://github.com/GT-PINHO/agent-skills"
-              target="_blank"
-              rel="noopener"
-              className="proj-link"
-            >
-              Ver ↗
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+              <span
+                className={`col-span-2 inline-flex items-center gap-1.5 justify-self-start rounded-full border px-4 py-2 text-[12.5px] font-medium sm:col-span-1 sm:justify-self-end ${
+                  p.href
+                    ? "border-surface-line text-accent transition-colors group-hover:border-accent group-hover:bg-accent group-hover:text-white"
+                    : "border-surface-line text-muted"
+                }`}
+              >
+                {p.status}
+                {p.href && <IconExternal className="h-3.5 w-3.5" />}
+              </span>
+            </Wrapper>
+          );
+        })}
+      </RevealGroup>
+    </Section>
   );
 }
