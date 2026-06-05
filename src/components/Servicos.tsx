@@ -43,7 +43,7 @@ export default function Servicos() {
       index="02"
       kicker="Serviços"
       title="Como eu transformo verba em crescimento."
-      lead='Da estratégia de mídia à ferramenta que sustenta a operação — entrega real, sem promessa de "dev fullstack".'
+      lead='Da estratégia de mídia à ferramenta que sustenta a operação.'
     >
       <RevealGroup className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {SERVICES.map((s) => (
