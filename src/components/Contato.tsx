@@ -7,6 +7,7 @@ import {
 import { CV_FILENAME, CV_URL } from "../lib/cv";
 import { Reveal } from "./ui/Reveal";
 import { ButtonPrimary, ButtonSecondary } from "./ui/Button";
+import { staggerContainer, staggerItem } from "../lib/motion";
 
 const CHANNELS = [
   { k: "E-mail", v: "davidpinho.st@gmail.com", href: "mailto:davidpinho.st@gmail.com" },
@@ -24,29 +25,25 @@ export default function Contato() {
     <section id="contato" className="scroll-mt-20 py-12 md:py-20">
       <div className="mx-auto max-w-[1180px] px-6 sm:px-8">
         <Reveal>
-          <div className="relative overflow-hidden rounded-[1.75rem] border border-surface-line bg-surface-raised/60 p-7 sm:p-10 lg:p-14">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-accent/15 blur-3xl"
-            />
+          <div className="relative overflow-hidden rounded-2xl border border-surface-line bg-surface-raised p-7 sm:p-10 lg:p-14">
             <div className="relative grid gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
               <div>
-                <div className="mb-3 flex items-center gap-3">
-                  <span className="font-display text-sm font-bold text-accent">07</span>
+                {/* Kicker */}
+                <div className="mb-4 flex items-center gap-3">
                   <span className="h-px w-8 bg-accent/40" />
                   <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted">
                     Contato
                   </span>
                 </div>
-                <h2 className="font-display text-[clamp(1.9rem,4.4vw,2.9rem)] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink">
-                  Vamos construir algo juntos?
+
+                <h2 className="font-display text-[clamp(1.9rem,4.4vw,2.8rem)] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink">
+                  Vamos trabalhar juntos?
                 </h2>
-                <p className="mt-5 max-w-[52ch] text-[1.05rem] leading-relaxed text-muted">
-                  Disponível para oportunidades em gestão de tráfego, projetos
-                  freelance e demandas de automação/sistemas com IA (CLT ou PJ).
+                <p className="mt-5 max-w-[48ch] text-[1.05rem] leading-relaxed text-muted">
+                  Disponível para gestão de tráfego pago, automação de operação e projetos de rastreamento avançado. Fale pelo canal que preferir.
                 </p>
-                <p className="mt-3 text-[15px] text-muted">
-                  <strong className="text-ink">Localização:</strong> Americana — SP
+                <p className="mt-3 text-[14px] text-muted">
+                  <strong className="font-medium text-ink">Localização:</strong> Americana — SP
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-3">
@@ -58,16 +55,23 @@ export default function Contato() {
                   </ButtonSecondary>
                 </div>
 
-                <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                <motion.div
+                  className="mt-8 grid gap-3 sm:grid-cols-2"
+                  variants={staggerContainer}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
+                >
                   {CHANNELS.map((c) => (
                     <motion.a
                       key={c.k}
                       href={c.href}
                       target={c.href.startsWith("http") ? "_blank" : undefined}
                       rel="noopener noreferrer"
+                      variants={staggerItem}
                       whileHover={{ y: -3 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                      className="rounded-xl border border-surface-line px-5 py-4 transition-colors hover:border-accent/40"
+                      transition={{ type: "spring", stiffness: 280, damping: 26 }}
+                      className="rounded-xl border border-surface-line px-5 py-4 transition-colors hover:border-accent/30"
                     >
                       <p className="text-[11px] uppercase tracking-[0.12em] text-muted">
                         {c.k}
@@ -77,18 +81,14 @@ export default function Contato() {
                       </p>
                     </motion.a>
                   ))}
-                </div>
+                </motion.div>
               </div>
 
-              {/* QR Code — oculto em mobile, visível só em desktop */}
+              {/* QR Code — só desktop */}
               <div className="hidden lg:flex lg:flex-col lg:items-center lg:text-center">
                 <div
-                  className="flex flex-col items-center gap-4 rounded-2xl p-6"
-                  style={{
-                    background: "rgba(255,255,255,0.05)",
-                    borderRadius: "16px",
-                    padding: "24px",
-                  }}
+                  className="flex flex-col items-center gap-4 rounded-2xl border border-surface-line p-6"
+                  style={{ background: "rgba(255,255,255,0.03)" }}
                 >
                   <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-muted">
                     Escanear para WhatsApp

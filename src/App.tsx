@@ -1,28 +1,28 @@
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
-import Sobre from "./components/Sobre";
+import ImpactNumbers from "./components/ImpactNumbers";
 import Servicos from "./components/Servicos";
-import Experiencia from "./components/Experiencia";
-import Projetos from "./components/Projetos";
-import Formacao from "./components/Formacao";
-import Skills from "./components/Skills";
+import Cases from "./components/Cases";
+import Stack from "./components/Stack";
+import Sobre from "./components/Sobre";
 import Contato from "./components/Contato";
 import Footer from "./components/Footer";
 import ScrollProgress from "./components/ui/ScrollProgress";
+import CursorFollower from "./components/ui/CursorFollower";
 
 export default function App() {
   return (
     <>
+      <CursorFollower />
       <ScrollProgress />
       <Nav />
       <main>
         <Hero />
-        <Sobre />
+        <ImpactNumbers />
         <Servicos />
-        <Experiencia />
-        <Projetos />
-        <Formacao />
-        <Skills />
+        <Cases />
+        <Stack />
+        <Sobre />
         <Contato />
       </main>
       <Footer />

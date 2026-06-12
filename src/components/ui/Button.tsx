@@ -18,7 +18,7 @@ export function ButtonPrimary({ href, children, className = "", download }: BtnP
       target={!download && href.startsWith("http") ? "_blank" : undefined}
       rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
       className={`group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-8 py-3.5 text-[15px] font-semibold text-white ${className}`}
-      style={{ background: "linear-gradient(135deg, #06b6d4 0%, #7c3aed 100%)" }}
+      style={{ background: "#06b6d4" }}
       whileHover={{ scale: 1.03, y: -2 }}
       whileTap={{ scale: 0.98 }}
       transition={springSoft}
@@ -35,7 +35,7 @@ export function ButtonPrimary({ href, children, className = "", download }: BtnP
       <motion.span
         aria-hidden
         className="pointer-events-none absolute -inset-px rounded-full opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-80"
-        style={{ background: "linear-gradient(90deg, #22d3ee, #7c3aed)" }}
+        style={{ background: "#06b6d4" }}
       />
       <span className="relative z-10">{children}</span>
     </motion.a>

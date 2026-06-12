@@ -17,13 +17,13 @@ export function Reveal({ children, className, delay = 0, as = "div" }: RevealPro
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, margin: "-40px" }}
       variants={{
-        hidden: { opacity: 0, y: 28 },
+        hidden: { opacity: 0, y: 22 },
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay },
+          transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay },
         },
       }}
     >
@@ -39,7 +39,7 @@ export function RevealGroup({ children, className }: { children: ReactNode; clas
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, margin: "-40px" }}
       variants={containerStagger}
     >
       {children}
