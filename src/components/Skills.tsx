@@ -8,7 +8,7 @@ const BLOCKS: Block[] = [
     label: "Tráfego pago",
     chips: [
       { name: "Meta Ads", core: true },
-      { name: "Google Ads — Search & PMax (em desenvolvimento)" },
+      { name: "Google Ads, Search e PMax (em desenvolvimento)" },
       { name: "TikTok Ads (básico)" },
       { name: "Funil" },
       { name: "Testes A/B" },
@@ -60,7 +60,7 @@ export default function Skills() {
       index="06"
       kicker="Competências"
       title="Stack e habilidades."
-      lead="Alinhado ao meu currículo — domínio em Meta Ads e mensuração, com CRM, automações UTM→inside sales e desenvolvimento de sistemas com IA."
+      lead="Alinhado ao meu currículo: domínio em Meta Ads e mensuração, com CRM, automações UTM→inside sales e desenvolvimento de sistemas com IA."
     >
       <RevealGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {BLOCKS.map((b) => (

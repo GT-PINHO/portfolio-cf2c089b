@@ -30,7 +30,7 @@ export default function Cases() {
       index="03"
       kicker="Projetos em Produção"
       title="O que fica quando a campanha termina."
-      lead="Tráfego e sistemas em produção. Dados agregados — sem informações confidenciais."
+      lead="Tráfego e sistemas em produção. Dados agregados, sem informações confidenciais."
     >
       <RevealGroup className="grid gap-5 md:grid-cols-2">
         {CASES.map((c) => (

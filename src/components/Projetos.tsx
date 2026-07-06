@@ -65,7 +65,7 @@ const PROJECTS: Project[] = [
     title: "Legacy Growth Dashboard",
     description: (
       <>
-        Painel unificado de Marketing e Vendas — investimento, CPL, CAC, ticket médio
+        Painel unificado de Marketing e Vendas: investimento, CPL, CAC, ticket médio
         e funil de conversão. Utilizado diariamente pela equipe para tomada de decisão.
       </>
     ),
@@ -75,7 +75,7 @@ const PROJECTS: Project[] = [
   {
     idx: "02",
     icon: IconCrm,
-    title: "UTM → CRM — Inside Sales",
+    title: "UTM → CRM para Inside Sales",
     description: (
       <>
         Automações em hardcode que capturam parâmetros UTM dos leads e entregam ao{" "}
@@ -90,7 +90,7 @@ const PROJECTS: Project[] = [
   {
     idx: "03",
     icon: IconAutomation,
-    title: "Automação de Produtos — IAM",
+    title: "Automação de Produtos, IAM",
     description: (
       <>
         Integrações no HubSpot e Nectar por estratégias de lançamento do IAM, com
@@ -104,11 +104,11 @@ const PROJECTS: Project[] = [
   {
     idx: "04",
     icon: IconAgent,
-    title: "pinho-skills — Agentes & Skills para o Claude",
+    title: "pinho-skills: Agentes e Skills para o Claude",
     description: (
       <>
         Plugin open source com <strong className="text-ink">12 skills em 3 clusters</strong>,
-        Quality Gate e eval runner — <strong className="text-ink">20/20 evals</strong> no
+        Quality Gate e eval runner, <strong className="text-ink">20/20 evals</strong> no
         CI. Cluster <strong className="text-ink">growth-ops</strong>: leilão, unit
         economics, tracking CAPI/dedup e CRO.
       </>
@@ -126,7 +126,7 @@ export default function Projetos() {
       index="04"
       kicker="Projetos"
       title="O que eu já construí."
-      lead="Sistemas, CRM e dashboards que rodam na operação real. Parte é ferramenta interna — o impacto no processo é o que importa no case."
+      lead="Sistemas, CRM e dashboards que rodam na operação real. Parte é ferramenta interna; o impacto no processo é o que importa no case."
     >
       <RevealGroup className="grid gap-4">
         {PROJECTS.map((p) => {

@@ -34,9 +34,8 @@ export default function Footer() {
             David Pinho
           </p>
           <p className="text-[12px] text-muted">
-            Gestor de Tráfego Pago, Meta Ads e Sistemas com IA. Americana, SP
+            Gestor de Tráfego Pago, Meta Ads e Sistemas com IA. Americana, SP. © 2026
           </p>
-          <p className="text-[12px] text-muted">© 2026</p>
         </div>
 
         <div className="flex items-center gap-4">

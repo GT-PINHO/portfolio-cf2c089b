@@ -13,10 +13,10 @@ const ROLES: Role[] = [
   {
     title: "Gestor de Tráfego Pago",
     org: "Grupo Legacy Eco Holding",
-    meta: "IAM Treinamentos · Liberty Mentoria · Legacy Coffee · dez/2024 — Atual",
+    meta: "IAM Treinamentos, Liberty Mentoria, Legacy Coffee. dez/2024 a atual",
     current: true,
     bullets: [
-      "Meta Ads em operação nacional com budget semanal de R$68k a R$98k — +21 mil leads sob gestão direta com CPL de R$13.",
+      "Meta Ads em operação nacional com budget semanal de R$68k a R$98k, +21 mil leads sob gestão direta com CPL de R$13.",
       "Operação nacional somou 630 mil+ leads e R$7M em mídia investida no período.",
       "Rastreamento avançado com GTM, API de Conversão, Stape e server-side para qualidade de dados.",
       "Automações em hardcode com UTM tracking até o CRM (HubSpot e Nectar) para inside sales.",
@@ -27,7 +27,7 @@ const ROLES: Role[] = [
   {
     title: "Assistente de Tráfego Digital",
     org: "Intencional Negócios Digitais Ltda.",
-    meta: "Americana — SP · fev/2023 — dez/2024",
+    meta: "Americana, SP. fev/2023 a dez/2024",
     bullets: [
       "Meta Ads de ponta a ponta para cerca de 40 eventos mensais em todo o Brasil.",
       "+240 mil leads gerados com CPL médio de R$8 ao longo do período.",

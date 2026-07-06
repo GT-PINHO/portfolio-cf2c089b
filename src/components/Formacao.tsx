@@ -8,10 +8,10 @@ const ITEMS = [
   },
   {
     title: "Google Tag Manager Web & Server-Side",
-    desc: "Rastreamento e qualidade de sinal — estudos práticos aplicados na operação.",
+    desc: "Rastreamento e qualidade de sinal, com estudos práticos aplicados na operação.",
   },
   {
-    title: "Google Ads — Skillshop (Search)",
+    title: "Google Ads, Skillshop (Search)",
     desc: "Certificação em andamento, com foco em Search e Performance Max.",
   },
   {
