@@ -5,15 +5,15 @@
 
 // ─── HERO ─────────────────────────────────────────────────────────────────
 export const HERO = {
-  eyebrow: "Especialista em Meta Ads · Tráfego Pago",
-  headline: "Mais de R$18 milhões\nem mídia gerenciada.",
+  eyebrow: "Gestor de Tráfego, Desenvolvedor de Sistemas com IA",
+  headline: "630 mil leads.\nR$7M em mídia.",
   subheadline:
-    "Gestor de tráfego pago com foco em Meta Ads, funis de captação e rastreamento avançado. Quando a operação exige mais do que uma campanha, entrego também as automações e os sistemas que sustentam o resultado.",
+    "Gestor de tráfego pago com foco em Meta Ads, funis de captação e rastreamento avançado. Quando a operação exige mais do que campanha, entrego também os sistemas com IA, as automações UTM→CRM e as integrações que fazem o lead chegar qualificado ao inside sales.",
   proofPoints: [
-    "+R$18M em mídia gerenciada",
-    "+400 mil leads captados",
-    "40+ eventos mensais",
-    "GTM · API de Conversão · Server-Side",
+    "R$7M+ em mídia na operação nacional",
+    "630 mil+ leads na operação",
+    "CPL R$13 em gestão direta",
+    "UTM → CRM, HubSpot, Nectar",
   ],
   cta: { primary: "Falar sobre o projeto", secondary: "Ver diferenciais" },
 };
@@ -22,18 +22,18 @@ export const HERO = {
 // category "traffic" | "system" controla a ordem de exibição
 export const METRICS = [
   {
-    value: "R$18M+",
-    label: "em mídia gerenciada",
+    value: "R$7M+",
+    label: "em mídia investida",
     category: "traffic" as const,
   },
   {
-    value: "400 mil+",
-    label: "leads captados",
+    value: "630 mil+",
+    label: "leads na operação nacional",
     category: "traffic" as const,
   },
   {
-    value: "40+",
-    label: "eventos mensais apoiados",
+    value: "CPL R$13",
+    label: "em gestão direta",
     category: "traffic" as const,
   },
   {
@@ -50,26 +50,26 @@ export const PILLARS = [
     icon: "/icons/meta.svg",
     title: "Tráfego Pago & Performance",
     description:
-      "Meta Ads de ponta a ponta — estruturação de funil, testes A/B, lookalikes, remarketing e escala orientada a CPL e ROAS. Rastreamento server-side com GTM, API de Conversão e Stape para dados confiáveis em qualquer volume.",
+      "Meta Ads de ponta a ponta — estruturação de funil, testes A/B, lookalikes, remarketing e escala orientada a CPL e ROAS. Orçamento semanal de até R$98 mil com rastreamento server-side (GTM, API de Conversão, Stape) para dados confiáveis em qualquer volume.",
     tags: ["Meta Ads", "GTM", "Funil", "CPL/ROAS", "Server-side"],
-    featured: true,               // card maior no desktop
+    featured: true,
   },
   {
     id: "automation",
     icon: "/icons/cursor.svg",
-    title: "Automação & Sistemas",
+    title: "Automação, CRM & Inside Sales",
     description:
-      "Integração de CRM, deduplicação de leads, crons, webhooks e APIs que eliminam trabalho manual e garantem que nenhum lead se perca entre a captação e o comercial.",
-    tags: ["CRM", "Dedup", "Webhooks", "Node.js", "EasyPanel"],
+      "Automações em hardcode que rastreiam leads com UTM e entregam ao CRM da equipe comercial com contexto de origem e campanha. Integrações em HubSpot e Nectar CRM alinhadas às estratégias de produtos do IAM — do lead captado ao inside sales, sem perda de sinal.",
+    tags: ["UTM Tracking", "HubSpot", "Nectar", "Inside Sales", "Node.js"],
     featured: false,
   },
   {
     id: "data",
     icon: "/icons/vercel.svg",
-    title: "Dados & Dashboards",
+    title: "Sistemas com IA & Dashboards",
     description:
-      "Painéis de gestão da operação em Supabase — visibilidade de CPL, volume de leads, performance de campanha e indicadores operacionais para decisão rápida.",
-    tags: ["Supabase", "Dashboard", "KPIs", "Gestão"],
+      "Desenvolvedor de sistemas com IA na prática: painéis de gestão (CPL, CAC, ticket médio, funil), automações com Node.js e uso de Claude/Cursor para acelerar análise de criativos, copy e decisões operacionais.",
+    tags: ["IA aplicada", "Supabase", "Dashboard", "Node.js", "Claude"],
     featured: false,
   },
 ];
@@ -91,38 +91,38 @@ export const CASES: CaseItem[] = [
   {
     id: "c1",
     category: "traffic",
-    title: "Captação para eventos nacionais",
-    context: "40+ eventos/mês no Brasil — campanhas por cidade e etapa de funil, sem margem para desperdício.",
-    action: "Funis de inscrição em Meta Ads, testes A/B, lookalikes, remarketing e rastreamento server-side.",
-    result: "+400 mil leads captados. CPL consistente com escala progressiva de verba.",
-    tags: ["Meta Ads", "Funil", "Server-Side", "CPL"],
+    title: "Captação nacional — IAM Treinamentos",
+    context: "Operação nacional de educação com orçamento semanal de R$68k a R$98k — escala com controle de CPL.",
+    action: "Funis em Meta Ads por etapa de funil, lookalikes, remarketing, testes A/B e rastreamento server-side.",
+    result: "+21 mil leads sob gestão direta com CPL de R$13. Operação somou 630 mil+ leads e R$7M em mídia.",
+    tags: ["Meta Ads", "Funil", "CPL R$13", "Server-Side"],
   },
   {
     id: "c2",
     category: "system",
-    title: "Automação de Produtos — holding educacional",
-    context: "Vendas reconciliadas manualmente com o fluxo de mensagens — retrabalho diário.",
-    action: "Automação integrando produtos ao ManyChat, com painel de reconciliação para a gestão.",
-    result: "100% automatizado — em produção diariamente.",
-    tags: ["EasyPanel", "ManyChat", "Automação"],
+    title: "UTM → CRM — inside sales",
+    context: "Leads chegavam ao comercial sem contexto de origem, campanha ou produto — retrabalho e perda de qualificação.",
+    action: "Automações em hardcode capturando parâmetros UTM e entregando ao HubSpot e Nectar com dados completos para o time de vendas.",
+    result: "Lead qualificado chega ao CRM com origem rastreada — fluxo em produção na rotina de inside sales.",
+    tags: ["UTM", "HubSpot", "Nectar", "Hardcode"],
   },
   {
     id: "c3",
-    category: "traffic",
-    title: "Rastreamento avançado — GTM, CAPI e Server-Side",
-    context: "Alto volume com sinal comprometido por bloqueadores e cookies — otimização prejudicada.",
-    action: "GTM, CAPI e Stape server-side, com auditoria de sinal para o Meta Ads.",
-    result: "Sinal mais limpo e otimização mais precisa — replicado em múltiplas contas.",
-    tags: ["GTM", "CAPI", "Stape", "Server-Side"],
+    category: "system",
+    title: "Automação de Produtos — HubSpot & Nectar",
+    context: "Estratégias de produtos do IAM exigiam cadastro e reconciliação manual entre CRM, mensagens e gestão.",
+    action: "Integrações no HubSpot e Nectar por estratégia de lançamento, com fluxo no ManyChat e painel de reconciliação.",
+    result: "Cadastro e reconciliação automatizados — em uso diário pela operação.",
+    tags: ["HubSpot", "Nectar", "ManyChat", "IAM"],
   },
   {
     id: "c4",
     category: "system",
-    title: "Sistema de Gestão de Eventos — operação nacional",
-    context: "Duas planilhas, vários departamentos — erros e pouca visibilidade em 40+ eventos/mês.",
-    action: "Sistema web único com controle centralizado para todos os times.",
-    result: "Menos erros operacionais — sistema em produção.",
-    tags: ["Sistema web", "Multi-departamento"],
+    title: "Legacy Growth Dashboard",
+    context: "Marketing e vendas sem visão unificada de investimento, CPL, CAC e funil de conversão.",
+    action: "Painel em Supabase com SQL — investimento, CPL, CAC, ticket médio e funil para decisão diária.",
+    result: "Dashboard utilizado diariamente pela equipe para tomada de decisão.",
+    tags: ["Supabase", "SQL", "CAC", "Dashboard"],
   },
   {
     id: "c5",
@@ -145,34 +145,36 @@ export const STACK_GROUPS = [
       { name: "GTM" },
       { name: "API de Conversão" },
       { name: "Stape / Server-Side" },
-      { name: "Google Ads (básico)" },
+      { name: "Google Ads (Search/PMax)" },
     ],
   },
   {
-    label: "Automação & sistemas",
+    label: "CRM, automação & inside sales",
     chips: [
-      { name: "Node.js / TypeScript", featured: true },
-      { name: "EasyPanel" },
+      { name: "HubSpot", featured: true },
+      { name: "Nectar CRM", featured: true },
+      { name: "UTM Tracking", featured: true },
+      { name: "Node.js / TypeScript" },
       { name: "ManyChat" },
       { name: "Webhooks / APIs REST" },
-      { name: "HubSpot" },
     ],
   },
   {
     label: "Dados & dashboards",
     chips: [
       { name: "Supabase", featured: true },
-      { name: "SQL" },
+      { name: "PostgreSQL / SQL" },
       { name: "Vercel" },
-      { name: "Google Sheets / Forms" },
+      { name: "Google Sheets" },
     ],
   },
   {
     label: "IA & ferramentas",
     chips: [
-      { name: "Claude / ChatGPT", featured: true },
-      { name: "Cursor" },
+      { name: "Sistemas com IA", featured: true },
+      { name: "Claude / Cursor", featured: true },
       { name: "GitHub", href: "https://github.com/GT-PINHO" },
+      { name: "EasyPanel" },
       { name: "Figma (básico)" },
     ],
   },
@@ -180,23 +182,23 @@ export const STACK_GROUPS = [
 
 // ─── SOBRE ────────────────────────────────────────────────────────────────
 export const SOBRE_HIGHLIGHTS = [
-  "Gestor de Meta Ads com R$18M+ em mídia gerida",
-  "400 mil+ leads captados para eventos nacionais",
-  "3+ anos em operação de alta escala",
+  "Gestor de Meta Ads com R$7M+ em mídia na operação nacional",
+  "630 mil+ leads e CPL de R$13 em gestão direta",
+  "Desenvolvedor de sistemas com IA na operação real",
+  "Automações UTM → CRM para inside sales (HubSpot e Nectar)",
   "Rastreamento server-side: GTM, API de Conversão, Stape",
-  "Constrói as automações e sistemas da operação",
 ];
 
 export const SOBRE_BIO = [
   "Sou o David Pinho. Em 2023, saí de Senador Camará — Rio de Janeiro — e fui para Americana, SP, atrás de uma oportunidade que eu ainda estava construindo. Sem rede, sem histórico, do zero.",
-  "Hoje gerencio campanhas nacionais de Meta Ads em uma holding de educação e eventos, com ações pontuais de resultado de seis dígitos em um único dia e mais de R$18M em mídia gerenciada. Resultado construído na prática, sem atalho.",
-  "O que me diferencia: não paro no tráfego. Quando a operação precisa de uma ferramenta, eu construo — automação de CRM, deduplicação de leads, integrações e dashboards. Meu núcleo é performance. Meu diferencial é sustentar a operação com tracking, automações e sistemas.",
+  "Hoje gerencio campanhas nacionais de Meta Ads no Grupo Legacy Eco Holding (IAM Treinamentos), com orçamento semanal de até R$98 mil, mais de 21 mil leads sob gestão direta e uma operação que somou 630 mil+ leads e R$7M em mídia investida.",
+  "O que me diferencia: não paro no tráfego. Sou desenvolvedor de sistemas com IA — construo automações em hardcode que rastreiam leads com UTM até o CRM do inside sales, integro HubSpot e Nectar por estratégia de produtos e entrego dashboards que a equipe usa todo dia. Meu núcleo é performance. Meu diferencial é fechar o ciclo entre mídia, dado e venda.",
 ];
 
 // ─── CONTATO ──────────────────────────────────────────────────────────────
 export const CONTACT = {
   headline: "Vamos trabalhar juntos?",
-  lead: "Disponível para gestão de tráfego, automação de operação e consultoria. Fale pelo canal que preferir.",
+  lead: "Disponível para gestão de tráfego, automação de operação, integrações CRM e consultoria. Fale pelo canal que preferir.",
   location: "Americana — SP",
   email: "davidpinho.st@gmail.com",
   whatsapp: "5519997501584",

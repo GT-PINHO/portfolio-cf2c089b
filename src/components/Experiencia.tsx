@@ -16,11 +16,12 @@ const ROLES: Role[] = [
     meta: "IAM Treinamentos · Liberty Mentoria · Legacy Coffee · dez/2024 — Atual",
     current: true,
     bullets: [
-      "Tráfego das campanhas nacionais do IAM, com budget semanal de R$68k a R$98k e +R$18M gerenciados.",
-      "+400 mil pessoas captadas para eventos em funis de inscrição ao longo da operação.",
+      "Meta Ads em operação nacional com budget semanal de R$68k a R$98k — +21 mil leads sob gestão direta com CPL de R$13.",
+      "Operação nacional somou 630 mil+ leads e R$7M em mídia investida no período.",
       "Rastreamento avançado com GTM, API de Conversão, Stape e server-side para qualidade de dados.",
-      "Construção de sistemas internos e automações com IA (painéis, fluxos e hardcode).",
-      "Estratégia de oferta, narrativa de landing pages e roteiros de criativos — impacto além da mídia.",
+      "Automações em hardcode com UTM tracking até o CRM (HubSpot e Nectar) para inside sales.",
+      "Integrações de produtos no HubSpot e Nectar por estratégias de lançamento do IAM.",
+      "Sistemas com IA: dashboards, painéis de gestão e automações para análise de criativos e copy.",
     ],
   },
   {
@@ -28,7 +29,8 @@ const ROLES: Role[] = [
     org: "Intencional Negócios Digitais Ltda.",
     meta: "Americana — SP · fev/2023 — dez/2024",
     bullets: [
-      "Campanhas Meta Ads para o IAM Treinamentos, apoiando cerca de 40 eventos mensais no Brasil.",
+      "Meta Ads de ponta a ponta para cerca de 40 eventos mensais em todo o Brasil.",
+      "+240 mil leads gerados com CPL médio de R$8 ao longo do período.",
       "Campanhas por cidade e etapa de funil, com testes A/B contínuos e escala progressiva de verba.",
       "Públicos segmentados, lookalikes e remarketing com base em intenção de compra.",
       "Acompanhamento de rastreamento via GTM com auditoria de sinal.",

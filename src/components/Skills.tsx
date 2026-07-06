@@ -8,7 +8,8 @@ const BLOCKS: Block[] = [
     label: "Tráfego pago",
     chips: [
       { name: "Meta Ads", core: true },
-      { name: "Google Ads — Search & Display (básico)" },
+      { name: "Google Ads — Search & PMax (em desenvolvimento)" },
+      { name: "TikTok Ads (básico)" },
       { name: "Funil" },
       { name: "Testes A/B" },
       { name: "Lookalikes" },
@@ -22,33 +23,32 @@ const BLOCKS: Block[] = [
       { name: "API de Conversão", core: true },
       { name: "Stape", core: true },
       { name: "Server-Side Tracking", core: true },
-      { name: "Pixel", core: true },
+      { name: "UTM Tracking", core: true },
+      { name: "Pixel" },
       { name: "Auditoria de sinal" },
     ],
   },
   {
-    label: "KPIs & métricas",
+    label: "CRM, automação & inside sales",
     chips: [
-      { name: "CPL" },
-      { name: "CTR" },
-      { name: "CPC" },
-      { name: "CPM" },
-      { name: "ROAS" },
-      { name: "Taxa de comparecimento" },
-      { name: "Taxa de conversão" },
+      { name: "HubSpot", core: true },
+      { name: "Nectar CRM", core: true },
+      { name: "Node.js / TypeScript", core: true },
+      { name: "Webhooks / APIs REST" },
+      { name: "ManyChat" },
+      { name: "EasyPanel" },
     ],
   },
   {
-    label: "IA, ferramentas & construção",
+    label: "KPIs, IA & ferramentas",
     chips: [
-      { name: "Claude / ChatGPT", core: true },
-      { name: "Cursor" },
+      { name: "CPL / CAC / ROAS" },
+      { name: "Sistemas com IA", core: true },
+      { name: "Claude / Cursor", core: true },
+      { name: "Supabase / SQL" },
       { name: "Meta Ads Manager" },
-      { name: "Meta Business Suite" },
-      { name: "Google Sheets / Forms" },
+      { name: "Google Sheets" },
       { name: "Figma (básico)" },
-      { name: "EasyPanel" },
-      { name: "ManyChat" },
     ],
   },
 ];
@@ -60,7 +60,7 @@ export default function Skills() {
       index="06"
       kicker="Competências"
       title="Stack e habilidades."
-      lead="Alinhado ao meu currículo — domínio em Meta Ads e mensuração, com Google Ads em nível básico e construção prática com IA."
+      lead="Alinhado ao meu currículo — domínio em Meta Ads e mensuração, com CRM, automações UTM→inside sales e desenvolvimento de sistemas com IA."
     >
       <RevealGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {BLOCKS.map((b) => (

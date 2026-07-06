@@ -57,7 +57,7 @@ export default function Sobre() {
       id="sobre"
       index="05"
       kicker="Sobre"
-      title="De origem simples a R$18M em mídia."
+      title="De origem simples a R$7M em mídia."
     >
       <div className="grid items-start gap-10 [grid-template-columns:1fr] [grid-template-rows:350px_auto] md:[grid-template-columns:1fr_1fr] md:[grid-template-rows:auto]">
         <div className="order-1 md:order-2 md:h-auto">

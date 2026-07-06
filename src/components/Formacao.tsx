@@ -7,12 +7,16 @@ const ITEMS = [
     desc: "Base metodológica em performance e Meta Ads.",
   },
   {
-    title: "Rastracking 100 — Derickson Caleri",
-    desc: "Google Tag Manager Web & Server-Side.",
+    title: "Google Tag Manager Web & Server-Side",
+    desc: "Rastreamento e qualidade de sinal — estudos práticos aplicados na operação.",
+  },
+  {
+    title: "Google Ads — Skillshop (Search)",
+    desc: "Certificação em andamento, com foco em Search e Performance Max.",
   },
   {
     title: "Aprendizado contínuo",
-    desc: "Tráfego pago, funis, IA aplicada e escalabilidade.",
+    desc: "Tráfego pago, funis, IA aplicada, CRM e escalabilidade desde 2023.",
   },
 ];
 
@@ -25,7 +29,7 @@ export default function Formacao() {
       title="Especialização construída na prática."
       lead="Formação contínua focada em performance: cursos aplicados, mentoria de mercado e atualização constante em tráfego, dados e IA."
     >
-      <RevealGroup className="grid gap-4 md:grid-cols-3">
+      <RevealGroup className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {ITEMS.map((it) => (
           <RevealItem
             key={it.title}

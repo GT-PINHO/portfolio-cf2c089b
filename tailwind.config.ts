@@ -10,7 +10,7 @@ export default {
       },
       colors: {
         surface: {
-          DEFAULT: "#080808",
+          DEFAULT: "#0f0f0f",
           raised: "#111111",
           line: "#222222",
         },

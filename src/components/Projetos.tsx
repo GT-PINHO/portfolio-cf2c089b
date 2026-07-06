@@ -5,7 +5,6 @@ import { RevealGroup } from "./ui/Reveal";
 import { fadeUp } from "../lib/motion";
 import { IconExternal } from "./ui/icons";
 
-/* ── Ícones de categoria (20px, cyan) ── */
 function IconAutomation(p: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8}
@@ -16,14 +15,13 @@ function IconAutomation(p: SVGProps<SVGSVGElement>) {
   );
 }
 
-function IconSystem(p: SVGProps<SVGSVGElement>) {
+function IconCrm(p: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8}
       strokeLinecap="round" strokeLinejoin="round" {...p}>
-      <rect x="3" y="3" width="7" height="7" rx="1"/>
-      <rect x="14" y="3" width="7" height="7" rx="1"/>
-      <rect x="3" y="14" width="7" height="7" rx="1"/>
-      <path d="M17.5 14v7M14 17.5h7"/>
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
     </svg>
   );
 }
@@ -63,59 +61,48 @@ type Project = {
 const PROJECTS: Project[] = [
   {
     idx: "01",
-    icon: IconAutomation,
-    title: "Automação de Produtos — IAM",
+    icon: IconDashboard,
+    title: "Legacy Growth Dashboard",
     description: (
       <>
-        Automação (hardcode + EasyPanel) integrando os produtos do IAM ao ManyChat.
-        Aba de <strong className="text-ink">Gerenciamento de Automações e Reconciliação</strong>{" "}
-        para a gestão auditar sem depender do time de Dev — em uso diário.
+        Painel unificado de Marketing e Vendas — investimento, CPL, CAC, ticket médio
+        e funil de conversão. Utilizado diariamente pela equipe para tomada de decisão.
       </>
     ),
-    tags: ["EasyPanel", "ManyChat", "Hardcode", "IA no fluxo"],
+    tags: ["Supabase", "PostgreSQL", "SQL", "CAC"],
     status: "Em produção",
   },
   {
     idx: "02",
-    icon: IconSystem,
-    title: "Sistema de Gestão de Eventos — IAM",
+    icon: IconCrm,
+    title: "UTM → CRM — Inside Sales",
     description: (
       <>
-        Substituí duas planilhas multi-departamento por um sistema web único — mais
-        controle, menos erro e visibilidade para todos os times.
+        Automações em hardcode que capturam parâmetros UTM dos leads e entregam ao{" "}
+        <strong className="text-ink">HubSpot</strong> e{" "}
+        <strong className="text-ink">Nectar</strong> com contexto de origem, produto
+        e campanha para o time de inside sales.
       </>
     ),
-    tags: ["Sistema web", "Multi-departamento", "IA + hardcode"],
+    tags: ["UTM Tracking", "HubSpot", "Nectar", "Node.js"],
     status: "Em produção",
   },
   {
     idx: "03",
-    icon: IconDashboard,
-    title: "Dashboard Masterclass — IAM",
+    icon: IconAutomation,
+    title: "Automação de Produtos — IAM",
     description: (
       <>
-        Painel de acompanhamento da operação de Masterclass, com indicadores para
-        tomada de decisão da gestão — ferramenta interna.
+        Integrações no HubSpot e Nectar por estratégias de lançamento do IAM, com
+        fluxo no ManyChat e painel de reconciliação para a gestão auditar sem depender
+        de terceiros.
       </>
     ),
-    tags: ["Dashboard", "Vercel", "Dados"],
+    tags: ["HubSpot", "Nectar", "ManyChat", "EasyPanel"],
     status: "Em produção",
   },
   {
     idx: "04",
-    icon: IconDashboard,
-    title: "Legacy Dashboard",
-    description: (
-      <>
-        Painel de gestão para o Grupo Legacy Eco, consolidando informações de
-        operação em uma visão única para liderança e times.
-      </>
-    ),
-    tags: ["Dashboard", "Legacy Eco"],
-    status: "Em produção",
-  },
-  {
-    idx: "05",
     icon: IconAgent,
     title: "pinho-skills — Agentes & Skills para o Claude",
     description: (
@@ -139,7 +126,7 @@ export default function Projetos() {
       index="04"
       kicker="Projetos"
       title="O que eu já construí."
-      lead="Sistemas e dashboards que rodam na operação real. Parte é ferramenta de gestão interna — não há link para visitar, mas o impacto no processo é o que importa no case."
+      lead="Sistemas, CRM e dashboards que rodam na operação real. Parte é ferramenta interna — o impacto no processo é o que importa no case."
     >
       <RevealGroup className="grid gap-4">
         {PROJECTS.map((p) => {
@@ -179,7 +166,6 @@ export default function Projetos() {
                 </div>
               </div>
 
-              {/* Botão de acção — único elemento clicável do card */}
               {p.href ? (
                 <a
                   href={p.href}
