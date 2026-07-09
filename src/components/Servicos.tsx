@@ -14,7 +14,7 @@ export default function Servicos() {
   return (
     <Section
       id="servicos"
-      index="02"
+      index="01"
       kicker="O que eu faço"
       title="Tráfego que fecha. Operação que escala."
       lead="Tráfego pago é o núcleo. Os sistemas que construo são o diferencial que faz o lead virar resultado."

@@ -1,16 +1,13 @@
 import { motion } from "framer-motion";
-import {
-  WHATSAPP_DISPLAY,
-  WHATSAPP_NUMBER,
-  whatsappUrl,
-} from "../lib/contact";
+import { whatsappUrl } from "../lib/contact";
+import { CONTACT } from "../lib/content";
 import { Reveal } from "./ui/Reveal";
 import { staggerContainer, staggerItem } from "../lib/motion";
 
 const OTHER_CHANNELS = [
-  { k: "E-mail", v: "davidpinho.st@gmail.com", href: "mailto:davidpinho.st@gmail.com" },
-  { k: "Instagram", v: "@odavidpinho", href: "https://instagram.com/odavidpinho" },
-  { k: "LinkedIn", v: "/odavidpinho", href: "https://linkedin.com/in/odavidpinho" },
+  { k: "E-mail", v: CONTACT.email, href: `mailto:${CONTACT.email}` },
+  { k: "Instagram", v: "@odavidpinho", href: CONTACT.instagram },
+  { k: "LinkedIn", v: "/odavidpinho", href: CONTACT.linkedin },
 ];
 
 function IconWhatsApp() {
@@ -49,13 +46,13 @@ export default function Contato() {
                 </div>
 
                 <h2 className="font-display text-[clamp(1.9rem,4.4vw,2.8rem)] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink">
-                  Vamos trabalhar juntos?
+                  {CONTACT.headline}
                 </h2>
                 <p className="mt-5 max-w-[48ch] text-[1.05rem] leading-relaxed text-muted">
-                  Disponível para gestão de tráfego pago, automação de operação e projetos de rastreamento avançado. Fale pelo canal que preferir.
+                  {CONTACT.lead}
                 </p>
                 <p className="mt-3 text-[14px] text-muted">
-                  <strong className="font-medium text-ink">Localização:</strong> Americana, SP
+                  <strong className="font-medium text-ink">Localização:</strong> {CONTACT.location}
                 </p>
 
                 <motion.div
@@ -83,7 +80,7 @@ export default function Contato() {
                           WhatsApp
                         </p>
                         <p className="mt-0.5 font-display text-[17px] font-bold tracking-tight text-ink sm:text-lg">
-                          {WHATSAPP_DISPLAY}
+                          {CONTACT.whatsappDisplay}
                         </p>
                         <p className="mt-1 text-[12.5px] text-muted">
                           Resposta mais rápida por aqui
@@ -120,9 +117,7 @@ export default function Contato() {
               </div>
 
               <div className="hidden lg:flex lg:flex-col lg:items-center lg:text-center">
-                <div
-                  className="flex flex-col items-center gap-4 rounded-2xl border border-accent/25 bg-accent/5 p-6"
-                >
+                <div className="flex flex-col items-center gap-4 rounded-2xl border border-accent/25 bg-accent/5 p-6">
                   <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-accent">
                     Escanear para WhatsApp
                   </p>
@@ -141,7 +136,7 @@ export default function Contato() {
                     rel="noopener noreferrer"
                     className="text-[12px] text-accent hover:underline"
                   >
-                    wa.me/{WHATSAPP_NUMBER}
+                    wa.me/{CONTACT.whatsapp}
                   </a>
                 </div>
               </div>

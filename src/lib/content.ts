@@ -1,6 +1,5 @@
 /**
- * CONTEÚDO EDITÁVEL — preencha os placeholders marcados com TODO.
- * Alterar aqui reflecte em toda a aplicação.
+ * CONTEÚDO EDITÁVEL — alterar aqui reflecte em toda a aplicação.
  */
 
 // ─── HERO ─────────────────────────────────────────────────────────────────
@@ -8,40 +7,14 @@ export const HERO = {
   eyebrow: "Gestor de Tráfego, Desenvolvedor de Sistemas com IA",
   headline: "630 mil leads.\nR$7M em mídia.",
   subheadline:
-    "Gestor de tráfego pago com foco em Meta Ads, funis de captação e rastreamento avançado. Quando a operação exige mais do que campanha, entrego também os sistemas com IA, as automações UTM→CRM e as integrações que fazem o lead chegar qualificado ao inside sales.",
+    "Gestor de tráfego pago com foco em Meta Ads, funis de captação e rastreamento avançado. Quando a operação exige mais do que campanha, entrego também os sistemas com IA, as automações UTM→CRM e as integrações que fazem o lead chegar qualificado ao comercial.",
   proofPoints: [
-    "R$7M+ em mídia na operação nacional",
-    "630 mil+ leads na operação",
     "CPL R$13 em gestão direta",
-    "UTM → CRM, HubSpot, Nectar",
+    "UTM → CRM com origem do lead",
+    "Rastreamento server-side (GTM, CAPI)",
   ],
-  cta: { primary: "Falar sobre o projeto", secondary: "Ver diferenciais" },
+  cta: { primary: "Falar sobre o projeto", secondary: "Ver o que faço" },
 };
-
-// ─── MÉTRICAS DE IMPACTO ───────────────────────────────────────────────────
-// category "traffic" | "system" controla a ordem de exibição
-export const METRICS = [
-  {
-    value: "R$7M+",
-    label: "em mídia investida",
-    category: "traffic" as const,
-  },
-  {
-    value: "630 mil+",
-    label: "leads na operação nacional",
-    category: "traffic" as const,
-  },
-  {
-    value: "CPL R$13",
-    label: "em gestão direta",
-    category: "traffic" as const,
-  },
-  {
-    value: "3+",
-    label: "anos em operação nacional",
-    category: "traffic" as const,
-  },
-];
 
 // ─── PILARES (O que eu faço) ───────────────────────────────────────────────
 export const PILLARS = [
@@ -50,17 +23,17 @@ export const PILLARS = [
     icon: "/icons/meta.svg",
     title: "Tráfego Pago & Performance",
     description:
-      "Meta Ads de ponta a ponta: estruturação de funil, testes A/B, lookalikes, remarketing e escala orientada a CPL e ROAS. Orçamento semanal de até R$98 mil com rastreamento server-side (GTM, API de Conversão, Stape) para dados confiáveis em qualquer volume.",
+      "Meta Ads de ponta a ponta: estruturação de funil, testes A/B, lookalikes, remarketing e escala orientada a CPL e ROAS. Orçamento semanal de até R$98 mil com rastreamento server-side para dados confiáveis em qualquer volume.",
     tags: ["Meta Ads", "GTM", "Funil", "CPL/ROAS", "Server-side"],
     featured: true,
   },
   {
     id: "automation",
     icon: "/icons/cursor.svg",
-    title: "Automação, CRM & Inside Sales",
+    title: "Automação & CRM",
     description:
-      "Automações em hardcode que rastreiam leads com UTM e entregam ao CRM da equipe comercial com contexto de origem e campanha. Integrações em HubSpot e Nectar CRM alinhadas às estratégias de produtos do IAM, do lead captado ao inside sales, sem perda de sinal.",
-    tags: ["UTM Tracking", "HubSpot", "Nectar", "Inside Sales", "Node.js"],
+      "Leads chegam ao comercial com contexto: de onde veio, qual campanha, qual produto. Construo integrações via API e webhooks — domino a lógica de CRM; adapto para a ferramenta que sua operação já usa.",
+    tags: ["UTM Tracking", "Integração CRM", "Inside Sales", "Node.js"],
     featured: false,
   },
   {
@@ -68,14 +41,13 @@ export const PILLARS = [
     icon: "/icons/vercel.svg",
     title: "Sistemas com IA & Dashboards",
     description:
-      "Desenvolvedor de sistemas com IA na prática: painéis de gestão (CPL, CAC, ticket médio, funil), automações com Node.js e uso de Claude/Cursor para acelerar análise de criativos, copy e decisões operacionais.",
+      "Painéis de gestão (CPL, CAC, ticket médio, funil), automações com Node.js e IA aplicada para acelerar análise de criativos, copy e decisões operacionais.",
     tags: ["IA aplicada", "Supabase", "Dashboard", "Node.js", "Claude"],
     featured: false,
   },
 ];
 
 // ─── CASES ────────────────────────────────────────────────────────────────
-// category "traffic" | "system" — o primeiro case deve ser traffic
 export type CaseItem = {
   id: string;
   category: "traffic" | "system";
@@ -93,35 +65,35 @@ export const CASES: CaseItem[] = [
     category: "traffic",
     title: "Captação nacional, IAM Treinamentos",
     context: "Operação nacional de educação com orçamento semanal de R$68k a R$98k, com escala e controle de CPL.",
-    action: "Funis em Meta Ads por etapa de funil, lookalikes, remarketing, testes A/B e rastreamento server-side.",
-    result: "+21 mil leads sob gestão direta com CPL de R$13. Operação somou 630 mil+ leads e R$7M em mídia.",
+    action: "Funis em Meta Ads por etapa, lookalikes, remarketing, testes A/B e rastreamento server-side.",
+    result: "+21 mil leads sob gestão direta com CPL de R$13.",
     tags: ["Meta Ads", "Funil", "CPL R$13", "Server-Side"],
   },
   {
     id: "c2",
     category: "system",
     title: "UTM → CRM para inside sales",
-    context: "Leads chegavam ao comercial sem contexto de origem, campanha ou produto, gerando retrabalho e perda de qualificação.",
-    action: "Automações em hardcode capturando parâmetros UTM e entregando ao HubSpot e Nectar com dados completos para o time de vendas.",
-    result: "Lead qualificado chega ao CRM com origem rastreada. Fluxo em produção na rotina de inside sales.",
-    tags: ["UTM", "HubSpot", "Nectar", "Hardcode"],
+    context: "Leads chegavam ao comercial sem saber de qual campanha ou produto vinham.",
+    action: "Automação que captura parâmetros UTM e entrega ao CRM com origem, campanha e produto — pronto para o time de vendas.",
+    result: "Lead qualificado no CRM com contexto completo. Fluxo em produção no dia a dia do comercial.",
+    tags: ["UTM", "Integração CRM", "Inside Sales"],
   },
   {
     id: "c3",
     category: "system",
-    title: "Automação de Produtos, HubSpot e Nectar",
-    context: "Estratégias de produtos do IAM exigiam cadastro e reconciliação manual entre CRM, mensagens e gestão.",
-    action: "Integrações no HubSpot e Nectar por estratégia de lançamento, com fluxo no ManyChat e painel de reconciliação.",
+    title: "Automação de produtos no CRM",
+    context: "Lançamentos exigiam cadastro e reconciliação manual entre CRM, mensagens e gestão.",
+    action: "Integrações por estratégia de produto, com fluxo automatizado e painel de reconciliação.",
     result: "Cadastro e reconciliação automatizados, em uso diário pela operação.",
-    tags: ["HubSpot", "Nectar", "ManyChat", "IAM"],
+    tags: ["CRM", "Automação", "ManyChat"],
   },
   {
     id: "c4",
     category: "system",
     title: "Legacy Growth Dashboard",
-    context: "Marketing e vendas sem visão unificada de investimento, CPL, CAC e funil de conversão.",
-    action: "Painel em Supabase com SQL: investimento, CPL, CAC, ticket médio e funil para decisão diária.",
-    result: "Dashboard utilizado diariamente pela equipe para tomada de decisão.",
+    context: "Marketing e vendas sem visão unificada de investimento, CPL, CAC e funil.",
+    action: "Painel em Supabase: investimento, CPL, CAC, ticket médio e funil para decisão diária.",
+    result: "Dashboard utilizado diariamente pela equipe.",
     tags: ["Supabase", "SQL", "CAC", "Dashboard"],
   },
   {
@@ -149,14 +121,13 @@ export const STACK_GROUPS = [
     ],
   },
   {
-    label: "CRM, automação & inside sales",
+    label: "CRM & automação",
     chips: [
-      { name: "HubSpot", featured: true },
-      { name: "Nectar CRM", featured: true },
+      { name: "Integração CRM", featured: true },
       { name: "UTM Tracking", featured: true },
+      { name: "APIs / Webhooks", featured: true },
       { name: "Node.js / TypeScript" },
       { name: "ManyChat" },
-      { name: "Webhooks / APIs REST" },
     ],
   },
   {
@@ -181,24 +152,16 @@ export const STACK_GROUPS = [
 ];
 
 // ─── SOBRE ────────────────────────────────────────────────────────────────
-export const SOBRE_HIGHLIGHTS = [
-  "Gestor de Meta Ads com R$7M+ em mídia na operação nacional",
-  "630 mil+ leads e CPL de R$13 em gestão direta",
-  "Desenvolvedor de sistemas com IA na operação real",
-  "Automações UTM → CRM para inside sales (HubSpot e Nectar)",
-  "Rastreamento server-side: GTM, API de Conversão, Stape",
-];
-
 export const SOBRE_BIO = [
   "Sou o David Pinho. Em 2023, saí de Senador Camará, no Rio de Janeiro, e fui para Americana, SP, atrás de uma oportunidade que eu ainda estava construindo. Sem rede, sem histórico, do zero.",
-  "Hoje gerencio campanhas nacionais de Meta Ads no Grupo Legacy Eco Holding (IAM Treinamentos), com orçamento semanal de até R$98 mil, mais de 21 mil leads sob gestão direta e uma operação que somou 630 mil+ leads e R$7M em mídia investida.",
-  "O que me diferencia: não paro no tráfego. Sou desenvolvedor de sistemas com IA. Construo automações em hardcode que rastreiam leads com UTM até o CRM do inside sales, integro HubSpot e Nectar por estratégia de produtos e entrego dashboards que a equipe usa todo dia. Meu núcleo é performance. Meu diferencial é fechar o ciclo entre mídia, dado e venda.",
+  "Hoje gerencio campanhas nacionais de Meta Ads no Grupo Legacy Eco Holding (IAM Treinamentos), com orçamento semanal de até R$98 mil e mais de 21 mil leads sob gestão direta.",
+  "O que me diferencia: não paro no tráfego. Construo automações que levam o lead da campanha até o CRM com dados de origem, integro os sistemas que a operação já usa e entrego dashboards para decisão diária. Meu núcleo é performance. Meu diferencial é fechar o ciclo entre mídia, dado e venda.",
 ];
 
 // ─── CONTATO ──────────────────────────────────────────────────────────────
 export const CONTACT = {
   headline: "Vamos trabalhar juntos?",
-  lead: "Disponível para gestão de tráfego, automação de operação, integrações CRM e consultoria. Fale pelo canal que preferir.",
+  lead: "Disponível para gestão de tráfego, automação de operação e integrações. Fale pelo canal que preferir.",
   location: "Americana, SP",
   email: "davidpinho.st@gmail.com",
   whatsapp: "5519997501584",

@@ -27,7 +27,7 @@ export default function Cases() {
   return (
     <Section
       id="cases"
-      index="03"
+      index="02"
       kicker="Projetos em Produção"
       title="O que fica quando a campanha termina."
       lead="Tráfego e sistemas em produção. Dados agregados, sem informações confidenciais."

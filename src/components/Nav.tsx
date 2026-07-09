@@ -3,16 +3,16 @@ import { AnimatePresence, motion } from "framer-motion";
 import { CV_FILENAME, CV_URL } from "../lib/cv";
 
 const LINKS = [
-  { href: "#numeros",  label: "Resultados" },
-  { href: "#servicos", label: "O que faço" },
-  { href: "#stack",    label: "Stack" },
-  { href: "#sobre",    label: "Sobre" },
+  { href: "#servicos",     label: "O que faço" },
+  { href: "#cases",        label: "Cases" },
+  { href: "#experiencia",  label: "Experiência" },
+  { href: "#stack",        label: "Stack" },
+  { href: "#sobre",        label: "Sobre" },
 ] as const;
 
 const NAV_SECTION_IDS = LINKS.map((l) => l.href.slice(1));
 
-/** Ordem real no DOM — inclui #cases entre servicos e stack */
-const PAGE_SECTION_IDS = ["numeros", "servicos", "cases", "stack", "sobre"];
+const PAGE_SECTION_IDS = NAV_SECTION_IDS;
 
 const NAV_OFFSET = 96;
 

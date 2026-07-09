@@ -1,3 +1,6 @@
+import { CONTACT } from "../lib/content";
+import { usePrivacy } from "./lgpd/PrivacyProvider";
+
 function IconInstagram() {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden>
@@ -23,6 +26,8 @@ function IconGitHub() {
 }
 
 export default function Footer() {
+  const { openPrivacyPolicy } = usePrivacy();
+
   return (
     <footer
       className="py-8"
@@ -36,11 +41,18 @@ export default function Footer() {
           <p className="text-[12px] text-muted">
             Gestor de Tráfego Pago, Meta Ads e Sistemas com IA. Americana, SP. © 2026
           </p>
+          <button
+            type="button"
+            onClick={openPrivacyPolicy}
+            className="mt-1 text-[12px] text-muted transition-colors hover:text-accent"
+          >
+            Política de Privacidade (LGPD)
+          </button>
         </div>
 
         <div className="flex items-center gap-4">
           <a
-            href="https://instagram.com/odavidpinho"
+            href={CONTACT.instagram}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
@@ -49,7 +61,7 @@ export default function Footer() {
             <IconInstagram />
           </a>
           <a
-            href="https://linkedin.com/in/odavidpinho"
+            href={CONTACT.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -58,7 +70,7 @@ export default function Footer() {
             <IconLinkedIn />
           </a>
           <a
-            href="https://github.com/GT-PINHO"
+            href={CONTACT.github}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
