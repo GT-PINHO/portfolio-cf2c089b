@@ -1,12 +1,25 @@
-/** URL pública do site — defina VITE_SITE_URL no deploy (ex.: https://seudominio.com) */
+/** URL pública do site. Defina VITE_SITE_URL no deploy (ex.: https://seudominio.com) */
 export const SITE_URL = (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/$/, "") ?? "";
 
 export const SITE = {
-  title: "David Pinho | Gestor de Tráfego Pago, Meta Ads e Sistemas com IA",
+  title: "David Pinho | Meta Ads Specialist · Growth Ops, Tracking, CRM & AI",
+  shortTitle: "David Pinho | Meta Ads Specialist · Growth Ops",
   description:
-    "David Pinho: Gestor de Tráfego Pago em Meta Ads e desenvolvedor de sistemas com IA. R$7M+ em mídia, 630 mil+ leads. Automações UTM→CRM e integrações para inside sales.",
+    "David Pinho, Meta Ads Specialist com foco em Growth Ops. R$7M+ em mídia gerenciada, 630 mil+ leads. Tracking server-side, CRM e IA. Americana, SP. Aberto a vagas remotas.",
   ogImage: "/david.png",
   locale: "pt_BR",
+  themeColor: "#0f0f0f",
+  keywords: [
+    "Meta Ads",
+    "Growth Ops",
+    "tráfego pago",
+    "tracking server-side",
+    "GTM",
+    "CAPI",
+    "CRM",
+    "vagas remotas",
+    "David Pinho",
+  ],
 } as const;
 
 export function absoluteUrl(path: string): string {

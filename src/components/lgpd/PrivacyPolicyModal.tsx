@@ -46,7 +46,7 @@ export default function PrivacyPolicyModal({ open, onClose }: Props) {
             <div className="mb-6 flex items-start justify-between gap-4">
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
-                  LGPD — Lei nº 13.709/2018
+                  LGPD · Lei nº 13.709/2018
                 </p>
                 <h2 id="privacy-title" className="mt-2 font-display text-xl font-bold text-ink">
                   Política de Privacidade
@@ -76,21 +76,21 @@ export default function PrivacyPolicyModal({ open, onClose }: Props) {
                 <h3 className="mb-2 font-display text-[15px] font-bold text-ink">Dados que podemos tratar</h3>
                 <ul className="list-disc space-y-1 pl-5">
                   <li>
-                    <strong className="text-ink/90">Preferência de privacidade</strong> — armazenada
+                    <strong className="text-ink/90">Preferência de privacidade:</strong> armazenada
                     localmente no seu navegador (localStorage) para não exibir o aviso repetidamente.
                   </li>
                   <li>
-                    <strong className="text-ink/90">Contato iniciado por você</strong> — ao clicar em
-                    WhatsApp, e-mail ou redes sociais, você passa a interagir diretamente com essas
+                    <strong className="text-ink/90">Contato iniciado por você:</strong> ao clicar em
+                    WhatsApp, LinkedIn, GitHub ou e-mail, você passa a interagir diretamente com essas
                     plataformas, regidas pelas políticas delas.
                   </li>
                   <li>
-                    <strong className="text-ink/90">QR Code de WhatsApp</strong> — gerado via serviço
+                    <strong className="text-ink/90">QR Code de WhatsApp:</strong> gerado via serviço
                     de terceiros (api.qrserver.com) apenas com o link público do WhatsApp, sem envio
                     de dados pessoais seus por este site.
                   </li>
                   <li>
-                    <strong className="text-ink/90">Analytics (futuro)</strong> — caso ferramentas de
+                    <strong className="text-ink/90">Analytics (futuro):</strong> caso ferramentas de
                     métricas sejam adicionadas, só serão ativadas após consentimento explícito.
                   </li>
                 </ul>
@@ -110,7 +110,7 @@ export default function PrivacyPolicyModal({ open, onClose }: Props) {
                 <p>
                   Você pode solicitar confirmação de tratamento, acesso, correção, eliminação,
                   portabilidade, revogação do consentimento ou informações sobre compartilhamento,
-                  conforme arts. 17–18 da LGPD, pelo e-mail{" "}
+                  conforme arts. 17 a 18 da LGPD, pelo e-mail{" "}
                   <a href={`mailto:${CONTACT.email}`} className="text-accent hover:underline">
                     {CONTACT.email}
                   </a>

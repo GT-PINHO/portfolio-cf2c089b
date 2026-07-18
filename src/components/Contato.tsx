@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
-import { whatsappUrl } from "../lib/contact";
 import { CONTACT } from "../lib/content";
+import { whatsappUrl, WHATSAPP_NUMBER } from "../lib/contact";
 import { Reveal } from "./ui/Reveal";
+import Container from "./ui/Container";
 import { staggerContainer, staggerItem } from "../lib/motion";
 
 const OTHER_CHANNELS = [
   { k: "E-mail", v: CONTACT.email, href: `mailto:${CONTACT.email}` },
-  { k: "Instagram", v: "@odavidpinho", href: CONTACT.instagram },
   { k: "LinkedIn", v: "/odavidpinho", href: CONTACT.linkedin },
+  { k: "GitHub", v: "GT-PINHO", href: CONTACT.github },
 ];
 
 function IconWhatsApp() {
@@ -32,10 +33,10 @@ export default function Contato() {
   )}`;
 
   return (
-    <section id="contato" className="scroll-mt-20 py-12 md:py-20">
-      <div className="mx-auto max-w-[1180px] px-6 sm:px-8">
+    <section id="contato" className="section-anchor pb-10 pt-4 md:pb-14 md:pt-6">
+      <Container>
         <Reveal>
-          <div className="relative overflow-hidden rounded-2xl border border-surface-line bg-surface-raised p-7 sm:p-10 lg:p-14">
+          <div className="relative overflow-hidden rounded-2xl border border-surface-line bg-surface-raised p-7 sm:p-10 lg:p-12">
             <div className="relative grid gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
               <div>
                 <div className="mb-4 flex items-center gap-3">
@@ -48,7 +49,7 @@ export default function Contato() {
                 <h2 className="font-display text-[clamp(1.9rem,4.4vw,2.8rem)] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink">
                   {CONTACT.headline}
                 </h2>
-                <p className="mt-5 max-w-[48ch] text-[1.05rem] leading-relaxed text-muted">
+                <p className="mt-5 max-w-[48ch] text-[1.05rem] leading-relaxed text-soft">
                   {CONTACT.lead}
                 </p>
                 <p className="mt-3 text-[14px] text-muted">
@@ -67,12 +68,14 @@ export default function Contato() {
                     target="_blank"
                     rel="noopener noreferrer"
                     variants={staggerItem}
-                    whileHover={{ y: -3 }}
-                    transition={{ type: "spring", stiffness: 280, damping: 26 }}
+                    whileHover={{ y: -3, transition: { type: "spring", stiffness: 280, damping: 26 } }}
                     className="group flex items-center justify-between gap-4 rounded-xl border border-accent/40 bg-accent/10 px-5 py-5 transition-colors hover:border-accent hover:bg-accent/15 sm:px-6"
                   >
                     <div className="flex items-center gap-4">
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent text-white">
+                      <span
+                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white"
+                        style={{ background: "var(--accent)" }}
+                      >
                         <IconWhatsApp />
                       </span>
                       <div>
@@ -100,8 +103,7 @@ export default function Contato() {
                         target={c.href.startsWith("http") ? "_blank" : undefined}
                         rel="noopener noreferrer"
                         variants={staggerItem}
-                        whileHover={{ y: -3 }}
-                        transition={{ type: "spring", stiffness: 280, damping: 26 }}
+                        whileHover={{ y: -3, transition: { type: "spring", stiffness: 280, damping: 26 } }}
                         className="rounded-xl border border-surface-line px-4 py-4 transition-colors hover:border-accent/30"
                       >
                         <p className="text-[10.5px] uppercase tracking-[0.12em] text-muted">
@@ -136,14 +138,14 @@ export default function Contato() {
                     rel="noopener noreferrer"
                     className="text-[12px] text-accent hover:underline"
                   >
-                    wa.me/{CONTACT.whatsapp}
+                    wa.me/{WHATSAPP_NUMBER}
                   </a>
                 </div>
               </div>
             </div>
           </div>
         </Reveal>
-      </div>
+      </Container>
     </section>
   );
 }

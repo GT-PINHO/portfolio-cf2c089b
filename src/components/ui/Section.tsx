@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
-import { Reveal } from "./Reveal";
+import { RevealGroup, RevealItem } from "./Reveal";
+import Container from "./Container";
 
 type SectionProps = {
   id: string;
@@ -23,33 +24,33 @@ export default function Section({
   return (
     <section
       id={id}
-      className={`relative scroll-mt-20 ${className || "py-12 md:py-20"}`}
+      className={`section-anchor relative ${className || "py-section-y"}`}
     >
-      <div className="mx-auto max-w-[1180px] px-6 sm:px-8">
-        <Reveal className="mb-3 flex items-center gap-3">
-          <span className="font-display text-sm font-bold text-accent">{index}</span>
-          <span className="h-px w-8 bg-accent/40" />
-          <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted">
-            {kicker}
-          </span>
-        </Reveal>
+      <Container>
+        <RevealGroup className="mb-10 md:mb-14">
+          <RevealItem className="mb-3 flex items-center gap-3">
+            <span className="font-display text-[13px] font-bold text-accent">{index}</span>
+            <span className="h-px w-8 bg-accent/40" />
+            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
+              {kicker}
+            </span>
+          </RevealItem>
 
-        <Reveal delay={0.05}>
-          <h2 className="max-w-[18ch] font-display text-[clamp(1.9rem,4.4vw,3rem)] font-extrabold leading-[1.04] tracking-[-0.03em] text-ink">
-            {title}
-          </h2>
-        </Reveal>
+          <RevealItem>
+            <h2 className="max-w-[20ch] font-display text-[clamp(1.85rem,4vw,2.75rem)] font-extrabold leading-[1.06] tracking-[-0.03em] text-ink">
+              {title}
+            </h2>
+          </RevealItem>
 
-        {lead && (
-          <Reveal delay={0.1}>
-            <p className="mt-5 max-w-[60ch] text-[clamp(1rem,1.4vw,1.15rem)] leading-relaxed text-muted">
-              {lead}
-            </p>
-          </Reveal>
-        )}
+          {lead && (
+            <RevealItem className="mt-4">
+              <p className="max-w-[54ch] text-[1.02rem] leading-relaxed text-soft">{lead}</p>
+            </RevealItem>
+          )}
+        </RevealGroup>
 
-        <div className="mt-10 lg:mt-12">{children}</div>
-      </div>
+        <div>{children}</div>
+      </Container>
     </section>
   );
 }

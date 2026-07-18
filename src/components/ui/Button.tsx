@@ -11,33 +11,20 @@ type BtnProps = {
 };
 
 export function ButtonPrimary({ href, children, className = "", download }: BtnProps) {
+  const isExternal = !download && href.startsWith("http");
   return (
     <motion.a
       href={href}
       download={download}
-      target={!download && href.startsWith("http") ? "_blank" : undefined}
-      rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-      className={`group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-8 py-3.5 text-[15px] font-semibold text-white ${className}`}
-      style={{ background: "#06b6d4" }}
-      whileHover={{ scale: 1.03, y: -2 }}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      className={`inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[14.5px] font-semibold text-white transition-opacity hover:opacity-90 ${className}`}
+      style={{ background: "var(--accent)" }}
+      whileHover={{ y: -1 }}
       whileTap={{ scale: 0.98 }}
       transition={springSoft}
     >
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        style={{
-          background:
-            "linear-gradient(105deg, transparent 35%, rgba(255,255,255,.28) 50%, transparent 65%)",
-          backgroundSize: "200% 100%",
-        }}
-      />
-      <motion.span
-        aria-hidden
-        className="pointer-events-none absolute -inset-px rounded-full opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-80"
-        style={{ background: "#06b6d4" }}
-      />
-      <span className="relative z-10">{children}</span>
+      {children}
     </motion.a>
   );
 }
@@ -49,14 +36,15 @@ export function ButtonSecondary({
   external,
   download,
 }: BtnProps) {
+  const isExternal = external || (!download && href.startsWith("http"));
   return (
     <motion.a
       href={href}
       download={download}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
-      className={`inline-flex items-center justify-center gap-2 rounded-full border border-surface-line bg-surface-raised/50 px-8 py-3.5 text-[15px] font-semibold text-ink backdrop-blur-sm transition-colors hover:border-accent/40 hover:bg-surface-raised ${className}`}
-      whileHover={{ scale: 1.02 }}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      className={`inline-flex items-center justify-center gap-2 rounded-full border border-surface-line px-7 py-3.5 text-[14.5px] font-semibold text-ink transition-colors hover:border-accent/50 hover:text-accent ${className}`}
+      whileHover={{ y: -1 }}
       whileTap={{ scale: 0.98 }}
       transition={springSoft}
     >

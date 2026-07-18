@@ -1,4 +1,4 @@
-# Portfólio — David Pinho
+# Portfólio · David Pinho
 
 Portfólio em **Vite + React + TypeScript + Tailwind** (stack nativo da Lovable).
 

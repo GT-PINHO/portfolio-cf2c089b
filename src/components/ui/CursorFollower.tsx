@@ -13,7 +13,7 @@ const INTERACTIVE =
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
 /**
- * CursorFollower — bolinha sutil que complementa o cursor nativo.
+ * CursorFollower: bolinha sutil que complementa o cursor nativo.
  * Desktop only. RAF + lerp. Sem glow, trail ou magnetismo.
  */
 export default function CursorFollower() {
@@ -102,7 +102,7 @@ export default function CursorFollower() {
         width: SIZE,
         height: SIZE,
         borderRadius: "50%",
-        background: "#f5f5f5",
+        background: "var(--ink)",
         pointerEvents: "none",
         zIndex: 9999,
         opacity: 0,

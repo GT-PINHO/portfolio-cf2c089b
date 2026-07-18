@@ -7,7 +7,7 @@
       "dependencies": {
         "framer-motion": "^12.40.0",
         "react": "^18.3.1",
-        "react-dom": "^18.3.1",
+        "react-dom": "^18.3.1"
       },
       "devDependencies": {
         "@types/react": "^18.3.3",
@@ -17,9 +17,9 @@
         "postcss": "^8.4.39",
         "tailwindcss": "^3.4.6",
         "typescript": "^5.5.3",
-        "vite": "^5.3.4",
-      },
-    },
+        "vite": "^5.3.4"
+      }
+    }
   },
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
@@ -392,6 +392,6 @@
 
     "fdir/picomatch": ["picomatch@4.0.4", "", {}, "sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A=="],
 
-    "tinyglobby/picomatch": ["picomatch@4.0.4", "", {}, "sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A=="],
+    "tinyglobby/picomatch": ["picomatch@4.0.4", "", {}, "sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A=="]
   }
 }

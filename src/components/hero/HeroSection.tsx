@@ -1,81 +1,101 @@
 import { motion } from "framer-motion";
 import { heroContainer, heroItem } from "../../lib/motion";
 import { ButtonPrimary, ButtonSecondary } from "../ui/Button";
+import Container from "../ui/Container";
 import HeroBackground from "./HeroBackground";
 import HeroPortrait from "./HeroPortrait";
-import { HERO } from "../../lib/content";
+import { HERO, PROFILE } from "../../lib/content";
+import { CV_FILENAME } from "../../lib/cv";
+import { whatsappUrl } from "../../lib/contact";
 
 export default function HeroSection() {
+  const primaryHref =
+    HERO.cta.primary.href === "whatsapp" ? whatsappUrl() : HERO.cta.primary.href;
+
   return (
     <header
       id="top"
-      className="relative flex min-h-[100vh] flex-col justify-center pt-20 pb-10"
+      className="relative flex min-h-[100svh] flex-col justify-center pb-section-y pt-24"
     >
       <HeroBackground />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1180px] px-6 sm:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-[1fr_minmax(280px,380px)] lg:gap-16 xl:grid-cols-[1fr_minmax(320px,420px)]">
+      <Container className="relative z-10">
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
           <motion.div
             variants={heroContainer}
             initial="hidden"
             animate="visible"
+            className="lg:col-span-7"
           >
-            {/* Eyebrow */}
-            <motion.div variants={heroItem}>
-              <span className="inline-flex items-center gap-2 rounded-full border border-surface-line bg-surface-raised px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.2em] text-muted">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                {HERO.eyebrow}
-              </span>
-            </motion.div>
+            <motion.p
+              variants={heroItem}
+              className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted"
+            >
+              {PROFILE.location}
+            </motion.p>
 
-            {/* Headline */}
+            <motion.p
+              variants={heroItem}
+              className="mt-3 max-w-[40ch] text-[12.5px] leading-snug text-accent"
+            >
+              {HERO.eyebrow}
+            </motion.p>
+
             <motion.h1
               variants={heroItem}
-              className="mt-7 whitespace-pre-line font-display font-extrabold leading-[1.04] tracking-[-0.02em] text-ink"
-              style={{ fontSize: "clamp(2rem, 5.5vw, 4rem)" }}
+              className="mt-5 whitespace-pre-line font-display font-extrabold leading-[1.06] tracking-[-0.03em] text-ink"
+              style={{ fontSize: "clamp(2rem, 5vw, 3.45rem)" }}
             >
               {HERO.headline}
             </motion.h1>
 
-            {/* Subheadline */}
             <motion.p
               variants={heroItem}
-              className="mt-6 max-w-[56ch] text-[clamp(1rem,1.5vw,1.1rem)] leading-relaxed text-muted"
+              className="mt-5 max-w-[44ch] text-[1.02rem] leading-relaxed text-soft"
             >
               {HERO.subheadline}
             </motion.p>
 
-            {/* CTAs */}
+            <motion.p
+              variants={heroItem}
+              className="mt-4 text-[13.5px] font-medium text-ink/90"
+            >
+              {PROFILE.proofLine}
+            </motion.p>
+
             <motion.div
               variants={heroItem}
-              className="mt-9 flex flex-wrap items-center gap-3"
+              className="mt-8 flex flex-wrap items-center gap-3"
             >
-              <ButtonPrimary href="#contato">{HERO.cta.primary}</ButtonPrimary>
-              <ButtonSecondary href="#servicos">{HERO.cta.secondary}</ButtonSecondary>
+              <ButtonPrimary href={primaryHref}>
+                {HERO.cta.primary.label}
+              </ButtonPrimary>
+              <ButtonSecondary href={HERO.cta.secondary.href} download={CV_FILENAME}>
+                {HERO.cta.secondary.label}
+              </ButtonSecondary>
             </motion.div>
 
-            {/* Proof points */}
-            <motion.div
-              variants={heroItem}
-              className="mt-10 flex flex-wrap gap-x-8 gap-y-2"
-            >
-              {HERO.proofPoints.map((p) => (
-                <span
-                  key={p}
-                  className="flex items-center gap-2 text-[12.5px] text-muted"
-                >
-                  <span className="h-1 w-1 shrink-0 rounded-full bg-accent/60" />
-                  {p}
-                </span>
-              ))}
-            </motion.div>
+            <motion.p variants={heroItem} className="mt-6 text-[13px] text-muted">
+              {PROFILE.availability}
+              {" · "}
+              <a
+                href={HERO.openSource.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent transition-colors hover:text-ink"
+              >
+                {HERO.openSource.label}
+              </a>
+            </motion.p>
           </motion.div>
 
-          <div className="mx-auto w-full max-w-[380px] lg:mx-0 lg:max-w-none">
-            <HeroPortrait />
+          <div className="mx-auto w-full max-w-[300px] lg:col-span-5 lg:mx-0 lg:max-w-none lg:justify-self-end lg:pl-4">
+            <div className="lg:ml-auto lg:w-full lg:max-w-[340px]">
+              <HeroPortrait />
+            </div>
           </div>
         </div>
-      </div>
+      </Container>
     </header>
   );
 }

@@ -10,16 +10,25 @@ export default {
       },
       colors: {
         surface: {
-          DEFAULT: "#0f0f0f",
-          raised: "#111111",
-          line: "#222222",
+          DEFAULT: "rgb(var(--bg-rgb) / <alpha-value>)",
+          raised: "rgb(var(--bg-2-rgb) / <alpha-value>)",
+          line: "rgb(var(--line-rgb) / <alpha-value>)",
         },
         accent: {
-          DEFAULT: "#06b6d4",
-          dim: "#0891b2",
+          DEFAULT: "rgb(var(--accent-rgb) / <alpha-value>)",
+          dim: "var(--accent-dim)",
         },
-        ink: "#f5f5f5",
-        muted: "#737373",
+        ink: "rgb(var(--ink-rgb) / <alpha-value>)",
+        soft: "rgb(var(--soft-rgb) / <alpha-value>)",
+        muted: "rgb(var(--muted-rgb) / <alpha-value>)",
+      },
+      maxWidth: {
+        page: "1200px",
+      },
+      spacing: {
+        gutter: "var(--page-gutter)",
+        "section-y": "var(--section-y)",
+        header: "var(--header-h)",
       },
     },
   },
