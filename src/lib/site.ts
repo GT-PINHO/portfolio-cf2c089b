@@ -1,5 +1,15 @@
-/** URL pública do site. Defina VITE_SITE_URL no deploy (ex.: https://seudominio.com) */
-export const SITE_URL = (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/$/, "") ?? "";
+/** URL pública do site. Defina NEXT_PUBLIC_SITE_URL no deploy (ex.: https://seudominio.com) */
+function resolveSiteUrl(): string {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
+  if (explicit) return explicit;
+
+  const vercel = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
+  if (vercel) return `https://${vercel.replace(/^https?:\/\//, "").replace(/\/$/, "")}`;
+
+  return "";
+}
+
+export const SITE_URL = resolveSiteUrl();
 
 export const SITE = {
   title: "David Pinho | Meta Ads Specialist · Growth Ops, Tracking, CRM & AI",
@@ -24,6 +34,7 @@ export const SITE = {
 
 export function absoluteUrl(path: string): string {
   if (path.startsWith("http")) return path;
-  const origin = SITE_URL || (typeof window !== "undefined" ? window.location.origin : "");
+  const origin =
+    SITE_URL || (typeof window !== "undefined" ? window.location.origin : "");
   return origin ? `${origin}${path.startsWith("/") ? path : `/${path}`}` : path;
 }

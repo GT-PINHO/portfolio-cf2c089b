@@ -1,65 +1,47 @@
 # Portfólio · David Pinho
 
-Portfólio em **Vite + React + TypeScript + Tailwind** (stack nativo da Lovable).
+Portfólio em **Next.js + React + TypeScript + Tailwind**, hospedado na **Vercel**.
 
-## Rodar localmente (no Cursor)
+**URL:** https://portfolio-david-pinho.vercel.app
+
+## Rodar localmente
 
 ```bash
 npm install
 npm run dev
 ```
 
-Abre em `http://localhost:5173`.
+Abre em `http://localhost:3000`.
+
+## Variáveis de ambiente
+
+Copie `.env.example` para `.env.local` e defina:
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://seu-dominio.com
+```
+
+Isso alimenta canonical, Open Graph, Twitter Card, `sitemap.xml` e `robots.txt`.
 
 ## Trocar a foto
 
-A foto fica em `public/david.png` (card do Hero em `src/components/Hero.tsx`).
+A foto fica em `public/david.png` (card do Hero).
 
 ## Build de produção
 
 ```bash
-npm run build      # gera a pasta dist/
-npm run preview    # testa o build localmente
+npm run build
+npm run start
 ```
 
-## Publicar (Cursor → GitHub → Lovable)
+## Publicar (GitHub → Vercel)
 
-1. No Cursor, inicialize o git e suba para um repositório no GitHub:
-   ```bash
-   git init
-   git add .
-   git commit -m "portfolio inicial"
-   git branch -M main
-   git remote add origin https://github.com/SEU-USUARIO/SEU-REPO.git
-   git push -u origin main
-   ```
-2. Na **Lovable**: crie/abra um projeto, conecte o GitHub e aponte para esse repo.
-   Como já é um projeto Vite/React, o build roda direto e você ganha hospedagem
-   grátis + editor visual.
-3. Daí em diante: edita no Cursor → `commit` → `push` → a Lovable rebuilda sozinha.
+1. Faça push deste repositório no GitHub.
+2. Na Vercel: **Add New Project** → importe o repo.
+3. Framework: Next.js (detectado automaticamente).
+4. Em Environment Variables, adicione `NEXT_PUBLIC_SITE_URL` com a URL final.
+5. Deploy. A cada `git push` na branch de produção, a Vercel rebuilda sozinha.
 
-## Estrutura
+## SEO
 
-```
-src/
-├── App.tsx               # monta as seções + animações de scroll
-├── main.tsx              # entrada
-├── index.css            # estilos (tema escuro azul+violeta)
-└── components/
-    ├── Nav.tsx
-    ├── Hero.tsx
-    ├── Sobre.tsx
-    ├── Servicos.tsx
-    ├── Projetos.tsx
-    ├── Experiencia.tsx
-    ├── Formacao.tsx
-    ├── Skills.tsx
-    ├── Contato.tsx
-    └── Footer.tsx
-```
-
-## Pendência a confirmar
-
-No `src/components/Projetos.tsx` (Projeto 05) o link do GitHub está como
-`GT-PINHO/agent-skills`. Confirme no seu GitHub se o repo público é esse ou
-`pinho-agent-skills` e ajuste o `href`.
+Metadata (title, description, Open Graph, Twitter, robots) e JSON-LD saem no HTML do servidor via App Router — indexáveis pelos buscadores sem depender de JavaScript no cliente.
