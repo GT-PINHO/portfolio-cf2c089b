@@ -1,10 +1,13 @@
+"use client";
+
+import { useState } from "react";
 import { CONTACT, PROFILE } from "../lib/content";
 import { CV_FILENAME, CV_URL } from "../lib/cv";
-import { usePrivacy } from "./lgpd/PrivacyProvider";
+import PrivacyPolicyModal from "./lgpd/PrivacyPolicyModal";
 import Container from "./ui/Container";
 
 export default function Footer() {
-  const { openPrivacyPolicy } = usePrivacy();
+  const [policyOpen, setPolicyOpen] = useState(false);
 
   return (
     <footer className="border-t border-surface-line py-6">
@@ -18,10 +21,10 @@ export default function Footer() {
           </p>
           <button
             type="button"
-            onClick={openPrivacyPolicy}
+            onClick={() => setPolicyOpen(true)}
             className="mt-1 text-[12px] text-muted transition-colors hover:text-accent"
           >
-            Política de Privacidade (LGPD)
+            Privacidade
           </button>
         </div>
 
@@ -50,6 +53,8 @@ export default function Footer() {
           </a>
         </div>
       </Container>
+
+      <PrivacyPolicyModal open={policyOpen} onClose={() => setPolicyOpen(false)} />
     </footer>
   );
 }

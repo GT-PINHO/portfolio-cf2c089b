@@ -12,13 +12,10 @@ import Footer from "./Footer";
 import ScrollProgress from "./ui/ScrollProgress";
 import AmbientField from "./ui/AmbientField";
 import CursorFollower from "./ui/CursorFollower";
-import PrivacyProvider from "./lgpd/PrivacyProvider";
-import ContentGuard from "./ui/ContentGuard";
 
 export default function Home() {
   return (
-    <PrivacyProvider>
-      <ContentGuard />
+    <>
       <AmbientField />
       <CursorFollower />
       <ScrollProgress />
@@ -37,6 +34,6 @@ export default function Home() {
         <div className="h-8 md:h-12" aria-hidden />
         <Footer />
       </div>
-    </PrivacyProvider>
+    </>
   );
 }

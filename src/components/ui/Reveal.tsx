@@ -1,5 +1,7 @@
+"use client";
+
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 type RevealProps = {
   children: ReactNode;
@@ -10,61 +12,83 @@ type RevealProps = {
 
 const ease = [0.16, 1, 0.28, 1] as const;
 
-const stackVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.18, delayChildren: 0.1 },
-  },
-};
+function useMobileMotion() {
+  const [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px), (hover: none)");
+    const sync = () => setMobile(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+  return mobile;
+}
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 72 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.85, ease },
-  },
-};
+/** Detecta entrada na viewport com limiar baixo (mobile-safe) + fallback. */
+function useRevealGate(amountDesktop = 0.12) {
+  const ref = useRef(null);
+  const reduce = useReducedMotion();
+  const mobile = useMobileMotion();
+  const inView = useInView(ref, {
+    once: true,
+    amount: mobile ? 0.01 : amountDesktop,
+    margin: mobile ? "0px 0px -5% 0px" : "0px 0px -8% 0px",
+  });
+  const [forceShow, setForceShow] = useState(false);
+
+  useEffect(() => {
+    if (reduce || inView) return;
+    const ms = mobile ? 700 : 2000;
+    const t = window.setTimeout(() => setForceShow(true), ms);
+    return () => window.clearTimeout(t);
+  }, [reduce, inView, mobile]);
+
+  return {
+    ref,
+    reduce,
+    visible: Boolean(reduce || inView || forceShow),
+    mobile,
+  };
+}
 
 /** Bloco individual — entra de baixo ao ficar visível. */
 export function Reveal({ children, className, delay = 0, as = "div" }: RevealProps) {
-  const ref = useRef(null);
-  const reduce = useReducedMotion();
-  const inView = useInView(ref, { once: true, amount: 0.2 });
+  const { ref, reduce, visible, mobile } = useRevealGate(0.1);
   const MotionTag = motion[as];
+  const y = mobile ? 24 : 48;
 
   return (
     <MotionTag
       ref={ref}
       className={className}
-      initial={reduce ? false : "hidden"}
-      animate={reduce ? undefined : inView ? "visible" : "hidden"}
-      variants={{
-        hidden: itemVariants.hidden,
-        visible: {
-          ...itemVariants.visible,
-          transition: { duration: 0.85, ease, delay },
-        },
-      }}
+      initial={reduce ? false : { opacity: 0, y }}
+      animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y }}
+      transition={{ duration: mobile ? 0.45 : 0.65, ease, delay }}
     >
       {children}
     </MotionTag>
   );
 }
 
-/** Cascata bloco a bloco nos filhos. */
+/** Cascata bloco a bloco nos filhos (RevealItem ou motion.* com variants). */
 export function RevealGroup({ children, className }: { children: ReactNode; className?: string }) {
-  const ref = useRef(null);
-  const reduce = useReducedMotion();
-  const inView = useInView(ref, { once: true, amount: 0.15 });
+  const { ref, reduce, visible, mobile } = useRevealGate(0.06);
 
   return (
     <motion.div
       ref={ref}
       className={className}
       initial={reduce ? false : "hidden"}
-      animate={reduce ? undefined : inView ? "visible" : "hidden"}
-      variants={stackVariants}
+      animate={visible ? "visible" : "hidden"}
+      variants={{
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: mobile ? 0.07 : 0.12,
+            delayChildren: 0.02,
+          },
+        },
+      }}
     >
       {children}
     </motion.div>
@@ -80,9 +104,22 @@ export function RevealItem({
   className?: string;
   as?: "div" | "li" | "article";
 }) {
+  const mobile = useMobileMotion();
   const MotionTag = motion[as];
+  const y = mobile ? 20 : 40;
+
   return (
-    <MotionTag className={className} variants={itemVariants}>
+    <MotionTag
+      className={className}
+      variants={{
+        hidden: { opacity: 0, y },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: mobile ? 0.4 : 0.6, ease },
+        },
+      }}
+    >
       {children}
     </MotionTag>
   );

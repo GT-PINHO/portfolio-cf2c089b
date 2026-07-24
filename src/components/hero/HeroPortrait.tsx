@@ -52,14 +52,13 @@ export default function HeroPortrait() {
         className="w-full overflow-hidden md:aspect-[4/5]"
         style={{
           borderRadius: "12px",
+          aspectRatio: "4 / 5",
           boxShadow: "0 8px 32px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.06)",
         }}
       >
         <motion.img
           src="/david.png"
           alt="David Pinho"
-          draggable={false}
-          onContextMenu={(e) => e.preventDefault()}
           className="h-full w-full scale-105 object-cover brightness-[0.95] contrast-[1.04] will-change-transform"
           style={{
             objectPosition: "top center",

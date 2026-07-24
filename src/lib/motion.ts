@@ -46,11 +46,11 @@ export const blockStack = {
 };
 
 export const blockIn = {
-  hidden: { opacity: 0, y: 72 },
+  hidden: { opacity: 0, y: 32 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.85, ease: easeCinematic },
+    transition: { duration: 0.55, ease: easeCinematic },
   },
 };
 

@@ -27,7 +27,7 @@ export default function Section({
       className={`section-anchor relative ${className || "py-section-y"}`}
     >
       <Container>
-        <RevealGroup className="mb-10 md:mb-14">
+        <RevealGroup className="mb-8 md:mb-14">
           <RevealItem className="mb-3 flex items-center gap-3">
             <span className="font-display text-[13px] font-bold text-accent">{index}</span>
             <span className="h-px w-8 bg-accent/40" />
@@ -37,7 +37,7 @@ export default function Section({
           </RevealItem>
 
           <RevealItem>
-            <h2 className="max-w-[20ch] font-display text-[clamp(1.85rem,4vw,2.75rem)] font-extrabold leading-[1.06] tracking-[-0.03em] text-ink">
+            <h2 className="max-w-[22ch] font-display text-[clamp(1.65rem,6.5vw,2.75rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-ink sm:leading-[1.06]">
               {title}
             </h2>
           </RevealItem>

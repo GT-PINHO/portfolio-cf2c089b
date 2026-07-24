@@ -15,17 +15,17 @@ export default function HeroSection() {
   return (
     <header
       id="top"
-      className="relative flex min-h-[100svh] flex-col justify-center pb-section-y pt-24"
+      className="relative flex min-h-[100svh] flex-col justify-center pb-10 pt-[5.5rem] sm:pb-section-y sm:pt-24"
     >
       <HeroBackground />
 
       <Container className="relative z-10">
-        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+        <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
           <motion.div
             variants={heroContainer}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-7"
+            className="order-2 lg:order-1 lg:col-span-7"
           >
             <motion.p
               variants={heroItem}
@@ -43,34 +43,38 @@ export default function HeroSection() {
 
             <motion.h1
               variants={heroItem}
-              className="mt-5 whitespace-pre-line font-display font-extrabold leading-[1.06] tracking-[-0.03em] text-ink"
-              style={{ fontSize: "clamp(2rem, 5vw, 3.45rem)" }}
+              className="mt-4 whitespace-pre-line font-display font-extrabold leading-[1.08] tracking-[-0.03em] text-ink sm:mt-5 sm:leading-[1.06]"
+              style={{ fontSize: "clamp(1.85rem, 7.2vw, 3.45rem)" }}
             >
               {HERO.headline}
             </motion.h1>
 
             <motion.p
               variants={heroItem}
-              className="mt-5 max-w-[44ch] text-[1.02rem] leading-relaxed text-soft"
+              className="mt-4 max-w-[44ch] text-[0.98rem] leading-relaxed text-soft sm:mt-5 sm:text-[1.02rem]"
             >
               {HERO.subheadline}
             </motion.p>
 
             <motion.p
               variants={heroItem}
-              className="mt-4 text-[13.5px] font-medium text-ink/90"
+              className="mt-3 text-[13px] font-medium text-ink/90 sm:mt-4 sm:text-[13.5px]"
             >
               {PROFILE.proofLine}
             </motion.p>
 
             <motion.div
               variants={heroItem}
-              className="mt-8 flex flex-wrap items-center gap-3"
+              className="mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center"
             >
-              <ButtonPrimary href={primaryHref}>
+              <ButtonPrimary href={primaryHref} className="w-full sm:w-auto">
                 {HERO.cta.primary.label}
               </ButtonPrimary>
-              <ButtonSecondary href={HERO.cta.secondary.href} download={CV_FILENAME}>
+              <ButtonSecondary
+                href={HERO.cta.secondary.href}
+                download={CV_FILENAME}
+                className="w-full sm:w-auto"
+              >
                 {HERO.cta.secondary.label}
               </ButtonSecondary>
             </motion.div>
@@ -89,7 +93,7 @@ export default function HeroSection() {
             </motion.p>
           </motion.div>
 
-          <div className="mx-auto w-full max-w-[300px] lg:col-span-5 lg:mx-0 lg:max-w-none lg:justify-self-end lg:pl-4">
+          <div className="order-1 mx-auto w-full max-w-[220px] sm:max-w-[280px] lg:order-2 lg:col-span-5 lg:mx-0 lg:max-w-none lg:justify-self-end lg:pl-4">
             <div className="lg:ml-auto lg:w-full lg:max-w-[340px]">
               <HeroPortrait />
             </div>

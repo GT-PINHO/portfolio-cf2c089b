@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+"use client";
+
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { PROFILE } from "../lib/content";
 import Container from "./ui/Container";
@@ -17,6 +19,7 @@ const LAST_ID = SECTION_IDS[SECTION_IDS.length - 1];
 
 /** Alinhado a --anchor-offset: nav + folga para o card não colar no header */
 const HEADER_OFFSET = 104;
+const PIN_MS = 1200;
 
 function maxScrollY(): number {
   return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
@@ -40,53 +43,88 @@ function getActiveSection(): string {
   return current;
 }
 
-/** Posiciona a seção logo abaixo da nav, com folga — igual ao print */
-function scrollToSection(id: string) {
+function getSectionTargetY(id: string): number {
   const el = document.getElementById(id);
-  if (!el) return;
+  if (!el) return 0;
 
   const absoluteTop = window.scrollY + el.getBoundingClientRect().top;
   let target = Math.max(0, absoluteTop - HEADER_OFFSET);
 
-  // Contato: garante enquadramento completo (sobe o máximo necessário)
   if (id === LAST_ID) {
     target = Math.min(target, maxScrollY());
-    // Se ainda não cabe, vai ao fim da página (card inteiro visível)
     if (absoluteTop - HEADER_OFFSET > maxScrollY()) {
       target = maxScrollY();
     }
   }
 
-  window.scrollTo({ top: target, behavior: "smooth" });
+  return target;
+}
+
+function scrollToSection(id: string) {
+  window.scrollTo({ top: getSectionTargetY(id), behavior: "smooth" });
 }
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState<string>(SECTION_IDS[0]);
+  const [indicator, setIndicator] = useState({ left: 0, width: 0, ready: false });
 
-  /** Item clicado fica fixo até o usuário rolar de verdade */
   const pinnedIdRef = useRef<string | null>(null);
-  const pinScrollYRef = useRef<number | null>(null);
   const unlockTimerRef = useRef<number | null>(null);
+  const desktopNavRef = useRef<HTMLDivElement>(null);
   const close = () => setOpen(false);
+
+  const clearPinTimer = () => {
+    if (unlockTimerRef.current !== null) {
+      window.clearTimeout(unlockTimerRef.current);
+      unlockTimerRef.current = null;
+    }
+  };
+
+  const pinActive = useCallback((id: string, holdMs = PIN_MS) => {
+    pinnedIdRef.current = id;
+    setActive(id);
+    clearPinTimer();
+    unlockTimerRef.current = window.setTimeout(() => {
+      pinnedIdRef.current = null;
+      unlockTimerRef.current = null;
+      setActive(getActiveSection());
+    }, holdMs);
+  }, []);
+
+  const syncIndicator = useCallback(() => {
+    const root = desktopNavRef.current;
+    if (!root) return;
+    const link = root.querySelector<HTMLElement>(`[data-nav-id="${active}"]`);
+    if (!link) {
+      setIndicator((prev) => ({ ...prev, ready: false }));
+      return;
+    }
+    setIndicator({
+      left: link.offsetLeft,
+      width: link.offsetWidth,
+      ready: true,
+    });
+  }, [active]);
+
+  useLayoutEffect(() => {
+    syncIndicator();
+  }, [syncIndicator]);
+
+  useEffect(() => {
+    window.addEventListener("resize", syncIndicator);
+    return () => window.removeEventListener("resize", syncIndicator);
+  }, [syncIndicator]);
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 16);
-
-      const pinned = pinnedIdRef.current;
-      if (pinned !== null && pinScrollYRef.current !== null) {
-        // Ainda na animação / quase parado no destino: mantém Contato (etc.)
-        if (Math.abs(window.scrollY - pinScrollYRef.current) < 80) {
-          setActive(pinned);
-          return;
-        }
-        // Usuário rolou longe do destino: libera o pin
-        pinnedIdRef.current = null;
-        pinScrollYRef.current = null;
+      // Enquanto o clique segura o item, o scroll spy não mexe no ativo
+      if (pinnedIdRef.current !== null) {
+        setActive(pinnedIdRef.current);
+        return;
       }
-
       setActive(getActiveSection());
     };
 
@@ -96,35 +134,31 @@ export default function Nav() {
   }, []);
 
   useEffect(() => {
-    return () => {
-      if (unlockTimerRef.current !== null) window.clearTimeout(unlockTimerRef.current);
-    };
+    return () => clearPinTimer();
   }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
 
   const handleNavClick = (href: string, e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const id = href.slice(1);
+    const wasOpen = open;
+    const delay = wasOpen ? 280 : 0;
 
-    pinnedIdRef.current = id;
-    setActive(id);
+    pinActive(id, delay + PIN_MS);
     close();
     window.history.pushState(null, "", href);
 
-    requestAnimationFrame(() => {
+    window.setTimeout(() => {
       scrollToSection(id);
-      // Marca a posição alvo após o browser iniciar o scroll
-      window.setTimeout(() => {
-        pinScrollYRef.current = window.scrollY;
-        setActive(id);
-      }, 80);
-    });
-
-    if (unlockTimerRef.current !== null) window.clearTimeout(unlockTimerRef.current);
-    unlockTimerRef.current = window.setTimeout(() => {
-      pinScrollYRef.current = window.scrollY;
-      setActive(id);
-      // Mantém pin no item clicado; só sai se o usuário rolar depois
-    }, 900);
+    }, delay);
   };
 
   return (
@@ -141,20 +175,16 @@ export default function Nav() {
           onClick={(e) => {
             e.preventDefault();
             close();
-            pinnedIdRef.current = SECTION_IDS[0];
-            setActive(SECTION_IDS[0]);
+            pinActive(SECTION_IDS[0]);
             window.history.pushState(null, "", "#top");
             window.scrollTo({ top: 0, behavior: "smooth" });
-            window.setTimeout(() => {
-              pinScrollYRef.current = 0;
-            }, 100);
           }}
           className="font-display text-lg font-extrabold tracking-tight text-ink"
         >
           {PROFILE.name}
         </a>
 
-        <div className="hidden items-center gap-5 lg:flex">
+        <div ref={desktopNavRef} className="relative hidden items-center gap-5 lg:flex">
           {LINKS.map((l) => {
             const sectionId = l.href.slice(1);
             const isActive = active === sectionId;
@@ -162,21 +192,27 @@ export default function Nav() {
               <a
                 key={l.href}
                 href={l.href}
+                data-nav-id={sectionId}
                 onClick={(e) => handleNavClick(l.href, e)}
                 className="relative py-1 text-[13px] outline-none transition-colors duration-200"
                 style={{ color: isActive ? "var(--ink)" : "var(--muted)" }}
               >
                 {l.label}
-                {isActive && (
-                  <motion.span
-                    layoutId="nav-underline"
-                    className="absolute inset-x-0 -bottom-0.5 h-px bg-accent"
-                    transition={{ type: "spring", stiffness: 420, damping: 32 }}
-                  />
-                )}
               </a>
             );
           })}
+
+          <motion.span
+            aria-hidden
+            className="pointer-events-none absolute -bottom-0.5 h-px bg-accent"
+            initial={false}
+            animate={{
+              left: indicator.left,
+              width: indicator.width,
+              opacity: indicator.ready ? 1 : 0,
+            }}
+            transition={{ type: "spring", stiffness: 420, damping: 34, mass: 0.6 }}
+          />
 
           <a
             href="#contato"

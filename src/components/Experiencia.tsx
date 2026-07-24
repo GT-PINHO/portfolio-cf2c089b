@@ -19,7 +19,7 @@ export default function Experiencia() {
               className="absolute -left-[41px] top-1.5 flex h-3.5 w-3.5 items-center justify-center sm:-left-[49px]"
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true, amount: 0.8 }}
+              viewport={{ once: true, amount: 0.2, margin: "0px 0px -10% 0px" }}
               transition={{ type: "spring", stiffness: 380, damping: 18 }}
             >
               <span className="h-3.5 w-3.5 rounded-full bg-accent ring-4 ring-surface" />
@@ -47,7 +47,7 @@ export default function Experiencia() {
                   key={b}
                   initial={{ opacity: 0, x: -8 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.6 }}
+                  viewport={{ once: true, amount: 0.15, margin: "0px 0px -5% 0px" }}
                   transition={{ delay: 0.08 * i, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                   className="relative max-w-[68ch] pl-5 text-[14.5px] leading-relaxed text-soft before:absolute before:left-0 before:top-[0.6em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-accent/45"
                 >

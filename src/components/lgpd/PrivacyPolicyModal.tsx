@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CONTACT } from "../../lib/content";
@@ -46,10 +48,10 @@ export default function PrivacyPolicyModal({ open, onClose }: Props) {
             <div className="mb-6 flex items-start justify-between gap-4">
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
-                  LGPD · Lei nº 13.709/2018
+                  Transparência
                 </p>
                 <h2 id="privacy-title" className="mt-2 font-display text-xl font-bold text-ink">
-                  Política de Privacidade
+                  Privacidade
                 </h2>
               </div>
               <button
@@ -64,69 +66,30 @@ export default function PrivacyPolicyModal({ open, onClose }: Props) {
 
             <div className="space-y-4 text-[14px] leading-relaxed text-muted">
               <p>
-                <strong className="text-ink">Controlador:</strong> David Pinho ({CONTACT.email}),
-                Americana, SP, Brasil.
+                <strong className="text-ink">Responsável:</strong> David Pinho ({CONTACT.email}),
+                Americana, SP.
               </p>
               <p>
-                Este portfólio é um site informativo sobre serviços profissionais. Não há cadastro,
-                login ou formulário que armazene dados em servidor próprio.
+                Este portfólio é um site informativo. Não há cadastro, login, cookies de rastreamento
+                nem formulário que armazene dados em servidor próprio.
               </p>
-
-              <section>
-                <h3 className="mb-2 font-display text-[15px] font-bold text-ink">Dados que podemos tratar</h3>
-                <ul className="list-disc space-y-1 pl-5">
-                  <li>
-                    <strong className="text-ink/90">Preferência de privacidade:</strong> armazenada
-                    localmente no seu navegador (localStorage) para não exibir o aviso repetidamente.
-                  </li>
-                  <li>
-                    <strong className="text-ink/90">Contato iniciado por você:</strong> ao clicar em
-                    WhatsApp, LinkedIn, GitHub ou e-mail, você passa a interagir diretamente com essas
-                    plataformas, regidas pelas políticas delas.
-                  </li>
-                  <li>
-                    <strong className="text-ink/90">QR Code de WhatsApp:</strong> gerado via serviço
-                    de terceiros (api.qrserver.com) apenas com o link público do WhatsApp, sem envio
-                    de dados pessoais seus por este site.
-                  </li>
-                  <li>
-                    <strong className="text-ink/90">Analytics (futuro):</strong> caso ferramentas de
-                    métricas sejam adicionadas, só serão ativadas após consentimento explícito.
-                  </li>
-                </ul>
-              </section>
-
-              <section>
-                <h3 className="mb-2 font-display text-[15px] font-bold text-ink">Base legal (LGPD)</h3>
-                <p>
-                  O tratamento se apoia em consentimento (art. 7º, I), execução de medidas
-                  pré-contratuais a seu pedido (art. 7º, V) e legítimo interesse para segurança e
-                  melhoria do site (art. 7º, IX), sempre respeitando seus direitos.
-                </p>
-              </section>
-
-              <section>
-                <h3 className="mb-2 font-display text-[15px] font-bold text-ink">Seus direitos</h3>
-                <p>
-                  Você pode solicitar confirmação de tratamento, acesso, correção, eliminação,
-                  portabilidade, revogação do consentimento ou informações sobre compartilhamento,
-                  conforme arts. 17 a 18 da LGPD, pelo e-mail{" "}
-                  <a href={`mailto:${CONTACT.email}`} className="text-accent hover:underline">
-                    {CONTACT.email}
-                  </a>
-                  .
-                </p>
-              </section>
-
-              <section>
-                <h3 className="mb-2 font-display text-[15px] font-bold text-ink">Retenção e segurança</h3>
-                <p>
-                  Dados de preferência ficam no seu dispositivo até você limpar o armazenamento do
-                  navegador. Mensagens enviadas por WhatsApp ou e-mail seguem as políticas das
-                  respectivas plataformas.
-                </p>
-              </section>
-
+              <ul className="list-disc space-y-2 pl-5">
+                <li>
+                  Ao clicar em WhatsApp, LinkedIn, GitHub ou e-mail, a interação passa a ser com essas
+                  plataformas e segue as políticas delas.
+                </li>
+                <li>
+                  O QR Code de WhatsApp pode ser gerado por serviço de terceiros
+                  (api.qrserver.com) apenas com o link público do WhatsApp.
+                </li>
+              </ul>
+              <p>
+                Dúvidas:{" "}
+                <a href={`mailto:${CONTACT.email}`} className="text-accent hover:underline">
+                  {CONTACT.email}
+                </a>
+                .
+              </p>
               <p className="text-[13px] text-muted/80">Última atualização: julho de 2026.</p>
             </div>
 
