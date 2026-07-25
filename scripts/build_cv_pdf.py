@@ -182,7 +182,7 @@ def main() -> None:
         rightMargin=0.53 * 72,
         topMargin=0.45 * 72,
         bottomMargin=0.50 * 72,
-        title="Currículo — David Edson da Silva Pinho",
+        title="Currículo | David Edson da Silva Pinho",
         author="David Pinho",
     )
     content_width = A4[0] - doc.leftMargin - doc.rightMargin
@@ -191,11 +191,11 @@ def main() -> None:
     story.append(Paragraph("DAVID EDSON DA SILVA PINHO", styles["Name"]))
     story.append(
         Paragraph(
-            "Gestor de Tráfego Pago · Desenvolvedor de Sistemas com IA",
+            "Gestor de Tráfego Pago · MarTech &amp; Growth Ops",
             styles["Role"],
         )
     )
-    story.append(Paragraph("<b>Americana – SP</b>", styles["ContactLine"]))
+    story.append(Paragraph("<b>Americana, SP</b>", styles["ContactLine"]))
     story.append(Paragraph("<b>Celular:</b> (19) 99750-1584", styles["ContactLine"]))
     story.append(
         Paragraph(
@@ -258,82 +258,90 @@ def main() -> None:
     section("RESUMO PROFISSIONAL")
     story.append(
         Paragraph(
-            "Gestor de tráfego pago com mais de 3 anos de experiência em campanhas nacionais "
-            "de educação e eventos. Especializado em Meta Ads e na geração de leads "
-            "qualificados com otimização de CPL e ROAS, atuando em operações de médio e alto "
-            "volume (orçamento semanal de até R$98 mil), a partir de visão de funil, testes "
-            "contínuos, segmentação e leitura de dados. Diferencial técnico: implemento "
-            "rastreamento server-side (GTM, API de Conversão, Stape), construo dashboards "
-            "próprios de performance e desenvolvo sistemas e automações com IA que elevam a "
-            "qualidade do sinal e a clareza operacional, incluindo fluxos em hardcode que "
-            "levam o lead com UTM até o CRM (HubSpot e Nectar) da equipe de inside Sales.",
+            "Gestor de tráfego pago com mais de 3 anos em operações nacionais de educação "
+            "e eventos. Especializado em Meta Ads de médio/alto volume (orçamento semanal "
+            "de até R$98 mil), otimização de CPL/ROAS, funil e escala. Diferencial: além "
+            "da gestão de mídia, construo tracking server-side (GTM/CAPI), integrações CRM "
+            "e sistemas MarTech/Growth Ops, incluindo infraestrutura proprietária NestJS "
+            "para 20 a 30k leads/mês com idempotência, observabilidade e redução de custo de "
+            "automação (de ~R$ 4.300 a 5.000/mês no no-code para VPS fixa mínima).",
             styles["Body"],
         )
     )
 
     section("EXPERIÊNCIA PROFISSIONAL")
-    story.append(Paragraph("Gestor de Tráfego Pago", styles["JobTitle"]))
     story.append(
         Paragraph(
-            "Grupo Legacy Eco (IAM Treinamentos, Liberty Mentoria e Legacy Coffee)",
+            "Gestor de Tráfego Pago · MarTech &amp; Growth Ops",
+            styles["JobTitle"],
+        )
+    )
+    story.append(
+        Paragraph(
+            "Instituto Academy Mind (IAM Treinamentos) · Grupo Legacy Eco Holding",
             styles["JobOrg"],
         )
     )
-    story.append(Paragraph("PJ · dez/2024 – atual", styles["JobMeta"]))
+    story.append(Paragraph("PJ · dez/2024 a atual", styles["JobMeta"]))
     bullets(
         [
-            "Gestão de Meta Ads com orçamento semanal de R$68 mil a R$98 mil (operação nacional).",
-            "Mais de 21 mil leads sob gestão direta, com CPL de R$13.",
-            "Contribuição em operação que somou +630 mil leads e R$7 mi em mídia investida.",
-            "Rastreamento server-side (GTM/CAPI/Stape) e automações UTM → CRM (HubSpot/Nectar) para inside Sales.",
-            "Dashboards próprios e sistemas com IA para análise de criativo, copy e tomada de decisão.",
+            "Gestão de Meta Ads nacional com orçamento semanal de R$68 a 98 mil; contribuição "
+            "em operação com +630 mil leads e R$7 mi em mídia investida.",
+            "Captação recorrente para 45 a 68 Masterclasses e 2 a 4 Imersões/mês: funil, testes, "
+            "segmentação e CPL sob gestão direta (não é lançamento único).",
+            "Tracking server-side (GTM/CAPI/Stape) e UTM → CRM para inside sales com qualidade "
+            "de sinal e contexto de origem.",
+            "Diferencial MarTech: migrei n8n Cloud → NestJS + Docker (Easypanel/VPS), eliminando "
+            "gargalos e um custo estimado de R$ 4.300 a 4.500/mês (até ~R$ 5.000 no pico de 30k leads).",
+            "Pipeline idempotente HubSpot/ManyChat/Sheets (duplicidade zero), Data Cleansing "
+            "híbrido e dashboard de observabilidade com taxa de sucesso 100% em produção.",
         ],
-        space_after=6,
+        space_after=5,
     )
 
     story.append(Paragraph("Assistente de Tráfego Digital", styles["JobTitle"]))
     story.append(
         Paragraph(
-            "Intencional Negócios Digitais Ltda. · Americana – SP",
+            "Intencional Negócios Digitais Ltda. · Americana, SP",
             styles["JobOrg"],
         )
     )
-    story.append(Paragraph("CLT · fev./2023 – nov/2024", styles["JobMeta"]))
+    story.append(Paragraph("CLT · fev./2023 a nov/2024", styles["JobMeta"]))
     bullets(
         [
             "Meta Ads de ponta a ponta para ~40 eventos/mês em todo o Brasil.",
-            "Mais de 240 mil leads com CPL médio de R$8.",
-            "Campanhas por cidade e etapa de funil, com escala progressiva de verba.",
-            "Públicos segmentados, lookalikes, remarketing e auditoria de sinal via GTM.",
+            "Mais de 240 mil leads com CPL médio de R$8; funil por cidade e escala de verba.",
+            "Públicos, lookalikes, remarketing e auditoria de sinal via Google Tag Manager (GTM).",
         ],
-        space_after=6,
+        space_after=5,
     )
 
     section("PROJETOS")
     bullets(
         [
-            "Legacy Growth Dashboard: painel unificado de marketing e vendas "
-            "(investimento, CPL, CAC, ticket médio, funil). Supabase.",
-            "Automações UTM → CRM &amp; Produtos: fluxos em hardcode e integrações "
-            "HubSpot/Nectar/ManyChat por estratégia de lançamento. Node.js · Webhooks · APIs REST.",
-            "pinho-skills: plugin open-source de growth-ops (leilão, unit economics, "
-            "rastreamento, CRO).",
+            "Arquitetura Growth Ops IAM: migração no-code → NestJS/Docker com recuperação "
+            "híbrida de leads. "
+            '<link href="https://portfolio-david-pinho.vercel.app/casos/growth-ops-iam" color="#1E4FA3">'
+            "<u>Estudo de caso</u></link>.",
+            "Legacy Growth Dashboard: painel unificado marketing/vendas (investimento, CPL, CAC, "
+            "ticket, funil) em Supabase.",
+            "pinho-skills: plugin open-source de growth-ops (leilão, unit economics, tracking, CRO).",
         ],
-        space_after=6,
+        space_after=5,
     )
 
     section("COMPETÊNCIAS TÉCNICAS")
     bullets(
         [
-            "Tráfego &amp; Performance: Meta Ads, funis, testes A/B, lookalikes, "
-            "remarketing, GTM, CAPI, Stape, server-side. Google Ads (Search/PMax, em "
-            "desenvolvimento). TikTok Ads (básico).",
-            "KPIs: CPL, CTR, CPC, CPM, ROAS, CAC, taxa de comparecimento e conversão.",
-            "CRM &amp; Automação: HubSpot, Nectar CRM, ManyChat, Node.js, TypeScript, "
-            "Webhooks, UTM tracking, EasyPanel.",
-            "Dados &amp; IA: Supabase, Vercel, Claude, Cursor, sistemas com IA.",
+            "Tráfego &amp; Performance: Meta Ads, funis, testes A/B, lookalikes, remarketing, "
+            "CPL/ROAS. Google Ads (Search/PMax, em desenvolvimento).",
+            "Tracking: Google Tag Manager (GTM), Server-Side Tracking (CAPI/Stape), UTM tracking.",
+            "MarTech / Engenharia: NestJS, Node.js, TypeScript, Docker, Easypanel, GitOps "
+            "(CI/CD GitHub), Webhooks, APIs REST.",
+            "Dados &amp; CRM: Supabase (PostgreSQL), HubSpot API, ManyChat API, Google Sheets API, "
+            "Data Cleansing, Idempotência de Dados. KPIs: CPL, CTR, CPC, CPM, ROAS, CAC.",
         ],
-        space_after=6,
+        space_after=5,
     )
 
     section("DESENVOLVIMENTO PROFISSIONAL")

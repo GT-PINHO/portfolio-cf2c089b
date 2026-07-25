@@ -25,7 +25,7 @@ export default function HeroSection() {
             variants={heroContainer}
             initial="hidden"
             animate="visible"
-            className="order-2 lg:order-1 lg:col-span-7"
+            className="order-1 lg:col-span-7"
           >
             <motion.p
               variants={heroItem}
@@ -93,7 +93,7 @@ export default function HeroSection() {
             </motion.p>
           </motion.div>
 
-          <div className="order-1 mx-auto w-full max-w-[220px] sm:max-w-[280px] lg:order-2 lg:col-span-5 lg:mx-0 lg:max-w-none lg:justify-self-end lg:pl-4">
+          <div className="order-2 mx-auto w-full max-w-[220px] sm:max-w-[280px] lg:col-span-5 lg:mx-0 lg:max-w-none lg:justify-self-end lg:pl-4">
             <div className="lg:ml-auto lg:w-full lg:max-w-[340px]">
               <HeroPortrait />
             </div>

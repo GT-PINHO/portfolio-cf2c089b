@@ -1,4 +1,5 @@
 import Section from "./ui/Section";
+import BrandMarquee from "./ui/BrandMarquee";
 import { RevealGroup, RevealItem } from "./ui/Reveal";
 import { STACK_GROUPS } from "../lib/content";
 
@@ -11,6 +12,12 @@ export default function Stack() {
       title="Núcleo em produção."
       lead="O que uso de fato em performance, tracking, CRM e sistemas. Sem inventário longo."
     >
+      <RevealGroup>
+        <RevealItem className="mb-6">
+          <BrandMarquee />
+        </RevealItem>
+      </RevealGroup>
+
       <RevealGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {STACK_GROUPS.map((g) => (
           <RevealItem key={g.label}>

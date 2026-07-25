@@ -1,6 +1,6 @@
 /**
  * Variantes Framer Motion reutilizáveis.
- * Cascata "bloco a bloco" no scroll — ritmo cinematográfico, sem scroll preso.
+ * Cascata "bloco a bloco" no scroll: ritmo cinematográfico, sem scroll preso.
  */
 
 export const easeOut = [0.22, 1, 0.36, 1] as const;

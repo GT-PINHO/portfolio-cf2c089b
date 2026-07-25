@@ -5,17 +5,17 @@
 export const PROFILE = {
   name: "David Pinho",
   fullName: "David Edson da Silva Pinho",
-  role: "Meta Ads Specialist · Growth Ops, Tracking, CRM & AI Systems",
+  role: "Gestor de Tráfego Pago · MarTech & Growth Ops",
   location: "Americana, SP",
   availability: "Aberto a vagas remotas (CLT/PJ)",
-  proofLine: "R$7M+ em mídia gerenciada · 630 mil+ leads · +3 anos em operações nacionais",
+  proofLine: "R$7M+ em mídia · 630 mil+ leads · Meta Ads nacional + stack proprietária de Growth Ops",
 };
 
 export const HERO = {
   eyebrow: PROFILE.role,
   headline: "Performance que conecta\nmídia, dado e operação.",
   subheadline:
-    "Meta Ads, tracking server-side, integrações CRM e sistemas com IA. Faço a campanha chegar ao comercial com dados e contexto.",
+    "Gestor de tráfego pago focado em Meta Ads, CPL e escala. Também construo tracking, CRM e sistemas MarTech para o lead chegar ao comercial com contexto, sem perder o controle do funil.",
   cta: {
     primary: { label: "Falar no WhatsApp", href: "whatsapp" },
     secondary: { label: "Baixar CV", href: "/Curriculo_David_Pinho.pdf" },
@@ -63,17 +63,17 @@ export const EXPERIENCE = {
   kicker: "Experiência",
   title: "Trajetória em operação real.",
   lead:
-    "Mais de três anos em Meta Ads em operações nacionais de educação, eventos e mentoria. Já gerenciei R$7M+ em mídia e mais de 630 mil leads, com responsabilidade sobre funil e custo.",
+    "Mais de três anos em Meta Ads em operações nacionais de educação e eventos, com diferencial em tracking, CRM e sistemas MarTech quando a escala exige engenharia além do painel de anúncios.",
   roles: [
     {
-      title: "Gestor de Tráfego Pago",
-      org: "IAM Treinamentos · Instituto Academy Mind (Grupo Legacy Eco Holding)",
+      title: "Gestor de Tráfego Pago · MarTech & Growth Ops",
+      org: "Instituto Academy Mind (IAM Treinamentos) · Grupo Legacy Eco Holding",
       meta: "dez/2024 a atual",
       current: true,
       bullets: [
-        "Meta Ads em campanhas nacionais de médio/alto volume, com foco em CPL, escala e qualidade de lead.",
-        "Tracking server-side (GTM, CAPI, Stape) e integrações que levam o lead ao CRM com contexto.",
-        "Painéis e automações para funil, investimento e indicadores no dia a dia da operação.",
+        "Meta Ads nacional com orçamento semanal de R$68 a 98 mil; contribuição em operação com +630 mil leads e R$7 mi em mídia.",
+        "Tracking server-side (GTM/CAPI/Stape) e funil com CPL sob gestão direta em captação recorrente (Masterclasses e Imersões).",
+        "Diferencial MarTech: migração n8n → NestJS/Docker (economia estimada R$ 4.300 a 5.000/mês) e pipeline idempotente HubSpot/ManyChat para 20 a 30k leads/mês.",
       ],
     },
     {
@@ -98,6 +98,8 @@ export type CaseItem = {
   action: string;
   impact: string;
   stack: string[];
+  href?: string;
+  cta?: string;
 };
 
 export const CASES: CaseItem[] = [
@@ -129,16 +131,19 @@ export const CASES: CaseItem[] = [
   },
   {
     id: "a3",
-    sector: "IAM · Growth Ops",
-    title: "Integração CRM, automações e IA na operação",
+    sector: "IAM · MarTech Engineering",
+    title:
+      "Growth Ops: de n8n Cloud para NestJS proprietário com recuperação híbrida de leads",
     context:
-      "No IAM, captura, CRM e acompanhamento ainda dependiam de processos manuais entre mídia e comercial.",
+      "Operação nacional recorrente no Instituto Academy Mind: 20 a 30k leads/mês entre Masterclasses regionais e Imersões.",
     problem:
-      "Retrabalho no cadastro, lead sem contexto e pouca automação no fluxo operacional.",
+      "Gargalos diários no no-code, custo estimado de R$ 4.300 a 4.500/mês (até ~R$ 5.000 no pico de 30k leads) e e-mails digitados errado quebrando CRM e credenciamento.",
     action:
-      "Integrações via API/webhooks, painéis de reconciliação e IA onde acelerava a rotina.",
-    impact: "Lead no CRM com origem; menos trabalho manual e painéis em uso diário.",
-    stack: ["CRM APIs", "Node.js", "Supabase", "IA aplicada"],
+      "API NestJS + Docker no Easypanel, logs no Supabase, HubSpot/ManyChat/Sheets idempotentes e dashboard com Data Cleansing.",
+    impact: "Economia de ~R$ 4.3 a 5k/mês em licenças, taxa de sucesso 100% e base histórica migrada para HubSpot.",
+    stack: ["NestJS", "Docker", "Supabase", "HubSpot", "ManyChat"],
+    href: "/casos/growth-ops-iam",
+    cta: "Ver estudo de caso",
   },
 ];
 
@@ -187,27 +192,29 @@ export const STACK_GROUPS = [
   {
     label: "Tracking / Dados",
     chips: [
-      { name: "GTM", featured: true },
-      { name: "CAPI", featured: true },
-      { name: "Stape / Server-Side", featured: true },
-      { name: "UTM Tracking" },
+      { name: "GTM / Server-Side", featured: true },
+      { name: "CAPI / Stape", featured: true },
+      { name: "UTM → CRM", featured: true },
+      { name: "HubSpot / ManyChat API" },
     ],
   },
   {
-    label: "CRM / Automação",
+    label: "MarTech / Engenharia",
     chips: [
-      { name: "Integração CRM", featured: true },
-      { name: "APIs / Webhooks", featured: true },
-      { name: "Node.js / TypeScript", featured: true },
-      { name: "ManyChat" },
+      { name: "Next.js / React", featured: true },
+      { name: "TypeScript", featured: true },
+      { name: "NestJS / Node.js", featured: true },
+      { name: "Docker / Easypanel", featured: true },
+      { name: "Supabase", featured: true },
+      { name: "Data Cleansing / Idempotência" },
     ],
   },
   {
-    label: "IA / Desenvolvimento",
+    label: "IA / Produto",
     chips: [
       { name: "Claude / Cursor", featured: true },
-      { name: "Supabase", featured: true },
-      { name: "MCP" },
+      { name: "Observabilidade" },
+      { name: "GitOps / CI-CD" },
       { name: "GitHub", href: "https://github.com/GT-PINHO" },
     ],
   },
@@ -216,7 +223,7 @@ export const STACK_GROUPS = [
 export const CONTACT = {
   headline: "Vamos conversar?",
   lead:
-    "Disponível para vagas remotas (CLT/PJ) em Meta Ads, tracking, CRM e sistemas com IA. WhatsApp é o canal mais rápido.",
+    "Disponível para vagas remotas (CLT/PJ) em tráfego pago / Meta Ads, com diferencial em tracking, CRM e Growth Ops. WhatsApp é o canal mais rápido.",
   location: PROFILE.location,
   email: "davidpinho.st@gmail.com",
   whatsapp: "5519997501584",

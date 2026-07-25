@@ -17,26 +17,26 @@ export default function Footer() {
             {PROFILE.name}
           </p>
           <p className="max-w-[42ch] text-center text-[12px] text-muted sm:text-left">
-            Meta Ads Specialist · Growth Ops, Tracking, CRM & AI Systems. © 2026
+            Gestor de Tráfego Pago · MarTech & Growth Ops. © 2026
           </p>
           <button
             type="button"
             onClick={() => setPolicyOpen(true)}
-            className="mt-1 text-[12px] text-muted transition-colors hover:text-accent"
+            className="mt-1 rounded-sm text-[12px] text-muted transition-colors hover:text-accent"
           >
             Privacidade
           </button>
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-5 text-[13px] text-muted">
-          <a href={CV_URL} download={CV_FILENAME} className="hover:text-ink">
+          <a href={CV_URL} download={CV_FILENAME} className="rounded-sm hover:text-ink">
             Baixar CV
           </a>
           <a
             href={CONTACT.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-ink"
+            className="rounded-sm hover:text-ink"
           >
             LinkedIn
           </a>
@@ -44,11 +44,11 @@ export default function Footer() {
             href={CONTACT.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-ink"
+            className="rounded-sm hover:text-ink"
           >
             GitHub
           </a>
-          <a href={`mailto:${CONTACT.email}`} className="hover:text-ink">
+          <a href={`mailto:${CONTACT.email}`} className="rounded-sm hover:text-ink">
             E-mail
           </a>
         </div>

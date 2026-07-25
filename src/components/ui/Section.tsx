@@ -29,7 +29,9 @@ export default function Section({
       <Container>
         <RevealGroup className="mb-8 md:mb-14">
           <RevealItem className="mb-3 flex items-center gap-3">
-            <span className="font-display text-[13px] font-bold text-accent">{index}</span>
+            <span className="font-display text-[13px] font-bold tabular-nums text-accent">
+              {index}
+            </span>
             <span className="h-px w-8 bg-accent/40" />
             <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
               {kicker}
@@ -44,7 +46,9 @@ export default function Section({
 
           {lead && (
             <RevealItem className="mt-4">
-              <p className="max-w-[54ch] text-[1.02rem] leading-relaxed text-soft">{lead}</p>
+              <p className="max-w-[54ch] text-[1.02rem] leading-relaxed text-soft">
+                {lead}
+              </p>
             </RevealItem>
           )}
         </RevealGroup>

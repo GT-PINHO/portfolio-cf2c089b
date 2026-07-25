@@ -129,6 +129,7 @@ export default function Contato() {
                       alt="QR Code para WhatsApp de David Pinho"
                       width={180}
                       height={180}
+                      loading="lazy"
                       className="h-[160px] w-[160px] rounded-lg"
                     />
                   </div>

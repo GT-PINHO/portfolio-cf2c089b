@@ -51,7 +51,7 @@ function useRevealGate(amountDesktop = 0.12) {
   };
 }
 
-/** Bloco individual — entra de baixo ao ficar visível. */
+/** Bloco individual: entra de baixo ao ficar visível. */
 export function Reveal({ children, className, delay = 0, as = "div" }: RevealProps) {
   const { ref, reduce, visible, mobile } = useRevealGate(0.1);
   const MotionTag = motion[as];

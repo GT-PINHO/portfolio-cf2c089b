@@ -1,4 +1,4 @@
-/** Linha do Hero — o glow global fica no AmbientField */
+/** Linha do Hero: o glow global fica no AmbientField */
 export default function HeroBackground() {
   return (
     <div className="pointer-events-none absolute inset-0" aria-hidden>

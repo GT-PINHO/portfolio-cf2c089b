@@ -59,6 +59,8 @@ export default function HeroPortrait() {
         <motion.img
           src="/david.png"
           alt="David Pinho"
+          width={680}
+          height={850}
           className="h-full w-full scale-105 object-cover brightness-[0.95] contrast-[1.04] will-change-transform"
           style={{
             objectPosition: "top center",
@@ -66,6 +68,7 @@ export default function HeroPortrait() {
             y: reduce ? 0 : y,
           }}
           loading="eager"
+          fetchPriority="high"
           decoding="async"
         />
       </div>

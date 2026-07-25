@@ -8,7 +8,7 @@ type Block = {
   h: number;
   phase: number;
   speed: number;
-  /** rad/s — giro contínuo */
+  /** rad/s (giro contínuo) */
   spin: number;
   floatAmp: number;
   baseAlpha: number;
@@ -131,7 +131,7 @@ export default function AmbientField() {
       }
     };
 
-    /** Bloco 3D leve (tamanho compacto) — frente + topo + lateral */
+    /** Bloco 3D leve (tamanho compacto) (frente + topo + lateral) */
     const drawBlockLocal = (b: Block, alpha: number, near: number, t: number) => {
       const [r, g, bl] = rgb;
       const lw = b.hub ? 1.25 : 1;

@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { GROWTH_OPS_CASE } from "@/lib/case-growth-ops";
 import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -10,6 +11,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
+    },
+    {
+      url: `${base}${GROWTH_OPS_CASE.path}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
   ];
 }

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import Section from "./ui/Section";
 import { RevealGroup } from "./ui/Reveal";
@@ -17,21 +18,29 @@ function Field({ label, children }: { label: string; children: ReactNode }) {
 }
 
 export default function Casos() {
+  const orderedCases = [...CASES].sort(
+    (a, b) => Number(Boolean(b.href)) - Number(Boolean(a.href))
+  );
+
   return (
     <Section
       id="casos"
       index="04"
       kicker="Casos"
       title="Resultado em operação real."
-      lead="Projetos em produção no IAM e na Intencional. Sem números ou dashboards internos confidenciais, com o contexto da empresa onde rodei."
+      lead="Projetos em produção no IAM e na Intencional, incluindo o estudo de caso completo de engenharia MarTech."
     >
       <RevealGroup className="grid gap-5 lg:grid-cols-3">
-        {CASES.map((c) => (
+        {orderedCases.map((c) => (
           <motion.article
             key={c.id}
             variants={staggerItem}
             whileHover={{ y: -4, transition: springSnappy }}
-            className="group flex flex-col border border-surface-line bg-surface-raised/35 p-6 transition-colors duration-300 hover:border-accent/40 hover:bg-surface-raised/55"
+            className={`group flex flex-col border bg-surface-raised/35 p-6 transition-colors duration-300 hover:bg-surface-raised/55 ${
+              c.href
+                ? "border-accent/40 hover:border-accent/60"
+                : "border-surface-line hover:border-accent/40"
+            }`}
           >
             <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent">
               {c.sector}
@@ -60,6 +69,15 @@ export default function Casos() {
                 </span>
               ))}
             </div>
+
+            {c.href && (
+              <Link
+                href={c.href}
+                className="mt-5 inline-flex items-center gap-1.5 text-[13px] font-semibold text-accent transition-transform group-hover:translate-x-0.5 group-hover:underline"
+              >
+                {c.cta ?? "Ver estudo de caso"} →
+              </Link>
+            )}
           </motion.article>
         ))}
       </RevealGroup>

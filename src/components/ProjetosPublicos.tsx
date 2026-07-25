@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Section from "./ui/Section";
 import { RevealGroup } from "./ui/Reveal";
 import { springSnappy, staggerItem } from "../lib/motion";
-import { CONTACT, PUBLIC_PROJECTS } from "../lib/content";
+import { PUBLIC_PROJECTS } from "../lib/content";
 import { IconExternal } from "./ui/icons";
 
 export default function ProjetosPublicos() {
@@ -58,18 +58,6 @@ export default function ProjetosPublicos() {
           </motion.a>
         ))}
       </RevealGroup>
-
-      <p className="mt-8 text-[13.5px] text-muted">
-        Perfil completo:{" "}
-        <a
-          href={CONTACT.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-accent hover:underline"
-        >
-          github.com/GT-PINHO
-        </a>
-      </p>
     </Section>
   );
 }

@@ -11,10 +11,9 @@ const LINKS = [
   { href: "#experiencia", label: "Experiência" },
   { href: "#casos", label: "Casos" },
   { href: "#stack", label: "Stack" },
-  { href: "#contato", label: "Contato" },
 ] as const;
 
-const SECTION_IDS = LINKS.map((l) => l.href.slice(1));
+const SECTION_IDS = [...LINKS.map((l) => l.href.slice(1)), "contato"];
 const LAST_ID = SECTION_IDS[SECTION_IDS.length - 1];
 
 /** Alinhado a --anchor-offset: nav + folga para o card não colar no header */
@@ -141,8 +140,13 @@ export default function Nav() {
     if (!open) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
     return () => {
       document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKeyDown);
     };
   }, [open]);
 
@@ -169,7 +173,11 @@ export default function Nav() {
           : "border-b border-transparent bg-surface/60 backdrop-blur-md"
       }`}
     >
-      <Container as="nav" className="flex h-header items-center justify-between">
+      <Container
+        as="nav"
+        ariaLabel="Navegação principal"
+        className="flex h-header items-center justify-between"
+      >
         <a
           href="#top"
           onClick={(e) => {
@@ -179,7 +187,7 @@ export default function Nav() {
             window.history.pushState(null, "", "#top");
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="font-display text-lg font-extrabold tracking-tight text-ink"
+          className="font-display text-lg font-extrabold tracking-tight text-ink transition-colors hover:text-accent"
         >
           {PROFILE.name}
         </a>
@@ -194,7 +202,8 @@ export default function Nav() {
                 href={l.href}
                 data-nav-id={sectionId}
                 onClick={(e) => handleNavClick(l.href, e)}
-                className="relative py-1 text-[13px] outline-none transition-colors duration-200"
+                aria-current={isActive ? "location" : undefined}
+                className="relative py-1 text-[13px] transition-colors duration-200 hover:text-ink"
                 style={{ color: isActive ? "var(--ink)" : "var(--muted)" }}
               >
                 {l.label}
@@ -217,7 +226,8 @@ export default function Nav() {
           <a
             href="#contato"
             onClick={(e) => handleNavClick("#contato", e)}
-            className="rounded-full px-4 py-2 text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
+            aria-current={active === "contato" ? "location" : undefined}
+            className="rounded-full px-4 py-2 text-[13px] font-semibold text-white transition-[opacity,box-shadow] hover:opacity-90 aria-[current=location]:shadow-[0_0_0_2px_rgba(245,245,245,0.28)]"
             style={{ background: "var(--accent)" }}
           >
             Conversar
@@ -226,9 +236,11 @@ export default function Nav() {
 
         <button
           type="button"
-          aria-label="Menu"
+          aria-label={open ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={open}
+          aria-controls="menu-mobile"
           onClick={() => setOpen((v) => !v)}
-          className="flex flex-col gap-1.5 p-1.5 lg:hidden"
+          className="flex min-h-11 min-w-11 flex-col items-center justify-center gap-1.5 rounded-lg lg:hidden"
         >
           <span
             className={`h-0.5 w-6 bg-ink transition-transform duration-300 ${open ? "translate-y-2 rotate-45" : ""}`}
@@ -245,6 +257,7 @@ export default function Nav() {
       <AnimatePresence>
         {open && (
           <motion.div
+            id="menu-mobile"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -257,7 +270,8 @@ export default function Nav() {
                   key={l.href}
                   href={l.href}
                   onClick={(e) => handleNavClick(l.href, e)}
-                  className={`rounded-lg px-3 py-3 text-[15px] outline-none transition-colors hover:bg-surface-raised hover:text-ink ${
+                  aria-current={active === l.href.slice(1) ? "location" : undefined}
+                  className={`rounded-lg px-3 py-3 text-[15px] transition-colors hover:bg-surface-raised hover:text-ink ${
                     active === l.href.slice(1) ? "text-ink" : "text-muted"
                   }`}
                 >
@@ -267,6 +281,7 @@ export default function Nav() {
               <a
                 href="#contato"
                 onClick={(e) => handleNavClick("#contato", e)}
+                aria-current={active === "contato" ? "location" : undefined}
                 className="mt-2 rounded-full px-5 py-3 text-center text-[15px] font-semibold text-white"
                 style={{ background: "var(--accent)" }}
               >

@@ -12,21 +12,22 @@ function resolveSiteUrl(): string {
 export const SITE_URL = resolveSiteUrl();
 
 export const SITE = {
-  title: "David Pinho | Meta Ads Specialist · Growth Ops, Tracking, CRM & AI",
-  shortTitle: "David Pinho | Meta Ads Specialist · Growth Ops",
+  title: "David Pinho | Gestor de Tráfego Pago · MarTech & Growth Ops",
+  shortTitle: "David Pinho | Gestor de Tráfego Pago",
   description:
-    "David Pinho, Meta Ads Specialist com foco em Growth Ops. R$7M+ em mídia gerenciada, 630 mil+ leads. Tracking server-side, CRM e IA. Americana, SP. Aberto a vagas remotas.",
+    "David Pinho, Gestor de Tráfego Pago (Meta Ads) com diferencial em MarTech e Growth Ops. R$7M+ em mídia, tracking server-side, CRM e sistemas. Americana, SP. Aberto a vagas remotas.",
   ogImage: "/david.png",
   locale: "pt_BR",
   themeColor: "#0f0f0f",
   keywords: [
+    "Gestor de Tráfego",
+    "tráfego pago",
     "Meta Ads",
     "Growth Ops",
-    "tráfego pago",
+    "MarTech",
     "tracking server-side",
     "GTM",
     "CAPI",
-    "CRM",
     "vagas remotas",
     "David Pinho",
   ],

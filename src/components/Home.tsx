@@ -16,12 +16,15 @@ import CursorFollower from "./ui/CursorFollower";
 export default function Home() {
   return (
     <>
+      <a href="#conteudo" className="skip-link">
+        Ir para o conteúdo
+      </a>
       <AmbientField />
       <CursorFollower />
       <ScrollProgress />
       <div className="relative z-10">
         <Nav />
-        <main>
+        <main id="conteudo">
           <Hero />
           <OQueFaco />
           <ProjetosPublicos />

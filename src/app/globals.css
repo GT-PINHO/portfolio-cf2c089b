@@ -62,6 +62,7 @@ body {
   font-family: var(--body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
 .ambient-glow {
@@ -118,9 +119,70 @@ a {
   text-decoration: none;
 }
 
+button,
+a {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(var(--accent-rgb), 0.14);
+}
+
+button {
+  font: inherit;
+}
+
+:where(a, button):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+:where(h1, h2, h3) {
+  text-wrap: balance;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  transform: translateY(-160%);
+  border-radius: 999px;
+  background: var(--accent);
+  color: #071216;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
 ::selection {
   background: var(--accent);
   color: #0f0f0f;
+}
+
+@keyframes brand-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.brand-marquee {
+  animation: brand-marquee-scroll 42s linear infinite;
+}
+
+.brand-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-marquee {
+    animation: none;
+  }
 }
 
 @layer components {
