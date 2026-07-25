@@ -95,7 +95,7 @@ export default function CaseGrowthOpsPage() {
                   <RevealItem key={stat.label}>
                     <div className="border border-surface-line bg-surface-raised/40 px-4 py-5">
                       <p className="font-display text-[1.65rem] font-bold tracking-tight text-accent sm:text-[1.85rem]">
-                        {"countTo" in stat && typeof stat.countTo === "number" ? (
+                        {typeof stat.countTo === "number" ? (
                           <CountUp
                             to={stat.countTo}
                             fallback={stat.value}

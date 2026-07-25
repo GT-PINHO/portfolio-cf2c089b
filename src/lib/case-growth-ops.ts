@@ -1,5 +1,14 @@
 /** Conteúdo do estudo de caso MarTech / Instituto Academy Mind */
 
+export type ScenarioStat = {
+  label: string;
+  value: string;
+  countTo?: number;
+  prefix?: string;
+  suffix?: string;
+  format?: "plain" | "pt" | "compact-k";
+};
+
 export const GROWTH_OPS_CASE = {
   slug: "growth-ops-iam",
   path: "/casos/growth-ops-iam",
@@ -23,24 +32,24 @@ export const GROWTH_OPS_CASE = {
         countTo: 30,
         suffix: "k",
         prefix: "20 a ",
-        format: "plain" as const,
+        format: "plain",
       },
       {
         label: "Masterclasses",
         value: "45 a 68",
         countTo: 68,
         prefix: "45 a ",
-        format: "plain" as const,
+        format: "plain",
       },
       {
         label: "Imersões / mês",
         value: "2 a 4",
         countTo: 4,
         prefix: "2 a ",
-        format: "plain" as const,
+        format: "plain",
       },
       { label: "Modelo", value: "Recorrente" },
-    ],
+    ] as ScenarioStat[],
   },
 
   challenge: {

@@ -69,16 +69,12 @@ export default function ObservabilityDashboard() {
                 {kpi.label}
               </p>
               <p className="mt-1.5 font-display text-[1.55rem] font-bold leading-none tracking-tight">
-                {"countTo" in kpi && typeof kpi.countTo === "number" ? (
-                  <CountUp
-                    to={kpi.countTo}
-                    fallback={kpi.value}
-                    format="pt"
-                    durationMs={1600}
-                  />
-                ) : (
-                  kpi.value
-                )}
+                <CountUp
+                  to={kpi.countTo}
+                  fallback={kpi.value}
+                  format="pt"
+                  durationMs={1600}
+                />
               </p>
             </div>
           ))}
