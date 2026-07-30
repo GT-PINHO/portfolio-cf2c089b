@@ -11,3 +11,5 @@ out
 !.env.production
 .vercel
 .env*
+tsconfig.tsbuildinfo
+graphify-out/cache/

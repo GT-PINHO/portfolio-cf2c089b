@@ -1,0 +1,23 @@
+{
+  "0": "content.ts",
+  "1": "CaseGrowthOpsPage.tsx",
+  "2": "motion.ts",
+  "3": "compilerOptions",
+  "4": "Home.tsx",
+  "5": "package.json",
+  "6": "devDependencies",
+  "7": "main",
+  "8": "Portfólio · David Pinho",
+  "9": "Footer.tsx",
+  "10": "AmbientField.tsx",
+  "11": "BrandMarquee.tsx",
+  "12": "AnimatedCounter.tsx",
+  "13": "mcp.json",
+  "14": "next.config.ts",
+  "15": "next-env.d.ts",
+  "16": "useReducedMotion.ts",
+  "17": "postcss.config.js",
+  "18": "containerStagger",
+  "19": "fadeUp",
+  "20": "tailwind.config.ts"
+}
