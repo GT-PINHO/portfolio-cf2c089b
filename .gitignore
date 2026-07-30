@@ -13,3 +13,4 @@ out
 .env*
 tsconfig.tsbuildinfo
 graphify-out/cache/
+.cursor/skills/
