@@ -52,24 +52,45 @@ export default function CaseGrowthOpsPage() {
                   </p>
                 </RevealItem>
                 <RevealItem className="mt-4">
-                  <h1 className="max-w-[22ch] font-display text-[clamp(1.75rem,5.5vw,3.1rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-ink">
+                  <h1 className="max-w-[20ch] font-display text-[clamp(1.95rem,5.4vw,3.35rem)] font-extrabold leading-[1.04] tracking-[-0.035em] text-ink">
                     {c.title}
                   </h1>
                 </RevealItem>
                 <RevealItem className="mt-5">
-                  <p className="max-w-[62ch] text-[1.05rem] leading-relaxed text-soft">
+                  <p className="max-w-[62ch] text-[1.02rem] leading-[1.65] text-soft sm:text-[1.06rem]">
                     {c.subtitle}
                   </p>
                 </RevealItem>
-                <RevealItem className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-muted">
-                  <span>
-                    Cliente: <span className="text-soft">{c.client}</span>
-                  </span>
-                  <span className="hidden text-surface-line sm:inline">·</span>
-                  <span>
-                    Papel: <span className="text-soft">{c.role}</span>
-                  </span>
+                <RevealItem className="mt-7 flex flex-col gap-4 sm:flex-row sm:gap-10">
+                  <div>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
+                      Cliente
+                    </p>
+                    <p className="mt-1 text-[13.5px] text-soft">{c.client}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
+                      Papel
+                    </p>
+                    <p className="mt-1 text-[13.5px] text-soft">{c.role}</p>
+                  </div>
                 </RevealItem>
+              </RevealGroup>
+
+              <RevealGroup className="mt-10 grid grid-cols-1 border-t border-surface-line/70 sm:mt-12 sm:grid-cols-3">
+                {c.heroHighlights.map((item) => (
+                  <RevealItem
+                    key={item.label}
+                    className="border-b border-surface-line/70 py-5 last:border-b-0 sm:border-b-0 sm:border-r sm:border-surface-line/70 sm:px-6 sm:py-6 first:sm:pl-0 last:sm:border-r-0 last:sm:pr-0"
+                  >
+                    <p className="font-display text-[clamp(1.7rem,3.5vw,2.2rem)] font-bold tracking-tight text-accent tabular-nums">
+                      {item.value}
+                    </p>
+                    <p className="mt-1.5 text-[11px] uppercase tracking-[0.14em] text-muted">
+                      {item.label}
+                    </p>
+                  </RevealItem>
+                ))}
               </RevealGroup>
             </Container>
           </section>

@@ -13,13 +13,17 @@ export const GROWTH_OPS_CASE = {
   slug: "growth-ops-iam",
   path: "/casos/growth-ops-iam",
   sector: "Instituto Academy Mind · MarTech",
-  kicker: "Estudo de caso · Engenharia de MarTech",
-  title:
-    "Arquitetura de Growth Ops: Migração de No-Code para Código Proprietário em NestJS e Docker com Recuperação Híbrida de Leads",
+  kicker: "Estudo de caso · Automação de marketing",
+  title: "O tráfego cresceu. A automação antiga não aguentou.",
   subtitle:
-    "Como substitui n8n Cloud por uma API proprietária em NestJS, com observabilidade, limpeza híbrida de dados e taxa de sucesso de 100% em produção.",
+    "No Instituto Academy Mind, as campanhas de Meta Ads geravam de 20 a 30 mil leads por mês. A automação pronta (n8n) falhava todo dia, custava de R$ 4.300 a 5.000/mês e e-mail digitado errado quebrava o CRM e o credenciamento. Eu construí um sistema próprio em NestJS que leva o lead até HubSpot e ManyChat sem duplicar contato, com correção manual quando o dado chega sujo: 100% de sucesso em produção e quase zero custo de licença de automação.",
   client: "Instituto Academy Mind (IAM Treinamentos)",
-  role: "Arquitetura, backend NestJS, integrações e dashboard de observabilidade",
+  role: "Arquitetura, NestJS, integrações e dashboard",
+  heroHighlights: [
+    { value: "100%", label: "Sucesso em produção" },
+    { value: "20 a 30k", label: "Leads sob gestão" },
+    { value: "~R$ 4.5k", label: "Economia mensal" },
+  ],
 
   scenario: {
     title: "O cenário & escala",

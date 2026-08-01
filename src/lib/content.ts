@@ -131,16 +131,15 @@ export const CASES: CaseItem[] = [
   },
   {
     id: "a3",
-    sector: "IAM · MarTech Engineering",
-    title:
-      "Growth Ops: de n8n Cloud para NestJS proprietário com recuperação híbrida de leads",
+    sector: "IAM · Automação de marketing",
+    title: "O tráfego cresceu. A automação antiga não aguentou.",
     context:
       "Operação nacional recorrente no Instituto Academy Mind: 20 a 30k leads/mês entre Masterclasses regionais e Imersões.",
     problem:
-      "Gargalos diários no no-code, custo estimado de R$ 4.300 a 4.500/mês (até ~R$ 5.000 no pico de 30k leads) e e-mails digitados errado quebrando CRM e credenciamento.",
+      "A automação pronta (n8n) falhava todo dia, custava de R$ 4.300 a 4.500/mês (até ~R$ 5.000 no pico) e e-mail digitado errado quebrava CRM e credenciamento.",
     action:
-      "API NestJS + Docker no Easypanel, logs no Supabase, HubSpot/ManyChat/Sheets idempotentes e dashboard com Data Cleansing.",
-    impact: "Economia de ~R$ 4.3 a 5k/mês em licenças, taxa de sucesso 100% e base histórica migrada para HubSpot.",
+      "Sistema próprio em NestJS + Docker, banco Supabase, envio sem duplicidade para HubSpot/ManyChat/Sheets e painel para o suporte corrigir e-mail e reprocessar.",
+    impact: "Economia de ~R$ 4.3 a 5k/mês em licenças, 100% de sucesso em produção e base histórica migrada para HubSpot.",
     stack: ["NestJS", "Docker", "Supabase", "HubSpot", "ManyChat"],
     href: "/casos/growth-ops-iam",
     cta: "Ver estudo de caso",
