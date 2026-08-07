@@ -21,19 +21,27 @@ export const springSnappy = {
 };
 
 export const heroContainer = {
-  hidden: { opacity: 0 },
+  hidden: {},
   visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
+    transition: { staggerChildren: 0.06, delayChildren: 0.08 },
   },
 };
 
 export const heroItem = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 12 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: easeFast },
+    transition: { duration: 0.4, ease: easeFast },
+  },
+};
+
+/** H1: só translateY — nunca opacity 0 com delay (primeiro paint útil). */
+export const heroHeadline = {
+  hidden: { y: 8 },
+  visible: {
+    y: 0,
+    transition: { duration: 0.35, ease: easeFast },
   },
 };
 

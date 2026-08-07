@@ -1,5 +1,8 @@
+"use client";
+
+import { useRef } from "react";
 import { motion } from "framer-motion";
-import { heroContainer, heroItem } from "../../lib/motion";
+import { heroContainer, heroHeadline, heroItem } from "../../lib/motion";
 import { ButtonPrimary, ButtonSecondary } from "../ui/Button";
 import Container from "../ui/Container";
 import HeroBackground from "./HeroBackground";
@@ -7,15 +10,20 @@ import HeroPortrait from "./HeroPortrait";
 import { HERO, PROFILE } from "../../lib/content";
 import { CV_FILENAME } from "../../lib/cv";
 import { whatsappUrl } from "../../lib/contact";
+import { useAmbientMode } from "../../lib/ambient-intensity";
 
 export default function HeroSection() {
+  const rootRef = useRef<HTMLElement>(null);
+  useAmbientMode("hero", "hero", rootRef);
+
   const primaryHref =
     HERO.cta.primary.href === "whatsapp" ? whatsappUrl() : HERO.cta.primary.href;
 
   return (
     <header
+      ref={rootRef}
       id="top"
-      className="relative flex min-h-[100svh] flex-col justify-center pb-10 pt-[5.5rem] sm:pb-section-y sm:pt-24"
+      className="relative flex min-h-[clamp(620px,88svh,860px)] flex-col justify-center pb-6 pt-[5.5rem] sm:pb-8 sm:pt-24"
     >
       <HeroBackground />
 
@@ -42,8 +50,8 @@ export default function HeroSection() {
             </motion.p>
 
             <motion.h1
-              variants={heroItem}
-              className="mt-4 whitespace-pre-line font-display font-extrabold leading-[1.08] tracking-[-0.03em] text-ink sm:mt-5 sm:leading-[1.06]"
+              variants={heroHeadline}
+              className="mt-4 font-display font-extrabold leading-[1.08] tracking-[-0.03em] text-ink sm:mt-5 sm:leading-[1.06]"
               style={{ fontSize: "clamp(1.85rem, 7.2vw, 3.45rem)" }}
             >
               {HERO.headline}
