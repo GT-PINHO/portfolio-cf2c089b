@@ -6,8 +6,11 @@ import { SITE, SITE_URL, absoluteUrl } from "@/lib/site";
 const path = GROWTH_OPS_CASE.path;
 const pageUrl = SITE_URL ? `${SITE_URL}${path}` : path;
 
+/** ≤60 chars — resultado na frente; narrativa completa na description/H1 */
+const CASE_TITLE = "30 mil leads/mês — pipeline reconstruído | David Pinho";
+
 export const metadata: Metadata = {
-  title: "30 mil leads/mês: pipeline reconstruído | David Pinho",
+  title: CASE_TITLE,
   description: GROWTH_OPS_CASE.subtitle,
   alternates: SITE_URL ? { canonical: pageUrl } : undefined,
   openGraph: {
@@ -29,9 +32,16 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "30 mil leads/mês: pipeline reconstruído | David Pinho",
+    title: CASE_TITLE,
     description: GROWTH_OPS_CASE.subtitle,
-    images: [absoluteUrl("/opengraph-image")],
+    images: [
+      {
+        url: absoluteUrl("/twitter-image"),
+        alt: GROWTH_OPS_CASE.kicker,
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
 };
 

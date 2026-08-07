@@ -17,7 +17,7 @@ export const GROWTH_OPS_CASE = {
   title:
     "30 mil leads/mês quebravam a automação. Reconstruí o pipeline e zerei o custo de licença.",
   subtitle:
-    "Substituição do n8n Cloud por uma API proprietária em NestJS, com observabilidade, limpeza híbrida de dados e taxa de processamento sem erro de 100% em produção.",
+    "API NestJS no lugar do n8n Cloud: observabilidade, limpeza híbrida de dados e 100% de processamento sem erro em produção.",
   client: "Instituto Academy Mind (IAM Treinamentos)",
   role: "Arquitetura, NestJS, integrações e dashboard",
   heroHighlights: [

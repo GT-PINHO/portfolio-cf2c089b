@@ -62,7 +62,7 @@ export default function CaseGrowthOpsPage() {
                   </p>
                 </RevealItem>
                 <RevealItem className="mt-4">
-                  <h1 className="max-w-[28ch] font-display text-[clamp(1.875rem,5vw,3rem)] font-extrabold leading-[1.06] tracking-[-0.035em] text-ink">
+                  <h1 className="max-w-[28ch] font-display text-xl sm:text-2xl md:text-3xl font-extrabold leading-[1.06] tracking-[-0.035em] text-ink">
                     {c.title}
                   </h1>
                 </RevealItem>
@@ -93,7 +93,7 @@ export default function CaseGrowthOpsPage() {
                     key={item.label}
                     className="border-b border-surface-line/70 py-5 last:border-b-0 sm:border-b-0 sm:border-r sm:border-surface-line/70 sm:px-6 sm:py-6 first:sm:pl-0 last:sm:border-r-0 last:sm:pr-0"
                   >
-                    <p className="font-display text-[clamp(1.5rem,3.5vw,2rem)] font-bold tracking-tight text-accent tabular-nums">
+                    <p className="font-display text-xl font-bold tracking-tight text-accent tabular-nums">
                       {item.value}
                     </p>
                     <p className="mt-1.5 text-xs uppercase tracking-[0.14em] text-muted">
@@ -114,7 +114,7 @@ export default function CaseGrowthOpsPage() {
             <Container>
               <RevealGroup className="mb-5 md:mb-6">
                 <RevealItem>
-                  <h2 className="font-display text-[clamp(1.5rem,4vw,2rem)] font-bold tracking-tight text-ink">
+                  <h2 className="font-display text-xl font-bold tracking-tight text-ink">
                     {c.scenario.title}
                   </h2>
                 </RevealItem>
@@ -147,15 +147,18 @@ export default function CaseGrowthOpsPage() {
             <Container>
               <RevealGroup className="mb-5">
                 <RevealItem>
-                  <h2 className="font-display text-[clamp(1.5rem,4vw,2rem)] font-bold tracking-tight text-ink">
+                  <h2 className="font-display text-xl font-bold tracking-tight text-ink">
                     {c.challenge.title}
                   </h2>
                 </RevealItem>
               </RevealGroup>
 
-              <RevealGroup className="grid gap-4 md:grid-cols-3">
-                {c.challenge.pains.map((pain) => (
-                  <RevealItem key={pain.title}>
+              <RevealGroup className="grid gap-4 md:grid-cols-2">
+                {c.challenge.pains.map((pain, i) => (
+                  <RevealItem
+                    key={pain.title}
+                    className={i === c.challenge.pains.length - 1 ? "md:col-span-2" : undefined}
+                  >
                     <article className="h-full border border-surface-line border-l-2 border-l-warn bg-surface/40 p-5">
                       <h3 className="font-display text-base font-semibold text-ink">
                         {pain.title}
@@ -175,7 +178,7 @@ export default function CaseGrowthOpsPage() {
             <Container>
               <RevealGroup className="mb-5 md:mb-6">
                 <RevealItem>
-                  <h2 className="font-display text-[clamp(1.5rem,4vw,2rem)] font-bold tracking-tight text-ink">
+                  <h2 className="font-display text-xl font-bold tracking-tight text-ink">
                     {c.solution.title}
                   </h2>
                 </RevealItem>
@@ -224,7 +227,7 @@ export default function CaseGrowthOpsPage() {
             <Container>
               <RevealGroup className="mb-5 md:mb-6">
                 <RevealItem>
-                  <h2 className="font-display text-[clamp(1.5rem,4vw,2rem)] font-bold tracking-tight text-ink">
+                  <h2 className="font-display text-xl font-bold tracking-tight text-ink">
                     Fluxo do lead
                   </h2>
                 </RevealItem>
@@ -245,7 +248,7 @@ export default function CaseGrowthOpsPage() {
             <Container>
               <RevealGroup className="mb-5">
                 <RevealItem>
-                  <h2 className="font-display text-[clamp(1.5rem,4vw,2rem)] font-bold tracking-tight text-ink">
+                  <h2 className="font-display text-xl font-bold tracking-tight text-ink">
                     Dashboard de observabilidade
                   </h2>
                 </RevealItem>
@@ -268,7 +271,7 @@ export default function CaseGrowthOpsPage() {
             <Container>
               <RevealGroup className="mb-5">
                 <RevealItem>
-                  <h2 className="font-display text-[clamp(1.5rem,4vw,2rem)] font-bold tracking-tight text-ink">
+                  <h2 className="font-display text-xl font-bold tracking-tight text-ink">
                     {c.results.title}
                   </h2>
                 </RevealItem>
@@ -314,7 +317,7 @@ export default function CaseGrowthOpsPage() {
         <footer className="border-t border-surface-line py-8">
           <Container className="flex flex-wrap items-center justify-between gap-3 text-sm text-muted">
             <span>© {new Date().getFullYear()} David Pinho</span>
-            <Link href="/" className="hover:text-accent">
+            <Link href="/" className="touch-hit hover:text-accent">
               Portfólio
             </Link>
           </Container>

@@ -24,21 +24,21 @@ export default function Footer() {
           <button
             type="button"
             onClick={() => setPolicyOpen(true)}
-            className="mt-1 rounded-sm text-xs text-muted transition-colors hover:text-accent"
+            className="touch-hit mt-1 rounded-sm text-xs text-muted transition-colors hover:text-accent"
           >
             Privacidade
           </button>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-5 text-sm text-muted">
-          <a href={CV_URL} download={CV_FILENAME} className="rounded-sm hover:text-ink">
+        <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm text-muted">
+          <a href={CV_URL} download={CV_FILENAME} className="touch-hit rounded-sm hover:text-ink">
             Baixar CV
           </a>
           <a
             href={CONTACT.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-sm hover:text-ink"
+            className="touch-hit rounded-sm hover:text-ink"
           >
             LinkedIn
           </a>
@@ -46,11 +46,11 @@ export default function Footer() {
             href={CONTACT.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-sm hover:text-ink"
+            className="touch-hit rounded-sm hover:text-ink"
           >
             GitHub
           </a>
-          <a href={`mailto:${CONTACT.email}`} className="rounded-sm hover:text-ink">
+          <a href={`mailto:${CONTACT.email}`} className="touch-hit rounded-sm hover:text-ink">
             E-mail
           </a>
         </div>

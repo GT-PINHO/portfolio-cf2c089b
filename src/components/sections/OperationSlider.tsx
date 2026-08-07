@@ -141,7 +141,7 @@ export default function OperationSlider({
               <span className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
                 03 — {OPERATION.kicker}
               </span>
-              <h2 className="mt-2 max-w-[22ch] font-display text-3xl font-bold leading-[1.05] tracking-[-0.03em] text-ink md:text-4xl">
+              <h2 className="mt-2 max-w-[22ch] font-display text-xl font-bold leading-[1.05] tracking-[-0.03em] text-ink md:text-2xl">
                 {OPERATION.title}
               </h2>
             </div>
@@ -151,8 +151,7 @@ export default function OperationSlider({
           </div>
 
           <p
-            className="pointer-events-none mt-6 select-none text-center font-display font-extrabold leading-none tracking-[-0.04em] text-ink/90"
-            style={{ fontSize: "clamp(1.75rem, 6vw, 4rem)" }}
+            className="pointer-events-none mt-6 select-none text-center font-display text-2xl font-extrabold leading-none tracking-[-0.04em] text-ink/90 md:text-3xl"
             aria-hidden
           >
             {headerText}
@@ -228,7 +227,7 @@ export default function OperationSlider({
                         exit="exit"
                         transition={{ duration: dur, ease: EASE_SLIDE }}
                       >
-                        <p className="font-display text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold tracking-tight text-accent tabular-nums">
+                        <p className="font-display text-xl font-extrabold tracking-tight text-accent tabular-nums sm:text-2xl">
                           {item.proof.value}
                         </p>
                         <p className="mt-2 text-sm leading-snug text-muted">
@@ -258,7 +257,7 @@ export default function OperationSlider({
                 <ul
                   key={item.id}
                   className={`absolute inset-0 flex flex-col items-end justify-center gap-1.5 text-right transition-opacity duration-300 ${
-                    i === index ? "opacity-100" : "pointer-events-none opacity-0"
+                    i === index ? "visible" : "pointer-events-none invisible"
                   }`}
                 >
                   {item.tools.map((t) => (
@@ -288,7 +287,7 @@ export default function OperationSlider({
                     aria-selected={selected}
                     aria-controls={`op-panel-m-${item.id}`}
                     onClick={() => goTo(i, true)}
-                    className={`snap-start whitespace-nowrap rounded-full border px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface ${
+                    className={`snap-start inline-flex min-h-11 items-center whitespace-nowrap rounded-full border px-4 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface ${
                       selected
                         ? "border-accent/50 bg-accent/15 text-ink"
                         : "border-surface-line text-muted opacity-55"
@@ -315,7 +314,7 @@ export default function OperationSlider({
                   hidden={i !== index}
                   className={i === index ? "block" : "sr-only"}
                 >
-                  <p className="font-display text-[clamp(2rem,8vw,2.75rem)] font-extrabold tracking-tight text-accent tabular-nums">
+                  <p className="font-display text-2xl font-extrabold tracking-tight text-accent tabular-nums">
                     {item.proof.value}
                   </p>
                   <p className="mt-2 text-sm text-muted">{item.proof.unit}</p>
@@ -336,8 +335,7 @@ export default function OperationSlider({
 
           <div className="mt-6">
             <p
-              className="pointer-events-none select-none text-center font-display font-extrabold leading-none tracking-[-0.04em] text-ink/80"
-              style={{ fontSize: "clamp(1.5rem, 5vw, 3rem)" }}
+              className="pointer-events-none select-none text-center font-display text-xl font-extrabold leading-none tracking-[-0.04em] text-ink/80 md:text-2xl"
               aria-hidden
             >
               {footerText}

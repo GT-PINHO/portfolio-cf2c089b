@@ -71,7 +71,13 @@ export default function CursorFollower() {
 
       const half = SIZE / 2;
       el.style.transform = `translate3d(${pos.current.x - half}px, ${pos.current.y - half}px, 0) scale(${scale.current})`;
-      el.style.opacity = String(opacity.current);
+      if (opacity.current < 0.02) {
+        el.style.visibility = "hidden";
+        el.style.opacity = "1";
+      } else {
+        el.style.visibility = "visible";
+        el.style.opacity = String(opacity.current);
+      }
 
       raf.current = requestAnimationFrame(tick);
     };
@@ -105,8 +111,9 @@ export default function CursorFollower() {
         background: "var(--ink)",
         pointerEvents: "none",
         zIndex: 9999,
-        opacity: 0,
-        willChange: "transform, opacity",
+        opacity: 1,
+        visibility: "hidden",
+        willChange: "transform, opacity, visibility",
       }}
     />
   );

@@ -36,7 +36,7 @@ export default function Section({
                 </span>
               </RevealItem>
               <RevealItem className="mt-3">
-                <h2 className="max-w-[22ch] font-display text-4xl font-bold leading-[1.05] tracking-[-0.03em] text-ink md:text-5xl">
+                <h2 className="max-w-[22ch] font-display text-xl font-bold leading-[1.05] tracking-[-0.03em] text-ink md:text-2xl">
                   {title}
                 </h2>
               </RevealItem>

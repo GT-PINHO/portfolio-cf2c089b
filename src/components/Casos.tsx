@@ -1,10 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Section from "./ui/Section";
-import { RevealGroup } from "./ui/Reveal";
+import { RevealGroup, RevealItem } from "./ui/Reveal";
 import { ButtonPrimary } from "./ui/Button";
-import { springSnappy, staggerItem } from "../lib/motion";
 import { CASES } from "../lib/content";
 
 export default function Casos() {
@@ -22,8 +20,8 @@ export default function Casos() {
       <div className="space-y-4">
         {featured && (
           <RevealGroup>
-            <motion.article
-              variants={staggerItem}
+            <RevealItem
+              as="article"
               className="grid gap-8 border border-accent/40 bg-surface-raised/40 p-6 sm:p-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center"
             >
               <div>
@@ -58,7 +56,7 @@ export default function Casos() {
               <div className="grid gap-4 border-t border-surface-line/60 pt-6 sm:grid-cols-3 lg:grid-cols-1 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
                 {(featured.metrics ?? []).map((m) => (
                   <div key={m.label}>
-                    <p className="font-display text-3xl font-bold tracking-tight text-accent tabular-nums sm:text-4xl">
+                    <p className="font-display text-2xl font-bold tracking-tight text-accent tabular-nums sm:text-3xl">
                       {m.value}
                     </p>
                     <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted">
@@ -67,17 +65,17 @@ export default function Casos() {
                   </div>
                 ))}
               </div>
-            </motion.article>
+            </RevealItem>
           </RevealGroup>
         )}
 
         <RevealGroup className="grid gap-5 lg:grid-cols-2 lg:auto-rows-fr lg:items-stretch">
-          {compact.map((c) => (
-            <motion.article
+          {compact.map((c, i) => (
+            <RevealItem
               key={c.id}
-              variants={staggerItem}
-              whileHover={{ y: -3, transition: springSnappy }}
-              className="flex h-full flex-col border border-surface-line bg-surface-raised/35 p-6 transition-colors hover:border-accent/40"
+              as="article"
+              delay={i * 0.06}
+              className="flex h-full flex-col border border-surface-line bg-surface-raised/35 p-6 transition-[transform,border-color] hover:-translate-y-1 hover:border-accent/40"
             >
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
                 {c.sector}
@@ -98,7 +96,7 @@ export default function Casos() {
                   </span>
                 ))}
               </div>
-            </motion.article>
+            </RevealItem>
           ))}
         </RevealGroup>
       </div>

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { CONTACT } from "../lib/content";
 import { whatsappUrl, WHATSAPP_NUMBER } from "../lib/contact";
 import Container from "./ui/Container";
@@ -35,7 +34,7 @@ export default function Contato() {
     <section id="contato" className="section-anchor pb-2 pt-8 md:pb-4 md:pt-10">
       <Container>
         <div className="relative overflow-hidden rounded-2xl border border-surface-line bg-surface-raised p-7 sm:p-10">
-          <div className="relative grid gap-8">
+          <div className="relative">
             <div className="min-w-0">
               <div className="mb-4 flex items-center gap-3">
                 <span className="h-px w-8 bg-accent/40" />
@@ -44,7 +43,7 @@ export default function Contato() {
                 </span>
               </div>
 
-              <h2 className="font-display text-[clamp(1.875rem,4vw,2.75rem)] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink">
+              <h2 className="font-display text-xl font-extrabold leading-[1.05] tracking-[-0.03em] text-ink sm:text-2xl">
                 {CONTACT.headline}
               </h2>
               <p className="mt-4 max-w-[48ch] text-base leading-relaxed text-soft">
@@ -55,12 +54,11 @@ export default function Contato() {
               </p>
 
               <div className="mt-7 flex flex-col gap-3">
-                <motion.a
+                <a
                   href={whatsappUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ y: -3, transition: { type: "spring", stiffness: 280, damping: 26 } }}
-                  className="group flex items-center justify-between gap-4 rounded-xl border border-accent/40 bg-accent/10 px-5 py-5 transition-colors hover:border-accent hover:bg-accent/15 sm:px-6"
+                  className="group flex items-center justify-between gap-4 rounded-xl border border-accent/40 bg-accent/10 px-5 py-5 transition-[transform,colors] hover:-translate-y-0.5 hover:border-accent hover:bg-accent/15 sm:px-6"
                 >
                   <div className="flex min-w-0 items-center gap-4">
                     <span
@@ -84,7 +82,7 @@ export default function Contato() {
                   <span className="hidden shrink-0 text-accent transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:flex">
                     <IconArrow />
                   </span>
-                </motion.a>
+                </a>
 
                 <div className="flex items-center gap-4 rounded-xl border border-accent/20 bg-accent/5 p-4 md:hidden">
                   <div className="shrink-0 rounded-lg bg-white p-1.5">
@@ -105,7 +103,7 @@ export default function Contato() {
                       href={whatsappUrl()}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-1 block truncate text-sm text-soft hover:text-accent"
+                      className="touch-hit mt-1 truncate text-sm text-soft hover:text-accent"
                     >
                       wa.me/{WHATSAPP_NUMBER}
                     </a>
@@ -114,20 +112,19 @@ export default function Contato() {
 
                 <div className="grid min-w-0 gap-3 sm:grid-cols-3">
                   {OTHER_CHANNELS.map((c) => (
-                    <motion.a
+                    <a
                       key={c.k}
                       href={c.href}
                       target={c.href.startsWith("http") ? "_blank" : undefined}
                       rel="noopener noreferrer"
-                      whileHover={{ y: -3, transition: { type: "spring", stiffness: 280, damping: 26 } }}
                       title={c.v}
-                      className="min-w-0 rounded-xl border border-surface-line px-4 py-4 transition-colors hover:border-accent/30"
+                      className="min-w-0 rounded-xl border border-surface-line px-4 py-4 transition-[transform,colors] hover:-translate-y-0.5 hover:border-accent/30"
                     >
                       <p className="text-xs uppercase tracking-[0.12em] text-muted">{c.k}</p>
                       <p className="mt-1 break-all font-display text-sm font-semibold leading-snug text-ink">
                         {c.v}
                       </p>
-                    </motion.a>
+                    </a>
                   ))}
                 </div>
               </div>

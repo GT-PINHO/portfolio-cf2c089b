@@ -40,10 +40,7 @@ export default function HeroSection() {
               ) : null}
             </div>
 
-            <h1
-              className="mt-4 font-display font-extrabold leading-[1.08] tracking-[-0.03em] text-ink sm:mt-5 sm:leading-[1.06]"
-              style={{ fontSize: "clamp(1.85rem, 7.2vw, 3.45rem)" }}
-            >
+            <h1 className="mt-4 font-display text-xl font-extrabold leading-[1.08] tracking-[-0.03em] text-ink sm:mt-5 sm:text-2xl sm:leading-[1.06] md:text-3xl">
               {HERO.headline}
             </h1>
 

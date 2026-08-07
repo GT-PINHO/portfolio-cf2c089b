@@ -1,6 +1,6 @@
 {
-  "0": "KpiStrip.tsx",
-  "1": "CaseGrowthOpsPage.tsx",
+  "0": "ObservabilityDashboard.tsx",
+  "1": "layout.tsx",
   "2": "motion.ts",
   "3": "compilerOptions",
   "4": "Home.tsx",
@@ -21,8 +21,9 @@
   "19": "fadeUp",
   "20": "tailwind.config.ts",
   "21": "icons.tsx",
-  "22": "Casos.tsx",
+  "22": "CaseGrowthOpsPage.tsx",
   "23": "opengraph-image.tsx",
-  "24": "HeroSection.tsx",
-  "25": "staggerContainer"
+  "24": "accept-check.mjs",
+  "25": "staggerContainer",
+  "26": "staggerItem"
 }

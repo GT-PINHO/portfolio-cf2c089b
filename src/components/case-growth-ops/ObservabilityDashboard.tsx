@@ -76,7 +76,7 @@ export default function ObservabilityDashboard() {
                     </span>
                   ) : null}
                 </p>
-                <p className="mt-1.5 font-display text-[1.55rem] font-bold leading-none tracking-tight">
+                <p className="mt-1.5 font-display text-xl font-bold leading-none tracking-tight">
                   <CountUp
                     to={kpi.countTo}
                     fallback={kpi.value}
@@ -116,7 +116,7 @@ export default function ObservabilityDashboard() {
                   <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">
                     {step.stage}
                   </p>
-                  <p className="mt-1.5 font-display text-[1.05rem] font-bold text-ink">
+                  <p className="mt-1.5 font-display text-base font-bold text-ink">
                     {step.value}
                   </p>
                   <p className="mt-1 text-xs text-muted">{step.meta}</p>

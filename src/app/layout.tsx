@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
 import { CONTACT, PROFILE } from "@/lib/content";
 import { SITE, SITE_URL, absoluteUrl } from "@/lib/site";
+import EnableJsReveal from "@/components/ui/EnableJsReveal";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({
@@ -57,7 +58,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: SITE.shortTitle,
     description: SITE.description,
-    images: [ogImagePath],
+    images: [
+      {
+        url: "/twitter-image",
+        alt: SITE.shortTitle,
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
@@ -144,6 +152,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR" className={`${display.variable} ${sans.variable}`}>
       <body>
+        <EnableJsReveal />
         <JsonLd />
         {children}
       </body>

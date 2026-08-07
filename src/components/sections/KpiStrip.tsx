@@ -12,7 +12,7 @@ export default function KpiStrip() {
       <div className="grid grid-cols-2 divide-x divide-y divide-surface-line md:grid-cols-4 md:divide-y-0">
         {KPIS.map((kpi) => (
           <div key={kpi.id} className="px-6 py-7">
-            <p className="font-display text-3xl font-bold tracking-tight text-accent tabular-nums md:text-4xl">
+            <p className="font-display text-2xl font-bold tracking-tight text-accent tabular-nums md:text-3xl">
               {typeof kpi.countTo === "number" ? (
                 <CountUp
                   to={kpi.countTo}

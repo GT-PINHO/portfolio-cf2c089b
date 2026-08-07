@@ -172,15 +172,15 @@ export default function Nav() {
 
   return (
     <>
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        open
-          ? "border-b border-surface-line bg-surface"
-          : scrolled
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+          open
             ? "border-b border-surface-line bg-surface/95 backdrop-blur-xl"
-            : "border-b border-transparent bg-surface/60 backdrop-blur-md"
-      }`}
-    >
+            : scrolled
+              ? "border-b border-surface-line bg-surface/95 backdrop-blur-xl"
+              : "border-b border-transparent bg-surface/60 backdrop-blur-md"
+        }`}
+      >
       <Container
         as="nav"
         ariaLabel="Navegação principal"
@@ -195,7 +195,7 @@ export default function Nav() {
             window.history.pushState(null, "", "#top");
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="font-display text-lg font-extrabold tracking-tight text-ink transition-colors hover:text-accent"
+          className="touch-hit font-display text-lg font-extrabold tracking-tight text-ink transition-colors hover:text-accent"
         >
           {PROFILE.name}
         </a>
@@ -225,8 +225,8 @@ export default function Nav() {
             initial={false}
             animate={{
               left: indicator.left,
-              width: indicator.width,
-              opacity: indicator.ready ? 1 : 0,
+              width: indicator.ready ? indicator.width : 0,
+              opacity: 1,
             }}
             transition={{ type: "spring", stiffness: 420, damping: 34, mass: 0.6 }}
           />
@@ -276,13 +276,10 @@ export default function Nav() {
           <AnimatePresence>
             {open && (
               <>
-                <motion.button
+                {/* Portal no body: evita containing block do backdrop-filter do header */}
+                <button
                   type="button"
                   aria-label="Fechar menu"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
                   className="fixed inset-0 z-[60] bg-black/60 lg:hidden"
                   onClick={close}
                 />
