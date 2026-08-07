@@ -44,7 +44,7 @@ export default function Section({
 
             {lead ? (
               <RevealItem>
-                <p className="text-[1.02rem] leading-relaxed text-muted lg:max-w-[46ch] lg:pb-1 lg:justify-self-end lg:text-right">
+                <p className="text-base leading-relaxed text-muted lg:max-w-[42ch] lg:justify-self-end lg:pb-1 lg:text-left">
                   {lead}
                 </p>
               </RevealItem>

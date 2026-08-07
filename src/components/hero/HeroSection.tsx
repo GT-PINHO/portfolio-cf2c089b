@@ -1,8 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import { motion } from "framer-motion";
-import { heroContainer, heroHeadline, heroItem } from "../../lib/motion";
 import { ButtonPrimary, ButtonSecondary } from "../ui/Button";
 import Container from "../ui/Container";
 import HeroBackground from "./HeroBackground";
@@ -23,51 +21,37 @@ export default function HeroSection() {
     <header
       ref={rootRef}
       id="top"
-      className="relative flex min-h-[clamp(620px,88svh,860px)] flex-col justify-center pb-6 pt-[5.5rem] sm:pb-8 sm:pt-24"
+      className="relative flex min-h-[clamp(560px,80svh,780px)] flex-col justify-center pb-6 pt-[5.5rem] sm:pb-8 sm:pt-24"
     >
       <HeroBackground />
 
       <Container className="relative z-10">
         <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
-          <motion.div
-            variants={heroContainer}
-            initial="hidden"
-            animate="visible"
-            className="order-1 lg:col-span-7"
-          >
-            <motion.p
-              variants={heroItem}
-              className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted"
-            >
+          {/* Above-the-fold sem opacity:0 — legível com JS off / aba em background */}
+          <div className="order-1 lg:col-span-7">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
               {PROFILE.location}
-            </motion.p>
+            </p>
 
-            <motion.p
-              variants={heroItem}
-              className="mt-3 max-w-[40ch] text-[12.5px] leading-snug text-accent"
-            >
-              {HERO.eyebrow}
-            </motion.p>
+            <div className="mt-3 max-w-[40ch] text-xs leading-snug text-accent">
+              <p>{PROFILE.role}</p>
+              {PROFILE.specialty ? (
+                <p className="mt-0.5 text-accent/80">{PROFILE.specialty}</p>
+              ) : null}
+            </div>
 
-            <motion.h1
-              variants={heroHeadline}
+            <h1
               className="mt-4 font-display font-extrabold leading-[1.08] tracking-[-0.03em] text-ink sm:mt-5 sm:leading-[1.06]"
               style={{ fontSize: "clamp(1.85rem, 7.2vw, 3.45rem)" }}
             >
               {HERO.headline}
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              variants={heroItem}
-              className="mt-4 max-w-[44ch] text-[0.98rem] leading-relaxed text-soft sm:mt-5 sm:text-[1.02rem]"
-            >
+            <p className="mt-4 max-w-[44ch] text-base leading-relaxed text-soft sm:mt-5">
               {HERO.subheadline}
-            </motion.p>
+            </p>
 
-            <motion.div
-              variants={heroItem}
-              className="mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center"
-            >
+            <div className="mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">
               <ButtonPrimary href={primaryHref} className="w-full sm:w-auto">
                 {HERO.cta.primary.label}
               </ButtonPrimary>
@@ -78,12 +62,10 @@ export default function HeroSection() {
               >
                 {HERO.cta.secondary.label}
               </ButtonSecondary>
-            </motion.div>
+            </div>
 
-            <motion.p variants={heroItem} className="mt-6 text-[13px] text-muted">
-              {PROFILE.availability}
-            </motion.p>
-          </motion.div>
+            <p className="mt-6 text-sm text-muted">{PROFILE.availability}</p>
+          </div>
 
           <div className="order-2 mx-auto w-full max-w-[220px] sm:max-w-[280px] lg:col-span-5 lg:mx-0 lg:max-w-none lg:justify-self-end lg:pl-4">
             <div className="lg:ml-auto lg:w-full lg:max-w-[340px]">

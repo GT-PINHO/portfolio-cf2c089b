@@ -18,7 +18,7 @@ export function ButtonPrimary({ href, children, className = "", download }: BtnP
       download={download}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      className={`inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[14.5px] font-semibold text-white transition-opacity hover:opacity-90 ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 ${className}`}
       style={{ background: "var(--accent)" }}
       whileHover={{ y: -1 }}
       whileTap={{ scale: 0.98 }}
@@ -43,7 +43,7 @@ export function ButtonSecondary({
       download={download}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      className={`inline-flex items-center justify-center gap-2 rounded-full border border-surface-line px-7 py-3.5 text-[14.5px] font-semibold text-ink transition-colors hover:border-accent/50 hover:text-accent ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-full border border-surface-line px-7 py-3.5 text-sm font-semibold text-ink transition-colors hover:border-accent/50 hover:text-accent ${className}`}
       whileHover={{ y: -1 }}
       whileTap={{ scale: 0.98 }}
       transition={springSoft}

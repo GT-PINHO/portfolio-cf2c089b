@@ -47,7 +47,7 @@ export default function PrivacyPolicyModal({ open, onClose }: Props) {
           >
             <div className="mb-6 flex items-start justify-between gap-4">
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
                   Transparência
                 </p>
                 <h2 id="privacy-title" className="mt-2 font-display text-xl font-bold text-ink">
@@ -64,7 +64,7 @@ export default function PrivacyPolicyModal({ open, onClose }: Props) {
               </button>
             </div>
 
-            <div className="space-y-4 text-[14px] leading-relaxed text-muted">
+            <div className="space-y-4 text-sm leading-relaxed text-muted">
               <p>
                 <strong className="text-ink">Responsável:</strong> David Pinho ({CONTACT.email}),
                 Americana, SP.
@@ -90,13 +90,13 @@ export default function PrivacyPolicyModal({ open, onClose }: Props) {
                 </a>
                 .
               </p>
-              <p className="text-[13px] text-muted/80">Última atualização: julho de 2026.</p>
+              <p className="text-sm text-muted/80">Última atualização: julho de 2026.</p>
             </div>
 
             <button
               type="button"
               onClick={onClose}
-              className="mt-6 w-full rounded-full py-3 text-[14px] font-semibold text-white sm:w-auto sm:px-8"
+              className="mt-6 w-full rounded-full py-3 text-sm font-semibold text-white sm:w-auto sm:px-8"
               style={{ background: "#06b6d4" }}
             >
               Fechar

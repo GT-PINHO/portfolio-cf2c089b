@@ -10,7 +10,7 @@ export default function ProofStrip() {
     >
       <Container>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:gap-6">
-          <p className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
+          <p className="shrink-0 text-xs font-semibold uppercase tracking-[0.2em] text-muted">
             {PROOF_STRIP.label}
           </p>
           <div className="min-w-0 flex-1">

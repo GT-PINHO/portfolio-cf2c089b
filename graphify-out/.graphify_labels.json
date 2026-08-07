@@ -1,5 +1,5 @@
 {
-  "0": "content.ts",
+  "0": "KpiStrip.tsx",
   "1": "CaseGrowthOpsPage.tsx",
   "2": "motion.ts",
   "3": "compilerOptions",
@@ -8,9 +8,9 @@
   "6": "devDependencies",
   "7": "main",
   "8": "Portfólio · David Pinho",
-  "9": "Footer.tsx",
-  "10": "AmbientField.tsx",
-  "11": "BrandMarquee.tsx",
+  "9": "content.ts",
+  "10": "ambient-intensity.ts",
+  "11": "stack-brands.ts",
   "12": "AnimatedCounter.tsx",
   "13": "mcp.json",
   "14": "next.config.ts",
@@ -19,5 +19,10 @@
   "17": "postcss.config.js",
   "18": "containerStagger",
   "19": "fadeUp",
-  "20": "tailwind.config.ts"
+  "20": "tailwind.config.ts",
+  "21": "icons.tsx",
+  "22": "Casos.tsx",
+  "23": "opengraph-image.tsx",
+  "24": "HeroSection.tsx",
+  "25": "staggerContainer"
 }

@@ -27,20 +27,20 @@ export default function Casos() {
               className="grid gap-8 border border-accent/40 bg-surface-raised/40 p-6 sm:p-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center"
             >
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
                   {featured.sector}
                 </p>
-                <h3 className="mt-2.5 font-display text-[1.35rem] font-bold leading-snug tracking-tight text-ink sm:text-[1.5rem]">
+                <h3 className="mt-2.5 font-display text-lg font-bold leading-snug tracking-tight text-ink sm:text-xl">
                   {featured.title}
                 </h3>
-                <p className="mt-4 max-w-[52ch] text-[15px] leading-relaxed text-soft">
+                <p className="mt-4 max-w-[52ch] text-base leading-relaxed text-soft">
                   {featured.impact}
                 </p>
                 <div className="mt-5 flex flex-wrap gap-1.5">
                   {featured.stack.map((t) => (
                     <span
                       key={t}
-                      className="border border-surface-line px-2 py-0.5 text-[11px] text-soft"
+                      className="border border-surface-line px-2 py-0.5 text-xs text-soft"
                     >
                       {t}
                     </span>
@@ -71,28 +71,28 @@ export default function Casos() {
           </RevealGroup>
         )}
 
-        <RevealGroup className="grid gap-5 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:items-stretch">
+        <RevealGroup className="grid gap-5 lg:grid-cols-2 lg:auto-rows-fr lg:items-stretch">
           {compact.map((c) => (
             <motion.article
               key={c.id}
               variants={staggerItem}
               whileHover={{ y: -3, transition: springSnappy }}
-              className="flex h-full flex-col border border-surface-line bg-surface-raised/35 p-6 transition-colors hover:border-accent/40 lg:row-span-2 lg:grid lg:grid-rows-subgrid"
+              className="flex h-full flex-col border border-surface-line bg-surface-raised/35 p-6 transition-colors hover:border-accent/40"
             >
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
                 {c.sector}
               </p>
-              <h3 className="mt-2.5 font-display text-[15.5px] font-bold leading-snug tracking-tight text-ink">
+              <h3 className="mt-2.5 font-display text-base font-bold leading-snug tracking-tight text-ink">
                 {c.title}
               </h3>
-              <p className="mt-4 border-l-2 border-accent pl-3 text-[14px] leading-relaxed text-soft">
+              <p className="mt-4 border-l-2 border-accent pl-3 text-sm leading-relaxed text-soft">
                 {c.impact}
               </p>
               <div className="mt-auto flex flex-wrap gap-1.5 pt-5">
                 {c.stack.map((t) => (
                   <span
                     key={t}
-                    className="border border-surface-line px-2 py-0.5 text-[11px] text-soft"
+                    className="border border-surface-line px-2 py-0.5 text-xs text-soft"
                   >
                     {t}
                   </span>

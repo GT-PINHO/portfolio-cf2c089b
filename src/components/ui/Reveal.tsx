@@ -11,6 +11,7 @@ type RevealProps = {
 };
 
 const ease = [0.16, 1, 0.28, 1] as const;
+const SAFETY_MS = 1500;
 
 function useMobileMotion() {
   const [mobile, setMobile] = useState(false);
@@ -24,7 +25,7 @@ function useMobileMotion() {
   return mobile;
 }
 
-/** Detecta entrada na viewport com limiar baixo (mobile-safe) + fallback. */
+/** Detecta entrada na viewport + timeout de segurança (nunca fica invisível). */
 function useRevealGate(amountDesktop = 0.12) {
   const ref = useRef(null);
   const reduce = useReducedMotion();
@@ -38,10 +39,9 @@ function useRevealGate(amountDesktop = 0.12) {
 
   useEffect(() => {
     if (reduce || inView) return;
-    const ms = mobile ? 700 : 2000;
-    const t = window.setTimeout(() => setForceShow(true), ms);
+    const t = window.setTimeout(() => setForceShow(true), SAFETY_MS);
     return () => window.clearTimeout(t);
-  }, [reduce, inView, mobile]);
+  }, [reduce, inView]);
 
   return {
     ref,
@@ -51,7 +51,6 @@ function useRevealGate(amountDesktop = 0.12) {
   };
 }
 
-/** Bloco individual: entra de baixo ao ficar visível. */
 export function Reveal({ children, className, delay = 0, as = "div" }: RevealProps) {
   const { ref, reduce, visible, mobile } = useRevealGate(0.1);
   const MotionTag = motion[as];
@@ -60,6 +59,7 @@ export function Reveal({ children, className, delay = 0, as = "div" }: RevealPro
   return (
     <MotionTag
       ref={ref}
+      data-reveal=""
       className={className}
       initial={reduce ? false : { opacity: 0, y }}
       animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y }}
@@ -70,13 +70,13 @@ export function Reveal({ children, className, delay = 0, as = "div" }: RevealPro
   );
 }
 
-/** Cascata bloco a bloco nos filhos (RevealItem ou motion.* com variants). */
 export function RevealGroup({ children, className }: { children: ReactNode; className?: string }) {
   const { ref, reduce, visible, mobile } = useRevealGate(0.06);
 
   return (
     <motion.div
       ref={ref}
+      data-reveal=""
       className={className}
       initial={reduce ? false : "hidden"}
       animate={visible ? "visible" : "hidden"}
@@ -110,6 +110,7 @@ export function RevealItem({
 
   return (
     <MotionTag
+      data-reveal=""
       className={className}
       variants={{
         hidden: { opacity: 0, y },

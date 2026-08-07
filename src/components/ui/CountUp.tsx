@@ -6,15 +6,11 @@ import { useEffect, useRef, useState } from "react";
 type CountUpProps = {
   /** Valor final numérico (ex.: 30000, 100, 9414). */
   to: number;
-  /** Texto estático se o visitante preferir reduzir movimento. */
+  /** Texto estático no SSR / reduced-motion / antes da animação. */
   fallback: string;
-  /** Prefixo opcional (ex.: "R$ "). */
   prefix?: string;
-  /** Sufixo opcional (ex.: "%", "k"). */
   suffix?: string;
-  /** Casas decimais. */
   decimals?: number;
-  /** Formatação pt-BR compacta (30 mil → 30k se compact). */
   format?: "plain" | "pt" | "compact-k";
   className?: string;
   durationMs?: number;
@@ -42,7 +38,7 @@ function formatValue(
   return decimals > 0 ? n.toFixed(decimals) : String(Math.round(n));
 }
 
-/** Contador animado ao entrar na viewport (ideia do Number Ticker do 21st). */
+/** Contador animado — sempre emite o valor final no HTML até a animação sobrescrever. */
 export default function CountUp({
   to,
   fallback,
@@ -56,14 +52,15 @@ export default function CountUp({
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.4 });
   const reduce = useReducedMotion();
-  const [value, setValue] = useState(0);
-  const [done, setDone] = useState(false);
+  const [text, setText] = useState(fallback);
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView) {
+      setText(fallback);
+      return;
+    }
     if (reduce) {
-      setValue(to);
-      setDone(true);
+      setText(fallback);
       return;
     }
 
@@ -73,27 +70,22 @@ export default function CountUp({
     const tick = (now: number) => {
       const t = Math.min(1, (now - start) / durationMs);
       const eased = 1 - Math.pow(1 - t, 3);
-      setValue(to * eased);
+      const current = to * eased;
+      setText(`${prefix}${formatValue(current, format, decimals)}${suffix}`);
       if (t < 1) {
         frame = requestAnimationFrame(tick);
       } else {
-        setValue(to);
-        setDone(true);
+        setText(fallback);
       }
     };
 
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [inView, reduce, to, durationMs]);
-
-  const display =
-    reduce || (!inView && !done)
-      ? fallback
-      : `${prefix}${formatValue(value, format, decimals)}${suffix}`;
+  }, [inView, reduce, to, durationMs, fallback, prefix, suffix, format, decimals]);
 
   return (
     <span ref={ref} className={`tabular-nums ${className}`}>
-      {inView || done || reduce ? display : fallback}
+      {text}
     </span>
   );
 }

@@ -145,7 +145,7 @@ export default function OperationSlider({
                 {OPERATION.title}
               </h2>
             </div>
-            <p className="text-[0.98rem] leading-relaxed text-muted lg:max-w-[46ch] lg:text-right">
+            <p className="text-base leading-relaxed text-muted lg:ml-auto lg:max-w-[42ch] lg:text-left">
               {OPERATION.lead}
             </p>
           </div>
@@ -228,7 +228,7 @@ export default function OperationSlider({
                         exit="exit"
                         transition={{ duration: dur, ease: EASE_SLIDE }}
                       >
-                        <p className="font-display text-[clamp(1.8rem,3.2vw,2.6rem)] font-extrabold tracking-tight text-accent tabular-nums">
+                        <p className="font-display text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold tracking-tight text-accent tabular-nums">
                           {item.proof.value}
                         </p>
                         <p className="mt-2 text-sm leading-snug text-muted">
@@ -262,7 +262,7 @@ export default function OperationSlider({
                   }`}
                 >
                   {item.tools.map((t) => (
-                    <li key={t} className="text-[13px] font-medium tracking-wide text-soft">
+                    <li key={t} className="text-sm font-medium tracking-wide text-soft">
                       {t}
                     </li>
                   ))}
@@ -288,7 +288,7 @@ export default function OperationSlider({
                     aria-selected={selected}
                     aria-controls={`op-panel-m-${item.id}`}
                     onClick={() => goTo(i, true)}
-                    className={`snap-start whitespace-nowrap rounded-full border px-4 py-2 text-[13px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface ${
+                    className={`snap-start whitespace-nowrap rounded-full border px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface ${
                       selected
                         ? "border-accent/50 bg-accent/15 text-ink"
                         : "border-surface-line text-muted opacity-55"
@@ -315,7 +315,7 @@ export default function OperationSlider({
                   hidden={i !== index}
                   className={i === index ? "block" : "sr-only"}
                 >
-                  <p className="font-display text-[clamp(2rem,8vw,2.8rem)] font-extrabold tracking-tight text-accent tabular-nums">
+                  <p className="font-display text-[clamp(2rem,8vw,2.75rem)] font-extrabold tracking-tight text-accent tabular-nums">
                     {item.proof.value}
                   </p>
                   <p className="mt-2 text-sm text-muted">{item.proof.unit}</p>
@@ -323,7 +323,7 @@ export default function OperationSlider({
                     {item.tools.map((t) => (
                       <li
                         key={t}
-                        className="border-l border-accent/40 pl-3 text-[14px] text-soft"
+                        className="border-l border-accent/40 pl-3 text-sm text-soft"
                       >
                         {t}
                       </li>

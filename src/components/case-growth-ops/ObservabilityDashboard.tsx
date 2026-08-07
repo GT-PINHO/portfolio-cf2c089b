@@ -23,7 +23,7 @@ function StatusPill({ status }: { status: keyof typeof statusBadge | string }) {
     "bg-white/5 text-soft border-white/10";
   return (
     <span
-      className={`inline-flex rounded-full border px-2 py-0.5 text-[10px] font-medium lowercase tracking-wide ${cls}`}
+      className={`inline-flex rounded-full border px-2 py-0.5 text-xs font-medium lowercase tracking-wide ${cls}`}
     >
       {status.replaceAll("_", " ")}
     </span>
@@ -35,26 +35,26 @@ export default function ObservabilityDashboard() {
 
   return (
     <div className="space-y-3">
-      <p className="text-[12.5px] leading-relaxed text-muted">{d.disclaimer}</p>
+      <p className="text-xs leading-relaxed text-muted">{d.disclaimer}</p>
 
       <div className="overflow-hidden rounded-xl border border-surface-line bg-[#0c0e12] shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/[0.06] px-4 py-3 sm:px-5">
           <div>
-            <p className="font-display text-[15px] font-semibold text-ink">
-              Gestão de Automações
+            <p className="font-display text-sm font-semibold text-ink">
+              Dashboard de observabilidade
             </p>
-            <p className="mt-0.5 text-[12px] text-muted">
+            <p className="mt-0.5 text-xs text-muted">
               Monitoramento operacional do funil automatizado por produto
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded-full border border-white/10 px-2.5 py-1 text-[11px] text-muted">
+            <span className="rounded-full border border-white/10 px-2.5 py-1 text-xs text-muted">
               IPR
             </span>
-            <span className="rounded-full bg-sky-500 px-2.5 py-1 text-[11px] font-semibold text-white">
+            <span className="rounded-full bg-sky-500 px-2.5 py-1 text-xs font-semibold text-white">
               {d.product}
             </span>
-            <span className="hidden rounded-md border border-white/10 px-2.5 py-1 text-[11px] text-muted sm:inline">
+            <span className="hidden rounded-md border border-white/10 px-2.5 py-1 text-xs text-muted sm:inline">
               {d.period}
             </span>
           </div>
@@ -68,7 +68,7 @@ export default function ObservabilityDashboard() {
                 className={`rounded-lg border px-3 py-3 ${toneClass[kpi.tone]}`}
                 title={"legendKey" in kpi && kpi.legendKey === "warning" ? d.warningLegend : undefined}
               >
-                <p className="text-[10px] font-semibold uppercase tracking-[0.14em] opacity-90">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] opacity-90">
                   {kpi.label}
                   {"legendKey" in kpi && kpi.legendKey === "warning" ? (
                     <span className="ml-1 cursor-help opacity-70" aria-label={d.warningLegend}>
@@ -88,7 +88,7 @@ export default function ObservabilityDashboard() {
             ))}
           </div>
 
-          <div className="space-y-1 text-[12px] text-muted">
+          <div className="space-y-1 text-xs text-muted">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <span>Último registro: {d.records[0]?.time}</span>
               <span>
@@ -96,15 +96,15 @@ export default function ObservabilityDashboard() {
                 <strong className="text-emerald-400">{d.successRate}</strong>
               </span>
             </div>
-            <p className="font-mono text-[11px] text-soft/80">{d.successRateFormula}</p>
-            <p className="text-[11px] text-muted/90">
+            <p className="font-mono text-xs text-soft/80">{d.successRateFormula}</p>
+            <p className="text-xs text-muted/90">
               <span className="font-semibold text-amber-300/90">Com aviso:</span>{" "}
               {d.warningLegend}
             </p>
           </div>
 
           <div>
-            <p className="mb-2.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-muted">
+            <p className="mb-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
               Funil de conversão
             </p>
             <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
@@ -113,13 +113,13 @@ export default function ObservabilityDashboard() {
                   key={step.stage}
                   className="rounded-lg border border-white/[0.07] bg-white/[0.02] px-3 py-3"
                 >
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted">
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">
                     {step.stage}
                   </p>
                   <p className="mt-1.5 font-display text-[1.05rem] font-bold text-ink">
                     {step.value}
                   </p>
-                  <p className="mt-1 text-[11px] text-muted">{step.meta}</p>
+                  <p className="mt-1 text-xs text-muted">{step.meta}</p>
                 </div>
               ))}
             </div>
@@ -127,19 +127,19 @@ export default function ObservabilityDashboard() {
 
           <div className="overflow-hidden rounded-lg border border-white/[0.07]">
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.06] px-3 py-2.5">
-              <p className="text-[13px] font-semibold text-ink">Registros recentes</p>
+              <p className="text-sm font-semibold text-ink">Registros recentes</p>
               <div className="flex items-center gap-2">
-                <span className="rounded-md border border-white/10 px-2 py-1 text-[11px] text-muted">
+                <span className="rounded-md border border-white/10 px-2 py-1 text-xs text-muted">
                   Buscar nome ou email
                 </span>
-                <span className="rounded-md border border-sky-500/30 bg-sky-500/10 px-2 py-1 text-[11px] text-sky-300">
+                <span className="rounded-md border border-sky-500/30 bg-sky-500/10 px-2 py-1 text-xs text-sky-300">
                   Corrigido
                 </span>
               </div>
             </div>
             <div className="overflow-x-auto">
-              <table className="min-w-[640px] w-full text-left text-[12px]">
-                <thead className="text-[10px] uppercase tracking-[0.12em] text-muted">
+              <table className="min-w-[640px] w-full text-left text-xs">
+                <thead className="text-xs uppercase tracking-[0.12em] text-muted">
                   <tr className="border-b border-white/[0.06]">
                     <th className="px-3 py-2 font-medium">Data/Hora</th>
                     <th className="px-3 py-2 font-medium">Nome</th>
@@ -162,11 +162,11 @@ export default function ObservabilityDashboard() {
                       <td className="px-3 py-2.5">
                         <StatusPill status={row.status} />
                       </td>
-                      <td className="px-3 py-2.5 font-mono text-[11px] text-muted">
+                      <td className="px-3 py-2.5 font-mono text-xs text-muted">
                         {row.email}
                       </td>
                       <td className="px-3 py-2.5 uppercase tracking-wide">{row.city}</td>
-                      <td className="px-3 py-2.5 font-mono text-[11px] text-muted">
+                      <td className="px-3 py-2.5 font-mono text-xs text-muted">
                         {row.mcId}
                       </td>
                     </tr>
@@ -177,7 +177,7 @@ export default function ObservabilityDashboard() {
           </div>
 
           <div>
-            <p className="mb-2.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-muted">
+            <p className="mb-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
               Atividade em tempo real
             </p>
             <ul className="space-y-2">
@@ -187,13 +187,13 @@ export default function ObservabilityDashboard() {
                   className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-white/[0.06] bg-white/[0.015] px-3 py-2.5"
                 >
                   <div className="flex min-w-0 items-center gap-2.5">
-                    <span className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-[10px] text-accent">
+                    <span className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-xs text-accent">
                       [{item.tag}]
                     </span>
-                    <span className="truncate text-[13px] text-soft">{item.name}</span>
+                    <span className="truncate text-sm text-soft">{item.name}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-[11px] text-muted">{item.time}</span>
+                    <span className="text-xs text-muted">{item.time}</span>
                     <StatusPill status={item.status} />
                   </div>
                 </li>

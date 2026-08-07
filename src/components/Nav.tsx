@@ -1,8 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { PROFILE } from "../lib/content";
+import { CV_FILENAME, CV_URL } from "../lib/cv";
 import Container from "./ui/Container";
 
 const LINKS = [
@@ -26,10 +28,12 @@ function isNearPageBottom(px = 140): boolean {
   return window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - px;
 }
 
-function getActiveSection(): string {
+function getActiveSection(): string | null {
+  // No hero (topo): nenhum item ativo
+  if (window.scrollY < 72) return null;
   if (isNearPageBottom()) return LAST_ID;
 
-  let current = SECTION_IDS[0];
+  let current: string | null = null;
   for (const id of SECTION_IDS) {
     const el = document.getElementById(id);
     if (!el) continue;
@@ -64,7 +68,7 @@ function scrollToSection(id: string) {
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState<string>(SECTION_IDS[0]);
+  const [active, setActive] = useState<string | null>(null);
   const [indicator, setIndicator] = useState({ left: 0, width: 0, ready: false });
 
   const pinnedIdRef = useRef<string | null>(null);
@@ -79,7 +83,7 @@ export default function Nav() {
     }
   };
 
-  const pinActive = useCallback((id: string, holdMs = PIN_MS) => {
+  const pinActive = useCallback((id: string | null, holdMs = PIN_MS) => {
     pinnedIdRef.current = id;
     setActive(id);
     clearPinTimer();
@@ -163,12 +167,18 @@ export default function Nav() {
     }, delay);
   };
 
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   return (
+    <>
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled
-          ? "border-b border-surface-line bg-surface/95 backdrop-blur-xl"
-          : "border-b border-transparent bg-surface/60 backdrop-blur-md"
+        open
+          ? "border-b border-surface-line bg-surface"
+          : scrolled
+            ? "border-b border-surface-line bg-surface/95 backdrop-blur-xl"
+            : "border-b border-transparent bg-surface/60 backdrop-blur-md"
       }`}
     >
       <Container
@@ -181,7 +191,7 @@ export default function Nav() {
           onClick={(e) => {
             e.preventDefault();
             close();
-            pinActive(SECTION_IDS[0]);
+            pinActive(null);
             window.history.pushState(null, "", "#top");
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
@@ -201,7 +211,7 @@ export default function Nav() {
                 data-nav-id={sectionId}
                 onClick={(e) => handleNavClick(l.href, e)}
                 aria-current={isActive ? "location" : undefined}
-                className="relative py-1 text-[13px] transition-colors duration-200 hover:text-ink"
+                className="relative py-1 text-sm transition-colors duration-200 hover:text-ink"
                 style={{ color: isActive ? "var(--ink)" : "var(--muted)" }}
               >
                 {l.label}
@@ -222,9 +232,9 @@ export default function Nav() {
           />
 
           <a
-            href="/Curriculo_David_Pinho.pdf"
-            download
-            className="text-[13px] text-muted transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+            href={CV_URL}
+            download={CV_FILENAME}
+            className="text-sm text-muted transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
           >
             CV
           </a>
@@ -233,7 +243,7 @@ export default function Nav() {
             href="#contato"
             onClick={(e) => handleNavClick("#contato", e)}
             aria-current={active === "contato" ? "location" : undefined}
-            className="rounded-full px-4 py-2 text-[13px] font-semibold text-white transition-[opacity,box-shadow] hover:opacity-90 aria-[current=location]:shadow-[0_0_0_2px_rgba(245,245,245,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+            className="rounded-full px-4 py-2 text-sm font-semibold text-white transition-[opacity,box-shadow] hover:opacity-90 aria-[current=location]:shadow-[0_0_0_2px_rgba(245,245,245,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
             style={{ background: "var(--accent)" }}
           >
             Conversar
@@ -259,44 +269,69 @@ export default function Nav() {
           />
         </button>
       </Container>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            id="menu-mobile"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden border-t border-surface-line bg-surface/95 backdrop-blur-xl lg:hidden"
-          >
-            <div className="page-container flex flex-col gap-1 py-5">
-              {LINKS.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  onClick={(e) => handleNavClick(l.href, e)}
-                  aria-current={active === l.href.slice(1) ? "location" : undefined}
-                  className={`rounded-lg px-3 py-3 text-[15px] transition-colors hover:bg-surface-raised hover:text-ink ${
-                    active === l.href.slice(1) ? "text-ink" : "text-muted"
-                  }`}
-                >
-                  {l.label}
-                </a>
-              ))}
-              <a
-                href="#contato"
-                onClick={(e) => handleNavClick("#contato", e)}
-                aria-current={active === "contato" ? "location" : undefined}
-                className="mt-2 rounded-full px-5 py-3 text-center text-[15px] font-semibold text-white"
-                style={{ background: "var(--accent)" }}
-              >
-                Conversar
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </header>
+
+      {mounted &&
+        createPortal(
+          <AnimatePresence>
+            {open && (
+              <>
+                <motion.button
+                  type="button"
+                  aria-label="Fechar menu"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="fixed inset-0 z-[60] bg-black/60 lg:hidden"
+                  onClick={close}
+                />
+                <motion.div
+                  id="menu-mobile"
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                  className="fixed inset-x-0 top-0 z-[70] border-b border-surface-line bg-surface pt-header lg:hidden"
+                >
+                  <div className="page-container flex flex-col gap-1 py-5">
+                    {LINKS.map((l) => (
+                      <a
+                        key={l.href}
+                        href={l.href}
+                        onClick={(e) => handleNavClick(l.href, e)}
+                        aria-current={active === l.href.slice(1) ? "location" : undefined}
+                        className={`rounded-lg px-3 py-3 text-base transition-colors hover:bg-surface-raised hover:text-ink ${
+                          active === l.href.slice(1) ? "text-ink" : "text-muted"
+                        }`}
+                      >
+                        {l.label}
+                      </a>
+                    ))}
+                    <a
+                      href={CV_URL}
+                      download={CV_FILENAME}
+                      onClick={close}
+                      className="rounded-lg px-3 py-3 text-base text-muted transition-colors hover:bg-surface-raised hover:text-ink"
+                    >
+                      CV
+                    </a>
+                    <a
+                      href="#contato"
+                      onClick={(e) => handleNavClick("#contato", e)}
+                      aria-current={active === "contato" ? "location" : undefined}
+                      className="mt-2 rounded-full px-5 py-3 text-center text-base font-semibold text-white"
+                      style={{ background: "var(--accent)" }}
+                    >
+                      Conversar
+                    </a>
+                  </div>
+                </motion.div>
+              </>
+            )}
+          </AnimatePresence>,
+          document.body,
+        )}
+    </>
   );
 }

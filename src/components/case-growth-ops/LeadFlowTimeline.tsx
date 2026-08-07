@@ -11,11 +11,11 @@ export default function LeadFlowTimeline() {
       {steps.map((step) => (
         <RevealItem key={step.id}>
           <div className="h-full rounded-lg border border-surface-line bg-surface-raised/40 p-3.5">
-            <p className="font-mono text-[10px] text-accent/90">{step.id}</p>
-            <p className="mt-1 font-display text-[14px] font-semibold text-ink">
+            <p className="font-mono text-xs text-accent/90">{step.id}</p>
+            <p className="mt-1 font-display text-sm font-semibold text-ink">
               {step.label}
             </p>
-            <p className="mt-1 text-[12.5px] leading-snug text-soft">{step.detail}</p>
+            <p className="mt-1 text-xs leading-snug text-soft">{step.detail}</p>
           </div>
         </RevealItem>
       ))}

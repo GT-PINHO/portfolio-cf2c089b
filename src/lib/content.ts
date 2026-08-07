@@ -5,7 +5,8 @@
 export const PROFILE = {
   name: "David Pinho",
   fullName: "David Edson da Silva Pinho",
-  role: "Gestor de Tráfego Pago · MarTech & Growth Ops",
+  role: "Gestor de Tráfego Pago",
+  specialty: "MarTech & Growth Ops",
   location: "Americana, SP",
   availability: "Aberto a vagas remotas · CLT ou PJ",
   /** @deprecated Migrado para KPIS / KpiStrip — mantido só se algum consumidor antigo ainda ler. */

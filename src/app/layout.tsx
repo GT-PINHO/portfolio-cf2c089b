@@ -17,7 +17,8 @@ const sans = Hanken_Grotesk({
 });
 
 const canonical = SITE_URL ? `${SITE_URL}/` : undefined;
-const ogImage = absoluteUrl(SITE.ogImage);
+const ogImagePath = "/opengraph-image";
+const ogImage = absoluteUrl(ogImagePath);
 
 export const metadata: Metadata = {
   metadataBase: SITE_URL ? new URL(SITE_URL) : undefined,
@@ -44,9 +45,11 @@ export const metadata: Metadata = {
     url: canonical,
     images: [
       {
-        url: SITE.ogImage,
+        url: ogImagePath,
         alt: SITE.shortTitle,
         type: "image/png",
+        width: 1200,
+        height: 630,
       },
     ],
   },
@@ -54,7 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: SITE.shortTitle,
     description: SITE.description,
-    images: [SITE.ogImage],
+    images: [ogImagePath],
   },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],

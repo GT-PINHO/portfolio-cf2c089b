@@ -1,9 +1,12 @@
+"use client";
+
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
-import { scaleIn } from "../../lib/motion";
 
 const MAX = 10;
 
+/** Retrato do hero — sempre visível; parallax só como decoração. */
 export default function HeroPortrait() {
   const reduce = useReducedMotion();
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -41,37 +44,29 @@ export default function HeroPortrait() {
   }, [reduce, mx, my]);
 
   return (
-    <motion.div
-      ref={wrapRef}
-      className="relative w-full"
-      variants={scaleIn}
-      initial="hidden"
-      animate="visible"
-    >
+    <div ref={wrapRef} className="relative w-full">
       <div
-        className="w-full overflow-hidden md:aspect-[4/5]"
+        className="relative w-full overflow-hidden"
         style={{
           borderRadius: "12px",
           aspectRatio: "4 / 5",
           boxShadow: "0 8px 32px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.06)",
         }}
       >
-        <motion.img
-          src="/david.png"
-          alt="David Pinho"
-          width={680}
-          height={850}
-          className="h-full w-full scale-105 object-cover brightness-[0.95] contrast-[1.04] will-change-transform"
-          style={{
-            objectPosition: "top center",
-            x: reduce ? 0 : x,
-            y: reduce ? 0 : y,
-          }}
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-        />
+        <motion.div
+          className="absolute inset-0 will-change-transform"
+          style={{ x: reduce ? 0 : x, y: reduce ? 0 : y }}
+        >
+          <Image
+            src="/david.png"
+            alt="David Pinho"
+            fill
+            priority
+            sizes="(max-width: 640px) 220px, (max-width: 1024px) 280px, 340px"
+            className="scale-105 object-cover object-top brightness-[0.95] contrast-[1.04]"
+          />
+        </motion.div>
       </div>
-    </motion.div>
+    </div>
   );
 }

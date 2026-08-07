@@ -16,19 +16,21 @@ export default function Footer() {
           <p className="font-display text-sm font-bold tracking-tight text-ink">
             {PROFILE.name}
           </p>
-          <p className="max-w-[42ch] text-center text-[12px] text-muted sm:text-left">
-            Gestor de Tráfego Pago · MarTech & Growth Ops. © 2026
+          <p className="max-w-[42ch] text-center text-xs text-muted sm:text-left">
+            {PROFILE.role}
+            {PROFILE.specialty ? ` · ${PROFILE.specialty}` : ""}
           </p>
+          <p className="text-xs text-muted">© {new Date().getFullYear()}</p>
           <button
             type="button"
             onClick={() => setPolicyOpen(true)}
-            className="mt-1 rounded-sm text-[12px] text-muted transition-colors hover:text-accent"
+            className="mt-1 rounded-sm text-xs text-muted transition-colors hover:text-accent"
           >
             Privacidade
           </button>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-5 text-[13px] text-muted">
+        <div className="flex flex-wrap items-center justify-center gap-5 text-sm text-muted">
           <a href={CV_URL} download={CV_FILENAME} className="rounded-sm hover:text-ink">
             Baixar CV
           </a>
