@@ -6,11 +6,9 @@ import { PROFILE } from "../lib/content";
 import Container from "./ui/Container";
 
 const LINKS = [
-  { href: "#fazendo", label: "O que faço" },
-  { href: "#projetos", label: "Projetos" },
-  { href: "#experiencia", label: "Experiência" },
   { href: "#casos", label: "Casos" },
-  { href: "#stack", label: "Stack" },
+  { href: "#experiencia", label: "Experiência" },
+  { href: "#operacao", label: "Operação" },
 ] as const;
 
 const SECTION_IDS = [...LINKS.map((l) => l.href.slice(1)), "contato"];
@@ -224,10 +222,18 @@ export default function Nav() {
           />
 
           <a
+            href="/Curriculo_David_Pinho.pdf"
+            download
+            className="text-[13px] text-muted transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+          >
+            CV
+          </a>
+
+          <a
             href="#contato"
             onClick={(e) => handleNavClick("#contato", e)}
             aria-current={active === "contato" ? "location" : undefined}
-            className="rounded-full px-4 py-2 text-[13px] font-semibold text-white transition-[opacity,box-shadow] hover:opacity-90 aria-[current=location]:shadow-[0_0_0_2px_rgba(245,245,245,0.28)]"
+            className="rounded-full px-4 py-2 text-[13px] font-semibold text-white transition-[opacity,box-shadow] hover:opacity-90 aria-[current=location]:shadow-[0_0_0_2px_rgba(245,245,245,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
             style={{ background: "var(--accent)" }}
           >
             Conversar
