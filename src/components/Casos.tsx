@@ -53,11 +53,13 @@ export default function Casos() {
               {c.impact}
             </p>
 
-            <dl className="mt-5 flex-1 divide-y divide-surface-line/45">
-              <Field label="Contexto">{c.context}</Field>
-              <Field label="Problema">{c.problem}</Field>
-              <Field label="Atuação">{c.action}</Field>
-            </dl>
+            {(c.context || c.problem || c.action) && (
+              <dl className="mt-5 flex-1 divide-y divide-surface-line/45">
+                {c.context && <Field label="Contexto">{c.context}</Field>}
+                {c.problem && <Field label="Problema">{c.problem}</Field>}
+                {c.action && <Field label="Atuação">{c.action}</Field>}
+              </dl>
+            )}
 
             <div className="mt-4 flex flex-wrap gap-1.5 border-t border-surface-line/45 pt-4">
               {c.stack.map((t) => (

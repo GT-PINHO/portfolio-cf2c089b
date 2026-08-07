@@ -56,13 +56,6 @@ export default function HeroSection() {
               {HERO.subheadline}
             </motion.p>
 
-            <motion.p
-              variants={heroItem}
-              className="mt-3 text-[13px] font-medium text-ink/90 sm:mt-4 sm:text-[13.5px]"
-            >
-              {PROFILE.proofLine}
-            </motion.p>
-
             <motion.div
               variants={heroItem}
               className="mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center"
@@ -81,15 +74,6 @@ export default function HeroSection() {
 
             <motion.p variants={heroItem} className="mt-6 text-[13px] text-muted">
               {PROFILE.availability}
-              {" · "}
-              <a
-                href={HERO.openSource.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-accent transition-colors hover:text-ink"
-              >
-                {HERO.openSource.label}
-              </a>
             </motion.p>
           </motion.div>
 
