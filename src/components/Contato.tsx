@@ -33,23 +33,23 @@ export default function Contato() {
   )}`;
 
   return (
-    <section id="contato" className="section-anchor pb-10 pt-4 md:pb-14 md:pt-6">
+    <section id="contato" className="section-anchor pb-4 pt-section-y md:pb-6">
       <Container>
         <Reveal>
-          <div className="relative overflow-hidden rounded-2xl border border-surface-line bg-surface-raised p-7 sm:p-10 lg:p-12">
-            <div className="relative grid gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
-              <div>
+          <div className="relative overflow-hidden rounded-2xl border border-surface-line bg-surface-raised p-7 sm:p-10">
+            <div className="relative grid gap-8 lg:grid-cols-[1fr_auto] lg:items-start">
+              <div className="min-w-0">
                 <div className="mb-4 flex items-center gap-3">
                   <span className="h-px w-8 bg-accent/40" />
                   <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted">
-                    Contato
+                    05 — Contato
                   </span>
                 </div>
 
                 <h2 className="font-display text-[clamp(1.9rem,4.4vw,2.8rem)] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink">
                   {CONTACT.headline}
                 </h2>
-                <p className="mt-5 max-w-[48ch] text-[1.05rem] leading-relaxed text-soft">
+                <p className="mt-4 max-w-[48ch] text-[1.02rem] leading-relaxed text-soft">
                   {CONTACT.lead}
                 </p>
                 <p className="mt-3 text-[14px] text-muted">
@@ -57,7 +57,7 @@ export default function Contato() {
                 </p>
 
                 <motion.div
-                  className="mt-8 flex flex-col gap-3"
+                  className="mt-7 flex flex-col gap-3"
                   variants={staggerContainer}
                   initial="hidden"
                   whileInView="visible"
@@ -71,14 +71,14 @@ export default function Contato() {
                     whileHover={{ y: -3, transition: { type: "spring", stiffness: 280, damping: 26 } }}
                     className="group flex items-center justify-between gap-4 rounded-xl border border-accent/40 bg-accent/10 px-5 py-5 transition-colors hover:border-accent hover:bg-accent/15 sm:px-6"
                   >
-                    <div className="flex items-center gap-4">
+                    <div className="flex min-w-0 items-center gap-4">
                       <span
                         className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white"
                         style={{ background: "var(--accent)" }}
                       >
                         <IconWhatsApp />
                       </span>
-                      <div>
+                      <div className="min-w-0">
                         <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent">
                           WhatsApp
                         </p>
@@ -95,7 +95,34 @@ export default function Contato() {
                     </span>
                   </motion.a>
 
-                  <div className="grid gap-3 sm:grid-cols-3">
+                  {/* QR só em mobile — útil celular→celular */}
+                  <div className="flex items-center gap-4 rounded-xl border border-accent/20 bg-accent/5 p-4 md:hidden">
+                    <div className="shrink-0 rounded-lg bg-white p-1.5">
+                      <img
+                        src={qrSrc}
+                        alt="QR Code para WhatsApp de David Pinho"
+                        width={96}
+                        height={96}
+                        loading="lazy"
+                        className="h-24 w-24 max-w-[180px] rounded-md"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent">
+                        Escanear
+                      </p>
+                      <a
+                        href={whatsappUrl()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-1 block truncate text-[13px] text-soft hover:text-accent"
+                      >
+                        wa.me/{WHATSAPP_NUMBER}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="grid min-w-0 gap-3 sm:grid-cols-3">
                     {OTHER_CHANNELS.map((c) => (
                       <motion.a
                         key={c.k}
@@ -104,44 +131,19 @@ export default function Contato() {
                         rel="noopener noreferrer"
                         variants={staggerItem}
                         whileHover={{ y: -3, transition: { type: "spring", stiffness: 280, damping: 26 } }}
-                        className="rounded-xl border border-surface-line px-4 py-4 transition-colors hover:border-accent/30"
+                        title={c.v}
+                        className="min-w-0 rounded-xl border border-surface-line px-4 py-4 transition-colors hover:border-accent/30"
                       >
                         <p className="text-[10.5px] uppercase tracking-[0.12em] text-muted">
                           {c.k}
                         </p>
-                        <p className="mt-1 font-display text-[14px] font-semibold leading-snug text-ink">
+                        <p className="mt-1 break-all font-display text-[14px] font-semibold leading-snug text-ink">
                           {c.v}
                         </p>
                       </motion.a>
                     ))}
                   </div>
                 </motion.div>
-              </div>
-
-              <div className="hidden lg:flex lg:flex-col lg:items-center lg:text-center">
-                <div className="flex flex-col items-center gap-4 rounded-2xl border border-accent/25 bg-accent/5 p-6">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-accent">
-                    Escanear para WhatsApp
-                  </p>
-                  <div className="rounded-xl bg-white p-2.5">
-                    <img
-                      src={qrSrc}
-                      alt="QR Code para WhatsApp de David Pinho"
-                      width={180}
-                      height={180}
-                      loading="lazy"
-                      className="h-[160px] w-[160px] rounded-lg"
-                    />
-                  </div>
-                  <a
-                    href={whatsappUrl()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[12px] text-accent hover:underline"
-                  >
-                    wa.me/{WHATSAPP_NUMBER}
-                  </a>
-                </div>
               </div>
             </div>
           </div>
