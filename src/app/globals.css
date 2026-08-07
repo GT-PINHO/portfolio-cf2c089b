@@ -104,6 +104,26 @@ body {
     );
 }
 
+/* Em modo ambient, o canvas some atrás das colunas de texto */
+.ambient-field[data-mode="ambient"] .ambient-canvas {
+  -webkit-mask-image: radial-gradient(
+    ellipse 78% 58% at 50% 50%,
+    transparent 18%,
+    black 72%
+  );
+  mask-image: radial-gradient(
+    ellipse 78% 58% at 50% 50%,
+    transparent 18%,
+    black 72%
+  );
+}
+
+.ambient-field[data-mode="hero"] .ambient-canvas,
+.ambient-field[data-mode="reactive"] .ambient-canvas {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ambient-spot {
     background: radial-gradient(
