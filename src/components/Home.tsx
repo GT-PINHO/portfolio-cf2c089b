@@ -5,7 +5,7 @@ import Hero from "./Hero";
 import KpiStrip from "./sections/KpiStrip";
 import Casos from "./Casos";
 import Experiencia from "./Experiencia";
-import OperationSlider from "./sections/OperationSlider";
+import OperationPillars from "./sections/OperationPillars";
 import ProofStrip from "./sections/ProofStrip";
 import Contato from "./Contato";
 import Footer from "./Footer";
@@ -29,7 +29,7 @@ export default function Home() {
           <KpiStrip />
           <Casos />
           <Experiencia />
-          <OperationSlider />
+          <OperationPillars />
           <ProofStrip />
           <Contato />
         </main>

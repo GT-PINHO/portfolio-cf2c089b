@@ -1,11 +1,9 @@
 "use client";
 
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { AnimatePresence, motion } from "framer-motion";
 import { PROFILE } from "../lib/content";
 import { CV_FILENAME, CV_URL } from "../lib/cv";
-import Container from "./ui/Container";
 
 const LINKS = [
   { href: "#casos", label: "Casos" },
@@ -16,7 +14,6 @@ const LINKS = [
 const SECTION_IDS = [...LINKS.map((l) => l.href.slice(1)), "contato"];
 const LAST_ID = SECTION_IDS[SECTION_IDS.length - 1];
 
-/** Alinhado a --anchor-offset: nav + folga para o card não colar no header */
 const HEADER_OFFSET = 104;
 const PIN_MS = 1200;
 
@@ -29,7 +26,6 @@ function isNearPageBottom(px = 140): boolean {
 }
 
 function getActiveSection(): string | null {
-  // No hero (topo): nenhum item ativo
   if (window.scrollY < 72) return null;
   if (isNearPageBottom()) return LAST_ID;
 
@@ -65,16 +61,25 @@ function scrollToSection(id: string) {
   window.scrollTo({ top: getSectionTargetY(id), behavior: "smooth" });
 }
 
+function heroPastThreshold(): boolean {
+  const hero = document.getElementById("top");
+  if (!hero) return window.scrollY > window.innerHeight * 0.7;
+  return window.scrollY > hero.offsetHeight * 0.85;
+}
+
 export default function Nav() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [pastHero, setPastHero] = useState(false);
   const [active, setActive] = useState<string | null>(null);
-  const [indicator, setIndicator] = useState({ left: 0, width: 0, ready: false });
+  const [mounted, setMounted] = useState(false);
+  const [focused, setFocused] = useState(false);
 
   const pinnedIdRef = useRef<string | null>(null);
   const unlockTimerRef = useRef<number | null>(null);
-  const desktopNavRef = useRef<HTMLDivElement>(null);
   const close = () => setOpen(false);
+
+  /** Compacto visual; focus-within / teclado restaura links. */
+  const compact = pastHero && !focused && !open;
 
   const clearPinTimer = () => {
     if (unlockTimerRef.current !== null) {
@@ -94,34 +99,11 @@ export default function Nav() {
     }, holdMs);
   }, []);
 
-  const syncIndicator = useCallback(() => {
-    const root = desktopNavRef.current;
-    if (!root) return;
-    const link = root.querySelector<HTMLElement>(`[data-nav-id="${active}"]`);
-    if (!link) {
-      setIndicator((prev) => ({ ...prev, ready: false }));
-      return;
-    }
-    setIndicator({
-      left: link.offsetLeft,
-      width: link.offsetWidth,
-      ready: true,
-    });
-  }, [active]);
-
-  useLayoutEffect(() => {
-    syncIndicator();
-  }, [syncIndicator]);
-
-  useEffect(() => {
-    window.addEventListener("resize", syncIndicator);
-    return () => window.removeEventListener("resize", syncIndicator);
-  }, [syncIndicator]);
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 16);
-      // Enquanto o clique segura o item, o scroll spy não mexe no ativo
+      setPastHero(heroPastThreshold());
       if (pinnedIdRef.current !== null) {
         setActive(pinnedIdRef.current);
         return;
@@ -134,9 +116,7 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    return () => clearPinTimer();
-  }, []);
+  useEffect(() => () => clearPinTimer(), []);
 
   useEffect(() => {
     if (!open) return;
@@ -167,166 +147,154 @@ export default function Nav() {
     }, delay);
   };
 
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
   return (
     <>
-      <header
-        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-          open
-            ? "border-b border-surface-line bg-surface/95 backdrop-blur-xl"
-            : scrolled
-              ? "border-b border-surface-line bg-surface/95 backdrop-blur-xl"
-              : "border-b border-transparent bg-surface/60 backdrop-blur-md"
-        }`}
-      >
-      <Container
-        as="nav"
-        ariaLabel="Navegação principal"
-        className="flex h-header items-center justify-between"
-      >
-        <a
-          href="#top"
-          onClick={(e) => {
-            e.preventDefault();
-            close();
-            pinActive(null);
-            window.history.pushState(null, "", "#top");
-            window.scrollTo({ top: 0, behavior: "smooth" });
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-gutter pt-3 sm:pt-4">
+        <nav
+          aria-label="Navegação principal"
+          onFocusCapture={() => setFocused(true)}
+          onBlurCapture={(e) => {
+            if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+              setFocused(false);
+            }
           }}
-          className="touch-hit font-display text-lg font-extrabold tracking-tight text-ink transition-colors hover:text-accent"
+          className="nav-pill pointer-events-auto flex items-center gap-3 rounded-full border border-surface-line bg-surface/80 px-3 py-2 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:gap-4 sm:px-5"
         >
-          {PROFILE.name}
-        </a>
-
-        <div ref={desktopNavRef} className="relative hidden items-center gap-5 lg:flex">
-          {LINKS.map((l) => {
-            const sectionId = l.href.slice(1);
-            const isActive = active === sectionId;
-            return (
-              <a
-                key={l.href}
-                href={l.href}
-                data-nav-id={sectionId}
-                onClick={(e) => handleNavClick(l.href, e)}
-                aria-current={isActive ? "location" : undefined}
-                className="relative py-1 text-sm transition-colors duration-200 hover:text-ink"
-                style={{ color: isActive ? "var(--ink)" : "var(--muted)" }}
-              >
-                {l.label}
-              </a>
-            );
-          })}
-
-          <motion.span
-            aria-hidden
-            className="pointer-events-none absolute -bottom-0.5 h-px bg-accent"
-            initial={false}
-            animate={{
-              left: indicator.left,
-              width: indicator.ready ? indicator.width : 0,
-              opacity: 1,
-            }}
-            transition={{ type: "spring", stiffness: 420, damping: 34, mass: 0.6 }}
-          />
-
           <a
-            href={CV_URL}
-            download={CV_FILENAME}
-            className="text-sm text-muted transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+            href="#top"
+            onClick={(e) => {
+              e.preventDefault();
+              close();
+              pinActive(null);
+              window.history.pushState(null, "", "#top");
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="touch-hit shrink-0 font-display text-base font-extrabold tracking-tight text-ink transition-colors hover:text-accent sm:text-lg"
           >
-            CV
+            {PROFILE.name}
           </a>
+
+          <div
+            className={`hidden min-w-0 items-center gap-4 lg:flex ${
+              compact ? "sr-only" : ""
+            }`}
+          >
+            {LINKS.map((l) => {
+              const sectionId = l.href.slice(1);
+              return (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={(e) => handleNavClick(l.href, e)}
+                  aria-current={active === sectionId ? "location" : undefined}
+                  className={`relative py-1 text-sm transition-colors duration-200 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface ${
+                    active === sectionId ? "text-ink" : "text-muted"
+                  }`}
+                >
+                  {l.label}
+                </a>
+              );
+            })}
+            <a
+              href={CV_URL}
+              download={CV_FILENAME}
+              className="text-sm text-muted transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+            >
+              CV
+            </a>
+          </div>
+
+          <div
+            className={`hidden items-center gap-2 lg:flex ${compact ? "" : "hidden"}`}
+            aria-hidden={!compact}
+          >
+            {compact ? (
+              <>
+                <span className="status-pulse h-2 w-2 shrink-0 rounded-full bg-accent" />
+                <span className="max-w-[34ch] truncate text-sm text-ink">
+                  {PROFILE.availability}
+                </span>
+              </>
+            ) : null}
+          </div>
 
           <a
             href="#contato"
             onClick={(e) => handleNavClick("#contato", e)}
             aria-current={active === "contato" ? "location" : undefined}
-            className="rounded-full px-4 py-2 text-sm font-semibold text-white transition-[opacity,box-shadow] hover:opacity-90 aria-[current=location]:shadow-[0_0_0_2px_rgba(245,245,245,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
-            style={{ background: "var(--accent)" }}
+            className="btn-tactile ml-auto shrink-0 rounded-full bg-accent px-3.5 py-2 text-sm font-semibold text-white hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface sm:px-4"
           >
             Conversar
           </a>
-        </div>
 
-        <button
-          type="button"
-          aria-label={open ? "Fechar menu" : "Abrir menu"}
-          aria-expanded={open}
-          aria-controls="menu-mobile"
-          onClick={() => setOpen((v) => !v)}
-          className="flex min-h-11 min-w-11 flex-col items-center justify-center gap-1.5 rounded-lg lg:hidden"
-        >
-          <span
-            className={`h-0.5 w-6 bg-ink transition-transform duration-300 ${open ? "translate-y-2 rotate-45" : ""}`}
-          />
-          <span
-            className={`h-0.5 w-6 bg-ink transition-opacity duration-300 ${open ? "opacity-0" : ""}`}
-          />
-          <span
-            className={`h-0.5 w-6 bg-ink transition-transform duration-300 ${open ? "-translate-y-2 -rotate-45" : ""}`}
-          />
-        </button>
-      </Container>
-    </header>
+          <button
+            type="button"
+            aria-label={open ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={open}
+            aria-controls="menu-mobile"
+            onClick={() => setOpen((v) => !v)}
+            className="flex min-h-11 min-w-11 flex-col items-center justify-center gap-1.5 rounded-lg lg:hidden"
+          >
+            <span
+              className={`h-0.5 w-6 bg-ink transition-transform duration-300 ${open ? "translate-y-2 rotate-45" : ""}`}
+            />
+            <span
+              className={`h-0.5 w-6 bg-ink transition-opacity duration-300 ${open ? "opacity-0" : ""}`}
+            />
+            <span
+              className={`h-0.5 w-6 bg-ink transition-transform duration-300 ${open ? "-translate-y-2 -rotate-45" : ""}`}
+            />
+          </button>
+        </nav>
+      </header>
 
       {mounted &&
+        open &&
         createPortal(
-          <AnimatePresence>
-            {open && (
-              <>
-                {/* Portal no body: evita containing block do backdrop-filter do header */}
-                <button
-                  type="button"
-                  aria-label="Fechar menu"
-                  className="fixed inset-0 z-[60] bg-black/60 lg:hidden"
+          <>
+            <button
+              type="button"
+              aria-label="Fechar menu"
+              className="fixed inset-0 z-[60] bg-black/60 lg:hidden"
+              onClick={close}
+            />
+            <div
+              id="menu-mobile"
+              className="fixed inset-x-0 top-0 z-[70] border-b border-surface-line bg-surface pt-header lg:hidden"
+            >
+              <div className="page-container flex flex-col gap-1 py-5">
+                {LINKS.map((l) => (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    onClick={(e) => handleNavClick(l.href, e)}
+                    aria-current={active === l.href.slice(1) ? "location" : undefined}
+                    className={`rounded-lg px-3 py-3 text-base transition-colors hover:bg-surface-raised hover:text-ink ${
+                      active === l.href.slice(1) ? "text-ink" : "text-muted"
+                    }`}
+                  >
+                    {l.label}
+                  </a>
+                ))}
+                <a
+                  href={CV_URL}
+                  download={CV_FILENAME}
                   onClick={close}
-                />
-                <motion.div
-                  id="menu-mobile"
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                  className="fixed inset-x-0 top-0 z-[70] border-b border-surface-line bg-surface pt-header lg:hidden"
+                  className="rounded-lg px-3 py-3 text-base text-muted transition-colors hover:bg-surface-raised hover:text-ink"
                 >
-                  <div className="page-container flex flex-col gap-1 py-5">
-                    {LINKS.map((l) => (
-                      <a
-                        key={l.href}
-                        href={l.href}
-                        onClick={(e) => handleNavClick(l.href, e)}
-                        aria-current={active === l.href.slice(1) ? "location" : undefined}
-                        className={`rounded-lg px-3 py-3 text-base transition-colors hover:bg-surface-raised hover:text-ink ${
-                          active === l.href.slice(1) ? "text-ink" : "text-muted"
-                        }`}
-                      >
-                        {l.label}
-                      </a>
-                    ))}
-                    <a
-                      href={CV_URL}
-                      download={CV_FILENAME}
-                      onClick={close}
-                      className="rounded-lg px-3 py-3 text-base text-muted transition-colors hover:bg-surface-raised hover:text-ink"
-                    >
-                      CV
-                    </a>
-                    <a
-                      href="#contato"
-                      onClick={(e) => handleNavClick("#contato", e)}
-                      aria-current={active === "contato" ? "location" : undefined}
-                      className="mt-2 rounded-full px-5 py-3 text-center text-base font-semibold text-white"
-                      style={{ background: "var(--accent)" }}
-                    >
-                      Conversar
-                    </a>
-                  </div>
-                </motion.div>
-              </>
-            )}
-          </AnimatePresence>,
+                  CV
+                </a>
+                <a
+                  href="#contato"
+                  onClick={(e) => handleNavClick("#contato", e)}
+                  aria-current={active === "contato" ? "location" : undefined}
+                  className="btn-tactile mt-2 rounded-full bg-accent px-5 py-3 text-center text-base font-semibold text-white"
+                >
+                  Conversar
+                </a>
+              </div>
+            </div>
+          </>,
           document.body,
         )}
     </>

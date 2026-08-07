@@ -43,12 +43,12 @@ export default function Footer() {
             LinkedIn
           </a>
           <a
-            href={CONTACT.github}
+            href={CONTACT.instagram}
             target="_blank"
             rel="noopener noreferrer"
             className="touch-hit rounded-sm hover:text-ink"
           >
-            GitHub
+            Instagram
           </a>
           <a href={`mailto:${CONTACT.email}`} className="touch-hit rounded-sm hover:text-ink">
             E-mail

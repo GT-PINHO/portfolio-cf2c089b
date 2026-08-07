@@ -20,8 +20,8 @@ export default function Experiencia() {
         lead={EXPERIENCE.lead}
       >
         <RevealGroup className="relative ml-1 border-l border-surface-line pl-8 sm:pl-10">
-          {EXPERIENCE.roles.map((r) => (
-            <RevealItem key={r.title} className="relative pb-8 last:pb-0" as="div">
+          {EXPERIENCE.roles.map((r, i) => (
+            <RevealItem key={r.title} className="relative pb-8 last:pb-0" as="div" delay={i * 0.07}>
               <span className="absolute -left-[41px] top-1.5 flex h-3.5 w-3.5 items-center justify-center sm:-left-[49px]">
                 <span className="h-3.5 w-3.5 rounded-full bg-accent ring-4 ring-surface" />
                 {r.current && (

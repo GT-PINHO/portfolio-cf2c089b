@@ -29,7 +29,7 @@ export const GROWTH_OPS_CASE = {
   scenario: {
     title: "O cenário & escala",
     body:
-      "Operação de tráfego recorrente nacional: 20–30k leads/mês entre 45–68 Masterclasses e 2–4 Imersões presenciais.",
+      "Operação de tráfego recorrente nacional: 20-30k leads/mês entre 45-68 Masterclasses e 2-4 Imersões presenciais.",
     stats: [
       {
         label: "Leads / mês",

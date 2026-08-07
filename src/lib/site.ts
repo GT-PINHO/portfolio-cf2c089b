@@ -15,7 +15,7 @@ export const SITE = {
   title: "David Pinho | Gestor de Tráfego Pago · Meta Ads em escala nacional",
   shortTitle: "David Pinho | Gestor de Tráfego Pago",
   description:
-    "Gestor de Tráfego Pago com R$ 68–98k/semana sob gestão em Meta Ads. Tracking, CRM e Growth Ops quando a escala pede. R$7M+ em mídia, 630 mil+ leads. Aberto a vagas remotas CLT/PJ.",
+    "Gestor de Tráfego Pago com R$ 68-98k/semana sob gestão em Meta Ads. Tracking, CRM e Growth Ops quando a escala pede. R$7M+ em mídia, 630 mil+ leads. Aberto a vagas remotas CLT/PJ.",
   ogImage: "/opengraph-image",
   locale: "pt_BR",
   themeColor: "#0f0f0f",

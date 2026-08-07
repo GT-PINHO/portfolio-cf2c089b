@@ -7,7 +7,7 @@ const path = GROWTH_OPS_CASE.path;
 const pageUrl = SITE_URL ? `${SITE_URL}${path}` : path;
 
 /** ≤60 chars — resultado na frente; narrativa completa na description/H1 */
-const CASE_TITLE = "30 mil leads/mês — pipeline reconstruído | David Pinho";
+const CASE_TITLE = "30 mil leads/mês: pipeline reconstruído | David Pinho";
 
 export const metadata: Metadata = {
   title: CASE_TITLE,

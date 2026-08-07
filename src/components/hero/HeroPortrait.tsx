@@ -1,61 +1,22 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
+import { PROFILE } from "../../lib/content";
+import { useParallaxOffset } from "../../hooks/useParallaxOffset";
 
-const MAX = 10;
+const BADGE_ID = "availability-arc";
 
-/** Retrato do hero — sempre visível; parallax só como decoração. */
+/** Retrato do hero — tilt CSS + parallax IO/rAF + badge de disponibilidade. */
 export default function HeroPortrait() {
-  const reduce = useReducedMotion();
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const x = useSpring(mx, { stiffness: 120, damping: 20, mass: 0.4 });
-  const y = useSpring(my, { stiffness: 120, damping: 20, mass: 0.4 });
-
-  useEffect(() => {
-    if (reduce) return;
-    if (window.matchMedia("(hover: none)").matches) return;
-
-    const el = wrapRef.current;
-    if (!el) return;
-
-    const onMove = (e: MouseEvent) => {
-      const rect = el.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width - 0.5;
-      const py = (e.clientY - rect.top) / rect.height - 0.5;
-      mx.set(px * MAX);
-      my.set(py * MAX);
-    };
-
-    const onLeave = () => {
-      mx.set(0);
-      my.set(0);
-    };
-
-    el.addEventListener("mousemove", onMove);
-    el.addEventListener("mouseleave", onLeave);
-    return () => {
-      el.removeEventListener("mousemove", onMove);
-      el.removeEventListener("mouseleave", onLeave);
-    };
-  }, [reduce, mx, my]);
+  const parallaxRef = useParallaxOffset<HTMLDivElement>();
+  const arcText = `${PROFILE.availability} · `;
 
   return (
-    <div ref={wrapRef} className="relative w-full">
-      <div
-        className="relative w-full overflow-hidden"
-        style={{
-          borderRadius: "12px",
-          aspectRatio: "4 / 5",
-          boxShadow: "0 8px 32px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.06)",
-        }}
-      >
-        <motion.div
-          className="absolute inset-0 will-change-transform"
-          style={{ x: reduce ? 0 : x, y: reduce ? 0 : y }}
+    <div ref={parallaxRef} className="will-change-transform">
+      <div className="hero-portrait-stage relative w-full">
+        <div
+          className="hero-portrait-card relative w-full overflow-hidden"
+          style={{ borderRadius: "12px", aspectRatio: "4 / 5" }}
         >
           <Image
             src="/david.png"
@@ -65,7 +26,37 @@ export default function HeroPortrait() {
             sizes="(max-width: 640px) 220px, (max-width: 1024px) 280px, 340px"
             className="scale-105 object-cover object-top brightness-[0.95] contrast-[1.04]"
           />
-        </motion.div>
+        </div>
+
+        <div
+          className="availability-badge pointer-events-none absolute -bottom-3 -left-3 z-10 hidden h-[108px] w-[108px] md:block lg:h-[116px] lg:w-[116px]"
+          aria-hidden="true"
+        >
+          <div className="relative flex h-full w-full items-center justify-center rounded-full bg-accent text-[#071216]">
+            <svg
+              viewBox="0 0 100 100"
+              className="availability-badge__spin absolute inset-0 h-full w-full p-1.5"
+            >
+              <defs>
+                <path
+                  id={BADGE_ID}
+                  d="M 50,50 m -36,0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0"
+                />
+              </defs>
+              <text
+                className="fill-current text-[9px] font-semibold uppercase"
+                style={{ letterSpacing: "0.16em" }}
+              >
+                <textPath href={`#${BADGE_ID}`} startOffset="0%">
+                  {arcText}
+                </textPath>
+              </text>
+            </svg>
+            <span className="relative z-10 text-lg font-bold leading-none" aria-hidden>
+              ↗
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );

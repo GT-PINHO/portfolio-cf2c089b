@@ -15,17 +15,17 @@ export default function Casos() {
       index="01"
       kicker="Casos"
       title="Resultado em operação real."
-      lead="Projetos em produção no IAM e na Intencional — com o estudo de caso de Growth Ops em destaque."
+      lead="Projetos em produção no IAM e na Intencional, com o estudo de caso de Growth Ops em destaque."
     >
       <div className="space-y-4">
         {featured && (
           <RevealGroup>
             <RevealItem
               as="article"
-              className="grid gap-8 border border-accent/40 bg-surface-raised/40 p-6 sm:p-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center"
+              className="card-lift grid gap-8 border border-surface-line bg-surface-raised/35 p-6 sm:p-8 lg:grid-cols-[1.35fr_0.65fr] lg:items-center"
             >
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
                   {featured.sector}
                 </p>
                 <h3 className="mt-2.5 font-display text-lg font-bold leading-snug tracking-tight text-ink sm:text-xl">
@@ -47,19 +47,22 @@ export default function Casos() {
                 {featured.href && (
                   <div className="mt-7">
                     <ButtonPrimary href={featured.href}>
-                      {featured.cta ?? "Ver estudo de caso"} →
+                      {featured.cta ?? "Ver estudo de caso"}{" "}
+                      <span className="link-arrow" aria-hidden>
+                        →
+                      </span>
                     </ButtonPrimary>
                   </div>
                 )}
               </div>
 
-              <div className="grid gap-4 border-t border-surface-line/60 pt-6 sm:grid-cols-3 lg:grid-cols-1 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+              <div className="grid gap-5 border-t border-surface-line pt-6 sm:grid-cols-3 lg:grid-cols-1 lg:gap-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pr-1 lg:pt-0">
                 {(featured.metrics ?? []).map((m) => (
-                  <div key={m.label}>
-                    <p className="font-display text-2xl font-bold tracking-tight text-accent tabular-nums sm:text-3xl">
+                  <div key={m.label} className="min-w-0">
+                    <p className="font-display text-xl font-semibold tracking-tight text-ink tabular-nums whitespace-nowrap sm:text-2xl">
                       {m.value}
                     </p>
-                    <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted">
+                    <p className="mt-1 text-xs uppercase tracking-[0.14em] text-muted">
                       {m.label}
                     </p>
                   </div>
@@ -74,10 +77,10 @@ export default function Casos() {
             <RevealItem
               key={c.id}
               as="article"
-              delay={i * 0.06}
-              className="flex h-full flex-col border border-surface-line bg-surface-raised/35 p-6 transition-[transform,border-color] hover:-translate-y-1 hover:border-accent/40"
+              delay={i * 0.07}
+              className="card-lift flex h-full flex-col border border-surface-line bg-surface-raised/35 p-6"
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
                 {c.sector}
               </p>
               <h3 className="mt-2.5 font-display text-base font-bold leading-snug tracking-tight text-ink">

@@ -1,6 +1,4 @@
-import { motion } from "framer-motion";
 import type { ReactNode } from "react";
-import { springSoft } from "../../lib/motion";
 
 type BtnProps = {
   href: string;
@@ -13,19 +11,15 @@ type BtnProps = {
 export function ButtonPrimary({ href, children, className = "", download }: BtnProps) {
   const isExternal = !download && href.startsWith("http");
   return (
-    <motion.a
+    <a
       href={href}
       download={download}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      className={`inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 ${className}`}
-      style={{ background: "var(--accent)" }}
-      whileHover={{ y: -1 }}
-      whileTap={{ scale: 0.98 }}
-      transition={springSoft}
+      className={`btn-tactile inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface ${className}`}
     >
       {children}
-    </motion.a>
+    </a>
   );
 }
 
@@ -38,17 +32,14 @@ export function ButtonSecondary({
 }: BtnProps) {
   const isExternal = external || (!download && href.startsWith("http"));
   return (
-    <motion.a
+    <a
       href={href}
       download={download}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      className={`inline-flex items-center justify-center gap-2 rounded-full border border-surface-line px-7 py-3.5 text-sm font-semibold text-ink transition-colors hover:border-accent/50 hover:text-accent ${className}`}
-      whileHover={{ y: -1 }}
-      whileTap={{ scale: 0.98 }}
-      transition={springSoft}
+      className={`btn-tactile inline-flex items-center justify-center gap-2 rounded-full border border-surface-line px-7 py-3.5 text-sm font-semibold text-ink hover:border-accent/50 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface ${className}`}
     >
       {children}
-    </motion.a>
+    </a>
   );
 }

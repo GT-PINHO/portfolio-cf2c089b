@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "David Pinho — Gestor de Tráfego Pago · Meta Ads";
+export const alt = "David Pinho · Gestor de Tráfego Pago · Meta Ads";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -52,7 +52,7 @@ export default function OpenGraphImage() {
               maxWidth: 720,
             }}
           >
-            Gestor de Tráfego Pago · R$ 68–98k/semana sob gestão
+            Gestor de Tráfego Pago · R$ 68-98k/semana sob gestão
           </div>
         </div>
         <div

@@ -43,7 +43,7 @@ export const KPIS: KpiItem[] = [
   },
   {
     id: "verba",
-    value: "R$ 68–98k",
+    value: "R$ 68-98k",
     label: "VERBA SEMANAL EM META ADS",
   },
   {
@@ -58,40 +58,47 @@ export const KPIS: KpiItem[] = [
 export type OperationPillar = {
   id: string;
   pillar: string;
+  description: string;
   tools: string[];
   proof: { value: string; unit: string };
-  /** Matiz 0–360 para pulse dos cubos na troca. */
-  accentShift?: number;
+  href?: string;
+  cta?: string;
 };
 
 export const OPERATION_PILLARS: OperationPillar[] = [
   {
     id: "midia",
     pillar: "Meta Ads & Performance",
-    tools: ["Meta Ads", "Funis & CPL / ROAS", "Testes A/B", "Lookalikes & Remarketing"],
-    proof: { value: "R$ 68–98k", unit: "verba semanal sob gestão" },
-    accentShift: 0,
+    description:
+      "Gestão de verba em campanha nacional recorrente, com funil por etapa e teste contínuo de criativo e público.",
+    tools: ["Meta Ads", "CPL / ROAS", "Testes A/B"],
+    proof: { value: "R$ 83k", unit: "verba semanal sob gestão" },
   },
   {
     id: "tracking",
     pillar: "Tracking & Dados",
-    tools: ["GTM / Server-Side", "CAPI / Stape", "UTM → CRM", "Auditoria de sinal"],
-    proof: { value: "Server-side", unit: "menos sinal perdido, decisão confiável" },
-    accentShift: 18,
+    description:
+      "Sinal server-side para o Meta enxergar a conversão certa, e UTM que sobrevive até o CRM.",
+    tools: ["GTM Server-Side", "CAPI / Stape", "UTM → CRM"],
+    proof: { value: "100%", unit: "dos leads com origem rastreada" },
   },
   {
     id: "crm",
     pillar: "CRM & Automação",
-    tools: ["HubSpot API", "ManyChat API", "Webhooks", "Idempotência"],
-    proof: { value: "20–30k", unit: "leads/mês no pipeline" },
-    accentShift: 36,
+    description:
+      "Pipeline que entrega o lead estruturado no comercial, sem duplicidade e sem perda.",
+    tools: ["HubSpot API", "ManyChat API", "Webhooks"],
+    proof: { value: "25k", unit: "leads/mês no pipeline" },
   },
   {
     id: "sistemas",
-    pillar: "IA & Sistemas aplicados",
-    tools: ["NestJS / Node.js", "TypeScript", "Docker / Easypanel", "Supabase", "Claude / Cursor"],
-    proof: { value: "~R$ 4,5k", unit: "economia mensal em licenças" },
-    accentShift: 52,
+    pillar: "IA & Sistemas",
+    description:
+      "API própria no lugar de ferramenta no-code quando o volume passou do que ela aguentava.",
+    tools: ["NestJS", "Docker", "Supabase"],
+    proof: { value: "R$ 4,5k", unit: "economia mensal em licenças" },
+    href: "/casos/growth-ops-iam",
+    cta: "Ver estudo de caso",
   },
 ];
 
@@ -99,8 +106,6 @@ export const OPERATION = {
   kicker: "Operação",
   title: "Tráfego primeiro. Engenharia quando a escala pede.",
   lead: "Meta Ads é o centro. Tracking, CRM e automação entram quando o funil começa a vazar.",
-  headerText: "TRÁFEGO PRIMEIRO",
-  footerText: "EM PRODUÇÃO",
   pillars: OPERATION_PILLARS,
 };
 
@@ -113,11 +118,6 @@ export const PROOF_STRIP = {
       description: "skills de growth-ops para Claude, CI com 20/20 evals",
       href: "https://github.com/GT-PINHO/agent-skills",
     },
-    {
-      title: "GT-PINHO no GitHub",
-      description: null as string | null,
-      href: "https://github.com/GT-PINHO",
-    },
   ],
 };
 
@@ -125,14 +125,14 @@ export const HERO = {
   eyebrow: PROFILE.role,
   headline: "Meta Ads em escala nacional, com o lead chegando inteiro no comercial.",
   subheadline:
-    "Gestor de Tráfego Pago com R$ 68–98k/semana sob gestão. Quando a escala exige, também construo o tracking e a automação por trás do funil.",
+    "Gestor de Tráfego Pago com R$ 68-98k/semana sob gestão. Quando a escala exige, também construo o tracking e a automação por trás do funil.",
   cta: {
     primary: { label: "Falar no WhatsApp", href: "whatsapp" },
     secondary: { label: "Baixar CV", href: "/Curriculo_David_Pinho.pdf" },
   },
 };
 
-/** @deprecated Absorvido por OPERATION / OperationSlider. */
+/** @deprecated Absorvido por OPERATION. */
 export const WHAT_I_DO = {
   kicker: "O que eu faço",
   title: "Não é só tráfego.\nÉ o ciclo completo.",
@@ -141,7 +141,7 @@ export const WHAT_I_DO = {
   pillars: OPERATION_PILLARS.map((p) => ({
     id: p.id,
     title: p.pillar,
-    description: p.proof.unit,
+    description: p.description,
   })),
 };
 
@@ -156,11 +156,11 @@ export const EXPERIENCE = {
       org: "Instituto Academy Mind (IAM Treinamentos) · Grupo Legacy Eco Holding",
       meta: "dez/2024 a atual",
       current: true,
-      highlight: "R$ 68–98k/semana",
+      highlight: "R$ 68-98k/semana",
       bullets: [
         "Meta Ads nacional; contribuição em operação com +630 mil leads e R$7 mi em mídia.",
         "Tracking server-side (GTM/CAPI/Stape) e funil com CPL sob gestão direta em captação recorrente.",
-        "Migração n8n → NestJS/Docker (~R$ 4,5k/mês economizados) e pipeline HubSpot/ManyChat para 20–30k leads/mês.",
+        "Migração n8n → NestJS/Docker (~R$ 4,5k/mês economizados) e pipeline HubSpot/ManyChat para 20-30k leads/mês.",
       ],
     },
     {
@@ -204,7 +204,7 @@ export const CASES: CaseItem[] = [
     featured: true,
     metrics: [
       { value: "100%", label: "sucesso" },
-      { value: "20–30k", label: "leads/mês" },
+      { value: "20 a 30k", label: "leads/mês" },
       { value: "~R$ 4,5k", label: "/mês economizados" },
     ],
     href: "/casos/growth-ops-iam",

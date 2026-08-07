@@ -20,9 +20,9 @@ type RevealProps = {
 /**
  * CSS-first reveal: SSR/HTML sai visível.
  * Só esconde depois de `html.js-reveal` (ligado via double-rAF).
- * Se o relógio/rAF estiver morto, a classe nunca entra e o conteúdo permanece legível.
+ * Dispara com ~15% na viewport; unobserve após revelar.
  */
-function useCssReveal() {
+export function useReveal() {
   const ref = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ function useCssReveal() {
 
     const rect = el.getBoundingClientRect();
     const vh = window.innerHeight || 0;
-    if (rect.top < vh * 0.9 && rect.bottom > 0) {
+    if (rect.top < vh * 0.85 && rect.bottom > 0) {
       reveal();
       return;
     }
@@ -53,7 +53,7 @@ function useCssReveal() {
         reveal();
         io.unobserve(el);
       },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0 },
+      { threshold: 0.15 },
     );
 
     io.observe(el);
@@ -64,7 +64,7 @@ function useCssReveal() {
 }
 
 export function Reveal({ children, className, delay = 0, as = "div" }: RevealProps) {
-  const ref = useCssReveal();
+  const ref = useReveal();
   const Tag = as as ElementType;
   const style: CSSProperties | undefined = delay
     ? ({ ["--reveal-delay"]: `${delay}s` } as CSSProperties)
@@ -93,7 +93,7 @@ export function RevealItem({
   as?: "div" | "li" | "article";
   delay?: number;
 }) {
-  const ref = useCssReveal();
+  const ref = useReveal();
   const Tag = as as ElementType;
   const style: CSSProperties | undefined = delay
     ? ({ ["--reveal-delay"]: `${delay}s` } as CSSProperties)

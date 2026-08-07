@@ -1,6 +1,5 @@
 "use client";
 
-import { useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 type CountUpProps = {
@@ -50,15 +49,31 @@ export default function CountUp({
   durationMs = 1400,
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.4 });
-  const reduce = useReducedMotion();
+  const [inView, setInView] = useState(false);
   const [text, setText] = useState(fallback);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setInView(true);
+          io.unobserve(el);
+        }
+      },
+      { threshold: 0.4 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!inView) {
       setText(fallback);
       return;
     }
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
       setText(fallback);
       return;
@@ -81,7 +96,7 @@ export default function CountUp({
 
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [inView, reduce, to, durationMs, fallback, prefix, suffix, format, decimals]);
+  }, [inView, to, durationMs, fallback, prefix, suffix, format, decimals]);
 
   return (
     <span ref={ref} className={`tabular-nums ${className}`}>

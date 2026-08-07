@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
 import { CONTACT, PROFILE } from "@/lib/content";
 import { SITE, SITE_URL, absoluteUrl } from "@/lib/site";
 import EnableJsReveal from "@/components/ui/EnableJsReveal";
+import GrainOverlay from "@/components/ui/GrainOverlay";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({
@@ -153,6 +154,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pt-BR" className={`${display.variable} ${sans.variable}`}>
       <body>
         <EnableJsReveal />
+        <GrainOverlay />
         <JsonLd />
         {children}
       </body>

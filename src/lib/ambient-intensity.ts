@@ -68,7 +68,7 @@ export function setAmbientMode(id: string, mode: AmbientMode | null) {
   setResolvedMode();
 }
 
-/** Burst de velocidade (~400ms) + shift de matiz — usado pelo OperationSlider. */
+/** Burst de velocidade (~400ms) + shift de matiz — disponível para interações pontuais. */
 export function setPulse(hueShift = 0) {
   state = { ...state, hueShift, pulse: 1 };
   emit();

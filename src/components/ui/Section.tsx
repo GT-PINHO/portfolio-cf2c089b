@@ -31,8 +31,8 @@ export default function Section({
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:items-end">
             <div>
               <RevealItem>
-                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-                  {index} — {kicker}
+                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
+                  {index} · {kicker}
                 </span>
               </RevealItem>
               <RevealItem className="mt-3">

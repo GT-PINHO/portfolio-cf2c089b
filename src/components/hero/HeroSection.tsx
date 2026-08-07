@@ -21,7 +21,7 @@ export default function HeroSection() {
     <header
       ref={rootRef}
       id="top"
-      className="relative flex min-h-[clamp(560px,80svh,780px)] flex-col justify-center pb-6 pt-[5.5rem] sm:pb-8 sm:pt-24"
+      className="relative flex min-h-[clamp(480px,68svh,640px)] flex-col justify-center pb-5 pt-[5.5rem] sm:pb-6 sm:pt-24"
     >
       <HeroBackground />
 
@@ -33,10 +33,10 @@ export default function HeroSection() {
               {PROFILE.location}
             </p>
 
-            <div className="mt-3 max-w-[40ch] text-xs leading-snug text-accent">
+            <div className="mt-3 max-w-[40ch] text-xs leading-snug text-muted">
               <p>{PROFILE.role}</p>
               {PROFILE.specialty ? (
-                <p className="mt-0.5 text-accent/80">{PROFILE.specialty}</p>
+                <p className="mt-0.5 text-muted">{PROFILE.specialty}</p>
               ) : null}
             </div>
 
@@ -61,7 +61,7 @@ export default function HeroSection() {
               </ButtonSecondary>
             </div>
 
-            <p className="mt-6 text-sm text-muted">{PROFILE.availability}</p>
+            <p className="mt-4 text-sm text-muted">{PROFILE.availability}</p>
           </div>
 
           <div className="order-2 mx-auto w-full max-w-[220px] sm:max-w-[280px] lg:col-span-5 lg:mx-0 lg:max-w-none lg:justify-self-end lg:pl-4">

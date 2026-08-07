@@ -1,11 +1,33 @@
+import type { ReactNode } from "react";
 import { CONTACT } from "../lib/content";
 import { whatsappUrl, WHATSAPP_NUMBER } from "../lib/contact";
 import Container from "./ui/Container";
+import { IconInstagram, IconLinkedIn, IconMail } from "./ui/icons";
 
-const OTHER_CHANNELS = [
-  { k: "E-mail", v: CONTACT.email, href: `mailto:${CONTACT.email}` },
-  { k: "LinkedIn", v: "/odavidpinho", href: CONTACT.linkedin },
-  { k: "GitHub", v: "GT-PINHO", href: CONTACT.github },
+const OTHER_CHANNELS: {
+  k: string;
+  v: string;
+  href: string;
+  icon: ReactNode;
+}[] = [
+  {
+    k: "E-mail",
+    v: CONTACT.email,
+    href: `mailto:${CONTACT.email}`,
+    icon: <IconMail className="h-5 w-5" />,
+  },
+  {
+    k: "LinkedIn",
+    v: "/odavidpinho",
+    href: CONTACT.linkedin,
+    icon: <IconLinkedIn className="h-5 w-5" />,
+  },
+  {
+    k: "Instagram",
+    v: "@odavidpinho",
+    href: CONTACT.instagram,
+    icon: <IconInstagram className="h-5 w-5" />,
+  },
 ];
 
 function IconWhatsApp() {
@@ -36,29 +58,24 @@ export default function Contato() {
         <div className="relative overflow-hidden rounded-2xl border border-surface-line bg-surface-raised p-7 sm:p-10">
           <div className="relative">
             <div className="min-w-0">
-              <div className="mb-4 flex items-center gap-3">
-                <span className="h-px w-8 bg-accent/40" />
-                <span className="text-xs font-semibold uppercase tracking-[0.22em] text-muted">
-                  04 — Contato
-                </span>
-              </div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
+                Contato
+              </p>
 
-              <h2 className="font-display text-xl font-extrabold leading-[1.05] tracking-[-0.03em] text-ink sm:text-2xl">
+              <h2 className="mt-3 max-w-[18ch] font-display text-2xl font-extrabold leading-[1.05] tracking-[-0.03em] text-ink sm:text-3xl">
                 {CONTACT.headline}
               </h2>
-              <p className="mt-4 max-w-[48ch] text-base leading-relaxed text-soft">
+              <p className="mt-5 max-w-[40ch] text-base leading-[1.65] text-soft">
                 {CONTACT.lead}
               </p>
-              <p className="mt-3 text-sm text-muted">
-                <strong className="font-medium text-ink">Localização:</strong> {CONTACT.location}
-              </p>
+              <p className="mt-4 text-sm text-muted">{CONTACT.location}</p>
 
-              <div className="mt-7 flex flex-col gap-3">
+              <div className="mt-8 flex flex-col gap-3">
                 <a
                   href={whatsappUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between gap-4 rounded-xl border border-accent/40 bg-accent/10 px-5 py-5 transition-[transform,colors] hover:-translate-y-0.5 hover:border-accent hover:bg-accent/15 sm:px-6"
+                  className="group btn-tactile flex items-center justify-between gap-4 rounded-xl border border-accent/40 bg-accent/10 px-5 py-5 transition-colors hover:border-accent hover:bg-accent/15 sm:px-6"
                 >
                   <div className="flex min-w-0 items-center gap-4">
                     <span
@@ -79,7 +96,7 @@ export default function Contato() {
                       </p>
                     </div>
                   </div>
-                  <span className="hidden shrink-0 text-accent transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:flex">
+                  <span className="link-arrow hidden shrink-0 text-accent sm:flex">
                     <IconArrow />
                   </span>
                 </a>
@@ -118,12 +135,19 @@ export default function Contato() {
                       target={c.href.startsWith("http") ? "_blank" : undefined}
                       rel="noopener noreferrer"
                       title={c.v}
-                      className="min-w-0 rounded-xl border border-surface-line px-4 py-4 transition-[transform,colors] hover:-translate-y-0.5 hover:border-accent/30"
+                      className="group flex min-w-0 items-start gap-3 rounded-xl border border-surface-line px-4 py-4 transition-[transform,colors] hover:-translate-y-0.5 hover:border-accent/30"
                     >
-                      <p className="text-xs uppercase tracking-[0.12em] text-muted">{c.k}</p>
-                      <p className="mt-1 break-all font-display text-sm font-semibold leading-snug text-ink">
-                        {c.v}
-                      </p>
+                      <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-surface-line text-soft transition-colors group-hover:border-accent/40 group-hover:text-accent">
+                        {c.icon}
+                      </span>
+                      <span className="min-w-0">
+                        <p className="text-xs uppercase tracking-[0.12em] text-muted">
+                          {c.k}
+                        </p>
+                        <p className="mt-1 break-all font-display text-sm font-semibold leading-snug text-ink">
+                          {c.v}
+                        </p>
+                      </span>
                     </a>
                   ))}
                 </div>
