@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   alternates: canonical ? { canonical } : undefined,
   openGraph: {
-    type: "website",
+    type: "profile",
     locale: SITE.locale,
     siteName: PROFILE.name,
     title: SITE.shortTitle,

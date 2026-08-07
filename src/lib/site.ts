@@ -12,10 +12,10 @@ function resolveSiteUrl(): string {
 export const SITE_URL = resolveSiteUrl();
 
 export const SITE = {
-  title: "David Pinho | Gestor de Tráfego Pago · MarTech & Growth Ops",
+  title: "David Pinho | Gestor de Tráfego Pago · Meta Ads em escala nacional",
   shortTitle: "David Pinho | Gestor de Tráfego Pago",
   description:
-    "David Pinho, Gestor de Tráfego Pago (Meta Ads) com diferencial em MarTech e Growth Ops. R$7M+ em mídia, tracking server-side, CRM e sistemas. Americana, SP. Aberto a vagas remotas.",
+    "Gestor de Tráfego Pago com R$ 68–98k/semana sob gestão em Meta Ads. Tracking, CRM e Growth Ops quando a escala pede. R$7M+ em mídia, 630 mil+ leads. Aberto a vagas remotas CLT/PJ.",
   ogImage: "/david.png",
   locale: "pt_BR",
   themeColor: "#0f0f0f",
