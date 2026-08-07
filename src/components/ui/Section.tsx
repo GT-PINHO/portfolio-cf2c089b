@@ -27,30 +27,29 @@ export default function Section({
       className={`section-anchor relative ${className || "py-section-y"}`}
     >
       <Container>
-        <RevealGroup className="mb-8 md:mb-14">
-          <RevealItem className="mb-3 flex items-center gap-3">
-            <span className="font-display text-[13px] font-bold tabular-nums text-accent">
-              {index}
-            </span>
-            <span className="h-px w-8 bg-accent/40" />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
-              {kicker}
-            </span>
-          </RevealItem>
+        <RevealGroup className="mb-8 border-b border-surface-line pb-8 md:mb-10">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:items-end">
+            <div>
+              <RevealItem>
+                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
+                  {index} — {kicker}
+                </span>
+              </RevealItem>
+              <RevealItem className="mt-3">
+                <h2 className="max-w-[22ch] font-display text-4xl font-bold leading-[1.05] tracking-[-0.03em] text-ink md:text-5xl">
+                  {title}
+                </h2>
+              </RevealItem>
+            </div>
 
-          <RevealItem>
-            <h2 className="max-w-[22ch] font-display text-[clamp(1.65rem,6.5vw,2.75rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-ink sm:leading-[1.06]">
-              {title}
-            </h2>
-          </RevealItem>
-
-          {lead && (
-            <RevealItem className="mt-4">
-              <p className="max-w-[54ch] text-[1.02rem] leading-relaxed text-soft">
-                {lead}
-              </p>
-            </RevealItem>
-          )}
+            {lead ? (
+              <RevealItem>
+                <p className="text-[1.02rem] leading-relaxed text-muted lg:max-w-[46ch] lg:pb-1 lg:justify-self-end lg:text-right">
+                  {lead}
+                </p>
+              </RevealItem>
+            ) : null}
+          </div>
         </RevealGroup>
 
         <div>{children}</div>
