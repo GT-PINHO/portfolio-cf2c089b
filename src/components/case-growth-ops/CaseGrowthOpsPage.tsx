@@ -44,7 +44,7 @@ export default function CaseGrowthOpsPage() {
 
         <main id="conteudo-case">
           {/* Hero */}
-          <section className="border-b border-surface-line/60 py-12 sm:py-16 md:py-20">
+          <section className="border-b border-surface-line/60 py-8 sm:py-10 md:py-12">
             <Container>
               <RevealGroup>
                 <RevealItem>
@@ -78,7 +78,7 @@ export default function CaseGrowthOpsPage() {
                 </RevealItem>
               </RevealGroup>
 
-              <RevealGroup className="mt-10 grid grid-cols-1 border-t border-surface-line/70 sm:mt-12 sm:grid-cols-3">
+              <RevealGroup className="mt-6 grid grid-cols-1 border-t border-surface-line/70 sm:mt-8 sm:grid-cols-3">
                 {c.heroHighlights.map((item) => (
                   <RevealItem
                     key={item.label}
@@ -97,9 +97,9 @@ export default function CaseGrowthOpsPage() {
           </section>
 
           {/* Cenário */}
-          <section className="py-section-y">
+          <section className="py-10 md:py-12">
             <Container>
-              <RevealGroup className="mb-8 md:mb-10">
+              <RevealGroup className="mb-5 md:mb-6">
                 <RevealItem>
                   <h2 className="font-display text-[clamp(1.45rem,4vw,2.1rem)] font-bold tracking-tight text-ink">
                     {c.scenario.title}
@@ -140,9 +140,9 @@ export default function CaseGrowthOpsPage() {
           </section>
 
           {/* Desafio */}
-          <section className="border-y border-surface-line/60 bg-surface-raised/25 py-section-y">
+          <section className="border-y border-surface-line/60 bg-surface-raised/25 py-10 md:py-12">
             <Container>
-              <RevealGroup className="mb-8">
+              <RevealGroup className="mb-5">
                 <RevealItem>
                   <h2 className="font-display text-[clamp(1.45rem,4vw,2.1rem)] font-bold tracking-tight text-ink">
                     {c.challenge.title}
@@ -168,9 +168,9 @@ export default function CaseGrowthOpsPage() {
           </section>
 
           {/* Solução / Stack */}
-          <section className="py-section-y">
+          <section className="py-10 md:py-12">
             <Container>
-              <RevealGroup className="mb-8 md:mb-10">
+              <RevealGroup className="mb-5 md:mb-6">
                 <RevealItem>
                   <h2 className="font-display text-[clamp(1.45rem,4vw,2.1rem)] font-bold tracking-tight text-ink">
                     {c.solution.title}
@@ -217,9 +217,9 @@ export default function CaseGrowthOpsPage() {
           </section>
 
           {/* Fluxo do lead */}
-          <section className="border-y border-surface-line/60 bg-surface-raised/20 py-section-y">
+          <section className="border-y border-surface-line/60 bg-surface-raised/20 py-10 md:py-12">
             <Container>
-              <RevealGroup className="mb-8 md:mb-12">
+              <RevealGroup className="mb-5 md:mb-6">
                 <RevealItem>
                   <h2 className="font-display text-[clamp(1.45rem,4vw,2.1rem)] font-bold tracking-tight text-ink">
                     Fluxo do lead
@@ -238,9 +238,9 @@ export default function CaseGrowthOpsPage() {
           </section>
 
           {/* Dashboard */}
-          <section className="py-section-y">
+          <section className="py-10 md:py-12">
             <Container>
-              <RevealGroup className="mb-8">
+              <RevealGroup className="mb-5">
                 <RevealItem>
                   <h2 className="font-display text-[clamp(1.45rem,4vw,2.1rem)] font-bold tracking-tight text-ink">
                     Dashboard de observabilidade
@@ -253,7 +253,7 @@ export default function CaseGrowthOpsPage() {
                     reprocessar leads com e-mail inválido sem duplicar Deal.
                   </p>
                 </RevealItem>
-                <RevealItem className="mt-8">
+                <RevealItem className="mt-5">
                   <ObservabilityDashboard />
                 </RevealItem>
               </RevealGroup>
@@ -261,9 +261,9 @@ export default function CaseGrowthOpsPage() {
           </section>
 
           {/* Resultados */}
-          <section className="border-t border-surface-line/60 bg-surface-raised/25 py-section-y">
+          <section className="border-t border-surface-line/60 bg-surface-raised/25 py-10 md:py-12">
             <Container>
-              <RevealGroup className="mb-8">
+              <RevealGroup className="mb-5">
                 <RevealItem>
                   <h2 className="font-display text-[clamp(1.45rem,4vw,2.1rem)] font-bold tracking-tight text-ink">
                     {c.results.title}
@@ -286,7 +286,7 @@ export default function CaseGrowthOpsPage() {
                 ))}
               </RevealGroup>
 
-              <RevealItem className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <RevealItem className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <ButtonPrimary
                   href={`https://wa.me/${CONTACT.whatsapp}`}
                   className="w-full sm:w-auto"

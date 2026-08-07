@@ -17,9 +17,9 @@ export default function Casos() {
       index="01"
       kicker="Casos"
       title="Resultado em operação real."
-      lead="Projetos em produção no IAM e na Intencional — o estudo de caso completo de Growth Ops em destaque."
+      lead="Projetos em produção no IAM e na Intencional — com o estudo de caso de Growth Ops em destaque."
     >
-      <div className="space-y-5">
+      <div className="space-y-4">
         {featured && (
           <RevealGroup>
             <motion.article

@@ -13,7 +13,6 @@ import {
   useReducedMotion,
   type PanInfo,
 } from "framer-motion";
-import Section from "../ui/Section";
 import {
   OPERATION,
   type OperationPillar,
@@ -127,16 +126,9 @@ export default function OperationSlider({
 
   return (
     <div ref={rootRef}>
-      <Section
-        id="operacao"
-        index="03"
-        kicker={OPERATION.kicker}
-        title={OPERATION.title}
-        lead={OPERATION.lead}
-        className="py-0"
-      >
+      <section id="operacao" className="section-anchor relative">
         <div
-          className="relative flex min-h-[100svh] flex-col justify-between py-10 lg:py-14"
+          className="relative mx-auto flex min-h-[100svh] max-w-page flex-col justify-between px-gutter py-8 lg:py-10"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
           onFocusCapture={() => setPaused(true)}
@@ -144,20 +136,31 @@ export default function OperationSlider({
             if (!e.currentTarget.contains(e.relatedTarget as Node)) setPaused(false);
           }}
         >
+          <div className="grid gap-4 border-b border-surface-line pb-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:items-end">
+            <div>
+              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
+                03 — {OPERATION.kicker}
+              </span>
+              <h2 className="mt-2 max-w-[22ch] font-display text-3xl font-bold leading-[1.05] tracking-[-0.03em] text-ink md:text-4xl">
+                {OPERATION.title}
+              </h2>
+            </div>
+            <p className="text-[0.98rem] leading-relaxed text-muted lg:max-w-[46ch] lg:text-right">
+              {OPERATION.lead}
+            </p>
+          </div>
+
           <p
-            className="pointer-events-none select-none text-center font-display font-extrabold leading-none tracking-[-0.04em] text-ink/90"
-            style={{ fontSize: "clamp(2rem, 11vw, 3.5rem)" }}
+            className="pointer-events-none mt-6 select-none text-center font-display font-extrabold leading-none tracking-[-0.04em] text-ink/90"
+            style={{ fontSize: "clamp(1.75rem, 6vw, 4rem)" }}
             aria-hidden
           >
-            <span className="hidden lg:inline" style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}>
-              {headerText}
-            </span>
-            <span className="lg:hidden">{headerText}</span>
+            {headerText}
           </p>
 
           {/* Desktop 3-col */}
           <div
-            className="mt-10 hidden grid-cols-[1fr_auto_1fr] items-center gap-6 lg:grid lg:gap-10"
+            className="mt-6 hidden grid-cols-[1fr_auto_1fr] items-center gap-6 lg:grid lg:gap-10"
             onKeyDown={onKeyDown}
           >
             <div
@@ -331,15 +334,15 @@ export default function OperationSlider({
             </motion.div>
           </div>
 
-          <div className="mt-12">
+          <div className="mt-6">
             <p
               className="pointer-events-none select-none text-center font-display font-extrabold leading-none tracking-[-0.04em] text-ink/80"
-              style={{ fontSize: "clamp(2rem, 7vw, 4.5rem)" }}
+              style={{ fontSize: "clamp(1.5rem, 5vw, 3rem)" }}
               aria-hidden
             >
               {footerText}
             </p>
-            <div className="mx-auto mt-6 flex max-w-md items-center gap-4">
+            <div className="mx-auto mt-4 flex max-w-md items-center gap-4">
               <div className="h-px flex-1 overflow-hidden bg-surface-line">
                 <motion.div
                   className="h-full bg-accent"
@@ -354,7 +357,7 @@ export default function OperationSlider({
             </div>
           </div>
         </div>
-      </Section>
+      </section>
     </div>
   );
 }

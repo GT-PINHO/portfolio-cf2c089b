@@ -33,7 +33,7 @@ export default function Contato() {
   )}`;
 
   return (
-    <section id="contato" className="section-anchor pb-4 pt-section-y md:pb-6">
+    <section id="contato" className="section-anchor pb-2 pt-8 md:pb-4 md:pt-10">
       <Container>
         <Reveal>
           <div className="relative overflow-hidden rounded-2xl border border-surface-line bg-surface-raised p-7 sm:p-10">
@@ -42,7 +42,7 @@ export default function Contato() {
                 <div className="mb-4 flex items-center gap-3">
                   <span className="h-px w-8 bg-accent/40" />
                   <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted">
-                    05 — Contato
+                    04 — Contato
                   </span>
                 </div>
 
