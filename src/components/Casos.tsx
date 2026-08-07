@@ -56,18 +56,21 @@ export default function Casos() {
                 )}
               </div>
 
-              <div className="grid gap-5 border-t border-surface-line pt-6 sm:grid-cols-3 lg:grid-cols-1 lg:gap-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pr-1 lg:pt-0">
+              <dl className="grid list-none gap-6 border-t border-surface-line pt-6 sm:grid-cols-3 lg:grid-cols-1 lg:gap-7 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
                 {(featured.metrics ?? []).map((m) => (
                   <div key={m.label} className="min-w-0">
-                    <p className="font-display text-xl font-semibold tracking-tight text-ink tabular-nums whitespace-nowrap sm:text-2xl">
-                      {m.value}
-                    </p>
-                    <p className="mt-1 text-xs uppercase tracking-[0.14em] text-muted">
-                      {m.label}
-                    </p>
+                    <dt className="sr-only">{m.label}</dt>
+                    <dd className="m-0">
+                      <p className="font-display text-2xl font-semibold tracking-tight text-ink tabular-nums whitespace-nowrap">
+                        {m.value}
+                      </p>
+                      <p className="mt-1.5 text-xs uppercase tracking-[0.12em] text-muted">
+                        {m.label}
+                      </p>
+                    </dd>
                   </div>
                 ))}
-              </div>
+              </dl>
             </RevealItem>
           </RevealGroup>
         )}

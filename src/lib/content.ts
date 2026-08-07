@@ -199,13 +199,13 @@ export const CASES: CaseItem[] = [
     sector: "IAM · Automação de marketing",
     title: "O tráfego cresceu. A automação antiga não aguentou.",
     impact:
-      "Economia de ~R$ 4,5k/mês em licenças, 100% de processamento sem erro e base histórica migrada para HubSpot.",
+      "Economia de R$ 4,5k/mês em licenças, 100% de processamento sem erro e base histórica migrada para HubSpot.",
     stack: ["NestJS", "Docker", "Supabase", "HubSpot", "ManyChat"],
     featured: true,
     metrics: [
       { value: "100%", label: "sucesso" },
-      { value: "20 a 30k", label: "leads/mês" },
-      { value: "~R$ 4,5k", label: "/mês economizados" },
+      { value: "25k", label: "leads/mês" },
+      { value: "R$ 4,5k", label: "/mês economizados" },
     ],
     href: "/casos/growth-ops-iam",
     cta: "Ver estudo de caso",
