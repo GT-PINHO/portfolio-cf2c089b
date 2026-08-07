@@ -26,18 +26,19 @@ export default function CaseGrowthOpsPage() {
           <Container className="flex h-14 items-center justify-between sm:h-16">
             <Link
               href="/"
-              className="font-display text-[15px] font-bold tracking-tight text-ink hover:text-accent"
+              className="text-[13px] font-medium text-soft transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
             >
-              David Pinho
+              ← Voltar ao portfólio
             </Link>
-            <nav aria-label="Navegação do estudo de caso" className="flex items-center gap-4 text-[13px]">
-              <Link href="/#casos" className="text-soft hover:text-accent">
-                Casos
-              </Link>
-              <Link href="/#contato" className="text-soft hover:text-accent">
-                Contato
-              </Link>
-            </nav>
+            <a
+              href={`https://wa.me/${CONTACT.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full px-4 py-2 text-[13px] font-semibold text-white transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+              style={{ background: "var(--accent)" }}
+            >
+              Conversar
+            </a>
           </Container>
         </header>
 
@@ -52,7 +53,7 @@ export default function CaseGrowthOpsPage() {
                   </p>
                 </RevealItem>
                 <RevealItem className="mt-4">
-                  <h1 className="max-w-[20ch] font-display text-[clamp(1.95rem,5.4vw,3.35rem)] font-extrabold leading-[1.04] tracking-[-0.035em] text-ink">
+                  <h1 className="max-w-[28ch] font-display text-[clamp(1.75rem,5vw,3.1rem)] font-extrabold leading-[1.06] tracking-[-0.035em] text-ink">
                     {c.title}
                   </h1>
                 </RevealItem>
@@ -147,11 +148,6 @@ export default function CaseGrowthOpsPage() {
                     {c.challenge.title}
                   </h2>
                 </RevealItem>
-                <RevealItem className="mt-3">
-                  <p className="max-w-[68ch] text-[1.02rem] leading-relaxed text-soft">
-                    {c.challenge.body}
-                  </p>
-                </RevealItem>
               </RevealGroup>
 
               <RevealGroup className="grid gap-4 md:grid-cols-3">
@@ -188,7 +184,7 @@ export default function CaseGrowthOpsPage() {
               </RevealGroup>
 
               <RevealGroup className="grid gap-4 lg:grid-cols-2">
-                {c.solution.pillars.map((pillar, idx) => (
+                {c.solution.pillars.map((pillar) => (
                   <RevealItem key={pillar.title}>
                     <motion.article
                       className="flex h-full flex-col border border-surface-line bg-surface-raised/35 p-5 sm:p-6"
@@ -196,9 +192,6 @@ export default function CaseGrowthOpsPage() {
                       transition={{ type: "spring", stiffness: 380, damping: 28 }}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="font-mono text-[12px] font-bold text-accent">
-                          {String(idx + 1).padStart(2, "0")}
-                        </span>
                         <h3 className="font-display text-[17px] font-bold text-ink">
                           {pillar.title}
                         </h3>
@@ -293,13 +286,16 @@ export default function CaseGrowthOpsPage() {
                 ))}
               </RevealGroup>
 
-              <RevealItem className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <RevealItem className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <ButtonPrimary
                   href={`https://wa.me/${CONTACT.whatsapp}`}
                   className="w-full sm:w-auto"
                 >
                   Falar no WhatsApp
                 </ButtonPrimary>
+                <ButtonSecondary href="/Curriculo_David_Pinho.pdf" download className="w-full sm:w-auto">
+                  Baixar CV
+                </ButtonSecondary>
                 <ButtonSecondary href="/#casos" className="w-full sm:w-auto">
                   Voltar aos casos
                 </ButtonSecondary>

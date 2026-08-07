@@ -13,14 +13,15 @@ export const GROWTH_OPS_CASE = {
   slug: "growth-ops-iam",
   path: "/casos/growth-ops-iam",
   sector: "Instituto Academy Mind · MarTech",
-  kicker: "Estudo de caso · Automação de marketing",
-  title: "O tráfego cresceu. A automação antiga não aguentou.",
+  kicker: "ESTUDO DE CASO · GROWTH OPS",
+  title:
+    "30 mil leads/mês quebravam a automação. Reconstruí o pipeline e zerei o custo de licença.",
   subtitle:
-    "No Instituto Academy Mind, as campanhas de Meta Ads geravam de 20 a 30 mil leads por mês. A automação pronta (n8n) falhava todo dia, custava de R$ 4.300 a 5.000/mês e e-mail digitado errado quebrava o CRM e o credenciamento. Eu construí um sistema próprio em NestJS que leva o lead até HubSpot e ManyChat sem duplicar contato, com correção manual quando o dado chega sujo: 100% de sucesso em produção e quase zero custo de licença de automação.",
+    "Substituição do n8n Cloud por uma API proprietária em NestJS, com observabilidade, limpeza híbrida de dados e taxa de processamento sem erro de 100% em produção.",
   client: "Instituto Academy Mind (IAM Treinamentos)",
   role: "Arquitetura, NestJS, integrações e dashboard",
   heroHighlights: [
-    { value: "100%", label: "Sucesso em produção" },
+    { value: "100%", label: "Processamento sem erro" },
     { value: "20 a 30k", label: "Leads sob gestão" },
     { value: "~R$ 4.5k", label: "Economia mensal" },
   ],
@@ -58,8 +59,8 @@ export const GROWTH_OPS_CASE = {
 
   challenge: {
     title: "O desafio técnico",
-    body:
-      "O ecossistema anterior em n8n Cloud gerava gargalos severos de processamento diários devido ao volume ininterrupto de webhooks e tagueamento regional. O modelo de cobrança por execução tornava o custo de software insustentável para um fluxo de 20 a 30 mil leads/mês: estimado entre R$ 4.300 e R$ 4.500 mensais. Com execuções extras para aguentar o pico de 30k leads, a conta facilmente chegaria a cerca de R$ 5.000/mês. Além disso, o erro humano na digitação de e-mails (gamil, gnail) quebrava o funil comercial e as planilhas de credenciamento.",
+    /** Parágrafo removido — os 3 cards abaixo cobrem o conteúdo. */
+    body: "",
     pains: [
       {
         title: "Gargalo diário",
@@ -123,7 +124,7 @@ export const GROWTH_OPS_CASE = {
       },
       {
         title: "Estabilidade",
-        text: "Fim absoluto dos gargalos de requisições e taxa de sucesso de 100.00% em produção.",
+        text: "Fim absoluto dos gargalos de requisições e taxa de processamento sem erro de 100% em produção.",
       },
       {
         title: "Migração de dados",
@@ -135,6 +136,10 @@ export const GROWTH_OPS_CASE = {
   dashboardDemo: {
     product: "Masterclass",
     period: "01/07/26 → 24/07/26",
+    disclaimer:
+      "Números reais de produção. A interface abaixo é uma reconstrução ilustrativa da UI de observabilidade (dados mascarados, sem PII).",
+    warningLegend:
+      "Lead processado com alerta não bloqueante (ex.: e-mail com typo corrigido pelo módulo de Data Cleansing).",
     kpis: [
       {
         key: "sucesso",
@@ -149,6 +154,7 @@ export const GROWTH_OPS_CASE = {
         value: "6.780",
         countTo: 6780,
         tone: "warning" as const,
+        legendKey: "warning" as const,
       },
       {
         key: "erros",
@@ -165,7 +171,10 @@ export const GROWTH_OPS_CASE = {
         tone: "info" as const,
       },
     ],
-    successRate: "100.00%",
+    successRateLabel: "Taxa de processamento sem erro",
+    successRate: "100%",
+    successRateFormula:
+      "9.414 sucesso + 6.780 com aviso = 16.194 processados · 0 erros",
     funnel: [
       { stage: "Meta Ads", value: "R$ 243.445,90", meta: "Investimento base" },
       { stage: "GreatPages", value: "16.194", meta: "100% da etapa anterior" },
