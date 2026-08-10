@@ -12,10 +12,10 @@ export default function Casos() {
   return (
     <Section
       id="casos"
-      index="01"
+      index="02"
       kicker="Casos"
       title="Resultado em operação real."
-      lead="Projetos em produção no IAM e na Intencional, com o estudo de caso de Growth Ops em destaque."
+      lead="Projetos em produção no IAM e na Intencional. Em destaque, o sistema que eu desenvolvi para sustentar o funil."
     >
       <div className="space-y-4">
         {featured && (

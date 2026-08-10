@@ -62,8 +62,12 @@ export default function CaseGrowthOpsPage() {
                   </p>
                 </RevealItem>
                 <RevealItem className="mt-4">
-                  <h1 className="max-w-[28ch] font-display text-xl sm:text-2xl md:text-3xl font-extrabold leading-[1.06] tracking-[-0.035em] text-ink">
-                    {c.title}
+                  <h1 className="max-w-[46ch] font-display text-xl sm:text-2xl md:text-3xl font-extrabold leading-[1.06] tracking-[-0.035em] text-ink">
+                    {c.titleLines.map((line) => (
+                      <span key={line} className="block text-balance">
+                        {line}
+                      </span>
+                    ))}
                   </h1>
                 </RevealItem>
                 <RevealItem className="mt-5">

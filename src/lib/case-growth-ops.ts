@@ -14,8 +14,14 @@ export const GROWTH_OPS_CASE = {
   path: "/casos/growth-ops-iam",
   sector: "Instituto Academy Mind · MarTech",
   kicker: "ESTUDO DE CASO · GROWTH OPS",
+  /** Usado em metadata e no <title>: precisa ser uma string única. */
   title:
     "30 mil leads/mês quebravam a automação. Reconstruí o pipeline e zerei o custo de licença.",
+  /** Uma linha por frase: a quebra do H1 é diagramação, não acaso do wrap. */
+  titleLines: [
+    "30 mil leads/mês quebravam a automação.",
+    "Reconstruí o pipeline e zerei o custo de licença.",
+  ],
   subtitle:
     "API NestJS no lugar do n8n Cloud: observabilidade, limpeza híbrida de dados e 100% de processamento sem erro em produção.",
   client: "Instituto Academy Mind (IAM Treinamentos)",

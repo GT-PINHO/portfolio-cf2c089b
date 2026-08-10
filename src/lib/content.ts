@@ -6,11 +6,12 @@ export const PROFILE = {
   name: "David Pinho",
   fullName: "David Edson da Silva Pinho",
   role: "Gestor de Tráfego Pago",
-  specialty: "MarTech & Growth Ops",
+  specialty: "Automações e sistemas com IA",
   location: "Americana, SP",
-  availability: "Aberto a vagas remotas · CLT ou PJ",
-  /** @deprecated Migrado para KPIS / KpiStrip — mantido só se algum consumidor antigo ainda ler. */
-  proofLine: "R$7M+ em mídia · 630 mil+ leads · Meta Ads nacional + stack proprietária de Growth Ops",
+  /** Hero: tem largura sobrando, cabe a versão completa. */
+  availability: "Disponível para início imediato · Remoto, CLT ou PJ",
+  /** Nav compacta: precisa caber inteiro, sem truncar. */
+  navStatus: "Disponível para início imediato",
 };
 
 export type KpiItem = {
@@ -44,7 +45,7 @@ export const KPIS: KpiItem[] = [
   {
     id: "verba",
     value: "R$ 68-98k",
-    label: "VERBA SEMANAL EM META ADS",
+    label: "VERBA SEMANAL GERIDA",
   },
   {
     id: "anos",
@@ -55,8 +56,12 @@ export const KPIS: KpiItem[] = [
   },
 ];
 
+/** As frentes que eu vendo e executo. Nenhuma é acessório da outra. */
+export type OperationTrack = "Tráfego pago" | "Automações e IA" | "Sites e interfaces";
+
 export type OperationPillar = {
   id: string;
+  track: OperationTrack;
   pillar: string;
   description: string;
   tools: string[];
@@ -68,14 +73,16 @@ export type OperationPillar = {
 export const OPERATION_PILLARS: OperationPillar[] = [
   {
     id: "midia",
+    track: "Tráfego pago",
     pillar: "Meta Ads & Performance",
     description:
       "Gestão de verba em campanha nacional recorrente, com funil por etapa e teste contínuo de criativo e público.",
     tools: ["Meta Ads", "CPL / ROAS", "Testes A/B"],
-    proof: { value: "R$ 83k", unit: "verba semanal sob gestão" },
+    proof: { value: "R$ 83k", unit: "de verba semanal gerida" },
   },
   {
     id: "tracking",
+    track: "Tráfego pago",
     pillar: "Tracking & Dados",
     description:
       "Sinal server-side para o Meta enxergar a conversão certa, e UTM que sobrevive até o CRM.",
@@ -84,94 +91,131 @@ export const OPERATION_PILLARS: OperationPillar[] = [
   },
   {
     id: "crm",
-    pillar: "CRM & Automação",
+    track: "Automações e IA",
+    pillar: "Automação de CRM",
     description:
-      "Pipeline que entrega o lead estruturado no comercial, sem duplicidade e sem perda.",
+      "Integro anúncio, chatbot e CRM por API, com upsert idempotente: o lead chega estruturado no comercial, sem duplicidade e sem perda.",
     tools: ["HubSpot API", "ManyChat API", "Webhooks"],
     proof: { value: "25k", unit: "leads/mês no pipeline" },
   },
   {
     id: "sistemas",
-    pillar: "IA & Sistemas",
+    track: "Automações e IA",
+    pillar: "APIs e sistemas sob medida",
     description:
-      "API própria no lugar de ferramenta no-code quando o volume passou do que ela aguentava.",
+      "Desenvolvo a API e o banco quando a ferramenta no-code não sustenta o volume. Do webhook ao CRM, com log de cada passo do lead.",
     tools: ["NestJS", "Docker", "Supabase"],
     proof: { value: "R$ 4,5k", unit: "economia mensal em licenças" },
     href: "/casos/growth-ops-iam",
     cta: "Ver estudo de caso",
   },
+  {
+    id: "lp",
+    track: "Sites e interfaces",
+    pillar: "Sites e landing pages",
+    description:
+      "Página construída para o tráfego que vai rodar nela: rápida, responsiva e com tracking ligado ao CRM desde o primeiro deploy.",
+    tools: ["Next.js", "React", "Tailwind", "Vercel"],
+    proof: { value: "Este site", unit: "feito do zero, sem template" },
+  },
+  {
+    id: "dashboards",
+    track: "Sites e interfaces",
+    pillar: "Dashboards e painéis",
+    description:
+      "Interface que mostra a operação em tempo real: métrica por etapa, log por lead e correção de dado sujo em um clique.",
+    tools: ["React", "Supabase", "Meta API"],
+    proof: { value: "16k", unit: "leads monitorados no painel" },
+    href: "#painel",
+    cta: "Ver o painel",
+  },
 ];
+
+/**
+ * O caminho real de um lead. Cada etapa carrega a frente que a executa:
+ * lido em sequência, prova que as três frentes são um sistema só.
+ */
+export type FlowStep = {
+  id: string;
+  step: string;
+  tool: string;
+  track: OperationTrack;
+};
+
+export const SYSTEM_FLOW: {
+  caption: string;
+  steps: FlowStep[];
+  outcome: { step: string; tool: string };
+  note: string;
+} = {
+  caption: "O caminho de um lead, e quem executa cada etapa",
+  steps: [
+    { id: "anuncio", step: "Anúncio", tool: "Meta Ads", track: "Tráfego pago" },
+    { id: "lp", step: "Landing page", tool: "Next.js", track: "Sites e interfaces" },
+    { id: "sinal", step: "Sinal", tool: "GTM / CAPI", track: "Tráfego pago" },
+    { id: "api", step: "Automação", tool: "NestJS", track: "Automações e IA" },
+    { id: "crm", step: "CRM", tool: "HubSpot", track: "Automações e IA" },
+  ],
+  outcome: { step: "Comercial", tool: "Deal estruturado" },
+  note: "Um painel próprio observa a cadeia inteira em tempo real e devolve o lead com dado sujo para reprocessamento.",
+};
 
 export const OPERATION = {
   kicker: "Operação",
-  title: "Tráfego primeiro. Engenharia quando a escala pede.",
-  lead: "Meta Ads é o centro. Tracking, CRM e automação entram quando o funil começa a vazar.",
+  title: "Três frentes, uma operação só.",
+  lead: "Meta Ads na entrada, engenharia no meio e a interface que o cliente vê na ponta. Faço as três, e é a combinação que segura escala.",
+  flow: SYSTEM_FLOW,
   pillars: OPERATION_PILLARS,
 };
 
-export const PROOF_STRIP = {
-  label: "CÓDIGO PÚBLICO",
-  note: "Grande parte do trabalho é confidencial. O código público é a evidência técnica.",
-  links: [
-    {
-      title: "agent-skills",
-      description: "skills de growth-ops para Claude, CI com 20/20 evals",
-      href: "https://github.com/GT-PINHO/agent-skills",
-    },
-  ],
-};
 
 export const HERO = {
   eyebrow: PROFILE.role,
-  headline: "Meta Ads em escala nacional, com o lead chegando inteiro no comercial.",
+  /** Uma linha por frase: a quebra é diagramação, não acaso do wrap. */
+  headlineLines: [
+    "Meta Ads em escala nacional.",
+    "E os sistemas com IA que sustentam o funil.",
+  ],
+  /**
+   * Não repete os números da KpiStrip logo abaixo. O trabalho dele é
+   * ancorar tempo de mercado e dizer onde a operação começa e termina.
+   */
   subheadline:
-    "Gestor de Tráfego Pago com R$ 68-98k/semana sob gestão. Quando a escala exige, também construo o tracking e a automação por trás do funil.",
+    "Mais de 3 anos gerindo Meta Ads em operação nacional. Desenvolvo o tracking, a automação e os sistemas que levam cada lead até a venda.",
   cta: {
-    primary: { label: "Falar no WhatsApp", href: "whatsapp" },
-    secondary: { label: "Baixar CV", href: "/Curriculo_David_Pinho.pdf" },
+    primary: { label: "Ver currículo", href: "/cv" },
+    secondary: { label: "Falar no WhatsApp", href: "whatsapp" },
   },
-};
-
-/** @deprecated Absorvido por OPERATION. */
-export const WHAT_I_DO = {
-  kicker: "O que eu faço",
-  title: "Não é só tráfego.\nÉ o ciclo completo.",
-  lead:
-    "Gerencio Meta Ads com disciplina de CPL e ROAS, e construo o que falta entre o anúncio e o time comercial: tracking, automação e visão de dados.",
-  pillars: OPERATION_PILLARS.map((p) => ({
-    id: p.id,
-    title: p.pillar,
-    description: p.description,
-  })),
 };
 
 export const EXPERIENCE = {
   kicker: "Experiência",
   title: "Trajetória em operação real.",
   lead:
-    "Mais de três anos em Meta Ads em operações nacionais de educação e eventos, com diferencial em tracking, CRM e sistemas MarTech quando a escala exige.",
+    "Mais de três anos em Meta Ads em operações nacionais de educação e eventos, somados ao desenvolvimento da stack de automação que sustenta esse funil.",
   roles: [
     {
       title: "Gestor de Tráfego Pago · MarTech & Growth Ops",
       org: "Instituto Academy Mind (IAM Treinamentos) · Grupo Legacy Eco Holding",
-      meta: "dez/2024 a atual",
-      current: true,
+      meta: "dez/2024 a ago/2026",
+      current: false,
       highlight: "R$ 68-98k/semana",
       bullets: [
         "Meta Ads nacional; contribuição em operação com +630 mil leads e R$7 mi em mídia.",
         "Tracking server-side (GTM/CAPI/Stape) e funil com CPL sob gestão direta em captação recorrente.",
-        "Migração n8n → NestJS/Docker (~R$ 4,5k/mês economizados) e pipeline HubSpot/ManyChat para 20-30k leads/mês.",
+        "Migração n8n → NestJS/Docker (R$ 4,5k/mês economizados) e pipeline HubSpot/ManyChat para 20-30k leads/mês.",
       ],
     },
     {
       title: "Assistente de Tráfego Digital",
       org: "Intencional Negócios Digitais",
-      meta: "fev/2023 a dez/2024 · Americana, SP",
+      meta: "fev/2023 a nov/2024 · Americana, SP",
       current: false,
-      highlight: "Dezenas de eventos/mês",
+      highlight: "240 mil+ leads",
       bullets: [
-        "Meta Ads ponta a ponta para eventos e ofertas em diversas praças no Brasil.",
-        "Funil por etapa, testes A/B, escala de verba e auditoria de sinal via GTM.",
+        "Meta Ads ponta a ponta para cerca de 40 eventos por mês em todo o Brasil.",
+        "Mais de 240 mil leads com CPL médio de R$ 8, com funil por cidade e escala de verba.",
+        "Públicos, lookalikes, remarketing e auditoria de sinal via GTM.",
       ],
     },
   ],
@@ -196,10 +240,10 @@ export type CaseItem = {
 export const CASES: CaseItem[] = [
   {
     id: "a3",
-    sector: "IAM · Automação de marketing",
-    title: "O tráfego cresceu. A automação antiga não aguentou.",
+    sector: "IAM · Sistemas e automação",
+    title: "Troquei o n8n por uma API própria em NestJS e zerei o custo de licença.",
     impact:
-      "Economia de R$ 4,5k/mês em licenças, 100% de processamento sem erro e base histórica migrada para HubSpot.",
+      "30 mil leads/mês quebravam a automação no-code. Reconstruí o pipeline com logs granulares, upsert idempotente e Data Cleansing assistido: 100% de processamento sem erro, R$ 4,5k/mês economizados e base histórica migrada para a HubSpot.",
     stack: ["NestJS", "Docker", "Supabase", "HubSpot", "ManyChat"],
     featured: true,
     metrics: [
@@ -212,18 +256,18 @@ export const CASES: CaseItem[] = [
   },
   {
     id: "a1",
-    sector: "IAM Treinamentos",
+    sector: "IAM Treinamentos · Meta Ads",
     title: "Captação nacional: treinamentos, imersões e mentoria",
     impact:
-      "Escala nacional em Meta Ads com CPL sob gestão direta e lead chegando ao comercial com origem e contexto.",
+      "R$ 68-98k/semana em Meta Ads com CPL sob gestão direta, cobrindo 45 a 68 Masterclasses por mês. Tracking server-side entrega o lead ao comercial com origem e praça preservadas.",
     stack: ["Meta Ads", "Funil", "GTM / CAPI", "UTM → CRM"],
   },
   {
     id: "a2",
-    sector: "Intencional",
+    sector: "Intencional · Meta Ads",
     title: "Captação para eventos e educação",
     impact:
-      "Rotina padronizada por praça para dezenas de eventos por mês, com CPL previsível.",
+      "Cerca de 40 eventos por mês em praças diferentes do Brasil, somando mais de 240 mil leads com CPL médio de R$ 8 e rotina padronizada por cidade.",
     stack: ["Meta Ads", "Segmentação", "Lookalike", "GTM"],
   },
 ];
@@ -260,7 +304,10 @@ export const PUBLIC_PROJECTS: PublicProject[] = [
   },
 ];
 
-export const STACK_GROUPS = [
+export type StackChip = { name: string; featured?: boolean; href?: string };
+export type StackGroup = { label: string; chips: StackChip[] };
+
+export const STACK_GROUPS: StackGroup[] = [
   {
     label: "Meta Ads / Performance",
     chips: [
@@ -294,6 +341,7 @@ export const STACK_GROUPS = [
     label: "IA / Produto",
     chips: [
       { name: "Claude / Cursor", featured: true },
+      { name: "Agentes & Skills", featured: true },
       { name: "Observabilidade" },
       { name: "GitOps / CI-CD" },
       { name: "GitHub", href: "https://github.com/GT-PINHO" },
@@ -301,10 +349,18 @@ export const STACK_GROUPS = [
   },
 ];
 
+export const STACK = {
+  kicker: "Stack & código",
+  title: "A prova técnica, aberta.",
+  lead: "Grande parte da operação é confidencial. O que dá para mostrar está no GitHub.",
+  groups: STACK_GROUPS,
+  projects: PUBLIC_PROJECTS,
+};
+
 export const CONTACT = {
   headline: "Vamos conversar?",
   lead:
-    "Disponível para vagas remotas (CLT/PJ) em tráfego pago / Meta Ads, com diferencial em tracking, CRM e Growth Ops. WhatsApp é o canal mais rápido.",
+    "Disponível para início imediato em vagas remotas (CLT/PJ) de tráfego pago, MarTech e Growth Engineering. Atendo também projetos de automação e sistemas com IA. WhatsApp é o canal mais rápido.",
   location: PROFILE.location,
   email: "davidpinho.st@gmail.com",
   whatsapp: "5519997501584",

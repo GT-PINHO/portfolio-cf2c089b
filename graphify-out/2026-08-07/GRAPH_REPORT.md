@@ -5,7 +5,7 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 293 nodes · 449 edges · 29 communities (18 shown, 11 thin omitted)
+- 293 nodes · 447 edges · 29 communities (18 shown, 11 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 3 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
@@ -115,7 +115,7 @@ Cohesion: 0.18
 Nodes (5): OTHER_CHANNELS, base, IconInstagram(), IconLinkedIn(), IconMail()
 
 ### Community 22 - "CaseGrowthOpsPage.tsx"
-Cohesion: 0.18
+Cohesion: 0.17
 Nodes (16): CaseReadingNav(), TOC, LeadFlowTimeline(), Casos(), BtnProps, ButtonPrimary(), ButtonSecondary(), Reveal() (+8 more)
 
 ### Community 27 - "Nav.tsx"

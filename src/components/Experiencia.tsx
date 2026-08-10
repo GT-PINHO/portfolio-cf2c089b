@@ -14,7 +14,7 @@ export default function Experiencia() {
     <div ref={rootRef}>
       <Section
         id="experiencia"
-        index="02"
+        index="03"
         kicker={EXPERIENCE.kicker}
         title={EXPERIENCE.title}
         lead={EXPERIENCE.lead}

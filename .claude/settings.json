@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx -y skills add duolahypercho/andrej-karpathy-skills --yes)",
+      "Bash(node .agents/skills/impeccable/scripts/context.mjs --target src/components/Home.tsx)",
+      "Bash(npx -y skills search find-skills)",
+      "Bash(npx -y skills add vercel-labs/skills@find-skills --yes)",
+      "Bash(npx tsc *)",
+      "Bash(echo \"=== TSC EXIT: $? ===\")",
+      "Bash(npm run *)",
+      "Bash(node .agents/skills/impeccable/scripts/detect.mjs --json src/components/sections/StackCode.tsx src/components/sections/OperationPillars.tsx src/components/hero/HeroSection.tsx src/components/Home.tsx)"
+    ]
+  }
+}

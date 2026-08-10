@@ -36,6 +36,14 @@
   --fs-2xl: 3rem;
   --fs-3xl: 4rem;
 
+  /* Curvas de movimento. Fonte única: as builtins do CSS são fracas demais. */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  /* Orçamento de duração: UI abaixo de 300ms, reveal de conteúdo até 450ms. */
+  --dur-press: 140ms;
+  --dur-ui: 200ms;
+  --dur-reveal: 450ms;
+
   --page-max: 1200px;
   --page-gutter: 24px;
   --section-y: 2.25rem;
@@ -189,7 +197,7 @@ button {
   align-items: center;
   font-size: var(--fs-sm);
   font-weight: 700;
-  transition: transform 180ms ease;
+  transition: transform var(--dur-ui) var(--ease-out);
 }
 
 .skip-link:focus-visible {
@@ -247,8 +255,8 @@ button {
   opacity: 1;
   transform: none;
   transition:
-    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out);
   transition-delay: var(--reveal-delay, 0s);
 }
 
@@ -263,8 +271,7 @@ button {
     transition: none !important;
   }
 
-  .status-pulse,
-  .availability-badge__spin {
+  .status-pulse {
     animation: none !important;
   }
 
@@ -296,20 +303,21 @@ button {
   background-size: 180px 180px;
 }
 
+/**
+ * Só background-color e box-shadow. width/max-width/padding disparavam
+ * layout + paint a cada frame, numa barra que fica visível o tempo todo.
+ */
 .nav-pill {
   transition:
-    width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    max-width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    padding 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    background-color var(--dur-ui) var(--ease-out),
+    box-shadow var(--dur-ui) var(--ease-out);
 }
 
 .nav-pill__full,
 .nav-pill__status {
   transition:
-    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity var(--dur-ui) var(--ease-out),
+    transform var(--dur-ui) var(--ease-out);
 }
 
 @keyframes status-pulse {
@@ -335,14 +343,13 @@ button {
 .hero-portrait-card {
   transform: rotateY(-4deg) rotateX(2deg);
   transition:
-    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transform var(--dur-reveal) var(--ease-out),
+    box-shadow var(--dur-reveal) var(--ease-out);
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.45),
     0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
-.hero-portrait-stage:hover .hero-portrait-card,
 .hero-portrait-stage:focus-within .hero-portrait-card {
   transform: rotateY(0deg) rotateX(0deg) translateY(-5px);
   box-shadow:
@@ -350,24 +357,22 @@ button {
     0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
-@keyframes availability-spin {
-  to {
-    transform: rotate(360deg);
+/* No touch, o hover dispara no toque e o tilt fica preso desendireitado. */
+@media (hover: hover) and (pointer: fine) {
+  .hero-portrait-stage:hover .hero-portrait-card {
+    transform: rotateY(0deg) rotateX(0deg) translateY(-5px);
+    box-shadow:
+      0 18px 48px rgba(0, 0, 0, 0.55),
+      0 0 0 1px rgba(255, 255, 255, 0.08);
   }
-}
-
-.availability-badge__spin {
-  animation: availability-spin 20s linear infinite;
-  transform-origin: center;
 }
 
 .card-lift {
   transition:
-    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    transform var(--dur-ui) var(--ease-out),
+    border-color var(--dur-ui) var(--ease-out);
 }
 
-.card-lift:hover,
 .card-lift:focus-within {
   transform: translateY(-2px);
   border-color: rgb(var(--accent-rgb) / 0.35);
@@ -375,29 +380,52 @@ button {
 
 .btn-tactile {
   transition:
-    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
+    transform var(--dur-press) var(--ease-out),
+    opacity var(--dur-ui) ease,
+    border-color var(--dur-ui) ease,
+    color var(--dur-ui) ease;
 }
 
-.btn-tactile:hover {
-  transform: translateY(-1px);
+/* Feedback de pressão: o botão responde ao toque, não cresce no hover. */
+.btn-tactile:active {
+  transform: scale(0.97);
 }
 
 .link-arrow {
   display: inline-block;
-  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform var(--dur-ui) var(--ease-out);
 }
 
-a:hover .link-arrow,
 a:focus-visible .link-arrow {
   transform: translate(3px, -3px);
 }
 
-a.link-arrow-end:hover .link-arrow,
 a.link-arrow-end:focus-visible .link-arrow {
   transform: translateX(3px);
+}
+
+/* Hover só onde existe cursor de verdade: touch dispara hover no toque. */
+@media (hover: hover) and (pointer: fine) {
+  .card-lift:hover {
+    transform: translateY(-2px);
+    border-color: rgb(var(--accent-rgb) / 0.35);
+  }
+
+  .btn-tactile:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn-tactile:hover:active {
+    transform: scale(0.97);
+  }
+
+  a:hover .link-arrow {
+    transform: translate(3px, -3px);
+  }
+
+  a.link-arrow-end:hover .link-arrow {
+    transform: translateX(3px);
+  }
 }
 
 .pillar-metric {
@@ -420,5 +448,369 @@ a.link-arrow-end:focus-visible .link-arrow {
   a:hover .link-arrow,
   a:focus-visible .link-arrow {
     transform: none;
+  }
+}
+
+/* ——— Currículo (/cv): documento claro, pensado para impressão ——— */
+
+.cv-page {
+  --paper: #ffffff;
+  --paper-ink: #16181d;
+  --paper-soft: #3f454f;
+  --paper-muted: #6b7280;
+  --paper-line: #d9dde3;
+
+  min-height: 100vh;
+  padding: 24px 16px 64px;
+  background: var(--bg);
+}
+
+.cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 210mm;
+  margin: 0 auto 20px;
+}
+
+.cv-back,
+.cv-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  font-family: var(--display);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  padding: 11px 22px;
+  min-height: 44px;
+  transition:
+    transform var(--dur-press) var(--ease-out),
+    border-color var(--dur-ui) var(--ease-out),
+    color var(--dur-ui) var(--ease-out),
+    opacity var(--dur-ui) var(--ease-out);
+}
+
+.cv-back {
+  border: 1px solid var(--line);
+  color: var(--soft);
+}
+
+.cv-download {
+  background: var(--accent);
+  color: #06222a;
+}
+
+.cv-back:active,
+.cv-download:active {
+  transform: scale(0.97);
+}
+
+/* A seta recua para reforçar a direção do "voltar". */
+.cv-back svg {
+  transition: transform var(--dur-ui) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cv-back:hover {
+    border-color: rgb(var(--accent-rgb) / 0.5);
+    color: var(--ink);
+  }
+
+  .cv-back:hover svg {
+    transform: translateX(-3px);
+  }
+
+  .cv-download:hover {
+    opacity: 0.9;
+  }
+}
+
+.cv-doc {
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 18mm 16mm;
+  background: var(--paper);
+  color: var(--paper-ink);
+  font-size: 10.5pt;
+  line-height: 1.45;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.5);
+}
+
+.cv-doc section {
+  margin-top: 16px;
+}
+
+.cv-name {
+  font-family: var(--display);
+  font-size: 22pt;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--paper-ink);
+}
+
+.cv-role {
+  margin-top: 3px;
+  font-size: 11pt;
+  font-weight: 600;
+  color: var(--paper-soft);
+}
+
+.cv-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-top: 10px;
+  font-size: 9.5pt;
+  color: var(--paper-muted);
+}
+
+.cv-contacts a {
+  color: var(--paper-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cv-status {
+  margin-top: 10px;
+  padding: 6px 10px;
+  border-left: 2px solid var(--accent-dim);
+  background: #f2fbfd;
+  font-size: 9.5pt;
+  font-weight: 600;
+  color: var(--paper-soft);
+}
+
+.cv-h2 {
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--paper-line);
+  font-family: var(--display);
+  font-size: 10pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--paper-ink);
+}
+
+/* Alinhado à esquerda: justificar sem hifenização abre rios entre as palavras. */
+.cv-body {
+  margin-top: 8px;
+  color: var(--paper-soft);
+}
+
+.cv-role-block {
+  margin-top: 12px;
+  break-inside: avoid;
+}
+
+.cv-h3 {
+  font-family: var(--display);
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--paper-ink);
+}
+
+.cv-org {
+  font-size: 10pt;
+  font-weight: 600;
+  color: var(--paper-soft);
+}
+
+.cv-meta {
+  font-size: 9pt;
+  color: var(--paper-muted);
+}
+
+.cv-list {
+  margin-top: 7px;
+  padding-left: 0;
+  list-style: none;
+  color: var(--paper-soft);
+}
+
+.cv-list li {
+  position: relative;
+  padding-left: 13px;
+  margin-top: 4px;
+  break-inside: avoid;
+}
+
+.cv-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-dim);
+}
+
+.cv-list strong {
+  color: var(--paper-ink);
+  font-weight: 700;
+}
+
+@media print {
+  /**
+   * `overflow-x: clip` no body corta o que passar da largura em vez de deixar
+   * refluir, e foi o que decepava o texto na margem direita do PDF.
+   */
+  html,
+  body {
+    width: auto !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+  }
+
+  /* A folha é a página: nada de cromo do site, sombra ou grão. */
+  .cv-page {
+    min-height: 0;
+    padding: 0;
+    background: #ffffff;
+  }
+
+  .cv-actions,
+  .grain-overlay {
+    display: none !important;
+  }
+
+  /* Alvo é uma folha só: recrutador não vira página de currículo. */
+  .cv-doc {
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    font-size: 9.4pt;
+    line-height: 1.4;
+  }
+
+  .cv-name {
+    font-size: 19.5pt;
+  }
+
+  .cv-role {
+    font-size: 10.2pt;
+  }
+
+  .cv-contacts {
+    margin-top: 8px;
+    font-size: 8.8pt;
+  }
+
+  .cv-status {
+    margin-top: 7px;
+    padding: 5px 9px;
+    font-size: 8.8pt;
+  }
+
+  .cv-doc section {
+    margin-top: 11.5px;
+  }
+
+  .cv-h2 {
+    font-size: 9.2pt;
+  }
+
+  .cv-body {
+    margin-top: 6px;
+  }
+
+  .cv-role-block {
+    margin-top: 9px;
+  }
+
+  .cv-h3 {
+    font-size: 10.2pt;
+  }
+
+  .cv-org {
+    font-size: 9.4pt;
+  }
+
+  .cv-meta {
+    font-size: 8.5pt;
+  }
+
+  .cv-list {
+    margin-top: 5px;
+  }
+
+  .cv-list li {
+    margin-top: 3px;
+  }
+
+  .cv-contacts a {
+    text-decoration: none;
+  }
+
+  @page {
+    size: A4;
+    margin: 11mm 12mm;
+  }
+}
+
+/* ——— Diagrama do sistema: etapas acendendo com o scroll ——— */
+
+/**
+ * Estado padrão é ACESO. Sem JS, no mobile ou com reduced-motion o diagrama
+ * já nasce completo; só o pin do desktop apaga o que ainda não chegou.
+ */
+.flow-node {
+  --flow-step: var(--ink);
+  --flow-track: var(--accent);
+  --flow-dot-border: rgb(var(--accent-rgb) / 0.6);
+  --flow-dot-fill: var(--bg);
+}
+
+.flow-step {
+  color: var(--flow-step);
+  transition: color var(--dur-reveal) var(--ease-out);
+}
+
+.flow-step--outcome {
+  color: var(--accent);
+}
+
+.flow-track {
+  color: var(--flow-track);
+  transition: color var(--dur-reveal) var(--ease-out);
+}
+
+.flow-dot {
+  border: 1px solid var(--flow-dot-border);
+  background: var(--flow-dot-fill);
+  transition:
+    border-color var(--dur-reveal) var(--ease-out),
+    background-color var(--dur-reveal) var(--ease-out);
+}
+
+.flow-dot--outcome {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.flow-rail {
+  transition: width 120ms linear;
+  transform-origin: left center;
+}
+
+/* Só o desktop com pin ativo apaga: fora dele nenhum nó recebe data-lit. */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .lg\:sticky .flow-node:not([data-lit]) {
+    --flow-step: var(--muted);
+    --flow-track: var(--muted);
+    --flow-dot-border: var(--line);
+  }
+
+  .lg\:sticky .flow-node:not([data-lit]) .flow-step--outcome,
+  .lg\:sticky .flow-node:not([data-lit]) .flow-dot--outcome {
+    color: var(--muted);
+    background: var(--bg-2);
+    border-color: var(--line);
   }
 }

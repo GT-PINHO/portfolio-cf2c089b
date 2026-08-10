@@ -6,7 +6,6 @@ import Container from "../ui/Container";
 import HeroBackground from "./HeroBackground";
 import HeroPortrait from "./HeroPortrait";
 import { HERO, PROFILE } from "../../lib/content";
-import { CV_FILENAME } from "../../lib/cv";
 import { whatsappUrl } from "../../lib/contact";
 import { useAmbientMode } from "../../lib/ambient-intensity";
 
@@ -14,8 +13,12 @@ export default function HeroSection() {
   const rootRef = useRef<HTMLElement>(null);
   useAmbientMode("hero", "hero", rootRef);
 
-  const primaryHref =
-    HERO.cta.primary.href === "whatsapp" ? whatsappUrl() : HERO.cta.primary.href;
+  /** `whatsapp` só é resolvível em runtime; o resto já é rota. */
+  const hrefOf = (cta: { href: string }) =>
+    cta.href === "whatsapp" ? whatsappUrl() : cta.href;
+
+  const primaryHref = hrefOf(HERO.cta.primary);
+  const secondaryHref = hrefOf(HERO.cta.secondary);
 
   return (
     <header
@@ -41,7 +44,11 @@ export default function HeroSection() {
             </div>
 
             <h1 className="mt-4 font-display text-xl font-extrabold leading-[1.08] tracking-[-0.03em] text-ink sm:mt-5 sm:text-2xl sm:leading-[1.06] md:text-3xl">
-              {HERO.headline}
+              {HERO.headlineLines.map((line) => (
+                <span key={line} className="block text-balance">
+                  {line}
+                </span>
+              ))}
             </h1>
 
             <p className="mt-4 max-w-[44ch] text-base leading-relaxed text-soft sm:mt-5">
@@ -52,11 +59,7 @@ export default function HeroSection() {
               <ButtonPrimary href={primaryHref} className="w-full sm:w-auto">
                 {HERO.cta.primary.label}
               </ButtonPrimary>
-              <ButtonSecondary
-                href={HERO.cta.secondary.href}
-                download={CV_FILENAME}
-                className="w-full sm:w-auto"
-              >
+              <ButtonSecondary href={secondaryHref} className="w-full sm:w-auto">
                 {HERO.cta.secondary.label}
               </ButtonSecondary>
             </div>

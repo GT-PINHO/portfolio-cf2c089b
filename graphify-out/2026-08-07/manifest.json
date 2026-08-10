@@ -275,8 +275,8 @@
     "semantic_hash": ""
   },
   "src/components/sections/OperationPillars.tsx": {
-    "mtime": 1786142591.9678874,
-    "ast_hash": "5c117116d2cbb265104613fa50569043",
+    "mtime": 1786142540.931449,
+    "ast_hash": "e2500f4ebde3b7d6c8af0ecb8428bed3",
     "semantic_hash": ""
   },
   "src/components/ui/GrainOverlay.tsx": {

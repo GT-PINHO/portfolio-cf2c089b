@@ -13,4 +13,10 @@ out
 .env*
 tsconfig.tsbuildinfo
 graphify-out/cache/
+
+# Skills instaladas: skills-lock.json é o manifesto, o conteúdo se reinstala
+# com `npx skills add`. Mesmo papel de node_modules.
 .cursor/skills/
+.agents/skills/
+.claude/skills/
+.claude/settings.local.json

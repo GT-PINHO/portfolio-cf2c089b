@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { CONTACT, PROFILE } from "../lib/content";
-import { CV_FILENAME, CV_URL } from "../lib/cv";
+import { CV_URL } from "../lib/cv";
 import PrivacyPolicyModal from "./lgpd/PrivacyPolicyModal";
 import Container from "./ui/Container";
 
@@ -31,7 +31,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm text-muted">
-          <a href={CV_URL} download={CV_FILENAME} className="touch-hit rounded-sm hover:text-ink">
+          <a href={CV_URL} className="touch-hit rounded-sm hover:text-ink">
             Baixar CV
           </a>
           <a

@@ -3,12 +3,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { PROFILE } from "../lib/content";
-import { CV_FILENAME, CV_URL } from "../lib/cv";
+import { CV_URL } from "../lib/cv";
 
 const LINKS = [
+  { href: "#operacao", label: "Operação" },
   { href: "#casos", label: "Casos" },
   { href: "#experiencia", label: "Experiência" },
-  { href: "#operacao", label: "Operação" },
+  { href: "#stack", label: "Stack" },
 ] as const;
 
 const SECTION_IDS = [...LINKS.map((l) => l.href.slice(1)), "contato"];
@@ -158,7 +159,7 @@ export default function Nav() {
               setFocused(false);
             }
           }}
-          className="nav-pill pointer-events-auto flex items-center gap-3 rounded-full border border-surface-line bg-surface/80 px-3 py-2 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:gap-4 sm:px-5"
+          className="nav-pill pointer-events-auto flex items-center gap-4 rounded-full border border-surface-line bg-surface/80 px-4 py-2 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:gap-7 sm:px-6"
         >
           <a
             href="#top"
@@ -175,7 +176,7 @@ export default function Nav() {
           </a>
 
           <div
-            className={`hidden min-w-0 items-center gap-4 lg:flex ${
+            className={`hidden min-w-0 items-center gap-5 lg:flex ${
               compact ? "sr-only" : ""
             }`}
           >
@@ -197,7 +198,6 @@ export default function Nav() {
             })}
             <a
               href={CV_URL}
-              download={CV_FILENAME}
               className="text-sm text-muted transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
             >
               CV
@@ -211,8 +211,8 @@ export default function Nav() {
             {compact ? (
               <>
                 <span className="status-pulse h-2 w-2 shrink-0 rounded-full bg-accent" />
-                <span className="max-w-[34ch] truncate text-sm text-ink">
-                  {PROFILE.availability}
+                <span className="whitespace-nowrap text-sm text-ink">
+                  {PROFILE.navStatus}
                 </span>
               </>
             ) : null}
@@ -278,7 +278,6 @@ export default function Nav() {
                 ))}
                 <a
                   href={CV_URL}
-                  download={CV_FILENAME}
                   onClick={close}
                   className="rounded-lg px-3 py-3 text-base text-muted transition-colors hover:bg-surface-raised hover:text-ink"
                 >

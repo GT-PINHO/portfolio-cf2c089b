@@ -45,29 +45,32 @@ export const heroHeadline = {
   },
 };
 
-/** Seção / cards: descem em cascata */
+/**
+ * Seção / cards: descem em cascata.
+ * Stagger fica em 60ms: com 180ms um grid de 6 cards levava mais de 1s para fechar.
+ */
 export const blockStack = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.18, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.06, delayChildren: 0.08 },
   },
 };
 
 export const blockIn = {
-  hidden: { opacity: 0, y: 32 },
+  hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: easeCinematic },
+    transition: { duration: 0.4, ease: easeCinematic },
   },
 };
 
 export const sectionReveal = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 28 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.72, ease: easeCinematic },
+    transition: { duration: 0.45, ease: easeCinematic },
   },
 };
 
@@ -81,17 +84,18 @@ export const fadeIn = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { duration: 0.55, ease: easeOut },
+    transition: { duration: 0.4, ease: easeOut },
   },
 };
 
+/** Nunca parte de scale(0): nada no mundo real aparece do nada. */
 export const scaleIn = {
-  hidden: { opacity: 0, scale: 0.94, y: 20 },
+  hidden: { opacity: 0, scale: 0.96, y: 16 },
   visible: {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { duration: 0.8, ease: easeCinematic },
+    transition: { duration: 0.45, ease: easeCinematic },
   },
 };
 
@@ -100,8 +104,8 @@ export const hoverCard = {
   transition: springSnappy,
 };
 
+/** Botão responde à pressão. Crescer no hover só chama atenção para o cursor. */
 export const hoverButton = {
-  whileHover: { scale: 1.02 },
-  whileTap: { scale: 0.98 },
+  whileTap: { scale: 0.97 },
   transition: springSnappy,
 };

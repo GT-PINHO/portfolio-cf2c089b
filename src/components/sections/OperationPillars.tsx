@@ -6,6 +6,7 @@ import { RevealGroup, RevealItem } from "../ui/Reveal";
 import { ButtonPrimary } from "../ui/Button";
 import { OPERATION } from "../../lib/content";
 import { useAmbientMode } from "../../lib/ambient-intensity";
+import SystemFlow from "./SystemFlow";
 
 export default function OperationPillars() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -15,21 +16,32 @@ export default function OperationPillars() {
     <div ref={rootRef}>
       <Section
         id="operacao"
-        index="03"
+        index="01"
         kicker={OPERATION.kicker}
         title={OPERATION.title}
         lead={OPERATION.lead}
       >
+        <RevealGroup className="mb-10">
+          <RevealItem>
+            <SystemFlow />
+          </RevealItem>
+        </RevealGroup>
+
         <RevealGroup>
-          <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:items-stretch">
+          <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:items-stretch">
             {OPERATION.pillars.map((pilar, i) => (
               <RevealItem key={pilar.id} as="li" delay={i * 0.07} className="h-full">
                 <article className="card-lift flex h-full flex-col border border-surface-line bg-surface-raised/35 p-6">
-                  <h3 className="font-display text-base font-bold leading-snug tracking-tight text-ink lg:min-h-[2.75rem]">
+                  {/* A frente é a informação: separa a oferta de mídia da oferta de engenharia. */}
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
+                    {pilar.track}
+                  </p>
+
+                  <h3 className="mt-2.5 font-display text-base font-bold leading-snug tracking-tight text-ink lg:min-h-[2.75rem]">
                     {pilar.pillar}
                   </h3>
 
-                  <p className="mt-3 text-sm leading-relaxed text-muted lg:min-h-[6.5rem]">
+                  <p className="mt-3 text-sm leading-relaxed text-muted lg:min-h-[5rem]">
                     {pilar.description}
                   </p>
 

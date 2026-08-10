@@ -12,10 +12,10 @@ function resolveSiteUrl(): string {
 export const SITE_URL = resolveSiteUrl();
 
 export const SITE = {
-  title: "David Pinho | Gestor de Tráfego Pago · Meta Ads em escala nacional",
-  shortTitle: "David Pinho | Gestor de Tráfego Pago",
+  title: "David Pinho | Gestor de Tráfego Pago · Meta Ads e automações com IA",
+  shortTitle: "David Pinho | Tráfego Pago e Automações com IA",
   description:
-    "Gestor de Tráfego Pago com R$ 68-98k/semana sob gestão em Meta Ads. Tracking, CRM e Growth Ops quando a escala pede. R$7M+ em mídia, 630 mil+ leads. Aberto a vagas remotas CLT/PJ.",
+    "Gestor de Tráfego Pago com 3+ anos em operação nacional de Meta Ads e desenvolvedor de automações e sistemas com IA (NestJS, Supabase, HubSpot API). R$7M+ em mídia gerida, 630 mil+ leads. Disponível para início imediato, remoto, CLT ou PJ.",
   ogImage: "/opengraph-image",
   locale: "pt_BR",
   themeColor: "#0f0f0f",
@@ -23,8 +23,15 @@ export const SITE = {
     "Gestor de Tráfego",
     "tráfego pago",
     "Meta Ads",
+    "automação com IA",
+    "automações com IA",
+    "desenvolvedor de automações",
+    "integração HubSpot",
+    "automação de CRM",
+    "Growth Engineer",
     "Growth Ops",
     "MarTech",
+    "NestJS",
     "tracking server-side",
     "GTM",
     "CAPI",
