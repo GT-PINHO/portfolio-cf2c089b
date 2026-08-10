@@ -574,14 +574,17 @@ a.link-arrow-end:focus-visible .link-arrow {
   text-underline-offset: 2px;
 }
 
+/* Selo inline. Barra de largura total com borda colorida é ruído, não hierarquia. */
 .cv-status {
+  display: inline-block;
   margin-top: 10px;
-  padding: 6px 10px;
-  border-left: 2px solid var(--accent-dim);
-  background: #f2fbfd;
+  padding: 4px 11px;
+  border: 1px solid rgb(var(--accent-rgb) / 0.35);
+  border-radius: 999px;
+  background: #f1fbfd;
   font-size: 9.5pt;
   font-weight: 600;
-  color: var(--paper-soft);
+  color: #0d5c6e;
 }
 
 .cv-h2 {

@@ -2,7 +2,7 @@
 
 Portfólio em **Next.js + React + TypeScript + Tailwind**, hospedado na **Vercel**.
 
-**URL:** https://portfolio-david-pinho.vercel.app
+**URL:** https://portfolio-davidpinho.vercel.app
 
 ## Rodar localmente
 

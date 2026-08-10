@@ -1,12 +1,19 @@
 import { CONTACT, EXPERIENCE, PROFILE, STACK_GROUPS } from "../../lib/content";
 import { CV } from "../../lib/cv";
+import { SITE_URL } from "../../lib/site";
 import CvActions from "./CvActions";
+
+/** O PDF circula fora do site, então o endereço do portfólio precisa estar nele. */
+const PORTFOLIO_HOST = SITE_URL.replace(/^https?:\/\//, "");
 
 const CONTACT_LINES = [
   { label: "Celular", value: CONTACT.whatsappDisplay, href: `tel:+${CONTACT.whatsapp}` },
   { label: "E-mail", value: CONTACT.email, href: `mailto:${CONTACT.email}` },
   { label: "LinkedIn", value: "linkedin.com/in/odavidpinho", href: CONTACT.linkedin },
   { label: "GitHub", value: "github.com/GT-PINHO", href: CONTACT.github },
+  ...(PORTFOLIO_HOST
+    ? [{ label: "Portfólio", value: PORTFOLIO_HOST, href: SITE_URL }]
+    : []),
 ];
 
 function SectionTitle({ children }: { children: string }) {
