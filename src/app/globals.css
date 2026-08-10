@@ -453,6 +453,11 @@ a.link-arrow-end:focus-visible .link-arrow {
 
 /* ——— Currículo (/cv): documento claro, pensado para impressão ——— */
 
+/**
+ * O /cv é um documento, não uma página do site: fundo claro do topo ao pé.
+ * O escuro do site em volta da folha passava a impressão de que o PDF sairia
+ * preto, e essa dúvida sozinha já custa o download.
+ */
 .cv-page {
   --paper: #ffffff;
   --paper-ink: #16181d;
@@ -460,9 +465,10 @@ a.link-arrow-end:focus-visible .link-arrow {
   --paper-muted: #6b7280;
   --paper-line: #d9dde3;
 
+  color-scheme: light;
   min-height: 100vh;
   padding: 24px 16px 64px;
-  background: var(--bg);
+  background: #e8ecf1;
 }
 
 .cv-actions {
@@ -494,13 +500,14 @@ a.link-arrow-end:focus-visible .link-arrow {
 }
 
 .cv-back {
-  border: 1px solid var(--line);
-  color: var(--soft);
+  border: 1px solid #c8cfd8;
+  background: var(--paper);
+  color: var(--paper-soft);
 }
 
 .cv-download {
-  background: var(--accent);
-  color: #06222a;
+  background: var(--accent-dim);
+  color: #ffffff;
 }
 
 .cv-back:active,
@@ -515,8 +522,8 @@ a.link-arrow-end:focus-visible .link-arrow {
 
 @media (hover: hover) and (pointer: fine) {
   .cv-back:hover {
-    border-color: rgb(var(--accent-rgb) / 0.5);
-    color: var(--ink);
+    border-color: var(--accent-dim);
+    color: var(--paper-ink);
   }
 
   .cv-back:hover svg {

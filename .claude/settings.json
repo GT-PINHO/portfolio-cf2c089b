@@ -14,7 +14,11 @@
       "Bash(timeout 120 npx -y vercel env add NEXT_PUBLIC_SITE_URL production)",
       "Bash(timeout 120 npx -y vercel env ls production)",
       "Bash(curl -s -o /dev/null -w \"dev server: %{http_code}\\\\n\" http://localhost:3000/cv)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(cp __TRACKED_VAR__/shot-screen.mjs ./_shot.mjs)",
+      "Bash(URL=http://localhost:3301/cv OUT=__TRACKED_VAR__/tela.png node ./_shot.mjs)",
+      "Bash(CV_URL=http://localhost:3301/cv CV_PREVIEW=__TRACKED_VAR__/pdf.png npm run cv:pdf)",
+      "Bash(PYTHONIOENCODING=utf-8 python -c ' *)"
     ]
   }
 }
