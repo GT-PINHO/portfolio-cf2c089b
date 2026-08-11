@@ -669,6 +669,15 @@ a.link-arrow-end:focus-visible .link-arrow {
    * `overflow-x: clip` no body corta o que passar da largura em vez de deixar
    * refluir, e foi o que decepava o texto na margem direita do PDF.
    */
+  /**
+   * `color-scheme: dark` no html pinta de preto o canvas da página, que é a
+   * área das margens do @page. Fundo branco no html não alcança essa faixa,
+   * então o PDF saía com moldura preta nos quatro lados.
+   */
+  html {
+    color-scheme: light !important;
+  }
+
   html,
   body {
     width: auto !important;
