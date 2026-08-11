@@ -31,7 +31,8 @@ export default function LegacyDashboard() {
           ))}
         </span>
 
-        <span className="ml-auto flex flex-wrap items-center gap-1.5">
+        {/* No celular os filtros ocupam a linha inteira; empurrar à direita deixaria um recuo torto. */}
+        <span className="flex w-full flex-wrap items-center gap-1.5 sm:ml-auto sm:w-auto">
           {D.filters.map((f) => (
             <span
               key={f}

@@ -102,7 +102,11 @@ export default function Contato() {
                   </span>
                 </a>
 
-                <div className="flex items-center gap-4 rounded-xl border border-accent/20 bg-accent/5 p-4 md:hidden">
+                {/*
+                  QR só faz sentido em tela grande: quem já está no celular
+                  não escaneia o código exibido pelo próprio aparelho.
+                */}
+                <div className="hidden items-center gap-4 rounded-xl border border-accent/20 bg-accent/5 p-4 md:flex">
                   <div className="shrink-0 rounded-lg bg-white p-1.5">
                     <img
                       src={qrSrc}

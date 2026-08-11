@@ -30,7 +30,8 @@ export default function Experiencia() {
               </span>
 
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                <h3 className="font-display text-xl font-bold tracking-tight text-ink">
+                {/* 32px no celular quebrava o cargo em três linhas. */}
+                <h3 className="font-display text-md font-bold tracking-tight text-ink sm:text-lg md:text-xl">
                   {r.title}
                 </h3>
                 {r.current && (
@@ -39,7 +40,7 @@ export default function Experiencia() {
                   </span>
                 )}
                 {"highlight" in r && r.highlight ? (
-                  <span className="font-display text-lg font-bold tracking-tight text-accent tabular-nums">
+                  <span className="font-display text-base font-bold tracking-tight text-accent tabular-nums md:text-lg">
                     {r.highlight}
                   </span>
                 ) : null}

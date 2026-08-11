@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { RevealItem } from "../ui/Reveal";
 import { SYSTEM_FLOW } from "../../lib/content";
 
 /**
@@ -176,12 +177,22 @@ export default function SystemFlow() {
             })}
           </ol>
 
-          {/* Mobile e tablet: trilho vertical, sempre completo */}
+          {/*
+            Mobile e tablet: trilho vertical.
+            Sem pin (custaria 2 telas extras e trava com scroll de inércia).
+            A cascata vem da entrada em viewport, via o mesmo reveal do site,
+            que já respeita prefers-reduced-motion e nasce visível sem JS.
+          */}
           <ol className="relative mt-7 list-none border-l border-surface-line pl-6 lg:hidden">
             {NODES.map((node, i) => {
               const isOutcome = node.track === null;
               return (
-                <li key={node.id} className="relative pb-6 last:pb-0">
+                <RevealItem
+                  key={node.id}
+                  as="li"
+                  delay={i * 0.07}
+                  className="relative pb-6 last:pb-0"
+                >
                   <span
                     aria-hidden
                     className={`absolute -left-[30px] top-1 block h-[11px] w-[11px] rounded-full ring-4 ring-surface ${
@@ -208,7 +219,7 @@ export default function SystemFlow() {
                       {node.track}
                     </p>
                   ) : null}
-                </li>
+                </RevealItem>
               );
             })}
           </ol>

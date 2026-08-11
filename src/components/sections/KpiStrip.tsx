@@ -11,11 +11,19 @@ export default function KpiStrip() {
       className="relative z-10 border-y border-surface-line bg-surface/80"
     >
       <Container>
-        <div className="grid grid-cols-2 divide-x divide-y divide-surface-line md:grid-cols-4 md:divide-y-0">
-          {KPIS.map((kpi) => (
+        {/*
+          Três itens: no celular ficam 2 + 1, com o último ocupando a linha
+          inteira em vez de deixar meia célula vazia.
+        */}
+        <div className="grid grid-cols-2 divide-x divide-y divide-surface-line md:grid-cols-3 md:divide-y-0">
+          {KPIS.map((kpi, i) => (
             <div
               key={kpi.id}
-              className="px-5 py-5 first:pl-0 last:pr-0 md:px-6 md:py-6 md:first:pl-0 md:last:pr-0"
+              className={`px-5 py-5 first:pl-0 last:pr-0 md:px-6 md:py-6 md:first:pl-0 md:last:pr-0 ${
+                i === KPIS.length - 1 && KPIS.length % 2 === 1
+                  ? "col-span-2 md:col-span-1"
+                  : ""
+              }`}
             >
               <p className="font-display text-lg font-bold tracking-tight text-accent tabular-nums md:text-xl">
                 {typeof kpi.countTo === "number" ? (
@@ -31,7 +39,8 @@ export default function KpiStrip() {
                   kpi.value
                 )}
               </p>
-              <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+              {/* Tracking largo estoura a célula de 2 colunas no celular. */}
+              <p className="mt-1 text-xs font-semibold uppercase tracking-[0.1em] text-muted md:tracking-[0.18em]">
                 {kpi.label}
               </p>
             </div>

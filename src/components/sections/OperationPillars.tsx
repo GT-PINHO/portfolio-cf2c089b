@@ -31,7 +31,7 @@ export default function OperationPillars() {
           <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:items-stretch">
             {OPERATION.pillars.map((pilar, i) => (
               <RevealItem key={pilar.id} as="li" delay={i * 0.07} className="h-full">
-                <article className="card-lift flex h-full flex-col border border-surface-line bg-surface-raised/35 p-6">
+                <article className="card-lift flex h-full flex-col border border-surface-line bg-surface-raised/35 p-5 sm:p-6">
                   {/* A frente é a informação: separa a oferta de mídia da oferta de engenharia. */}
                   <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
                     {pilar.track}
@@ -66,9 +66,13 @@ export default function OperationPillars() {
                       ))}
                     </ul>
 
-                    {/* Reserva a mesma altura do botão CTA em todos os cards */}
-                    <div className="mt-4 min-h-[2.75rem]">
-                      {pilar.href ? (
+                    {/*
+                      A reserva de altura do CTA só existe para alinhar a grade
+                      do desktop. Empilhado no celular ela vira espaço morto no
+                      rodapé de todo card sem botão.
+                    */}
+                    {pilar.href ? (
+                      <div className="mt-4">
                         <ButtonPrimary
                           href={pilar.href}
                           className="w-full px-4 py-2.5 text-xs sm:text-sm"
@@ -78,8 +82,10 @@ export default function OperationPillars() {
                             →
                           </span>
                         </ButtonPrimary>
-                      ) : null}
-                    </div>
+                      </div>
+                    ) : (
+                      <div aria-hidden className="hidden lg:mt-4 lg:block lg:min-h-[2.75rem]" />
+                    )}
                   </div>
                 </article>
               </RevealItem>

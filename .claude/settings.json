@@ -18,7 +18,11 @@
       "Bash(cp __TRACKED_VAR__/shot-screen.mjs ./_shot.mjs)",
       "Bash(URL=http://localhost:3301/cv OUT=__TRACKED_VAR__/tela.png node ./_shot.mjs)",
       "Bash(CV_URL=http://localhost:3301/cv CV_PREVIEW=__TRACKED_VAR__/pdf.png npm run cv:pdf)",
-      "Bash(PYTHONIOENCODING=utf-8 python -c ' *)"
+      "Bash(PYTHONIOENCODING=utf-8 python -c ' *)",
+      "Bash(node scripts/diag-cv.mjs)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('html colorScheme:', d['html']['colorScheme']\\); print\\('html bg:', d['html']['bg']\\); print\\('body bg:', d['body']['bg']\\)\")",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(grep -o 'VERBA SEMANAL\\\\|R\\\\$ 68-98k\\\\|R\\\\$ 83k\\\\|45-68')"
     ]
   }
 }
