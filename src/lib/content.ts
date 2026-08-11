@@ -42,11 +42,10 @@ export const KPIS: KpiItem[] = [
     countTo: 630,
     suffix: " mil+",
   },
-  {
-    id: "verba",
-    value: "R$ 68-98k",
-    label: "VERBA SEMANAL GERIDA",
-  },
+  /**
+   * A verba semanal saiu daqui de propósito: fora do contexto do vínculo ela
+   * sugere conta ativa. Fica só no escopo da IAM, em Experiência e no caso.
+   */
   {
     id: "anos",
     value: "3 anos",
@@ -78,7 +77,7 @@ export const OPERATION_PILLARS: OperationPillar[] = [
     description:
       "Gestão de verba em campanha nacional recorrente, com funil por etapa e teste contínuo de criativo e público.",
     tools: ["Meta Ads", "CPL / ROAS", "Testes A/B"],
-    proof: { value: "R$ 83k", unit: "de verba semanal gerida" },
+    proof: { value: "45-68", unit: "Masterclasses captadas por mês" },
   },
   {
     id: "tracking",

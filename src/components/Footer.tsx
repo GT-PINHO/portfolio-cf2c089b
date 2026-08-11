@@ -31,8 +31,9 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm text-muted">
+          {/* Leva à página do currículo, não a um arquivo: "Baixar" prometia download. */}
           <a href={CV_URL} className="touch-hit rounded-sm hover:text-ink">
-            Baixar CV
+            Currículo
           </a>
           <a
             href={CONTACT.linkedin}

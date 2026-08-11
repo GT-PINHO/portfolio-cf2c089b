@@ -29,7 +29,7 @@ export const GROWTH_OPS_CASE = {
   heroHighlights: [
     { value: "100%", label: "Processamento sem erro" },
     { value: "20 a 30k", label: "Leads sob gestão" },
-    { value: "~R$ 4.5k", label: "Economia mensal" },
+    { value: "R$ 4.5k", label: "Economia mensal" },
   ],
 
   scenario: {
@@ -74,7 +74,7 @@ export const GROWTH_OPS_CASE = {
       },
       {
         title: "Custo por execução",
-        text: "Para 20 a 30k leads/mês: R$ 4.300 a 4.500 estimados; com extras no pico, ~R$ 5.000/mês.",
+        text: "Para 20 a 30k leads/mês: R$ 4.300 a 4.500 estimados; com extras no pico, R$ 5.000/mês.",
       },
       {
         title: "E-mail quebrado",
@@ -126,7 +126,7 @@ export const GROWTH_OPS_CASE = {
     items: [
       {
         title: "Eficiência financeira",
-        text: "Substituição de um custo estimado de R$ 4.300 a 4.500/mês no n8n Cloud (até ~R$ 5.000 com execuções extras para 20 a 30k leads) por infraestrutura fixa mínima em VPS, com gasto com licenças de automação praticamente zerado.",
+        text: "Substituição de um custo estimado de R$ 4.300 a 4.500/mês no n8n Cloud (até R$ 5.000 com execuções extras para 20 a 30k leads) por infraestrutura fixa mínima em VPS, com gasto com licenças de automação praticamente zerado.",
       },
       {
         title: "Estabilidade",
