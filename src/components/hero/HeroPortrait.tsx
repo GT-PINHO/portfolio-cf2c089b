@@ -20,8 +20,15 @@ export default function HeroPortrait() {
             fill
             priority
             sizes="(max-width: 640px) 220px, (max-width: 1024px) 280px, 340px"
-            className="scale-105 object-cover object-top brightness-[0.95] contrast-[1.04]"
+            className="hero-portrait-img scale-105 object-cover object-top"
           />
+          {/*
+            A foto é escura sobre uma página escura e o card sumia. A separação
+            vem do halo atrás (.hero-portrait-stage::before) e do anel da borda,
+            não de camada por cima da imagem: overlay sobre o fundo chapado do
+            retrato deixava um véu cinza com emenda visível.
+          */}
+          <span aria-hidden className="hero-portrait-rim" />
         </div>
       </div>
     </div>

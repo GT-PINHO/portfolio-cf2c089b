@@ -37,7 +37,7 @@ function formatValue(
   return decimals > 0 ? n.toFixed(decimals) : String(Math.round(n));
 }
 
-/** Contador animado — sempre emite o valor final no HTML até a animação sobrescrever. */
+/** Contador animado. Sempre emite o valor final no HTML até a animação sobrescrever. */
 export default function CountUp({
   to,
   fallback,

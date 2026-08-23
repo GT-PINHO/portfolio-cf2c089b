@@ -45,7 +45,7 @@ export default function Experiencia() {
                   </span>
                 ) : null}
               </div>
-              <p className="mt-1 font-medium text-accent">{r.org}</p>
+              <p className="mt-1 font-medium text-soft">{r.org}</p>
               <p className="mt-1 text-sm text-muted">{r.meta}</p>
 
               <ul className="mt-5 max-w-[65ch] space-y-2.5">

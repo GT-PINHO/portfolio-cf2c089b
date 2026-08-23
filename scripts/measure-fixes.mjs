@@ -13,7 +13,7 @@ await page.evaluate(() => {
 });
 await page.waitForTimeout(100);
 
-// Badge may be md+ only — force desktop
+// Badge may be md+ only, force desktop
 const badge = await page.evaluate(() => {
   const path = document.querySelector("#availability-arc");
   const text = document.querySelector('textPath[href="#availability-arc"]')

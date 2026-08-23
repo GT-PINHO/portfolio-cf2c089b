@@ -1,5 +1,8 @@
 /**
- * Gera public/Curriculo_David_Pinho.pdf a partir da rota /cv.
+ * Gera public/Curriculo_DavidPinho.pdf a partir da rota /cv.
+ *
+ * ATENCAO: o PDF em public/ hoje e mantido a mao. Rodar este script
+ * SOBRESCREVE o arquivo com a versao gerada da pagina.
  *
  * A rota é alimentada por src/lib/content.ts, então o PDF nunca diverge do
  * site: mudou a experiência lá, roda este script e o arquivo acompanha.
@@ -16,7 +19,7 @@ import { mkdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 
 const url = process.env.CV_URL || "http://localhost:3000/cv";
-const out = resolve(process.cwd(), "public/Curriculo_David_Pinho.pdf");
+const out = resolve(process.cwd(), "public/Curriculo_DavidPinho.pdf");
 
 /** Chrome do sistema: evita depender de `playwright install`. */
 const LAUNCH = [{ channel: "chrome" }, { channel: "msedge" }, {}];

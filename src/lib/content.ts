@@ -27,31 +27,37 @@ export type KpiItem = {
 };
 
 export const KPIS: KpiItem[] = [
+  /**
+   * Faixa semanal em vez de total acumulado: é o número que eu consigo
+   * sustentar sozinho. "Em operação nacional" no rótulo mantém a leitura de
+   * contexto, não de conta ativa hoje.
+   */
   {
     id: "investimento",
-    value: "R$ 7M+",
-    label: "INVESTIMENTO GERIDO",
-    countTo: 7,
-    prefix: "R$ ",
-    suffix: "M+",
+    value: "R$ 68-98 mil",
+    label: "VERBA SEMANAL EM OPERAÇÃO NACIONAL",
+    countTo: 98,
+    prefix: "R$ 68-",
+    suffix: " mil",
   },
+  /**
+   * O total é da operação, não uma autoria minha: nenhum bullet reivindica
+   * os 630 mil. A prova de volume que é minha está no pipeline, em 20-30k/mês.
+   */
   {
     id: "leads",
     value: "630 mil+",
-    label: "LEADS GERADOS",
+    label: "LEADS EM OPERAÇÃO NACIONAL",
     countTo: 630,
     suffix: " mil+",
   },
-  /**
-   * A verba semanal saiu daqui de propósito: fora do contexto do vínculo ela
-   * sugere conta ativa. Fica só no escopo da IAM, em Experiência e no caso.
-   */
+  /** fev/2023 a jul/2026 são 3 anos e 5 meses. O "+" não é retórica. */
   {
     id: "anos",
-    value: "3 anos",
-    label: "EM OPERAÇÃO NACIONAL",
+    value: "3+ anos",
+    label: "GERINDO META ADS",
     countTo: 3,
-    suffix: " anos",
+    suffix: "+ anos",
   },
 ];
 
@@ -86,7 +92,7 @@ export const OPERATION_PILLARS: OperationPillar[] = [
     description:
       "Sinal server-side para o Meta enxergar a conversão certa, e UTM que sobrevive até o CRM.",
     tools: ["GTM Server-Side", "CAPI / Stape", "UTM → CRM"],
-    proof: { value: "100%", unit: "dos leads com origem rastreada" },
+    proof: { value: "UTM", unit: "preservada do anúncio ao CRM" },
   },
   {
     id: "crm",
@@ -95,7 +101,7 @@ export const OPERATION_PILLARS: OperationPillar[] = [
     description:
       "Integro anúncio, chatbot e CRM por API, com upsert idempotente: o lead chega estruturado no comercial, sem duplicidade e sem perda.",
     tools: ["HubSpot API", "ManyChat API", "Webhooks"],
-    proof: { value: "25k", unit: "leads/mês no pipeline" },
+    proof: { value: "20-30k", unit: "leads/mês no pipeline" },
   },
   {
     id: "sistemas",
@@ -124,7 +130,7 @@ export const OPERATION_PILLARS: OperationPillar[] = [
     description:
       "Interface que mostra a operação em tempo real: métrica por etapa, log por lead e correção de dado sujo em um clique.",
     tools: ["React", "Supabase", "Meta API"],
-    proof: { value: "16k", unit: "leads monitorados no painel" },
+    proof: { value: "5 fontes", unit: "de dados unificadas em um painel" },
     href: "#painel",
     cta: "Ver o painel",
   },
@@ -169,18 +175,26 @@ export const OPERATION = {
 
 
 export const HERO = {
-  eyebrow: PROFILE.role,
-  /** Uma linha por frase: a quebra é diagramação, não acaso do wrap. */
+  /**
+   * Primeira lâmina é criativo, não descrição: a versão anterior ("Meta Ads em
+   * escala nacional. E os sistemas com IA que sustentam o funil.") dizia o que
+   * eu sou em cinco linhas, sem dizer o que quem contrata ganha.
+   *
+   * O ângulo é o argumento econômico: normalmente são duas contratações, um
+   * gestor de tráfego e um dev. Aqui é uma. Uma linha por frase: a quebra é
+   * diagramação, não acaso do wrap.
+   */
   headlineLines: [
-    "Meta Ads em escala nacional.",
-    "E os sistemas com IA que sustentam o funil.",
+    "Gestor de tráfego que também",
+    "constrói o sistema por trás do funil.",
   ],
   /**
-   * Não repete os números da KpiStrip logo abaixo. O trabalho dele é
-   * ancorar tempo de mercado e dizer onde a operação começa e termina.
+   * Prova a promessa da headline com o caso que só quem fez as duas pontas
+   * consegue contar. Os 630 mil são da operação. Nenhuma linha aqui
+   * reivindica autoria sobre eles.
    */
   subheadline:
-    "Mais de 3 anos gerindo Meta Ads em operação nacional. Desenvolvo o tracking, a automação e os sistemas que levam cada lead até a venda.",
+    "Mais de 3 anos de Meta Ads em operação nacional, 630 mil leads. Quando a automação no-code parou de aguentar o volume, eu escrevi a API que aguentou. E o painel que mostra onde cada lead está.",
   cta: {
     primary: { label: "Ver currículo", href: "/cv" },
     secondary: { label: "Falar no WhatsApp", href: "whatsapp" },
@@ -191,18 +205,18 @@ export const EXPERIENCE = {
   kicker: "Experiência",
   title: "Trajetória em operação real.",
   lead:
-    "Mais de três anos em Meta Ads em operações nacionais de educação e eventos, somados ao desenvolvimento da stack de automação que sustenta esse funil.",
+    "Mais de três anos em Meta Ads em operações nacionais de treinamentos e desenvolvimento, somados ao desenvolvimento da stack de automação que sustenta esse funil.",
   roles: [
     {
       title: "Gestor de Tráfego Pago · MarTech & Growth Ops",
       org: "Instituto Academy Mind (IAM Treinamentos) · Grupo Legacy Eco Holding",
-      meta: "dez/2024 a ago/2026",
+      meta: "dez/2024 a jul/2026",
       current: false,
       highlight: "R$ 68-98k/semana",
       bullets: [
-        "Meta Ads nacional; contribuição em operação com +630 mil leads e R$7 mi em mídia.",
-        "Tracking server-side (GTM/CAPI/Stape) e funil com CPL sob gestão direta em captação recorrente.",
-        "Migração n8n → NestJS/Docker (R$ 4,5k/mês economizados) e pipeline HubSpot/ManyChat para 20-30k leads/mês.",
+        "Meta Ads nacional em captação recorrente: 45 a 68 Masterclasses e 2 a 4 imersões por mês, com CPL sob gestão direta.",
+        "Tracking server-side (GTM/CAPI/Stape) com UTM preservada do anúncio até o CRM.",
+        "Migração n8n → NestJS/Docker (R$ 4,5k/mês economizados) e pipeline HubSpot/ManyChat para 20 a 30 mil leads/mês.",
       ],
     },
     {
@@ -230,7 +244,7 @@ export type CaseItem = {
   metrics?: { value: string; label: string }[];
   href?: string;
   cta?: string;
-  /** Campos legados — cards compactos não renderizam. */
+  /** Campos legados: cards compactos não renderizam. */
   context?: string;
   problem?: string;
   action?: string;
@@ -242,12 +256,12 @@ export const CASES: CaseItem[] = [
     sector: "IAM · Sistemas e automação",
     title: "Troquei o n8n por uma API própria em NestJS e zerei o custo de licença.",
     impact:
-      "30 mil leads/mês quebravam a automação no-code. Reconstruí o pipeline com logs granulares, upsert idempotente e Data Cleansing assistido: 100% de processamento sem erro, R$ 4,5k/mês economizados e base histórica migrada para a HubSpot.",
+      "20 a 30 mil leads/mês quebravam a automação no-code. Reconstruí o pipeline com logs granulares, upsert idempotente e Data Cleansing assistido: 100% de processamento sem erro, R$ 4,5k/mês economizados e base histórica migrada para a HubSpot.",
     stack: ["NestJS", "Docker", "Supabase", "HubSpot", "ManyChat"],
     featured: true,
     metrics: [
       { value: "100%", label: "sucesso" },
-      { value: "25k", label: "leads/mês" },
+      { value: "20-30k", label: "leads/mês" },
       { value: "R$ 4,5k", label: "/mês economizados" },
     ],
     href: "/casos/growth-ops-iam",
@@ -359,7 +373,7 @@ export const STACK = {
 export const CONTACT = {
   headline: "Vamos conversar?",
   lead:
-    "Disponível para início imediato em vagas remotas (CLT/PJ) de tráfego pago, MarTech e Growth Engineering. Atendo também projetos de automação e sistemas com IA. WhatsApp é o canal mais rápido.",
+    "Disponível para início imediato em vagas remotas (CLT/PJ) de tráfego pago e MarTech. Atendo também projetos de automação e sistemas com IA. WhatsApp é o canal mais rápido.",
   location: PROFILE.location,
   email: "davidpinho.st@gmail.com",
   whatsapp: "5519997501584",

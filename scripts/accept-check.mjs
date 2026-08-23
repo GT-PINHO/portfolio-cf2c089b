@@ -108,7 +108,7 @@ async function measureScrimTouchGrids() {
     waitUntil: "networkidle",
     timeout: 60000,
   });
-  // Preferência (a): desafio 2 cols + último col-span-2 — não é órfão visual
+  // Preferência (a): desafio 2 cols + último col-span-2, não é órfão visual
   const grids = await page.evaluate(() => {
     const challenge = document.querySelector("#desafio .grid");
     const results = document.querySelector("#resultados .grid.items-start, #resultados .grid");

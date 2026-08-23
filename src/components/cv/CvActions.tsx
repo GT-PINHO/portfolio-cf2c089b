@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CV_FILENAME, CV_PDF_URL } from "../../lib/cv";
 
 function IconBack() {
@@ -38,10 +39,10 @@ function IconDownload() {
 export default function CvActions() {
   return (
     <div className="cv-actions">
-      <a href="/" className="cv-back">
+      <Link href="/" className="cv-back">
         <IconBack />
         Voltar ao portfólio
-      </a>
+      </Link>
 
       <a href={CV_PDF_URL} download={CV_FILENAME} className="cv-download">
         <IconDownload />

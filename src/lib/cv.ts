@@ -1,8 +1,15 @@
 /** Página do currículo: fonte única, sempre atual. */
 export const CV_URL = "/cv";
-/** Arquivo baixável, gerado da página acima por `npm run cv:pdf`. */
-export const CV_PDF_URL = "/Curriculo_David_Pinho.pdf";
-export const CV_FILENAME = "Curriculo_David_Pinho.pdf";
+/**
+ * Arquivo baixável em public/. Fonte única do caminho: importe daqui, nunca
+ * escreva a string no componente. Foi assim que o link do estudo de caso
+ * ficou 404 quando o PDF foi renomeado.
+ *
+ * Hoje é um PDF mantido à mão. `npm run cv:pdf` gera a partir da rota /cv e
+ * SOBRESCREVE este arquivo: só rode se quiser voltar à versão automática.
+ */
+export const CV_PDF_URL = "/Curriculo_DavidPinho.pdf";
+export const CV_FILENAME = "Curriculo_DavidPinho.pdf";
 
 /**
  * Conteúdo exclusivo do currículo. Experiência, competências e contato
@@ -11,7 +18,7 @@ export const CV_FILENAME = "Curriculo_David_Pinho.pdf";
 export const CV = {
   summaryTitle: "Resumo profissional",
   summary:
-    "Gestor de tráfego pago com mais de 3 anos em operações nacionais de educação e eventos. Meta Ads de médio e alto volume, com orçamento semanal de até R$ 98 mil, otimização de CPL e ROAS, funil e escala. Além da gestão de mídia, desenvolvo tracking server-side (GTM/CAPI), integrações de CRM e sistemas MarTech, incluindo infraestrutura proprietária em NestJS para 20 a 30 mil leads por mês com idempotência, observabilidade e redução de custo de automação.",
+    "Gestor de tráfego pago com mais de 3 anos em operações nacionais de treinamentos e desenvolvimento. Meta Ads de médio e alto volume, com orçamento semanal de até R$ 98 mil, otimização de CPL e ROAS, funil e escala. Além da gestão de mídia, desenvolvo tracking server-side (GTM/CAPI), integrações de CRM e sistemas MarTech, incluindo infraestrutura proprietária em NestJS para 20 a 30 mil leads por mês com idempotência, observabilidade e redução de custo de automação.",
 
   projectsTitle: "Projetos",
   projects: [

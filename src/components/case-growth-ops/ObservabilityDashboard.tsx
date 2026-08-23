@@ -51,7 +51,7 @@ export default function ObservabilityDashboard() {
             <span className="rounded-full border border-white/10 px-2.5 py-1 text-xs text-muted">
               IPR
             </span>
-            <span className="rounded-full bg-sky-500 px-2.5 py-1 text-xs font-semibold text-white">
+            <span className="rounded-full bg-sky-500 px-2.5 py-1 text-xs font-semibold text-on-accent">
               {d.product}
             </span>
             <span className="hidden rounded-md border border-white/10 px-2.5 py-1 text-xs text-muted sm:inline">

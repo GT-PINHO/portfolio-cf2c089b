@@ -31,6 +31,9 @@ export default function LegacyDashboard() {
           ))}
         </span>
 
+        {/* Sem período, R$ 74,8 mil não diz se é semana, mês ou ano. */}
+        <span className="text-[0.6875rem] tabular-nums text-muted">{D.period}</span>
+
         {/* No celular os filtros ocupam a linha inteira; empurrar à direita deixaria um recuo torto. */}
         <span className="flex w-full flex-wrap items-center gap-1.5 sm:ml-auto sm:w-auto">
           {D.filters.map((f) => (

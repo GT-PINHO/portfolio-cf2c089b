@@ -25,7 +25,8 @@ export default function KpiStrip() {
                   : ""
               }`}
             >
-              <p className="font-display text-lg font-bold tracking-tight text-accent tabular-nums md:text-xl">
+              {/* Faixa de verba não pode quebrar no meio: em 360px o text-lg partia "R$ 68-" / "98 mil". */}
+              <p className="whitespace-nowrap font-display text-base font-bold tracking-tight text-accent tabular-nums sm:text-lg md:text-xl">
                 {typeof kpi.countTo === "number" ? (
                   <CountUp
                     to={kpi.countTo}

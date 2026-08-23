@@ -16,10 +16,10 @@ export const GROWTH_OPS_CASE = {
   kicker: "ESTUDO DE CASO · GROWTH OPS",
   /** Usado em metadata e no <title>: precisa ser uma string única. */
   title:
-    "30 mil leads/mês quebravam a automação. Reconstruí o pipeline e zerei o custo de licença.",
+    "20 a 30 mil leads/mês quebravam a automação. Reconstruí o pipeline e zerei o custo de licença.",
   /** Uma linha por frase: a quebra do H1 é diagramação, não acaso do wrap. */
   titleLines: [
-    "30 mil leads/mês quebravam a automação.",
+    "20 a 30 mil leads/mês quebravam a automação.",
     "Reconstruí o pipeline e zerei o custo de licença.",
   ],
   subtitle:
@@ -65,7 +65,7 @@ export const GROWTH_OPS_CASE = {
 
   challenge: {
     title: "O desafio técnico",
-    /** Parágrafo removido — os 3 cards abaixo cobrem o conteúdo. */
+    /** Parágrafo removido: os 3 cards abaixo cobrem o conteúdo. */
     body: "",
     pains: [
       {

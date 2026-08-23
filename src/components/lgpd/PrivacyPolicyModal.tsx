@@ -96,7 +96,7 @@ export default function PrivacyPolicyModal({ open, onClose }: Props) {
             <button
               type="button"
               onClick={onClose}
-              className="mt-6 w-full rounded-full py-3 text-sm font-semibold text-white sm:w-auto sm:px-8"
+              className="mt-6 w-full rounded-full py-3 text-sm font-semibold text-on-accent sm:w-auto sm:px-8"
               style={{ background: "#06b6d4" }}
             >
               Fechar

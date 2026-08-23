@@ -36,7 +36,7 @@ export const heroItem = {
   },
 };
 
-/** H1: só translateY — nunca opacity 0 com delay (primeiro paint útil). */
+/** H1: só translateY, nunca opacity 0 com delay (primeiro paint útil). */
 export const heroHeadline = {
   hidden: { y: 8 },
   visible: {

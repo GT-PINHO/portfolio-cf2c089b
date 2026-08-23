@@ -52,7 +52,7 @@ export default function OpenGraphImage() {
               maxWidth: 720,
             }}
           >
-            Gestor de Tráfego Pago · R$ 68-98k/semana sob gestão
+            Gestor de Tráfego Pago · Meta Ads e sistemas com IA
           </div>
         </div>
         <div
@@ -63,9 +63,9 @@ export default function OpenGraphImage() {
             color: "#d2d6db",
           }}
         >
-          <span>R$ 7M+ geridos</span>
+          <span>R$ 68-98 mil/semana</span>
           <span>·</span>
-          <span>630 mil+ leads</span>
+          <span>20-30 mil leads/mês</span>
           <span>·</span>
           <span>CLT / PJ remoto</span>
         </div>

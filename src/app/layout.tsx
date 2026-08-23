@@ -114,7 +114,7 @@ function JsonLd() {
         name: PROFILE.fullName,
         alternateName: PROFILE.name,
         url: pageUrl,
-        jobTitle: ["Gestor de Tráfego Pago", "Growth Engineer"],
+        jobTitle: "Gestor de Tráfego Pago",
         description: SITE.description,
         email: CONTACT.email,
         telephone: `+${CONTACT.whatsapp}`,

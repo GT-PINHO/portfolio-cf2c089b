@@ -11,7 +11,7 @@ import { ButtonPrimary, ButtonSecondary } from "../ui/Button";
 import ObservabilityDashboard from "./ObservabilityDashboard";
 import LeadFlowTimeline from "./LeadFlowTimeline";
 import CaseReadingNav from "./CaseReadingNav";
-import { CV_FILENAME } from "@/lib/cv";
+import { CV_FILENAME, CV_PDF_URL } from "@/lib/cv";
 
 const c = GROWTH_OPS_CASE;
 
@@ -43,7 +43,7 @@ export default function CaseGrowthOpsPage() {
               href={`https://wa.me/${CONTACT.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="shrink-0 rounded-full px-4 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+              className="shrink-0 rounded-full px-4 py-2 text-sm font-semibold text-on-accent transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
               style={{ background: "var(--accent)" }}
             >
               Conversar
@@ -304,7 +304,7 @@ export default function CaseGrowthOpsPage() {
                   Falar no WhatsApp
                 </ButtonPrimary>
                 <ButtonSecondary
-                  href="/Curriculo_David_Pinho.pdf"
+                  href={CV_PDF_URL}
                   download={CV_FILENAME}
                   className="w-full sm:w-auto"
                 >

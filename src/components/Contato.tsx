@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import { CONTACT } from "../lib/content";
 import { whatsappUrl, WHATSAPP_NUMBER } from "../lib/contact";
 import Container from "./ui/Container";
@@ -48,10 +49,6 @@ function IconArrow() {
 
 /** Bloco de conversão: sempre visível (sem reveal / opacity:0). */
 export default function Contato() {
-  const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=6&data=${encodeURIComponent(
-    whatsappUrl()
-  )}`;
-
   return (
     <section id="contato" className="section-anchor pb-2 pt-8 md:pb-4 md:pt-10">
       <Container>
@@ -80,7 +77,7 @@ export default function Contato() {
                 >
                   <div className="flex min-w-0 items-center gap-3">
                     <span
-                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white"
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-on-accent"
                       style={{ background: "var(--accent)" }}
                     >
                       <IconWhatsApp />
@@ -108,8 +105,14 @@ export default function Contato() {
                 */}
                 <div className="hidden items-center gap-4 rounded-xl border border-accent/20 bg-accent/5 p-4 md:flex">
                   <div className="shrink-0 rounded-lg bg-white p-1.5">
-                    <img
-                      src={qrSrc}
+                    {/*
+                      Asset gerado por `npm run qr:build`, não chamada a
+                      api.qrserver.com em runtime: sem terceiro no caminho do
+                      visitante e sem quebrar se o serviço cair. O prebuild
+                      falha se contact.ts mudar sem regerar o PNG.
+                    */}
+                    <Image
+                      src="/qr-whatsapp.png"
                       alt="QR Code para WhatsApp de David Pinho"
                       width={96}
                       height={96}
@@ -118,7 +121,7 @@ export default function Contato() {
                     />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
+                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
                       Escanear
                     </p>
                     <a

@@ -33,7 +33,7 @@ export default function OperationPillars() {
               <RevealItem key={pilar.id} as="li" delay={i * 0.07} className="h-full">
                 <article className="card-lift flex h-full flex-col border border-surface-line bg-surface-raised/35 p-5 sm:p-6">
                   {/* A frente é a informação: separa a oferta de mídia da oferta de engenharia. */}
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
                     {pilar.track}
                   </p>
 

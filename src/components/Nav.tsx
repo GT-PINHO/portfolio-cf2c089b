@@ -222,7 +222,7 @@ export default function Nav() {
             href="#contato"
             onClick={(e) => handleNavClick("#contato", e)}
             aria-current={active === "contato" ? "location" : undefined}
-            className="btn-tactile ml-auto shrink-0 rounded-full bg-accent px-3.5 py-2 text-sm font-semibold text-white hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface sm:px-4"
+            className="btn-tactile ml-auto shrink-0 rounded-full bg-accent px-3.5 py-2 text-sm font-semibold text-on-accent hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface sm:px-4"
           >
             Conversar
           </a>
@@ -287,7 +287,7 @@ export default function Nav() {
                   href="#contato"
                   onClick={(e) => handleNavClick("#contato", e)}
                   aria-current={active === "contato" ? "location" : undefined}
-                  className="btn-tactile mt-2 rounded-full bg-accent px-5 py-3 text-center text-base font-semibold text-white"
+                  className="btn-tactile mt-2 rounded-full bg-accent px-5 py-3 text-center text-base font-semibold text-on-accent"
                 >
                   Conversar
                 </a>

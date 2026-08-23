@@ -6,8 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "cv:pdf": "node scripts/build-cv-pdf.mjs"
+    "lint": "eslint .",
+    "cv:pdf": "node scripts/build-cv-pdf.mjs",
+    "qr:build": "node scripts/build-qr.mjs && node scripts/write-qr-lock.mjs",
+    "qr:check": "node scripts/check-qr.mjs",
+    "prebuild": "node scripts/check-qr.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.40.0",
@@ -20,6 +23,9 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.19",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^15.5.23",
+    "playwright": "^1.62.1",
     "postcss": "^8.4.39",
     "tailwindcss": "^3.4.6",
     "typescript": "^5.5.3"

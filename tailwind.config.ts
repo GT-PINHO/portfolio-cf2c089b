@@ -18,6 +18,7 @@ export default {
           DEFAULT: "rgb(var(--accent-rgb) / <alpha-value>)",
           dim: "var(--accent-dim)",
         },
+        "on-accent": "var(--on-accent)",
         warn: "rgb(var(--warn-rgb) / <alpha-value>)",
         ink: "rgb(var(--ink-rgb) / <alpha-value>)",
         soft: "rgb(var(--soft-rgb) / <alpha-value>)",

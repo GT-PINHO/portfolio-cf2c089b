@@ -15,7 +15,7 @@ export const SITE = {
   title: "David Pinho | Gestor de Tráfego Pago · Meta Ads e automações com IA",
   shortTitle: "David Pinho | Tráfego Pago e Automações com IA",
   description:
-    "Gestor de Tráfego Pago com 3+ anos em operação nacional de Meta Ads e desenvolvedor de automações e sistemas com IA (NestJS, Supabase, HubSpot API). R$7M+ em mídia gerida, 630 mil+ leads. Disponível para início imediato, remoto, CLT ou PJ.",
+    "Gestor de Tráfego Pago com 3+ anos em operação nacional de Meta Ads e desenvolvedor de automações e sistemas com IA (NestJS, Supabase, HubSpot API). R$ 68 a 98 mil por semana em verba gerida, 20 a 30 mil leads/mês no pipeline. Disponível para início imediato, remoto, CLT ou PJ.",
   ogImage: "/opengraph-image",
   locale: "pt_BR",
   themeColor: "#0f0f0f",
@@ -28,7 +28,6 @@ export const SITE = {
     "desenvolvedor de automações",
     "integração HubSpot",
     "automação de CRM",
-    "Growth Engineer",
     "Growth Ops",
     "MarTech",
     "NestJS",

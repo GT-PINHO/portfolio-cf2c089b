@@ -77,7 +77,7 @@ export function Reveal({ children, className, delay = 0, as = "div" }: RevealPro
   );
 }
 
-/** Wrapper sem opacidade — filhos RevealItem observam a viewport. */
+/** Wrapper sem opacidade. Filhos RevealItem observam a viewport. */
 export function RevealGroup({ children, className }: { children: ReactNode; className?: string }) {
   return <div className={className}>{children}</div>;
 }

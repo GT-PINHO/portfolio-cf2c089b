@@ -215,7 +215,7 @@ export default function SystemFlow() {
                   </div>
 
                   {node.track ? (
-                    <p className="mt-1.5 text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-accent">
+                    <p className="mt-1.5 text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-muted">
                       {node.track}
                     </p>
                   ) : null}

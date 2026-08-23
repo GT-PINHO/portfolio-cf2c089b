@@ -30,20 +30,13 @@ export default function HeroSection() {
 
       <Container className="relative z-10">
         <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
-          {/* Above-the-fold sem opacity:0 — legível com JS off / aba em background */}
+          {/* Above-the-fold sem opacity:0: legível com JS off / aba em background */}
           <div className="order-1 lg:col-span-7">
             <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
               {PROFILE.location}
             </p>
 
-            <div className="mt-3 max-w-[40ch] text-xs leading-snug text-muted">
-              <p>{PROFILE.role}</p>
-              {PROFILE.specialty ? (
-                <p className="mt-0.5 text-muted">{PROFILE.specialty}</p>
-              ) : null}
-            </div>
-
-            <h1 className="mt-4 font-display text-xl font-extrabold leading-[1.08] tracking-[-0.03em] text-ink sm:mt-5 sm:text-2xl sm:leading-[1.06] md:text-3xl">
+            <h1 className="mt-5 font-display text-xl font-extrabold leading-[1.08] tracking-[-0.03em] text-ink sm:mt-5 sm:text-2xl sm:leading-[1.06] md:text-3xl">
               {HERO.headlineLines.map((line) => (
                 <span key={line} className="block text-balance">
                   {line}

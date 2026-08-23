@@ -44,4 +44,4 @@ npm run start
 
 ## SEO
 
-Metadata (title, description, Open Graph, Twitter, robots) e JSON-LD saem no HTML do servidor via App Router — indexáveis pelos buscadores sem depender de JavaScript no cliente.
+Metadata (title, description, Open Graph, Twitter, robots) e JSON-LD saem no HTML do servidor via App Router, indexáveis pelos buscadores sem depender de JavaScript no cliente.

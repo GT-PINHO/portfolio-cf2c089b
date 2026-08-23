@@ -89,7 +89,7 @@ export default function Casos() {
               <h3 className="mt-2.5 font-display text-base font-bold leading-snug tracking-tight text-ink">
                 {c.title}
               </h3>
-              <p className="mt-4 border-l-2 border-accent pl-3 text-sm leading-relaxed text-soft">
+              <p className="mt-4 border-l-2 border-accent/45 pl-3 text-sm leading-relaxed text-soft">
                 {c.impact}
               </p>
               <div className="mt-auto flex flex-wrap gap-1.5 pt-5">

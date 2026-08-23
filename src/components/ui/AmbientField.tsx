@@ -121,7 +121,7 @@ export default function AmbientField() {
     let w = 0;
     let h = 0;
     let dpr = 1;
-    let baseRgb = readAmbientRgb();
+    const baseRgb = readAmbientRgb();
     let blocks = makeBlocks(coarse ? BLOCK_COUNT_MOBILE : BLOCK_COUNT_DESKTOP, 1, 1);
     let raf = 0;
     let running = true;

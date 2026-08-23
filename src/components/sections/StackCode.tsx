@@ -92,7 +92,7 @@ export default function StackCode() {
               <ul className="mt-4 flex flex-wrap gap-1.5">
                 {group.chips.map((chip) => {
                   const className = chip.featured
-                    ? "border border-accent/35 bg-accent/10 px-2 py-0.5 text-xs font-medium text-accent"
+                    ? "border border-accent/35 bg-accent/10 px-2 py-0.5 text-xs font-medium text-soft"
                     : "border border-surface-line px-2 py-0.5 text-xs text-soft";
 
                   return (
