@@ -1,25 +1,24 @@
 import type { MetadataRoute } from "next";
-import { GROWTH_OPS_CASE } from "@/lib/case-growth-ops";
-import { SITE_URL } from "@/lib/site";
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-davidpinho.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = SITE_URL || "http://localhost:3000";
-
   return [
     {
-      url: `${base}/`,
+      url: `${siteUrl}/`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
     },
     {
-      url: `${base}${GROWTH_OPS_CASE.path}`,
+      url: `${siteUrl}/casos/growth-ops-iam`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${base}/cv`,
+      url: `${siteUrl}/cv`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,

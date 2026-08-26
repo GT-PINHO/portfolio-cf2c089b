@@ -1,14 +1,14 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/site";
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-davidpinho.vercel.app";
 
 export default function robots(): MetadataRoute.Robots {
-  const base = SITE_URL || "http://localhost:3000";
-
   return {
     rules: {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${base}/sitemap.xml`,
+    sitemap: `${siteUrl}/sitemap.xml`,
   };
 }

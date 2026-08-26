@@ -30,8 +30,8 @@
     "semantic_hash": ""
   },
   "src/app/casos/growth-ops-iam/page.tsx": {
-    "mtime": 1787787627.900412,
-    "ast_hash": "a63fe69b684077d5082b6e2b14548de5",
+    "mtime": 1787786580.5934615,
+    "ast_hash": "98155b7f31a5f84a8ba1d9192b641847",
     "semantic_hash": ""
   },
   "src/app/layout.tsx": {
@@ -40,8 +40,8 @@
     "semantic_hash": ""
   },
   "src/app/page.tsx": {
-    "mtime": 1787787437.0310552,
-    "ast_hash": "1cd036d83853942c4a6a2a65722ea283",
+    "mtime": 1787787215.1745665,
+    "ast_hash": "af4b0f8a388991015e61a667decb1d06",
     "semantic_hash": ""
   },
   "tailwind.config.ts": {

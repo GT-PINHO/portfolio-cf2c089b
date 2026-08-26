@@ -1,82 +1,45 @@
-/**
- * Gera public/Curriculo_DavidPinho.pdf a partir da rota /cv.
- *
- * ATENCAO: o PDF em public/ hoje e mantido a mao. Rodar este script
- * SOBRESCREVE o arquivo com a versao gerada da pagina.
- *
- * A rota é alimentada por src/lib/content.ts, então o PDF nunca diverge do
- * site: mudou a experiência lá, roda este script e o arquivo acompanha.
- *
- * Uso:
- *   npm run dev          (em outro terminal)
- *   npm run cv:pdf
- *
- * Outra origem: CV_URL=http://localhost:3001/cv npm run cv:pdf
- */
-
 import { chromium } from "playwright";
-import { mkdir } from "node:fs/promises";
-import { dirname, resolve } from "node:path";
+import { resolve } from "node:path";
 
 const url = process.env.CV_URL || "http://localhost:3000/cv";
-const out = resolve(process.cwd(), "public/Curriculo_DavidPinho.pdf");
+const output = resolve(process.cwd(), "public/Curriculo_DavidPinho.pdf");
+const launchOptions = [{ channel: "chrome" }, { channel: "msedge" }, {}];
 
-/** Chrome do sistema: evita depender de `playwright install`. */
-const LAUNCH = [{ channel: "chrome" }, { channel: "msedge" }, {}];
-
-async function launch() {
+async function launchBrowser() {
   let lastError;
-  for (const opts of LAUNCH) {
+
+  for (const options of launchOptions) {
     try {
-      return await chromium.launch(opts);
+      return await chromium.launch(options);
     } catch (error) {
       lastError = error;
     }
   }
+
   throw lastError;
 }
 
-/** A4 a 96dpi. Sem isso o layout acontece em 1280px e o PDF corta o excesso. */
-const A4 = { width: 794, height: 1123 };
-
-const browser = await launch();
+const browser = await launchBrowser();
 
 try {
-  const page = await browser.newPage({ viewport: A4 });
-
+  const page = await browser.newPage({ viewport: { width: 794, height: 1123 } });
   const response = await page.goto(url, {
     waitUntil: "networkidle",
     timeout: 30000,
   });
 
-  if (!response || !response.ok()) {
-    throw new Error(
-      `${url} respondeu ${response ? response.status() : "sem resposta"}. O servidor está rodando?`,
-    );
+  if (!response?.ok()) {
+    throw new Error(`${url} respondeu ${response?.status() ?? "sem resposta"}`);
   }
 
-  // Sem isso o Chrome headless ignora o CSS de impressão e sai tudo escuro.
   await page.emulateMedia({ media: "print" });
-  await page.waitForLoadState("networkidle");
-
-  await mkdir(dirname(out), { recursive: true });
-
-  // Margem vem só do @page no CSS: uma fonte de verdade para o layout impresso.
   await page.pdf({
-    path: out,
+    path: output,
     printBackground: true,
     preferCSSPageSize: true,
   });
 
-  console.log(`PDF gerado: ${out}`);
-
-  // Prova visual opcional: CV_PREVIEW=/caminho/preview.png npm run cv:pdf
-  if (process.env.CV_PREVIEW) {
-    const preview = resolve(process.env.CV_PREVIEW);
-    await mkdir(dirname(preview), { recursive: true });
-    await page.screenshot({ path: preview, fullPage: true });
-    console.log(`Preview: ${preview}`);
-  }
+  console.log(`PDF gerado: ${output}`);
 } finally {
   await browser.close();
 }

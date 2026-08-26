@@ -1,33 +1,54 @@
-import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
-import { CONTACT, PROFILE } from "@/lib/content";
-import { SITE, SITE_URL, absoluteUrl } from "@/lib/site";
-import EnableJsReveal from "@/components/ui/EnableJsReveal";
-import GrainOverlay from "@/components/ui/GrainOverlay";
+import type { Metadata } from "next";
 import "./globals.css";
 
-const display = Bricolage_Grotesque({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const sans = Hanken_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
-const canonical = SITE_URL ? `${SITE_URL}/` : undefined;
-const ogImagePath = "/opengraph-image";
-const ogImage = absoluteUrl(ogImagePath);
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-davidpinho.vercel.app";
+const siteTitle = "David Pinho | Gestor de Tráfego Pago e MarTech";
+const siteDescription =
+  "Gestor de Tráfego Pago e MarTech com experiência em educação, Meta Ads, tracking server-side, automação e Growth Ops.";
 
 export const metadata: Metadata = {
-  metadataBase: SITE_URL ? new URL(SITE_URL) : undefined,
-  title: SITE.title,
-  description: SITE.description,
-  authors: [{ name: PROFILE.fullName }],
-  keywords: [...SITE.keywords],
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
+  keywords: [
+    "David Pinho",
+    "gestor de tráfego pago",
+    "Meta Ads",
+    "MarTech",
+    "Growth Ops",
+    "inteligência emocional",
+    "educação empresarial",
+    "tracking server-side",
+    "automação de marketing",
+  ],
+  authors: [{ name: "David Pinho" }],
+  creator: "David Pinho",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: "/",
+    siteName: "David Pinho",
+    title: siteTitle,
+    description: siteDescription,
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: siteTitle,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+    images: ["/opengraph-image"],
+  },
   robots: {
     index: true,
     follow: true,
@@ -37,136 +58,20 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
     },
   },
-  alternates: canonical ? { canonical } : undefined,
-  openGraph: {
-    type: "profile",
-    locale: SITE.locale,
-    siteName: PROFILE.name,
-    title: SITE.shortTitle,
-    description: SITE.description,
-    url: canonical,
-    images: [
-      {
-        url: ogImagePath,
-        alt: SITE.shortTitle,
-        type: "image/png",
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: SITE.shortTitle,
-    description: SITE.description,
-    images: [
-      {
-        url: "/twitter-image",
-        alt: SITE.shortTitle,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-    apple: [{ url: "/apple-touch-icon.svg" }],
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
   },
 };
 
-export const viewport: Viewport = {
-  themeColor: SITE.themeColor,
-  width: "device-width",
-  initialScale: 1,
-};
-
-function JsonLd() {
-  const origin = SITE_URL || "";
-  const pageUrl = origin ? `${origin}/` : "/";
-  const personId = `${pageUrl}#person`;
-  const image = ogImage.startsWith("http") ? ogImage : undefined;
-
-  const data = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": `${pageUrl}#website`,
-        url: pageUrl,
-        name: SITE.shortTitle,
-        description: SITE.description,
-        inLanguage: "pt-BR",
-        publisher: { "@id": personId },
-      },
-      {
-        "@type": "WebPage",
-        "@id": `${pageUrl}#webpage`,
-        url: pageUrl,
-        name: SITE.title,
-        isPartOf: { "@id": `${pageUrl}#website` },
-        about: { "@id": personId },
-        description: SITE.description,
-        inLanguage: "pt-BR",
-      },
-      {
-        "@type": "Person",
-        "@id": personId,
-        name: PROFILE.fullName,
-        alternateName: PROFILE.name,
-        url: pageUrl,
-        jobTitle: "Gestor de Tráfego Pago",
-        description: SITE.description,
-        email: CONTACT.email,
-        telephone: `+${CONTACT.whatsapp}`,
-        image,
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Americana",
-          addressRegion: "SP",
-          addressCountry: "BR",
-        },
-        sameAs: [CONTACT.linkedin, CONTACT.github, CONTACT.instagram].filter(Boolean),
-        knowsAbout: [
-          "Meta Ads",
-          "Tráfego pago",
-          "Automação de marketing com IA",
-          "Desenvolvimento de sistemas",
-          "NestJS",
-          "TypeScript",
-          "Node.js",
-          "Next.js",
-          "Docker",
-          "Supabase",
-          "Growth Operations",
-          "MarTech",
-          "Server-side tracking",
-          "GTM",
-          "CAPI",
-          "HubSpot API",
-          "ManyChat API",
-          "CRM integrations",
-        ],
-      },
-    ],
-  };
-
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
-}
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="pt-BR" className={`${display.variable} ${sans.variable}`}>
-      <body>
-        <EnableJsReveal />
-        <GrainOverlay />
-        <JsonLd />
-        {children}
-      </body>
+    <html lang="pt-BR">
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
