@@ -974,7 +974,7 @@ h2 em { font-family: inherit; font-style: normal; font-weight: inherit; }
 .experience { max-width: none; padding-left: max(5vw, calc((100vw - 1200px) / 2)); padding-right: max(5vw, calc((100vw - 1200px) / 2)); background: #000; }
 .projects { max-width: none; padding-left: max(5vw, calc((100vw - 1200px) / 2)); padding-right: max(5vw, calc((100vw - 1200px) / 2)); background: var(--surface); }
 .project-list { border-top-color: var(--line); }
-.project-card { margin-bottom: 14px; padding: 38px; border: 0; border-radius: 24px; background: var(--paper); }
+.project-card { margin-bottom: 14px; padding: 38px; border: 1px solid rgba(0,0,0,.07); border-radius: 24px; background: var(--paper); }
 .project-card:hover { padding-left: 44px; padding-right: 32px; box-shadow: 0 16px 40px rgba(0,0,0,.06); }
 .tags span { border: 0; border-radius: 999px; background: var(--surface); text-transform: none; }
 .contact { background: #000; }
