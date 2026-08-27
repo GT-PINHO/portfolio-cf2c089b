@@ -861,7 +861,7 @@ footer p {
 .dash-rate>span { font-size:10px; color:#aaa; text-transform:uppercase; }
 .dash-rate>strong { float:right; font-size:22px; }
 .dash-rate>div { height:5px; background:#343538; margin-top:16px; }
-.dash-rate i { display:block; height:100%; background:#fff; }
+.dash-rate i { display:block; height:100%; background:var(--paper); }
 .dash-warning { margin:14px 0 0; color:#aaa; font-size:10px; line-height:1.55; }
 .dash-warning strong { color:#fff; }
 .dash-funnel { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:24px 0; }
@@ -1179,7 +1179,7 @@ footer { max-width: 1200px; margin: auto; text-transform: none; font-weight: 600
 @media print {
   .cv-page {
     padding: 0;
-    background: #fff;
+    background: var(--paper);
   }
   .cv-actions {
     display: none;
