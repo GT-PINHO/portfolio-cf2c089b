@@ -160,8 +160,8 @@ export default function CvPage() {
               observabilidade, GitOps e CI/CD.
             </li>
             <li>
-              <strong>Desenvolvimento web:</strong> Next.js, TypeScript e React,
-              da estrutura à publicação, com IA e Cursor no fluxo.
+              <strong>Desenvolvimento web:</strong> Next.js, TypeScript, React e
+              UI/UX, da estrutura à publicação, com IA e Cursor no fluxo.
             </li>
           </ul>
         </section>

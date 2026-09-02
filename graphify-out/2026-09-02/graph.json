@@ -1014,7 +1014,7 @@
       "label": "CvPage()",
       "file_type": "code",
       "source_file": "src/app/cv/page.tsx",
-      "source_location": "L55",
+      "source_location": "L59",
       "_origin": "ast",
       "id": "src_app_cv_page_cvpage",
       "community": 11,
@@ -1121,10 +1121,21 @@
       "norm_label": "projects"
     },
     {
+      "label": "method",
+      "file_type": "code",
+      "source_file": "src/app/page.tsx",
+      "source_location": "L71",
+      "_origin": "ast",
+      "id": "src_app_page_method",
+      "community": 28,
+      "community_name": "app/page.tsx",
+      "norm_label": "method"
+    },
+    {
       "label": "Home()",
       "file_type": "code",
       "source_file": "src/app/page.tsx",
-      "source_location": "L72",
+      "source_location": "L94",
       "_origin": "ast",
       "id": "src_app_page_home",
       "community": 28,
@@ -2523,7 +2534,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/cv/page.tsx",
-      "source_location": "L55",
+      "source_location": "L59",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_cv_page",
@@ -2611,11 +2622,22 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/page.tsx",
-      "source_location": "L72",
+      "source_location": "L94",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_page",
       "target": "src_app_page_home",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/page.tsx",
+      "source_location": "L71",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_app_page",
+      "target": "src_app_page_method",
       "confidence_score": 1.0
     },
     {
@@ -3101,5 +3123,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "8bcc4395bc6450fcfc3c92c37a4e8674b006d5e6"
+  "built_at_commit": "d73da3305a992395eb16a08e154f60d0d1fd4d81"
 }

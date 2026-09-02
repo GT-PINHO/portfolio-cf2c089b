@@ -128,7 +128,7 @@ export default function Home() {
             <a className="button primary" href="#projetos">
               Conhecer meu trabalho <ArrowDownRight size={18} />
             </a>
-            <a className="button ghost" href="/cv">
+            <a className="button primary" href="/cv">
               Ver currículo <FileText size={18} />
             </a>
           </div>
@@ -229,7 +229,7 @@ export default function Home() {
               <h3>Do briefing ao código em produção</h3>
               <p>
                 Eu construo o site do zero em Next.js e TypeScript: estrutura,
-                UI, conteúdo, mobile e deploy. IA e Cursor entram como
+                UI/UX, conteúdo, mobile e deploy. IA e Cursor entram como
                 ferramentas de execução. Este portfólio é um produto publicado.
               </p>
             </div>
@@ -374,9 +374,9 @@ export default function Home() {
       <section className="contact">
         <p className="section-no">05 / CONTATO</p>
         <h2>
-          Precisa transformar
+          Vamos conversar sobre
           <br />
-          aquisição em crescimento mensurável?
+          o próximo desafio?
         </h2>
         <a
           className="contact-mail"
