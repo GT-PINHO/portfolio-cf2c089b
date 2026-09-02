@@ -6,6 +6,7 @@ import {
   ArrowDownRight,
   ArrowUpRight,
   Bot,
+  FileText,
   Braces,
   ChartNoAxesCombined,
   CheckCircle2,
@@ -127,11 +128,8 @@ export default function Home() {
             <a className="button primary" href="#projetos">
               Conhecer meu trabalho <ArrowDownRight size={18} />
             </a>
-            <a
-              className="button ghost"
-              href="/cv"
-            >
-              Ver currículo
+            <a className="button primary" href="/cv">
+              Ver currículo <FileText size={18} />
             </a>
           </div>
         </div>
@@ -140,8 +138,8 @@ export default function Home() {
             <Image
               src="/david.png"
               alt="David Pinho"
-              width={896}
-              height={896}
+              width={918}
+              height={1024}
               priority
             />
           </div>

@@ -950,8 +950,22 @@ h1 { font-size: clamp(58px, 7vw, 104px); line-height: .94; letter-spacing: -.065
 h1 em,
 h2 em { font-family: inherit; font-style: normal; font-weight: inherit; }
 .hero-copy > p { max-width: 660px; margin: 34px 0 32px; color: var(--muted); font-size: 20px; line-height: 1.5; }
-.button { padding: 13px 19px; border-radius: 999px; text-transform: none; font-size: 14px; font-weight: 600; transition: transform .25s ease, opacity .25s ease, background .25s ease; }
-.button.ghost { border-color: transparent; background: var(--surface); }
+.button { padding: 13px 19px; border-radius: 999px; text-transform: none; font-size: 14px; font-weight: 600; transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease; }
+.button.ghost {
+  border: 1.5px solid var(--ink);
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+.button.ghost:hover {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+.button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
 .hero-visual { padding: 10px; border-radius: 30px; background: var(--surface); box-shadow: 0 24px 70px rgba(0,0,0,.12); }
 .portrait-wrap { border-radius: 22px; }
 .hero-visual img { height: 430px; border-radius: 22px; }
