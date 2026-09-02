@@ -71,7 +71,7 @@ export default function GrowthOpsCase() {
           <div><span>Meu papel</span><strong>Arquitetura, back-end, integrações e dashboard</strong></div>
           <div><span>Resultado</span><strong>100% de processamento sem erro</strong></div>
         </div>
-        <div className="case-proof" aria-label="Principais resultados"><div><strong>20 a 30 mil</strong><span>leads processados por mês</span></div><div><strong>R$ 4,5 mil</strong><span>de economia mensal estimada</span></div><div><strong>0</strong><span>erros bloqueantes no período</span></div></div>
+        <div className="case-proof" aria-label="Principais resultados"><div><strong>20 a 30 mil</strong><span>leads processados por mês</span></div><div><strong>R$ 4,5 mil</strong><span>economia/mês ao sair do n8n Cloud</span></div><div><strong>0</strong><span>erros bloqueantes no período</span></div></div>
       </section>
 
       <nav className="case-index" aria-label="Índice do estudo de caso">

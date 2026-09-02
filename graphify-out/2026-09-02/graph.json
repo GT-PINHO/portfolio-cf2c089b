@@ -1014,7 +1014,7 @@
       "label": "CvPage()",
       "file_type": "code",
       "source_file": "src/app/cv/page.tsx",
-      "source_location": "L59",
+      "source_location": "L55",
       "_origin": "ast",
       "id": "src_app_cv_page_cvpage",
       "community": 11,
@@ -2523,7 +2523,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/cv/page.tsx",
-      "source_location": "L59",
+      "source_location": "L55",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_cv_page",
@@ -3101,5 +3101,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "57e97aa17d771f7b4ebe2636ade7b173c83db263"
+  "built_at_commit": "8bcc4395bc6450fcfc3c92c37a4e8674b006d5e6"
 }

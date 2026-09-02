@@ -50,6 +50,10 @@ const projects = [
     name: "agent skills",
     text: "Plugin open source de growth ops para Claude, com Quality Gate, eval runner e CI.",
   },
+  {
+    name: "Portfólio pessoal",
+    text: "Site construído do zero em Next.js e TypeScript, do layout ao deploy na Vercel.",
+  },
 ];
 
 export default function CvPage() {
@@ -154,6 +158,10 @@ export default function CvPage() {
             <li>
               <strong>IA e produto:</strong> Claude, Cursor, agentes, skills,
               observabilidade, GitOps e CI/CD.
+            </li>
+            <li>
+              <strong>Desenvolvimento web:</strong> Next.js, TypeScript e React,
+              da estrutura à publicação, com IA e Cursor no fluxo.
             </li>
           </ul>
         </section>

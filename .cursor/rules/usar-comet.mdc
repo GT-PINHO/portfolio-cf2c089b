@@ -1,0 +1,28 @@
+---
+description: Verificar UI no Comet já aberto, nunca no Chrome e nunca em janela extra
+alwaysApply: true
+---
+
+# Navegador: Comet do usuário
+
+O usuário **sempre usa o Comet** (Perplexity) e **não usa Google Chrome**.
+
+## Como abrir páginas
+
+Se o Comet já estiver aberto, **abra uma guia nele**. Não lance outra janela nem outro perfil.
+
+```
+"C:\Program Files\Perplexity\Comet\Application\comet.exe" http://localhost:3000
+```
+
+Sem `--user-data-dir` diferente. O Chromium reaproveita a instância que já está rodando.
+
+## DevTools / screenshots
+
+O MCP `chrome-devtools` aponta para `http://127.0.0.1:9222`.
+
+Os atalhos do Comet (Startup, Iniciar, barra de tarefas) já têm `--remote-debugging-port=9222` no perfil real do usuário. **Nunca** use `C:\Users\david\AppData\Local\cdp-profiles\comet`.
+
+Se 9222 estiver morta, peça para o usuário fechar o Comet por completo e abrir de novo pelo atalho. Não suba o Google Chrome e não crie um segundo Comet.
+
+O protocolo pode reportar `Chrome/151...`. Isso é o Comet, não o Google Chrome.

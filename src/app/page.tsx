@@ -128,7 +128,7 @@ export default function Home() {
             <a className="button primary" href="#projetos">
               Conhecer meu trabalho <ArrowDownRight size={18} />
             </a>
-            <a className="button primary" href="/cv">
+            <a className="button ghost" href="/cv">
               Ver currículo <FileText size={18} />
             </a>
           </div>
@@ -160,7 +160,7 @@ export default function Home() {
         </div>
         <div>
           <strong>R$ 4,5 mil</strong>
-          <span>economizados por mês</span>
+          <span>economia/mês ao sair do n8n</span>
         </div>
         <div>
           <strong>3+ anos</strong>
@@ -210,28 +210,27 @@ export default function Home() {
       </section>
       <section className="section complementary" data-reveal>
         <div className="complementary-head">
-          <p className="section-no">02 / CONHECIMENTOS COMPLEMENTARES</p>
+          <p className="section-no">02 / ALÉM DA MÍDIA</p>
           <h2>
-            Amplitude sem
+            A jornada depois
             <br />
-            <em>perder o foco.</em>
+            <em>do anúncio.</em>
           </h2>
           <p>
-            Minha experiência principal está em Meta Ads e MarTech. Também
-            desenvolvo competências que ajudam a enxergar e construir a jornada
-            completa, do anúncio à experiência digital.
+            A mídia é o centro. Também construo o que recebe o clique: site,
+            interface e a experiência até o CRM.
           </p>
         </div>
         <div className="complementary-grid">
           <article>
             <MonitorSmartphone />
             <div>
-              <span>WEB & EXPERIÊNCIA DIGITAL</span>
-              <h3>Web design com IA e fundamentos de UI/UX</h3>
+              <span>DESENVOLVIMENTO WEB</span>
+              <h3>Do briefing ao código em produção</h3>
               <p>
-                Construção de landing pages e interfaces com apoio de IA,
-                aplicando responsividade, hierarquia visual e prototipação
-                básica no Figma.
+                Eu construo o site do zero em Next.js e TypeScript: estrutura,
+                UI, conteúdo, mobile e deploy. IA e Cursor entram como
+                ferramentas de execução. Este portfólio é um produto publicado.
               </p>
             </div>
           </article>
@@ -241,17 +240,16 @@ export default function Home() {
               <span>OUTRAS PLATAFORMAS DE MÍDIA</span>
               <h3>Google Ads e TikTok Ads</h3>
               <p>
-                Conhecimento operacional nas duas plataformas, com experiência
-                profissional e domínio mais aprofundado concentrados em Meta Ads.
+                Operação nas duas plataformas. A profundidade profissional está
+                em Meta Ads.
               </p>
             </div>
           </article>
           <div className="learning-note">
-            <span>PERFIL DE APRENDIZADO</span>
+            <span>COMO EU OPERO</span>
             <p>
-              Tenho perfil multidisciplinar e aprendizado rápido. Quando a
-              operação exige uma competência nova, estudo, prototipo e transformo
-              o conhecimento em uma solução aplicável.
+              Se a jornada pede site, tracking ou automação, eu construo a peça
+              e coloco em produção. Não fica em teoria.
             </p>
           </div>
         </div>
@@ -339,8 +337,16 @@ export default function Home() {
                       <span key={t}>{t}</span>
                     ))}
                   </div>
+                  {p.href ? (
+                    <span className="project-cue">Ver projeto</span>
+                  ) : null}
                 </div>
-                {p.href ? <ArrowUpRight className="project-arrow" /> : null}
+                {p.href ? (
+                  <span className="project-go" aria-hidden="true">
+                    <span className="project-go-label">Ver projeto</span>
+                    <ArrowUpRight className="project-arrow" />
+                  </span>
+                ) : null}
               </>
             );
             return p.href ? (
