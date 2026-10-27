@@ -5,7 +5,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-davidpinho.vercel.app";
 const siteTitle = "David Pinho | Gestor de Tráfego Pago e MarTech";
 const siteDescription =
-  "Gestor de Tráfego Pago e MarTech com experiência em educação, Meta Ads, tracking server-side, automação e Growth Ops.";
+  "Gestor de Tráfego Pago e MarTech com experiência em educação, Meta Ads, tracking, automação e Growth Ops.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

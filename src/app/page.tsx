@@ -29,7 +29,7 @@ const skills = [
   [
     Radar,
     "Tracking & dados",
-    "GTM server-side, CAPI, Stape, UTMs, HubSpot e ManyChat API.",
+    "CAPI, UTMs, HubSpot e ManyChat API. Conhecimento em GTM web e server-side.",
   ],
   [
     Braces,
@@ -39,7 +39,7 @@ const skills = [
   [
     Bot,
     "IA & automação",
-    "Agentes, skills, automação de WhatsApp, observabilidade e CI/CD.",
+    "Agentes, skills, integração de leads, observabilidade e CI/CD.",
   ],
 ] as const;
 const projects = [
@@ -169,8 +169,7 @@ export default function Home() {
       </section>
       <section className="ticker">
         <div>
-          GROWTH OPS <i>✦</i> META ADS <i>✦</i> MARTECH <i>✦</i> SERVER-SIDE
-          TRACKING <i>✦</i> AUTOMAÇÃO COM IA <i>✦</i>
+          GROWTH OPS <i>✦</i> META ADS <i>✦</i> MARTECH <i>✦</i> TRACKING <i>✦</i> AUTOMAÇÃO COM IA <i>✦</i>
         </div>
       </section>
       <section className="section split" id="sobre" data-reveal>
@@ -195,7 +194,7 @@ export default function Home() {
             escala.
           </p>
           <div className="location">
-            <MapPin size={17} /> Americana, SP · Remoto, CLT ou PJ
+            <MapPin size={17} /> Americana, São Paulo
           </div>
         </div>
       </section>
@@ -240,8 +239,8 @@ export default function Home() {
               <span>OUTRAS PLATAFORMAS DE MÍDIA</span>
               <h3>Google Ads e TikTok Ads</h3>
               <p>
-                Operação nas duas plataformas. A profundidade profissional está
-                em Meta Ads.
+                Nível básico, em estudo contínuo. Minha experiência
+                profissional comprovada é em Meta Ads.
               </p>
             </div>
           </article>
@@ -282,8 +281,9 @@ export default function Home() {
                   landing pages e tracking server-side.
                 </li>
                 <li>
-                  <CheckCircle2 /> Migração de n8n para NestJS/Docker e automação de
-                  WhatsApp para 20 a 30 mil leads/mês.
+                  <CheckCircle2 /> Sistema interno de integração de leads
+                  (landing page, ManyChat, Sheets e HubSpot), migrado do n8n
+                  para NestJS/Docker no Easypanel, com 20 a 30 mil leads/mês.
                 </li>
               </ul>
             </div>

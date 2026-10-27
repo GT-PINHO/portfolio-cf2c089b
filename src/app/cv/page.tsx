@@ -17,12 +17,12 @@ const experience = [
   {
     title: "Gestor de Tráfego Pago e MarTech",
     company: "Instituto Academy Mind, Grupo Legacy Eco Holding",
-    period: "dez/2024 a 01/08/2026",
+    period: "dez/2024 a ago/2026",
     bullets: [
       "Gestão de campanhas para masterclasses e imersões de inteligência emocional e empresarial.",
       "Orçamento semanal entre R$ 68 mil e R$ 98 mil, com foco em CPL, ROAS e escala.",
       "Criativos estáticos, roteiros de anúncio, estratégia de landing page e tracking server-side.",
-      "Migração de n8n para NestJS e Docker, com automação de WhatsApp para 20 a 30 mil leads por mês.",
+      "Sistema de leads (landing page, ManyChat, Sheets e HubSpot) migrado do n8n para NestJS e Docker no Easypanel.",
     ],
   },
   {
@@ -74,12 +74,16 @@ export default function CvPage() {
         <header className="cv-header">
           <h1 className="cv-name">David Edson da Silva Pinho</h1>
           <p className="cv-role">
-            Gestor de Tráfego Pago · Meta Ads, Tracking e Automação de WhatsApp
+            Gestor de Tráfego Pago · Meta Ads (Facebook e Instagram), Tracking
+            e Integração de Leads
           </p>
           <div className="cv-contacts">
             <span>Americana, SP</span>
+            {" | "}
             <a href="tel:+5519997501584">(19) 99750-1584</a>
+            {" | "}
             <a href="mailto:davidpinho.st@gmail.com">davidpinho.st@gmail.com</a>
+            {" | "}
             <a
               href="https://linkedin.com/in/odavidpinho"
               target="_blank"
@@ -87,6 +91,7 @@ export default function CvPage() {
             >
               linkedin.com/in/odavidpinho
             </a>
+            {" | "}
             <a
               href="https://github.com/GT-PINHO"
               target="_blank"
@@ -94,6 +99,7 @@ export default function CvPage() {
             >
               github.com/GT-PINHO
             </a>
+            {" | "}
             <span>portfolio-davidpinho.vercel.app</span>
           </div>
         </header>
@@ -107,9 +113,9 @@ export default function CvPage() {
             98 mil, otimização de CPL e ROAS, funil e escala. Mais de R$ 7
             milhões em investimento gerenciado, 630 mil leads em operação
             nacional e mais de 240 mil leads sob gestão direta. Também
-            desenvolvo tracking server-side, automação de WhatsApp, integrações
-            de CRM e sistemas MarTech, incluindo infraestrutura em NestJS para
-            20 a 30 mil leads por mês.
+            implementei tracking web e server side e desenvolvi um sistema
+            interno de integração de leads em NestJS para 20 a 30 mil leads por
+            mês.
           </p>
         </section>
 
@@ -144,12 +150,17 @@ export default function CvPage() {
           <h2 className="cv-h2">Competências técnicas</h2>
           <ul className="cv-list">
             <li>
-              <strong>Meta Ads e performance:</strong> funis, CPL, ROAS, testes
+              <strong>Meta Ads e performance:</strong> Facebook Ads e Instagram
+              Ads pelo Gerenciador de Anúncios, Pixel, funis, CPL, ROAS, testes
               A/B, lookalikes e remarketing.
             </li>
             <li>
-              <strong>Tracking e dados:</strong> GTM web e server side, CAPI,
-              Stape, UTMs, HubSpot e ManyChat API.
+              <strong>Outras plataformas de mídia:</strong> Google Ads e TikTok
+              Ads em nível básico, em estudo.
+            </li>
+            <li>
+              <strong>Tracking e dados:</strong> CAPI, UTMs, CRM HubSpot e
+              ManyChat API. Conhecimento em GTM web e server side e Stape.
             </li>
             <li>
               <strong>MarTech e engenharia:</strong> Next.js, React, TypeScript,
@@ -167,15 +178,35 @@ export default function CvPage() {
         </section>
 
         <section>
-          <h2 className="cv-h2">Desenvolvimento profissional</h2>
+          <h2 className="cv-h2">Formação e cursos</h2>
           <ul className="cv-list">
             <li>
-              Atuação no segmento de educação em inteligência emocional e
-              empresarial.
+              <strong>Ensino médio:</strong> completo.
             </li>
-            <li>Base metodológica em performance e Meta Ads.</li>
-            <li>GTM web e server side, com foco em rastreamento e qualidade de sinal.</li>
-            <li>Aprendizado contínuo em tráfego, funis, IA aplicada e escalabilidade.</li>
+            <li>
+              <strong>Comunidade Sobral:</strong> formação em tráfego pago e
+              Meta Ads.
+            </li>
+            <li>
+              <strong>Rastreamento 100% (Dericson Calari):</strong> tracking web
+              e server side, curso custeado pela empresa.
+            </li>
+            <li>
+              <strong>Autodidata:</strong> tracking, funis, IA aplicada e
+              desenvolvimento web.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="cv-h2">Idiomas</h2>
+          <ul className="cv-list">
+            <li>
+              <strong>Inglês:</strong> básico (autodidata).
+            </li>
+            <li>
+              <strong>Espanhol:</strong> básico (autodidata).
+            </li>
           </ul>
         </section>
       </article>
