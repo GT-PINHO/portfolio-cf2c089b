@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Download } from "lucide-react";
 
@@ -72,36 +73,58 @@ export default function CvPage() {
 
       <article className="cv-doc">
         <header className="cv-header">
-          <h1 className="cv-name">David Edson da Silva Pinho</h1>
-          <p className="cv-role">
-            Gestor de Tráfego Pago · Meta Ads (Facebook e Instagram), Tracking
-            e Integração de Leads
-          </p>
-          <div className="cv-contacts">
-            <span>Americana, SP</span>
-            {" | "}
-            <a href="tel:+5519997501584">(19) 99750-1584</a>
-            {" | "}
-            <a href="mailto:davidpinho.st@gmail.com">davidpinho.st@gmail.com</a>
-            {" | "}
-            <a
-              href="https://linkedin.com/in/odavidpinho"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              linkedin.com/in/odavidpinho
-            </a>
-            {" | "}
-            <a
-              href="https://github.com/GT-PINHO"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              github.com/GT-PINHO
-            </a>
-            {" | "}
-            <span>portfolio-davidpinho.vercel.app</span>
+          <div className="cv-header-text">
+            <h1 className="cv-name">David Edson da Silva Pinho</h1>
+            <p className="cv-role">
+              Gestor de Tráfego Pago · Meta Ads (Facebook e Instagram),
+              <br />
+              Tracking e Integração de Leads
+            </p>
+            <p className="cv-address">Jardim Guanabara, Americana/SP</p>
+            <div className="cv-contacts">
+              <p>
+                <a href="tel:+5519997501584">(19) 99750-1584</a>
+                {" | "}
+                <a href="mailto:davidpinho.st@gmail.com">
+                  davidpinho.st@gmail.com
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://linkedin.com/in/odavidpinho"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  linkedin.com/in/odavidpinho
+                </a>
+                {" | "}
+                <a
+                  href="https://github.com/GT-PINHO"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  github.com/GT-PINHO
+                </a>
+                {" | "}
+                <a
+                  href="https://portfolio-davidpinho.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  portfolio-davidpinho.vercel.app
+                </a>
+              </p>
+            </div>
           </div>
+          <Image
+            className="cv-photo"
+            src="/cv-foto.jpg"
+            alt="Foto de David Pinho"
+            width={300}
+            height={400}
+            priority
+            unoptimized
+          />
         </header>
 
         <section>
@@ -163,16 +186,12 @@ export default function CvPage() {
               ManyChat API. Conhecimento em GTM web e server side e Stape.
             </li>
             <li>
-              <strong>MarTech e engenharia:</strong> Next.js, React, TypeScript,
-              NestJS, Node.js, Docker, Easypanel e Supabase.
+              <strong>MarTech e desenvolvimento web:</strong> Next.js, React,
+              TypeScript, UI/UX, NestJS, Node.js, Docker, Easypanel e Supabase.
             </li>
             <li>
               <strong>IA e produto:</strong> Claude, Cursor, agentes, skills,
               observabilidade, GitOps e CI/CD.
-            </li>
-            <li>
-              <strong>Desenvolvimento web:</strong> Next.js, TypeScript, React e
-              UI/UX, da estrutura à publicação, com IA e Cursor no fluxo.
             </li>
           </ul>
         </section>

@@ -14,6 +14,9 @@ out
 tsconfig.tsbuildinfo
 graphify-out/cache/
 
+# Endereço completo e o PDF de candidatura que o contém: nunca vão para o site.
+curriculo-privado/
+
 # Skills instaladas: skills-lock.json é o manifesto, o conteúdo se reinstala
 # com `npx skills add`. Mesmo papel de node_modules.
 .cursor/skills/

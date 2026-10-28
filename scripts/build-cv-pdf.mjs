@@ -1,9 +1,17 @@
 import { chromium } from "playwright";
+import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const url = process.env.CV_URL || "http://localhost:3000/cv";
 const output = resolve(process.cwd(), "public/Curriculo_DavidPinho.pdf");
+const privateDir = resolve(process.cwd(), "curriculo-privado");
+const privateAddressFile = resolve(privateDir, "endereco.txt");
+const privateOutput = resolve(privateDir, "Curriculo_DavidPinho.pdf");
 const launchOptions = [{ channel: "chrome" }, { channel: "msedge" }, {}];
+const pdfOptions = {
+  printBackground: true,
+  preferCSSPageSize: true,
+};
 
 async function launchBrowser() {
   let lastError;
@@ -33,13 +41,26 @@ try {
   }
 
   await page.emulateMedia({ media: "print" });
-  await page.pdf({
-    path: output,
-    printBackground: true,
-    preferCSSPageSize: true,
-  });
+  await page.pdf({ ...pdfOptions, path: output });
+  console.log(`PDF público gerado: ${output}`);
 
-  console.log(`PDF gerado: ${output}`);
+  // O endereço completo só entra no PDF de candidatura, que fica fora do Git e do site.
+  if (existsSync(privateAddressFile)) {
+    const address = readFileSync(privateAddressFile, "utf8").trim();
+    const replaced = await page.evaluate((fullAddress) => {
+      const element = document.querySelector(".cv-address");
+      if (!element) return false;
+      element.textContent = fullAddress;
+      return true;
+    }, address);
+
+    if (!replaced) {
+      throw new Error("Elemento .cv-address não encontrado na rota /cv");
+    }
+
+    await page.pdf({ ...pdfOptions, path: privateOutput });
+    console.log(`PDF de candidatura gerado: ${privateOutput}`);
+  }
 } finally {
   await browser.close();
 }

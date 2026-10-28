@@ -1221,26 +1221,52 @@ footer { max-width: 1200px; margin: auto; text-transform: none; font-weight: 600
   box-shadow: 0 20px 50px rgba(16, 17, 20, 0.18);
 }
 .cv-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
   padding-bottom: 18px;
   border-bottom: 1px solid #d5d5d1;
 }
+.cv-header-text {
+  min-width: 0;
+}
+.cv-photo {
+  flex-shrink: 0;
+  width: 23mm;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  border-radius: 4px;
+  object-fit: cover;
+}
+.cv-address {
+  margin: 8px 0 0;
+  color: #4f504a;
+  font-size: 11.5px;
+}
 .cv-name {
   margin: 0;
-  font-size: 28px;
+  font-size: 30px;
   line-height: 1.05;
   letter-spacing: -0.045em;
 }
 .cv-role {
   margin: 6px 0 0;
   color: #4f504a;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
 }
 .cv-contacts {
-  margin-top: 12px;
-  line-height: 1.6;
+  margin-top: 2px;
+  line-height: 1.5;
   color: #66676c;
-  font-size: 10px;
+  font-size: 11.5px;
+}
+.cv-contacts p {
+  margin: 0;
+}
+.cv-contacts a {
+  white-space: nowrap;
 }
 .cv-contacts a {
   text-decoration: underline;
@@ -1253,33 +1279,33 @@ footer { max-width: 1200px; margin: auto; text-transform: none; font-weight: 600
   padding-bottom: 5px;
   border-bottom: 1px solid #d5d5d1;
   margin: 0;
-  font-size: 11px;
+  font-size: 12.5px;
   text-transform: uppercase;
 }
 .cv-body,
 .cv-list {
   color: #4f504a;
-  font-size: 11px;
-  line-height: 1.55;
+  font-size: 12.5px;
+  line-height: 1.45;
 }
 .cv-body {
-  margin: 9px 0 0;
+  margin: 7px 0 0;
 }
 .cv-role-block {
-  margin-top: 13px;
+  margin-top: 11px;
 }
 .cv-h3 {
   margin: 0;
-  font-size: 13px;
+  font-size: 14.5px;
 }
 .cv-org,
 .cv-meta {
-  margin: 3px 0 0;
+  margin: 2px 0 0;
   color: #66676c;
-  font-size: 10px;
+  font-size: 11.5px;
 }
 .cv-meta {
-  font-size: 9px;
+  font-size: 11px;
 }
 .cv-list {
   display: grid;
@@ -1310,6 +1336,9 @@ footer { max-width: 1200px; margin: auto; text-transform: none; font-weight: 600
   .cv-name {
     font-size: 24px;
   }
+  .cv-photo {
+    width: 72px;
+  }
 }
 @media print {
   .cv-page {
@@ -1325,10 +1354,20 @@ footer { max-width: 1200px; margin: auto; text-transform: none; font-weight: 600
     box-shadow: none;
   }
   .cv-doc section {
-    margin-top: 14px;
+    margin-top: 12px;
+  }
+  .cv-header {
+    padding-bottom: 10px;
+  }
+  .cv-list {
+    gap: 2px;
+    margin-top: 5px;
+  }
+  .cv-role-block {
+    margin-top: 8px;
   }
   @page {
     size: A4;
-    margin: 12mm;
+    margin: 10mm 11mm;
   }
 }

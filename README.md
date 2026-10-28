@@ -50,6 +50,8 @@ npm run qr:build   # e commite o PNG e o lock
 
 **`Curriculo_DavidPinho.pdf`.** Hoje é mantido à mão. O caminho vem de `CV_PDF_URL` em `src/lib/cv.ts`, que é a fonte única: nunca escreva o nome do arquivo direto num componente. Rodar `npm run cv:pdf` **sobrescreve** esse PDF com a versão gerada da rota `/cv`.
 
+**PDF de candidatura.** O site mostra só bairro e cidade. Se existir `curriculo-privado/endereco.txt`, o mesmo comando gera também `curriculo-privado/Curriculo_DavidPinho.pdf` com o endereço completo, para anexar em vagas. A pasta está no `.gitignore` e nunca vai para o site.
+
 ## Variáveis de ambiente
 
 Copie `.env.example` para `.env.local` e defina:

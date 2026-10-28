@@ -15,8 +15,8 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1787786512.8101554,
-    "ast_hash": "56a008280f0ce37646886c2cd6ef3359",
+    "mtime": 1793106785.1759942,
+    "ast_hash": "63e8aa7da9bcd52a69a7f67c0954b9b5",
     "semantic_hash": ""
   },
   "postcss.config.js": {
@@ -55,8 +55,8 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1787526041.4532547,
-    "ast_hash": "15f43d31005634e890209caf4bb172b6",
+    "mtime": 1793145344.8416412,
+    "ast_hash": "22a9362d6be4137af77671bb01d74409",
     "semantic_hash": ""
   },
   "scripts/accept-check.mjs": {
@@ -85,8 +85,8 @@
     "semantic_hash": ""
   },
   "scripts/build-cv-pdf.mjs": {
-    "mtime": 1787786545.600462,
-    "ast_hash": "11f7d3311392250fe0acd9af81272b40",
+    "mtime": 1793145320.1337893,
+    "ast_hash": "baaee27e80efda3bb0de92eee7620454",
     "semantic_hash": ""
   },
   "scripts/build-qr.mjs": {
@@ -125,8 +125,8 @@
     "semantic_hash": ""
   },
   "src/app/cv/page.tsx": {
-    "mtime": 1793106577.1707914,
-    "ast_hash": "90e7074379a06e84ba8dfdafb8a3e08a",
+    "mtime": 1793147382.4600368,
+    "ast_hash": "1679d1949293b8c381db580c9598f621",
     "semantic_hash": ""
   },
   "src/app/opengraph-image.tsx": {
